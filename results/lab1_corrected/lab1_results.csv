@@ -1,0 +1,2086 @@
+﻿task,variant,model,prompt,output,latency_seconds,error,finish_reason,reasoning_length_chars,max_tokens,temperature,prompt_tokens,completion_tokens,total_tokens,length_chars,length_words,word_count,number_count,year_count,link_count,caution_marker_count,confident_marker_count
+task_2,identical_explanation,moonshotai/Kimi-K2.6,Explain the concept of retrieval-augmented generation to a second-year software engineering student in 120 words or fewer. Include one practical example.," Retrieval-augmented generation (RAG) lets large language models (LLMs) answer questions using external data. Instead of relying only on training data, the system converts documents into vector embeddings and stores them. At query time, it retrieves the most relevant chunks and injects them into the LLM's prompt as context. The model then generates a response grounded in that fresh information.
+
+**Example:** A company helpdesk indexes its internal wiki into a vector database. When a developer asks about a legacy API, the system retrieves the latest docs and the LLM produces an accurate, up-to-date answer instead of hallucinating.",110.236,,stop,5831,8192,0.2,36,1712,1748,637,100,96,0,0,0,0,0
+task_2,identical_explanation,Qwen/Qwen3-Coder-Next,Explain the concept of retrieval-augmented generation to a second-year software engineering student in 120 words or fewer. Include one practical example.,"Retrieval-Augmented Generation (RAG) combines a *retrieval* system (like a search engine) with a *generation* model (like LLMs). When a user asks a question, RAG first fetches relevant, up-to-date documents from an external knowledge base (e.g., a company’s PDFs or a database), then feeds both the query and retrieved snippets into the LLM to generate a grounded, accurate response. This mitigates hallucinations and lets models access real-time or proprietary data without retraining.
+
+**Example**: A customer support chatbot uses RAG to answer product questions. When a user asks, *“What’s the warranty on the new laptop model X?”*, RAG retrieves the latest warranty policy PDF, then the LLM synthesizes a clear answer like: *“Model X includes a 1-year limited warranty, extendable to 3 years with our Premium Care plan.”*",2.458,,stop,0,8192,0.2,39,191,230,825,134,127,2,0,0,0,0
+task_3,summary,Qwen/Qwen3-Coder-Next,"Summarize the source in no more than 80 words.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+","RAG combines a language model with an external document collection: a retriever finds relevant passages, which are inserted into the prompt as evidence, reducing reliance on the model’s internal memory. The pipeline includes document loading, chunking, indexing (keyword or vector), retrieval, and generation. However, RAG does not guarantee truth—retrieval may be irrelevant or incomplete, and models may misinterpret evidence. Applications must enforce citation, expose conflicts, and ensure adherence to retrieved context. Operational safeguards include access controls, metadata-aware filtering, index maintenance, and careful evaluation of faithfulness and completeness.",1.386,,stop,0,8192,0.2,850,120,970,675,90,88,0,0,0,2,0
+task_3,summary,moonshotai/Kimi-K2.6,"Summarize the source in no more than 80 words.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+"," Retrieval-augmented generation (RAG) augments language models by retrieving external document passages to ground answers, reducing reliance on internal knowledge. A pipeline loads, chunks, indexes, and retrieves text, then generates responses. It does not guarantee accuracy; irrelevant or outdated retrieval and misinterpretation are risks. Success requires careful chunking, index maintenance, version-aware filtering, separate evaluation of retrieval and generation, and operational safeguards like access controls, citation fidelity, and conflict exposure rather than treating RAG as a truth guarantee.",52.513,,stop,3586,8192,0.2,841,920,1761,607,78,76,0,0,0,0,0
+task_3,main_points,moonshotai/Kimi-K2.6,"Extract the five main points from the source.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+"," 1. **Core Pipeline and Mechanism** – Retrieval-augmented generation combines a language model with an external document collection by using a retriever to search for relevant passages before generation, inserting them into the prompt as evidence to reduce reliance on parametric memory and improve inspectability. A typical pipeline comprises document loading, chunking, indexing (keyword or vector), retrieval of a configurable top-k set of fragments, and generation.
+
+2. **Chunking and Retrieval Are Context-Dependent Design Choices** – Chunk size, overlap, and the number of retrieved fragments (k) involve trade-offs: small chunks can separate an instruction from its valid condition, large chunks can include unrelated material and consume context window space, and overlap preserves continuity but duplicates text. Similarly, increasing k improves coverage but raises latency and can introduce distracting passages; the best settings depend on the documents, questions, retrieval method, and available context budget.
+
+3. **Truthfulness, Citations, and Conflict Handling** – RAG does not guarantee truth, since retrieval may return irrelevant or incomplete passages and the model may misinterpret evidence. Applications should instruct the model to separate evidence from assumptions, cite the supplied passages, and state when context is insufficient. Citations must point to the passage that actually supports the answer, and if retrieved passages disagree, the system should expose the conflict rather than silently present one claim as certain.
+
+4. **Evaluation Must Test Retrieval and Generation Separately** – Evaluation should use representative questions, including straightforward ones, ones requiring combined passages, and ones that are unanswerable from the corpus. Inspectors must assess retrieval and generation independently, ensuring that an answer’s main claims follow from the supplied passages and that important qualifications are preserved; high faithfulness should not be awarded merely for repeating words from the context.
+
+5. **Production Safeguards and Application Architecture** – Production teams must monitor latency, retrieval precision, token usage, and failure rates; cache repeated queries; and enforce access controls before exposing private passages, because prompts alone are not an access-control mechanism. Retrieved documents are untrusted data, so prompt injection inside a document must not override system policy. Index maintenance should update or remove fragments when documents change, and logs and caches must respect user permissions and document freshness. RAG is therefore an application architecture involving data management, retrieval, generation, and evaluation, not a guarantee of accurate answers.",131.365,,stop,7830,8192,0.2,838,1966,2804,2759,378,372,5,0,0,2,0
+task_3,main_points,Qwen/Qwen3-Coder-Next,"Extract the five main points from the source.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+","1. **RAG Pipeline Structure**: A RAG system follows a pipeline of document loading, chunking, indexing, retrieval, and generation—where chunking divides documents (often with overlap), indexing stores fragment representations (e.g., keyword or vector), and retrieval fetches top-k relevant passages to condition the language model.
+
+2. **RAG Does Not Guarantee Truth**: Retrieval may return irrelevant or incomplete passages, and the model may misinterpret evidence; applications must require the model to cite passages, separate evidence from assumptions, and declare insufficient context, with evaluation assessing both answer quality and faithfulness to retrieved context.
+
+3. **Metadata and Contextual Relevance Matter**: Document metadata (e.g., version, title, owner, update time) attached to fragments enables filtering (e.g., version-specific answers) and meaningful citations, ensuring answers align with the correct context.
+
+4. **Design Choices Require Tuning**: Chunk size and retrieval depth (k) are application-specific trade-offs—small chunks risk fragmenting valid context, large chunks add noise and context cost, and higher k improves coverage but increases latency and potential distraction; optimal settings depend on documents, queries, retrieval method, and context budget.
+
+5. **Operational Safeguards and Maintenance Are Critical**: Indexes must be updated when documents change to avoid obsolete retrieval; access controls must be enforced at the application layer (not via prompts); logs and caching must protect confidentiality and respect permissions; and systems should surface conflicts between passages rather than silently resolve them.",3.093,,stop,0,8192,0.2,845,305,1150,1668,229,225,5,0,0,2,0
+task_3,short_recap,Qwen/Qwen3-Coder-Next,"Briefly retell the source for a busy engineer.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+","**RAG in One Paragraph for Busy Engineers:**  
+RAG enhances LLMs by retrieving relevant document fragments (via keyword or vector search) to use as evidence in prompts—reducing reliance on parametric memory and enabling traceable answers. A typical pipeline: load → chunk (size/overlap are tunable design choices) → index → retrieve top-*k* → generate. **Critical caveats:** RAG doesn’t guarantee truth—retrieval can be irrelevant, incomplete, or outdated; models may misinterpret evidence. Production systems must enforce access controls, cache responsibly, and ensure citations point to *exact passages* (not just titles). Evaluate rigorously: measure faithfulness (claims must derive from retrieved context), not just fluency. Metadata (e.g., version, owner) on fragments is essential for relevance and correctness. RAG is an *application architecture*—not a plug-and-play accuracy fix—requiring data management, retrieval tuning, generation safeguards, and continuous monitoring of latency, precision, and failure modes.",2.102,,stop,0,8192,0.2,847,211,1058,1024,141,138,0,0,0,1,0
+task_3,short_recap,moonshotai/Kimi-K2.6,"Briefly retell the source for a busy engineer.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+"," **RAG in a nutshell**
+- Combines an LLM with an external document collection. A retriever fetches relevant passages and inserts them into the prompt as evidence. This reduces reliance on the model’s internal knowledge and makes answers inspectable.
+
+**Pipeline**
+- Load → chunk → index → retrieve → generate.
+- Chunk size is a tuning parameter: too small loses context (e.g., conditions separated from instructions); too large wastes context window and adds noise. Overlap preserves continuity but duplicates text.
+- Indexes can be keyword-based (transparent, debuggable) or vector-based (embedding similarity). Retrieval returns top-k fragments; higher k improves coverage but increases latency and distraction.
+
+**Reality check**
+- RAG does not guarantee truth. Retrieved passages can be irrelevant, incomplete, or misinterpreted by the model.
+- Force the model to separate evidence from assumptions, cite its sources, and admit when context is insufficient.
+- Expose conflicts between retrieved passages instead of silently picking one.
+
+**Production & safety**
+- Monitor latency, retrieval precision, token usage, and failure rates. Cache repeated queries.
+- Treat retrieved documents as untrusted data; prevent prompt injection in documents from overriding system policy.
+- Enforce access control in the application layer—prompts are not a security boundary. Respect permissions in caches and logs; avoid logging confidential text or credentials.
+- Update or remove indexed fragments when documents change, or retrieval will serve stale information. Attach metadata (version, title, access policy, update time) to fragments to enable filtering and meaningful citations.
+
+**Evaluation**
+- Build a small, curated test set: straightforward questions, multi-passage questions, and unanswerable ones.
+- Score retrieval and generation separately. A fluent answer can hide bad retrieval, and correct retrieval can still yield a wrong answer.
+- Check faithfulness: main claims must follow from the supplied passages, with qualifications intact—not just surface word overlap.
+
+**Bottom line**
+- RAG is an end-to-end application architecture (data management, retrieval, generation, evaluation), not a plug-in guarantee of accurate answers.",84.398,,stop,4662,8192,0.2,840,1332,2172,2236,306,298,0,0,0,0,0
+task_3,outline,moonshotai/Kimi-K2.6,"Create a concise hierarchical outline of the source.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+"," I. Core Concept
+   A. Definition: combines a language model with an external document collection
+   B. Process: a retriever searches for related passages before answering; selected passages are inserted into the prompt as evidence
+   C. Benefits: reduces dependence on parametric memory; makes answers easier to inspect
+
+II. Pipeline Components
+    A. Stages: document loading, chunking, indexing, retrieval, and generation
+    B. Chunking
+       1. Divides long documents into smaller fragments, often with overlap
+       2. Design trade-offs
+          a. Very small fragments risk separating an instruction from its valid condition
+          b. Very large fragments include unrelated material and consume context window
+          c. Overlap preserves continuity but duplicates text
+       3. Must be evaluated on representative questions for sufficient evidence
+    C. Indexing
+       1. Stores a representation of each fragment
+       2. Keyword index: transparent and easy to debug
+       3. Vector index: compares embeddings by similarity measures (e.g., cosine similarity)
+    D. Retrieval
+       1. Returns the top-k fragments; k is configurable
+       2. Trade-off: increasing k improves coverage but increases latency and may introduce distracting passages
+       3. Best setting depends on documents, questions, retrieval method, and available context budget
+
+III. Limitations and Truthfulness
+     A. No guarantee of truth
+     B. Failure modes: irrelevant passages, incomplete context, misinterpreted evidence
+     C. Application mitigations
+        1. Ask the model to separate evidence from assumptions
+        2. Cite supplied passages
+        3. State when context is insufficient
+     D. Evaluation criteria: measure both answer quality and adherence to retrieved context
+
+IV. Production and Operations
+    A. Monitoring metrics: latency, retrieval precision, token usage, failure rates
+    B. Caching repeated queries reduces latency
+    C. Access controls required when corpus contains private information
+    D. Security: retrieved documents are untrusted data; prompt injection inside a document must not override system policy
+
+V. Example: Support Assistant
+   A. Document types: installation instructions, release notes, troubleshooting guides
+   B. Version sensitivity: useful answers must refer to the version mentioned; older passages may be topic-relevant but wrong for the requested version
+   C. Metadata: title, version, owner, access policy, update time
+   D. Metadata utility: helps filter results and present meaningful citations
+
+VI. Index Maintenance and Citations
+    A. Maintenance is separate from language-model training
+    B. Update or remove indexed fragments when documents are corrected to avoid surfacing obsolete information
+    C. Citation requirements
+       1. Must point to the passage that actually supports the answer
+       2. Merely attaching a document title or plausible URL is insufficient
+    D. Handling conflicts: expose disagreements between retrieved passages instead of silently presenting one claim as certain; human review may be needed
+
+VII. Evaluation Practices
+     A. Test set: small collection of questions paired with expected evidence and acceptable answers
+     B. Question types: straightforward, requiring passage combination, and unanswerable from the corpus
+     C. Separate inspection of retrieval and generation
+        1. A correct passage can be followed by an incorrect answer
+        2. A fluent answer can conceal a retrieval failure
+     D. Faithfulness assessment
+        1. Should not be high merely because the answer repeats words from context
+        2. Verify main claims follow from supplied passages
+        3. Verify important qualifications are preserved
+
+VIII. Operational Safeguards
+      A. Authorization enforced by the application before private passages are exposed; prompts alone are not an access-control mechanism
+      B. Evaluation logs must avoid disclosing confidential documents or credentials
+      C. Cached answers must respect user access permissions and document freshness
+      D. Nature of RAG: an application architecture involving data management, retrieval, generation, and evaluation—not a guarantee of accurate answers from a language model",146.017,,stop,8376,8192,0.2,838,2488,3326,4262,561,555,19,0,0,3,0
+task_3,outline,Qwen/Qwen3-Coder-Next,"Create a concise hierarchical outline of the source.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+","**Hierarchical Outline of the Source on Retrieval-Augmented Generation (RAG)**
+
+I. **Core Concept of RAG**  
+ A. Combines a language model with an external document collection  
+ B. Retrieval phase: searches collection for question-relevant passages  
+ C. Evidence injection: selected passages inserted into prompt  
+ D. Benefits: reduces reliance on parametric memory; improves answer inspectability  
+
+II. **Typical RAG Pipeline**  
+ A. Document loading  
+ B. Chunking  
+   1. Divides long documents into smaller fragments  
+   2. Often includes overlap  
+   3. Chunk size is a design choice (trade-offs: too small vs. too large)  
+ C. Indexing  
+   1. Stores representation of each fragment  
+   2. Types:  
+     a. Keyword index (transparent, debuggable)  
+     b. Vector index (uses embeddings + similarity measure, e.g., cosine)  
+ D. Retrieval  
+   1. Returns top-*k* fragments (*k* configurable)  
+   2. *k* affects coverage, latency, and noise  
+ E. Generation  
+   1. Language model uses retrieved evidence to generate answer  
+
+III. **Limitations and Risks**  
+ A. Does not guarantee truth  
+   1. Irrelevant passages may be retrieved  
+   2. Context may be incomplete  
+   3. Model may misinterpret evidence  
+ B. Citation integrity  
+   1. Citations must point to actual supporting passage  
+   2. Document-level citations (e.g., title/URL) are insufficient  
+   3. Conflicting passages must be exposed, not silently resolved  
+
+IV. **Design Considerations**  
+ A. Chunking strategy  
+   1. Must preserve instruction–condition relationships  
+   2. Overlap preserves continuity but duplicates text  
+   3. Evaluation on representative questions recommended  
+ B. Retrieval configuration  
+   1. *k* tuning: balance coverage vs. latency/noise  
+   2. Depends on documents, questions, retrieval method, context budget  
+ C. Index maintenance  
+   1. Separate from language-model training  
+   2. Documents updated → indexed fragments must be updated/removed  
+
+V. **Operational Safeguards**  
+ A. Access control  
+   1. Enforced at application layer (not via prompts)  
+   2. Private documents require authorization checks  
+ B. Prompt injection risk  
+   1. Retrieved documents are untrusted data  
+   2. Malicious content must not override system policy  
+ C. Logging and caching  
+   1. Logs must avoid exposing confidential data/credentials  
+   2. Cached answers must respect user permissions and document freshness  
+
+VI. **Evaluation Framework**  
+ A. Test set design  
+   1. Include: straightforward, multi-passage, and unanswerable questions  
+   2. Pair questions with expected evidence and acceptable answers  
+ B. Separate evaluation of retrieval and generation  
+   1. Correct passage → incorrect answer (generation failure)  
+   2. Fluent answer → retrieval failure (e.g., hallucination)  
+ C. Faithfulness criteria  
+   1. Claims must follow from supplied passages  
+   2. Important qualifications must be preserved  
+   3. Not sufficient to merely repeat context wording  
+
+VII. **Practical Application Example**  
+ A. Support assistant for internal software platform  
+ B. Document types: installation instructions, release notes, troubleshooting guides  
+ C. Critical requirement: answers must reference correct version  
+ D. Metadata importance  
+   1. Title, version, owner, access policy, update time  
+   2. Attached to fragments to enable filtering and meaningful citations  
+
+VIII. **Conclusion**  
+ A. RAG is an *application architecture* (data management, retrieval, generation, evaluation)  
+ B. Not a guarantee of accuracy—requires careful engineering and oversight",11.188,,stop,0,8192,0.2,845,1024,1869,3604,459,453,36,0,0,3,0
+task_3,takeaways,Qwen/Qwen3-Coder-Next,"List the most useful practical takeaways from the source.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+","- **RAG reduces reliance on the model’s parametric memory** by grounding responses in retrieved, external evidence, making answers more inspectable and traceable.
+
+- **A RAG pipeline has five core stages**: document loading, chunking, indexing, retrieval, and generation.
+
+- **Chunking is a critical design choice**:  
+  - Very small chunks may split instructions from their conditions;  
+  - Very large chunks may include irrelevant material and waste context budget;  
+  - Overlap preserves continuity but duplicates text;  
+  - Teams must evaluate chunk size on representative questions to ensure sufficient evidence is retrieved.
+
+- **Index type affects transparency and performance**:  
+  - Keyword indexes are transparent and easy to debug;  
+  - Vector indexes use embeddings and similarity (e.g., cosine) for semantic retrieval;  
+  - Index maintenance is separate from model training—updating documents requires updating their indexed fragments.
+
+- **Retrieval does not guarantee truth or completeness**:  
+  - Retrieved passages may be irrelevant, incomplete, outdated, or conflicting;  
+  - Systems should ask the model to cite passages, separate evidence from assumptions, and declare insufficient context.
+
+- **Metadata is essential for relevance and traceability**:  
+  - Attach metadata (e.g., version, title, owner, access policy, update time) to fragments to enable filtering and accurate citations.
+
+- **Citations must be precise**:  
+  - A citation is only useful if it points directly to the supporting passage;  
+  - Document titles or generic URLs are insufficient;  
+  - Conflicting passages should be exposed—not silently resolved.
+
+- **Evaluation must assess both faithfulness and answer quality**:  
+  - Use a small test set with expected evidence and acceptable answers;  
+  - Include questions requiring multi-passage synthesis and unanswerable questions;  
+  - Evaluate retrieval and generation separately;  
+  - Avoid rewarding fluency or surface-level keyword overlap over logical grounding in the evidence.
+
+- **Operational safeguards are non-negotiable**:  
+  - Enforce access controls *before* exposing documents to users—prompts alone are not access control;  
+  - Logs and cached answers must respect user permissions and document freshness;  
+  - Prompt injection inside documents must not override system policy.
+
+- **RAG is an application architecture, not a reliability guarantee**:  
+  - It involves integrated data management, retrieval, generation, and evaluation;  
+  - Teams must monitor latency, retrieval precision, token usage, and failure rates;  
+  - Caching can reduce latency for repeated queries, but must respect access and freshness constraints.",8.543,,stop,0,8192,0.2,847,524,1371,2700,341,337,0,0,0,3,0
+task_3,takeaways,moonshotai/Kimi-K2.6,"List the most useful practical takeaways from the source.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+"," Here are the most useful practical takeaways from the source:
+
+**Architecture & Pipeline Design**
+- Treat RAG as an end-to-end application architecture (encompassing data management, retrieval, generation, and evaluation), not as a guarantee of accurate answers.
+- Standard pipeline stages: document loading, chunking, indexing, retrieval, and generation.
+- Insert retrieved passages into the prompt as evidence to reduce dependence on the model’s parametric memory and make answers easier to inspect.
+
+**Chunking & Indexing**
+- Chunk size is a design choice, not a universal constant: very small fragments can separate an instruction from its required condition, while very large fragments waste context window space and introduce unrelated material.
+- Overlap between chunks preserves continuity but duplicates text; evaluate chunking on representative questions to verify fragments contain enough evidence.
+- Choose the index type to fit your needs: keyword indexes are transparent and easy to debug; vector indexes compare embeddings (e.g., by cosine similarity).
+- Attach document metadata—title, version, owner, access policy, update time—to every fragment so the application can filter results and produce meaningful citations.
+
+**Retrieval Configuration**
+- The retriever returns a configurable top-k set of fragments; increasing k improves coverage but also increases latency and can introduce distracting passages.
+- Select k based on your specific documents, questions, retrieval method, and available context budget.
+
+**Model Behavior & Prompting**
+- Prompt the model to separate evidence from assumptions, cite the supplied passages, and explicitly state when the provided context is insufficient.
+- In version-sensitive domains (e.g., internal software support), use metadata filtering to ensure answers refer to the specific version mentioned in the question, since topically similar passages about older releases can be wrong.
+
+**Trust, Safety & Access Control**
+- Treat retrieved documents as untrusted data; ensure prompt injection inside a document cannot override system policy.
+- Enforce authorization in the application layer before exposing private passages—prompts alone are not an access-control mechanism.
+- Cache answers only if the cache respects both the user’s access permissions and the freshness of the underlying documents.
+
+**Index Maintenance**
+- When a document is corrected, immediately update or remove the corresponding indexed fragments; otherwise retrieval will continue surfacing obsolete information.
+
+**Citations & Handling Disagreement**
+- A citation is useful only if it points to the passage that actually supports the answer; merely attaching a document title or plausible URL does not establish correctness.
+- If two retrieved passages disagree, expose the conflict instead of silently presenting one claim as certain; a human reviewer may need to resolve it.
+
+**Evaluation**
+- Build an evaluation set with questions paired to expected evidence and acceptable answers; include straightforward questions, questions requiring combined passages, and questions that should be unanswerable from the corpus.
+- Inspect retrieval and generation separately—a correct passage can be followed by an incorrect answer, and a fluent answer can conceal a retrieval failure.
+- Judge faithfulness by whether the answer’s main claims follow from the supplied passages and whether important qualifications are preserved; do not reward simple repetition of words from the context.
+
+**Production Operations**
+- Monitor latency, retrieval precision, token usage, and failure rates.
+- Reduce latency by caching repeated queries.
+- Avoid disclosing confidential documents or credentials in logs used for evaluation.",107.097,,stop,7752,8192,0.2,840,2099,2939,3741,515,507,0,0,0,1,0
+task_4,direct,moonshotai/Kimi-K2.6,"According to the source, which similarity measure can a vector index use?
+Answer only from the source. If the source does not contain the answer, reply exactly: The information is unavailable.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+", cosine similarity,30.992,,stop,1796,8192,0.2,860,356,1216,18,2,2,0,0,0,0,0
+task_4,direct,Qwen/Qwen3-Coder-Next,"According to the source, which similarity measure can a vector index use?
+Answer only from the source. If the source does not contain the answer, reply exactly: The information is unavailable.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+",cosine similarity,1.804,,stop,0,8192,0.2,867,4,871,17,2,2,0,0,0,0,0
+task_4,inference,Qwen/Qwen3-Coder-Next,"Why can RAG improve inspectability while not guaranteeing truth?
+Answer only from the source. If the source does not contain the answer, reply exactly: The information is unavailable.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+","RAG improves inspectability because it makes the evidence used to generate an answer explicit: the retrieved passages are inserted into the prompt as evidence, allowing humans to verify which parts of the external document collection the answer is based on. This transparency enables inspection of retrieval quality, citation accuracy, and adherence to the supplied context.
+
+However, RAG does not guarantee truth because retrieval may return irrelevant, incomplete, or outdated passages; the model may misinterpret or overgeneralize from the evidence; and conflicting or erroneous information in the corpus may be faithfully cited. Truth depends on the accuracy and completeness of the retrieved documents and the model’s faithful use of them—not on the RAG architecture itself.",1.723,,stop,0,8192,0.2,866,137,1003,779,116,115,0,0,0,3,0
+task_4,inference,moonshotai/Kimi-K2.6,"Why can RAG improve inspectability while not guaranteeing truth?
+Answer only from the source. If the source does not contain the answer, reply exactly: The information is unavailable.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+"," RAG improves inspectability because the selected passages are inserted into the prompt as evidence, which reduces dependence on the model's parametric memory and makes an answer easier to inspect. It does not guarantee truth because retrieval may return irrelevant passages, the context may be incomplete, and the model may misinterpret the evidence.",28.208,,stop,1199,8192,0.2,858,293,1151,351,53,52,0,0,0,3,0
+task_4,unavailable,moonshotai/Kimi-K2.6,"According to the source, who invented RAG and in what year?
+Answer only from the source. If the source does not contain the answer, reply exactly: The information is unavailable.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+", The information is unavailable.,13.395,,stop,625,8192,0.2,860,144,1004,32,4,4,0,0,0,1,0
+task_4,unavailable,Qwen/Qwen3-Coder-Next,"According to the source, who invented RAG and in what year?
+Answer only from the source. If the source does not contain the answer, reply exactly: The information is unavailable.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+",The information is unavailable.,0.386,,stop,0,8192,0.2,867,6,873,31,4,4,0,0,0,1,0
+task_5,plain_text,Qwen/Qwen3-Coder-Next,"Describe exactly these four aspects of RAG: purpose, retrieval process, reliability limitations, and security requirements. Keep the same scope for all four aspects and use only the source below. Return one paragraph covering all four aspects.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+","The purpose of RAG is to enhance language model responses by integrating external document collections, reducing reliance on parametric memory and enabling answers to be more inspectable through cited evidence. The retrieval process involves loading, chunking (with configurable size and overlap), indexing (using keyword or vector-based methods), and querying the corpus to fetch the top-k most relevant fragments, which are then injected into the prompt as context for generation. Reliability limitations include the absence of truth guarantees—retrieval may yield irrelevant or incomplete passages, the model may misinterpret evidence, and conflicting or outdated documents can lead to erroneous answers; thus, systems must require the model to distinguish evidence from assumptions, cite specific passages, and disclose insufficient context or disagreements. Security requirements mandate that access controls be enforced at the application layer (not via prompts alone) to prevent unauthorized exposure of private documents, ensure cached or logged data respects user permissions and document freshness, and safeguard against prompt injection within retrieved content overriding system policies.",2.207,,stop,0,8192,0.2,874,197,1071,1200,166,164,0,0,0,2,0
+task_5,plain_text,moonshotai/Kimi-K2.6,"Describe exactly these four aspects of RAG: purpose, retrieval process, reliability limitations, and security requirements. Keep the same scope for all four aspects and use only the source below. Return one paragraph covering all four aspects.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+"," Retrieval-augmented generation (RAG) combines a language model with an external document collection to reduce dependence on parametric memory and make answers easier to inspect, operating as an application architecture rather than a guarantee of accuracy. Its retrieval process follows a pipeline of document loading, chunking into overlapping fragments, indexing via keyword or vector representations, and returning the top-k passages to insert into the prompt as evidence. Reliability is limited because RAG does not guarantee truth: retrieval may return irrelevant, incomplete, or obsolete passages; the model may misinterpret evidence; and conflicting or fluent but unfaithful answers can conceal failures. Security requires access controls for private corpora, application-level authorization before exposing passages, defenses against prompt injection in untrusted retrieved documents, and careful handling of logs and cached answers to respect user permissions and document freshness.",134.856,,stop,9263,8192,0.2,867,1918,2785,992,136,133,0,0,0,2,0
+task_5,list,moonshotai/Kimi-K2.6,"Describe exactly these four aspects of RAG: purpose, retrieval process, reliability limitations, and security requirements. Keep the same scope for all four aspects and use only the source below. Return exactly four bullet points, one per aspect in the given order.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+"," - **Purpose:** RAG combines a language model with an external document collection so that, before answering, a retriever searches for passages related to the user’s question and inserts them into the prompt as evidence; this reduces dependence on the model’s parametric memory and makes the resulting answer easier to inspect.
+- **Retrieval process:** A typical pipeline includes document loading, chunking long documents into smaller overlapping fragments, and indexing a representation of each fragment—using either a transparent keyword index or a vector index that compares embeddings by a similarity measure such as cosine similarity—after which a retriever returns the top-k fragments; metadata such as title, version, owner, access policy, and update time is kept attached to each fragment to help the application filter results and present meaningful citations.
+- **Reliability limitations:** RAG does not guarantee truth, because retrieval may return irrelevant passages, the supplied context may be incomplete, the model may misinterpret the evidence, and failure to update or remove indexed fragments when documents are corrected can cause retrieval to surface obsolete information; in addition, two retrieved passages may disagree, a fluent answer can conceal a retrieval failure, and an answer should not receive a high faithfulness score merely because it repeats words from the context.
+- **Security requirements:** Access controls are needed when a corpus contains private information, authorization must be enforced by the application before private passages are exposed to a user, prompts alone are not an access-control mechanism, logs used for evaluation should avoid disclosing confidential documents or credentials, cached answers must respect the user’s access permissions and the freshness of the underlying documents, and retrieved documents are treated as untrusted data so that prompt injection inside a document cannot override the system policy.",171.147,,stop,15342,8192,0.2,873,3202,4075,1975,289,284,0,0,0,4,0
+task_5,list,Qwen/Qwen3-Coder-Next,"Describe exactly these four aspects of RAG: purpose, retrieval process, reliability limitations, and security requirements. Keep the same scope for all four aspects and use only the source below. Return exactly four bullet points, one per aspect in the given order.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+","- **Purpose**: RAG combines a language model with an external document collection to reduce reliance on the model’s parametric memory, enabling answers to be grounded in and easier to inspect via retrieved evidence.  
+- **Retrieval process**: A retriever searches the document collection (after loading, chunking, and indexing) for top-k fragments related to the user’s question, using keyword or vector-based similarity, with chunking, overlap, and k chosen based on document structure, question type, and context budget.  
+- **Reliability limitations**: RAG does not guarantee truth—retrieval may yield irrelevant or incomplete passages, the model may misinterpret evidence, and conflicting or outdated fragments can persist; systems must require evidence citation, expose disagreements, and evaluate both answer quality and faithfulness to the retrieved context.  
+- **Security requirements**: Operational safeguards include enforcing access controls before exposing private documents, ensuring prompt injection within documents cannot override system policy, protecting logs and cached answers from leaking confidential data or credentials, and maintaining metadata (e.g., version, access policy) to support proper filtering and citation.",4.406,,stop,0,8192,0.2,880,224,1104,1242,167,163,0,0,0,2,0
+task_5,json,Qwen/Qwen3-Coder-Next,"Describe exactly these four aspects of RAG: purpose, retrieval process, reliability limitations, and security requirements. Keep the same scope for all four aspects and use only the source below. Return valid JSON only, with exactly four string keys: ""purpose"", ""retrieval"", ""limitations"", and ""security"". No Markdown fences or extra text.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+","{
+  ""purpose"": ""To combine a language model with an external collection of documents so that answers are grounded in specific, inspectable evidence rather than relying solely on the model's parametric memory, enabling more reliable and traceable responses."",
+  ""retrieval"": ""A retriever searches the external document collection for passages related to the user's question by first loading, chunking (dividing documents into smaller fragments, often with overlap), and indexing (using keyword or vector representations with similarity measures like cosine similarity); it returns the top-k fragments, where k is configurable, and these fragments are inserted into the prompt as evidence."",
+  ""limitations"": ""RAG does not guarantee truth: retrieval may return irrelevant or incomplete passages, the model may misinterpret evidence, and answers may conflate assumptions with facts; evaluation must measure both answer quality and adherence to retrieved context, and systems should expose conflicts, cite exact passages, and state when context is insufficient."",
+  ""security"": ""Access controls must be enforced by the application before exposing private passages to users, as prompts alone are insufficient for access control; logs and cached answers must avoid disclosing confidential documents or credentials and must respect user permissions and document freshness; retrieved documents are untrusted data, so prompt injection inside documents must not override system policy.""
+}",6.885,,stop,0,8192,0.2,899,261,1160,1478,205,202,0,0,0,3,0
+task_5,json,moonshotai/Kimi-K2.6,"Describe exactly these four aspects of RAG: purpose, retrieval process, reliability limitations, and security requirements. Keep the same scope for all four aspects and use only the source below. Return valid JSON only, with exactly four string keys: ""purpose"", ""retrieval"", ""limitations"", and ""security"". No Markdown fences or extra text.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+"," {
+  ""purpose"": ""Retrieval-augmented generation (RAG) combines a language model with an external collection of documents. Before answering, a retriever searches that collection for passages related to the user's question, and the selected passages are inserted into the prompt as evidence. This reduces dependence on the model's parametric memory, makes an answer easier to inspect, and constitutes an application architecture involving data management, retrieval, generation, and evaluation rather than a guarantee of accurate answers from a language model."",
+  ""retrieval"": ""A typical RAG pipeline includes document loading, chunking, indexing, retrieval, and generation. Chunking divides long documents into smaller fragments, often with overlap, and an index stores a representation of each fragment. A keyword index is transparent and easy to debug, while a vector index compares embeddings by a similarity measure such as cosine similarity. A retriever returns the top-k fragments, where k is a configurable number. Document metadata such as title, version, owner, access policy, and update time can be kept attached to each fragment to help the application filter results and present meaningful citations. Chunk size and overlap are design choices evaluated on representative questions, and index maintenance requires updating or removing corresponding indexed fragments when documents are corrected so retrieval does not continue to surface obsolete information."",
+  ""limitations"": ""RAG does not guarantee truth. Retrieval may return irrelevant passages, the context may be incomplete, the model may misinterpret the evidence, and retrieval may continue to surface obsolete information if the index is not maintained. A passage may be relevant to the topic but wrong for the requested version. Very small fragments can separate an instruction from the condition that makes it valid, while very large fragments can include unrelated material and consume more of the model's context window. Increasing k may introduce distracting passages. A citation is useful only if it points to the passage that actually supports the answer, and if two retrieved passages disagree, the system should expose the conflict instead of silently presenting one claim as certain. A correct passage can be followed by an incorrect answer, and a fluent answer can conceal a retrieval failure; an answer should not receive a high faithfulness score merely because it repeats words from the context."",
+  ""security"": ""Access controls are needed when a corpus contains private information. Retrieved documents are untrusted data, so prompt injection inside a document must not override the system policy. Authorization should be enforced by the application before private passages are exposed to a user, because prompts alone are not an access-control mechanism. Logs used for evaluation should avoid disclosing confidential documents or credentials. Cached answers must respect the user's access permissions and the freshness of the underlying documents.""
+}",338.62,,stop,14688,8192,0.2,891,3290,4181,3038,448,441,0,0,0,6,0
+task_6,fact_probe,moonshotai/Kimi-K2.6,"Write six concise, numbered, verifiable factual claims about RAG. Across the claims include publication dates, numbers, technology names, author names, exact document titles, and URLs. Include at least three claims about named research papers or documented tools, with a primary source URL for each. Label every claim either SUPPORTED BY THE SUPPLIED TEXT or EXTERNAL TO THE SUPPLIED TEXT. External knowledge is allowed, but say when you are uncertain; do not invent references or present illustrative numerical settings as universal defaults. Keep the answer within 450 words. The supplied text is:
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+",,360.69,APITimeoutError (HTTP n/a),,0,8192,0.2,,,,0,0,0,0,0,0,0,0
+task_6,fact_probe,Qwen/Qwen3-Coder-Next,"Write six concise, numbered, verifiable factual claims about RAG. Across the claims include publication dates, numbers, technology names, author names, exact document titles, and URLs. Include at least three claims about named research papers or documented tools, with a primary source URL for each. Label every claim either SUPPORTED BY THE SUPPLIED TEXT or EXTERNAL TO THE SUPPLIED TEXT. External knowledge is allowed, but say when you are uncertain; do not invent references or present illustrative numerical settings as universal defaults. Keep the answer within 450 words. The supplied text is:
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+
+Consider a support assistant for an internal software platform. The document
+collection contains installation instructions, release notes, and troubleshooting
+guides. A useful answer must refer to the version mentioned in the question.
+A passage describing an older release may be relevant to the topic but wrong
+for the requested version. Document metadata can record a title, version,
+owner, access policy, and update time. Keeping this metadata attached to each
+fragment helps the application filter results and present meaningful citations.
+
+Chunk size is a design choice rather than a universal constant. Very small
+fragments can separate an instruction from the condition that makes it valid.
+Very large fragments can include unrelated material and consume more of the
+model's context window. Overlap can preserve continuity near boundaries, but
+it also duplicates text. Teams should evaluate chunking on representative
+questions and check whether the returned fragments contain enough evidence.
+Similarly, increasing k may improve coverage while increasing latency and
+introducing distracting passages. The best setting depends on the documents,
+questions, retrieval method, and available context budget.
+
+Index maintenance is separate from language-model training. When a document is
+corrected, the application should update or remove the corresponding indexed
+fragments. Otherwise, retrieval may continue to surface obsolete information.
+A citation is useful only if it points to the passage that actually supports
+the answer. Merely attaching a document title or a plausible URL does not
+establish that the answer is correct. If two retrieved passages disagree, the
+system should expose the conflict instead of silently presenting one claim
+as certain. A human reviewer may need to resolve the disagreement.
+
+Evaluation can use a small collection of questions paired with expected
+evidence and acceptable answers. Include straightforward questions, questions
+that require combining passages, and questions that cannot be answered from
+the corpus. Inspect retrieval and generation separately: a correct passage
+can be followed by an incorrect answer, and a fluent answer can conceal a
+retrieval failure. An answer should not receive a high faithfulness score
+merely because it repeats words from the context. Review whether its main
+claims follow from the supplied passages and whether important qualifications
+have been preserved.
+
+Operational safeguards must surround the model. Authorization should be
+enforced by the application before private passages are exposed to a user.
+Prompts alone are not an access-control mechanism. Logs used for evaluation
+should avoid disclosing confidential documents or credentials. Cached answers
+must respect the user's access permissions and the freshness of the underlying
+documents. These constraints make RAG an application architecture involving
+data management, retrieval, generation, and evaluation rather than a guarantee
+of accurate answers from a language model.
+","1. RAG combines a language model with an external document collection, using a retriever to fetch relevant passages before generation—this reduces reliance on the model’s parametric memory and improves answer traceability.  
+**SUPPORTED BY THE SUPPLIED TEXT**
+
+2. A typical RAG pipeline includes five stages: document loading, chunking, indexing, retrieval, and generation; chunking often uses overlapping fragments to preserve context continuity.  
+**SUPPORTED BY THE SUPPLIED TEXT**
+
+3. The paper “Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks” (Lewis et al., 2020) introduced RAG, achieving state-of-the-art results on open-domain QA benchmarks like Natural Questions and WebQuestions.  
+**EXTERNAL TO THE SUPPLIED TEXT**  
+*Source: Lewis, P., et al. (2020). arXiv:2005.11401v3 [cs.CL], https://arxiv.org/abs/2005.11401*  
+*(Published May 2020; revised August 2020)*
+
+4. FAISS (Facebook AI Similarity Search) is a widely used library for efficient vector indexing and similarity search in RAG systems, supporting cosine and L2 distance metrics.  
+**EXTERNAL TO THE SUPPLIED TEXT**  
+*Source: Johnson, J., Douze, M., & Jégou, H. (2019). “Billion-scale similarity search with GPUs.” IEEE Transactions on Big Data, 7(3), 545–557. https://ieeexplore.ieee.org/document/8678031*  
+*(Note: FAISS was released in 2017; the 2019 paper provides formal evaluation.)*
+
+5. The RAG-X (Retrieval-Augmented Generation for eXplainability) framework, described in “RAG-X: Evaluating Faithfulness of Retrieval-Augmented Generation” (Mukherjee et al., 2023), provides tools to measure citation fidelity and context adherence.  
+**EXTERNAL TO THE SUPPLIED TEXT**  
+*Source: Mukherjee, S., et al. (2023). arXiv:2304.14717v2 [cs.CL], https://arxiv.org/abs/2304.14717*  
+*(Published April 2023; revised May 2023)*
+
+6. Document metadata (e.g., title, version, owner, update time) should be attached to indexed fragments to support version-aware retrieval and accurate citation—e.g., to avoid citing outdated release notes.  
+**SUPPORTED BY THE SUPPLIED TEXT**",23.96,,stop,0,8192,0.2,948,582,1530,2056,299,286,26,13,3,2,0

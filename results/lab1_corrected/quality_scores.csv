@@ -1,0 +1,27 @@
+﻿model,task,variant,accuracy_1_5,completeness_1_5,clarity_1_5,instruction_following_1_5,structure_1_5,verifiability_1_5,comment
+moonshotai/Kimi-K2.6,task_2,identical_explanation,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+Qwen/Qwen3-Coder-Next,task_2,identical_explanation,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+Qwen/Qwen3-Coder-Next,task_3,summary,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+moonshotai/Kimi-K2.6,task_3,summary,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+moonshotai/Kimi-K2.6,task_3,main_points,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+Qwen/Qwen3-Coder-Next,task_3,main_points,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+Qwen/Qwen3-Coder-Next,task_3,short_recap,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+moonshotai/Kimi-K2.6,task_3,short_recap,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+moonshotai/Kimi-K2.6,task_3,outline,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+Qwen/Qwen3-Coder-Next,task_3,outline,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+Qwen/Qwen3-Coder-Next,task_3,takeaways,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+moonshotai/Kimi-K2.6,task_3,takeaways,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+moonshotai/Kimi-K2.6,task_4,direct,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+Qwen/Qwen3-Coder-Next,task_4,direct,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+Qwen/Qwen3-Coder-Next,task_4,inference,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+moonshotai/Kimi-K2.6,task_4,inference,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+moonshotai/Kimi-K2.6,task_4,unavailable,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+Qwen/Qwen3-Coder-Next,task_4,unavailable,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+Qwen/Qwen3-Coder-Next,task_5,plain_text,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+moonshotai/Kimi-K2.6,task_5,plain_text,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+moonshotai/Kimi-K2.6,task_5,list,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+Qwen/Qwen3-Coder-Next,task_5,list,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+Qwen/Qwen3-Coder-Next,task_5,json,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+moonshotai/Kimi-K2.6,task_5,json,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+moonshotai/Kimi-K2.6,task_6,fact_probe,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.
+Qwen/Qwen3-Coder-Next,task_6,fact_probe,,,,,,,Fill after reviewing the raw output; do not infer quality from latency alone.

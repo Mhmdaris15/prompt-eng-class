@@ -1,0 +1,836 @@
+﻿task,variant,model,prompt,output,latency_seconds,error,finish_reason,reasoning_length_chars,length_chars,length_words,number_count,year_count,link_count,caution_marker_count,confident_marker_count
+task_2,identical_explanation,moonshotai/Kimi-K2.6,Explain the concept of retrieval-augmented generation to a second-year software engineering student in 120 words or fewer. Include one practical example.," Retrieval-augmented generation (RAG) grounds large language models by fetching relevant external data before generating a response. Instead of relying solely on training memory, the system queries a vector database or API to retrieve documents, then injects them into the prompt as context. This reduces hallucinations and keeps answers current without retraining the model.
+
+**Example:** A student support chatbot indexes the latest academic calendar. When asked about add/drop deadlines, it retrieves this semester’s entry and generates an accurate, cited reply rather than hallucinating outdated dates.",7.949,,stop,3249,606,87,0,0,0,0,0
+task_2,identical_explanation,Qwen/Qwen3-Coder-Next,Explain the concept of retrieval-augmented generation to a second-year software engineering student in 120 words or fewer. Include one practical example.,"Retrieval-Augmented Generation (RAG) enhances large language models (LLMs) by dynamically fetching relevant, up-to-date information from an external knowledge source (e.g., a database or document store) *before* generating a response. Instead of relying solely on pre-trained knowledge (which can be outdated or incomplete), the LLM uses the retrieved context to produce more accurate, fact-based answers.  
+
+**How it works**: 1) User query → 2) Retrieve top-k relevant documents → 3) Inject retrieved context into the LLM prompt → 4) Generate response grounded in that context.  
+
+**Example**: A developer asks, *“What’s the latest API rate limit for Stripe’s v2023-10-16?”* RAG fetches Stripe’s official API docs (retrieved from a vector database), then the LLM synthesizes the answer: *“As of v2023-10-16, Stripe enforces 100 requests/second per account.”*",2.0,,stop,0,859,134,9,0,0,0,0
+task_3,summary,moonshotai/Kimi-K2.6,"Summarize the source in no more than 80 words.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+"," Retrieval-augmented generation (RAG) enhances language models by retrieving relevant passages from external documents to ground answers, reducing reliance on internal memory. A pipeline involves document loading, chunking, indexing (keyword or vector), and retrieval of top-k fragments for generation. However, RAG does not ensure truth, as retrieval can fail or evidence may be misinterpreted. Production requires monitoring latency, precision, and token usage, plus caching, access controls, and safeguards against prompt injection from untrusted documents.",10.509,,stop,3795,560,75,0,0,0,0,0
+task_3,main_points,moonshotai/Kimi-K2.6,"Extract the five main points from the source.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+"," 1. **Core mechanism and purpose:** Retrieval-augmented generation combines a language model with an external document collection, using a retriever to find relevant passages that are inserted into the prompt as evidence. This reduces reliance on the model’s parametric memory and makes answers easier to inspect.
+
+2. **Typical pipeline components:** A standard RAG pipeline includes document loading, chunking (often with overlap), indexing, retrieval, and generation. Indexes can be keyword-based (transparent, easy to debug) or vector-based (using similarity measures like cosine similarity), and retrievers return a configurable top-k set of fragments.
+
+3. **Reliability limitations:** RAG does not guarantee truth. Retrieval can return irrelevant passages, the provided context may be incomplete, and the model may still misinterpret the evidence.
+
+4. **Safeguards and evaluation:** Applications should instruct the model to separate evidence from assumptions, cite the supplied passages, and state when context is insufficient. Evaluation should measure both answer quality and adherence to the retrieved context.
+
+5. **Production and security considerations:** Production teams must monitor latency, retrieval precision, token usage, and failure rates; use caching to reduce latency; enforce access controls for private corpora; and treat retrieved documents as untrusted data so that prompt injection within a document cannot override system policy.",10.544,,stop,4011,1457,203,5,0,0,0,0
+task_3,short_recap,moonshotai/Kimi-K2.6,"Briefly retell the source for a busy engineer.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+"," - **What it is:** RAG grounds a language model by retrieving relevant passages from an external document collection and inserting them into the prompt as evidence. This reduces reliance on the model’s internal knowledge and makes answers easier to audit.
+- **Pipeline:** Load documents → chunk them (often with overlap) → index fragments (keyword indexes are transparent/debuggable; vector indexes use embedding similarity like cosine) → retrieve top-k fragments → generate.
+- **Limitations:** It does not guarantee truth. Retrieval can return irrelevant or incomplete context, and the model can still misinterpret the evidence.
+- **Quality guardrails:** Instruct the model to separate evidence from assumptions, cite the supplied passages, and state when context is insufficient. Evaluate both answer quality and faithfulness to the retrieved context.
+- **Production concerns:** Monitor latency, retrieval precision, token usage, and failure rates. Cache repeated queries to cut latency. Enforce access controls for private corpora. Treat retrieved documents as untrusted data and harden prompts against injection attacks that could override system policy.",8.917,,stop,3191,1158,158,0,0,0,0,0
+task_3,outline,moonshotai/Kimi-K2.6,"Create a concise hierarchical outline of the source.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+"," **I. Core Concept**
+- **Definition:** Combines a language model with an external collection of documents.
+- **Process:** Before answering, a retriever searches the collection for relevant passages and inserts them into the prompt as evidence.
+- **Benefits:**
+  - Reduces dependence on the model's parametric memory.
+  - Makes answers easier to inspect.
+
+**II. Typical Pipeline**
+- **Document loading**
+- **Chunking:** Divides long documents into smaller fragments, often with overlap.
+- **Indexing:** Stores a representation of each fragment.
+  - *Keyword index:* Transparent and easy to debug.
+  - *Vector index:* Compares embeddings by similarity measures (e.g., cosine similarity).
+- **Retrieval:** Returns the top-k fragments, where k is configurable.
+- **Generation**
+
+**III. Limitations and Risks**
+- Does not guarantee truth.
+- Retrieval may return irrelevant passages.
+- Context may be incomplete.
+- Model may misinterpret the evidence.
+
+**IV. Safeguards and Evaluation**
+- **Application requirements:**
+  - Ask the model to separate evidence from assumptions.
+  - Cite supplied passages.
+  - State when context is insufficient.
+- **Evaluation metrics:**
+  - Answer quality.
+  - Adherence to the retrieved context.
+
+**V. Production Considerations**
+- **Monitoring:** Latency, retrieval precision, token usage, and failure rates.
+- **Performance:** Cache repeated queries to reduce latency.
+- **Privacy:** Access controls needed for corpora containing private information.
+- **Security:** Retrieved documents are untrusted data; prompt injection inside a document must not override system policy.",11.648,,stop,3675,1604,195,0,0,0,0,0
+task_3,takeaways,moonshotai/Kimi-K2.6,"List the most useful practical takeaways from the source.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+"," Here are the most useful practical takeaways from the source:
+
+- **Implement the full pipeline.** A typical RAG system requires document loading, chunking, indexing, retrieval, and generation stages.
+- **Chunk with overlap.** Divide long documents into smaller fragments, often with overlap between chunks.
+- **Match the index to your operational needs.** Use a keyword index when you want transparency and easier debugging; use a vector index (comparing embeddings via cosine similarity or similar measures) for semantic retrieval.
+- **Make retrieval configurable.** The retriever returns a top-k set of fragments, and k should be treated as a configurable parameter.
+- **Instruct the model to be explicit about evidence.** Prompt the model to separate evidence from assumptions, cite the supplied passages, and state when the context is insufficient.
+- **Evaluate two things at once.** Measure both final answer quality and adherence to the retrieved context.
+- **Monitor production metrics.** Track latency, retrieval precision, token usage, and failure rates.
+- **Cache repeated queries.** This directly reduces latency.
+- **Apply access controls for private corpora.** If the document collection contains private information, restrict access appropriately.
+- **Treat retrieved documents as untrusted.** Prevent prompt injection inside a retrieved document from overriding the system policy.",9.614,,stop,3480,1396,190,0,0,0,0,0
+task_3,summary,Qwen/Qwen3-Coder-Next,"Summarize the source in no more than 80 words.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+","RAG combines a language model with an external document collection: a retriever finds relevant passages, which are added to the prompt as evidence, reducing reliance on the model’s internal memory and improving inspectability. The pipeline involves loading, chunking (often with overlap), indexing (keyword or vector), retrieval, and generation. However, RAG does not guarantee truth—retrieval may be irrelevant or incomplete, and models may misinterpret evidence. Best practices include requiring evidence citation, stating context limitations, and evaluating both answer quality and context adherence. Production considerations include latency (mitigated by caching), access controls, and safeguarding against prompt injection in retrieved documents.",1.397,,stop,0,752,100,0,0,0,0,0
+task_3,main_points,Qwen/Qwen3-Coder-Next,"Extract the five main points from the source.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+","1. **RAG combines a language model with an external document collection**: A retriever searches the collection for relevant passages before answering, inserts them into the prompt as evidence, reducing reliance on the model’s parametric memory and improving answer interpretability.
+
+2. **A typical RAG pipeline includes five stages**: document loading, chunking (dividing documents into overlapping fragments), indexing (storing fragment representations—e.g., keyword or vector-based), retrieval (fetching top-*k* relevant fragments), and generation (producing the final answer).
+
+3. **RAG does not guarantee truth**: Risks include irrelevant or incomplete retrieved passages and model misinterpretation; applications should require the model to cite evidence, separate facts from assumptions, and acknowledge insufficient context.
+
+4. **Evaluation must assess both answer quality and adherence to retrieved context**: Success is not only about correctness but also faithfulness to the provided evidence.
+
+5. **Production considerations include performance, security, and reliability**: Teams monitor latency, retrieval precision, token usage, and failure rates; caching, access controls, and safeguards against prompt injection (e.g., from untrusted documents) are essential.",2.227,,stop,0,1277,168,5,0,0,0,0
+task_3,short_recap,Qwen/Qwen3-Coder-Next,"Briefly retell the source for a busy engineer.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+","**RAG in One Paragraph for Busy Engineers:**  
+RAG augments a language model with an external document corpus: a *retriever* first fetches top-*k* relevant text fragments (via keyword or vector/semantic search), inserts them into the prompt as evidence, and the *generator* answers using that context. A standard pipeline includes loading, chunking (often with overlap), indexing, retrieval, and generation. **Key caveats:** RAG doesn’t guarantee truth—retrieval can be noisy or incomplete, and models may hallucinate. Mitigate by prompting the model to cite evidence, flag assumptions, and declare insufficient context; evaluate both answer quality and faithfulness to retrieved passages. In production, monitor latency (cache repeated queries), retrieval precision, token usage, and failure rates; enforce strict access controls and prompt-injection safeguards since retrieved docs are untrusted.",1.797,,stop,0,898,126,0,0,0,0,0
+task_3,outline,Qwen/Qwen3-Coder-Next,"Create a concise hierarchical outline of the source.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+","**Hierarchical Outline of the Source on Retrieval-Augmented Generation (RAG)**
+
+I. **Core Concept of RAG**  
+   A. Combines a language model with an external document collection  
+   B. Retrieval step: searches collection for passages relevant to user question  
+   C. Evidence insertion: selected passages added to prompt as context  
+   D. Benefits:  
+      1. Reduces reliance on model’s parametric memory  
+      2. Enables easier inspection of answers  
+
+II. **Typical RAG Pipeline**  
+   A. Document loading  
+   B. Chunking  
+      1. Splits long documents into smaller fragments  
+      2. Often includes overlap between chunks  
+   C. Indexing  
+      1. Stores representation of each fragment  
+      2. Types of indexes:  
+         a. Keyword index: transparent and easy to debug  
+         b. Vector index: compares embeddings using similarity (e.g., cosine similarity)  
+   D. Retrieval  
+      1. Returns top-*k* fragments (*k* is configurable)  
+   E. Generation  
+      1. Uses retrieved passages as evidence to generate answer  
+
+III. **Limitations and Mitigations**  
+   A.",2.464,,length,0,1091,141,8,0,0,0,0
+task_3,takeaways,Qwen/Qwen3-Coder-Next,"List the most useful practical takeaways from the source.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+","- RAG combines a language model with an external document collection to reduce reliance on the model’s parametric memory and improve answer traceability.  
+- A typical RAG pipeline consists of five stages: document loading, chunking (often with overlap), indexing, retrieval, and generation.  
+- Chunking divides long documents into smaller fragments to improve retrieval relevance and manageability.  
+- Indexing can use keyword-based (transparent and debug-friendly) or vector-based (using embeddings and similarity measures like cosine similarity) methods.  
+- Retrieval returns the top-*k* most relevant fragments, where *k* is a configurable parameter.  
+- RAG does **not** guarantee truth: retrieved passages may be irrelevant, incomplete, or misinterpreted by the model.  
+- Applications should require the model to: separate evidence from assumptions, cite supplied passages, and explicitly state when context is insufficient.  
+- Evaluation must assess both answer quality and adherence to the retrieved context.  
+- Production monitoring should track latency, retrieval precision, token usage, and failure rates.  
+- Caching repeated queries can reduce latency.  
+- Access controls are essential when the document corpus contains private information.  
+- Retrieved documents are untrusted data: prompt injection attempts inside documents must not override system policies.",2.73,,length,0,1382,181,0,0,0,0,0
+task_4,direct,moonshotai/Kimi-K2.6,"According to the source, which similarity measure can a vector index use?
+Answer only from the source. If the source does not contain the answer, say exactly that the information is unavailable.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+", cosine similarity,2.341,,stop,1028,18,2,0,0,0,0,0
+task_4,inference,moonshotai/Kimi-K2.6,"Why can RAG improve inspectability while not guaranteeing truth?
+Answer only from the source. If the source does not contain the answer, say exactly that the information is unavailable.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+"," RAG improves inspectability because it inserts selected passages into the prompt as evidence, reducing dependence on the model's parametric memory and making an answer easier to inspect. It does not guarantee truth because retrieval may return irrelevant passages, the context may be incomplete, and the model may misinterpret the evidence.",3.092,,stop,1177,341,51,0,0,0,0,0
+task_4,unavailable,moonshotai/Kimi-K2.6,"According to the source, who invented RAG and in what year?
+Answer only from the source. If the source does not contain the answer, say exactly that the information is unavailable.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+", The information is unavailable.,1.575,,stop,616,32,4,0,0,0,0,0
+task_4,direct,Qwen/Qwen3-Coder-Next,"According to the source, which similarity measure can a vector index use?
+Answer only from the source. If the source does not contain the answer, say exactly that the information is unavailable.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+",cosine similarity,0.38,,stop,0,17,2,0,0,0,0,0
+task_4,inference,Qwen/Qwen3-Coder-Next,"Why can RAG improve inspectability while not guaranteeing truth?
+Answer only from the source. If the source does not contain the answer, say exactly that the information is unavailable.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+","RAG improves inspectability because the retrieved passages are inserted into the prompt as evidence, making the basis for the answer transparent and traceable—unlike purely parametric models where the reasoning is hidden in weights. However, it does not guarantee truth because retrieval may return irrelevant or incomplete passages, and the model may misinterpret the evidence, leading to incorrect answers despite the presence of context.",1.002,,stop,0,440,64,0,0,0,0,0
+task_4,unavailable,Qwen/Qwen3-Coder-Next,"According to the source, who invented RAG and in what year?
+Answer only from the source. If the source does not contain the answer, say exactly that the information is unavailable.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+",The information is unavailable.,0.4,,stop,0,31,4,0,0,0,0,0
+task_5,plain_text,moonshotai/Kimi-K2.6,"Explain the main purpose of RAG in one paragraph.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+"," The main purpose of retrieval-augmented generation (RAG) is to combine a language model with an external collection of documents so that, before answering, a retriever can search that collection for passages related to the user's question and insert the selected passages into the prompt as evidence. By doing so, RAG reduces dependence on the model's parametric memory and makes an answer easier to inspect.",4.729,,stop,1898,409,67,0,0,0,0,0
+task_5,list,moonshotai/Kimi-K2.6,"Explain the main purpose of RAG as exactly four bullet points.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+"," - Combine a language model with an external collection of documents.
+- Before answering, search that collection for passages related to the user's question.
+- Insert the selected passages into the prompt as evidence.
+- Reduce dependence on the model's parametric memory and make an answer easier to inspect.",24.4,,stop,11396,308,47,0,0,0,0,0
+task_5,json,moonshotai/Kimi-K2.6,"Return valid JSON only with exactly two keys: ""purpose"" (string) and ""limitations"" (array of strings).
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+"," {""purpose"":""Retrieval-augmented generation (RAG) combines a language model with an external collection of documents; before answering, a retriever searches that collection for passages related to the user's question and inserts the selected passages into the prompt as evidence, reducing dependence on the model's parametric memory and making an answer easier to inspect."",""limitations"":[""RAG does not guarantee truth."",""Retrieval may return irrelevant passages."",""The context may be incomplete."",""The model may misinterpret the evidence.""]}",13.943,,stop,6302,542,77,0,0,0,0,0
+task_5,plain_text,Qwen/Qwen3-Coder-Next,"Explain the main purpose of RAG in one paragraph.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+","The main purpose of RAG is to enhance the accuracy, reliability, and traceability of language model outputs by augmenting them with relevant, externally retrieved evidence from a document collection before generating a response—this reduces reliance on the model’s internal parametric memory, allows answers to be inspected against cited passages, and supports better accountability, though it does not guarantee factual correctness and requires careful handling of retrieval quality, context sufficiency, and security.",1.029,,stop,0,519,73,0,0,0,0,0
+task_5,list,Qwen/Qwen3-Coder-Next,"Explain the main purpose of RAG as exactly four bullet points.
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+","- Combines a language model with an external document collection to enhance responses using retrieved evidence.  
+- Reduces reliance on the model’s parametric memory by inserting relevant passages into the prompt as context.  
+- Enables more inspectable answers by grounding outputs in explicitly provided source material.  
+- Requires careful evaluation and monitoring to ensure answers adhere to retrieved context and mitigate risks like hallucination or prompt injection.",0.958,,stop,0,474,64,0,0,0,0,0
+task_5,json,Qwen/Qwen3-Coder-Next,"Return valid JSON only with exactly two keys: ""purpose"" (string) and ""limitations"" (array of strings).
+Use only the source below.
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+","{
+  ""purpose"": ""To reduce dependence on the model's parametric memory and make answers easier to inspect by retrieving relevant passages from an external document collection and inserting them into the prompt as evidence."",
+  ""limitations"": [
+    ""RAG does not guarantee truth."",
+    ""Retrieval may return irrelevant passages."",
+    ""The context may be incomplete."",
+    ""The model may misinterpret the evidence."",
+    ""Retrieved documents are untrusted data, and prompt injection inside a document must not override the system policy.""
+  ]
+}",1.193,,stop,0,542,72,0,0,0,0,0
+task_6,fact_probe,moonshotai/Kimi-K2.6,"Write a fact-heavy technical answer about RAG. Include at least three dates, numbers, technology names, author names, document titles, and URLs. Clearly label each claim as either supported by the supplied source or not supported by it. The supplied source is:
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+"," Retrieval-augmented generation (RAG) combines a language model with an external collection of documents. **[Supported by the supplied source]** Before answering, a retriever searches that collection for passages related to the user's question. **[Supported by the supplied source]** The selected passages are inserted into the prompt as evidence. **[Supported by the supplied source]** This reduces dependence on the model's parametric memory and makes an answer easier to inspect. **[Supported by the supplied source]**
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval, and generation. **[Supported by the supplied source]** Chunking divides long documents into smaller fragments, often with overlap. **[Supported by the supplied source]** An index stores a representation of each fragment. **[Supported by the supplied source]** A keyword index is transparent and easy to debug, while a vector index compares embeddings by a similarity measure such as cosine similarity. **[Supported by the supplied source]** A retriever returns the top-k fragments, where k is a configurable number. **[Supported by the supplied source]**
+
+RAG does not guarantee truth. **[Supported by the supplied source]** Retrieval may return irrelevant passages, the context may be incomplete, and the model may misinterpret the evidence. **[Supported by the supplied source]** Applications should ask the model to separate evidence from assumptions, cite the supplied passages, and state when the context is insufficient. **[Supported by the supplied source]** Evaluation should measure both answer quality and adherence to the retrieved context. **[Supported by the supplied source]**
+
+Production teams monitor latency, retrieval precision, token usage, and failure rates. **[Supported by the supplied source]** Caching repeated queries can reduce latency. **[Supported by the supplied source]** Access controls are needed when a corpus contains private information. **[Supported by the supplied source]** Retrieved documents are untrusted data: prompt injection inside a document must not override the system policy. **[Supported by the supplied source]**
+
+The foundational RAG architecture was introduced in the 2020 NeurIPS paper *“Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks”* by lead author Patrick Lewis and colleagues. **[Not supported by the supplied source]** That work indexed roughly 21,000,000 Wikipedia documents and is available at https://arxiv.org/abs/2005.11401. **[Not supported by the supplied source]** A precursor model, *“REALM: Retrieval-Augmented Language Model Pre-Training,”* was introduced by Kelvin Guu and colleagues in 2020. **[Not supported by the supplied source]**
+
+Modern production stacks frequently rely on technologies such as LangChain, initially released in October 2022, and LlamaIndex to orchestrate pipelines. **[Not supported by the supplied source]** Vector indexes are commonly implemented with FAISS (Facebook AI Similarity Search) or Pinecone, storing embeddings from models like OpenAI's text-embedding-ada-002, which outputs 1,536-dimensional vectors. **[Not supported by the supplied source]** In practice, engineers often configure the retriever to return top-k results with k=5. **[Not supported by the supplied source]**
+
+In December 2023, Yunfan Gao and co-authors published the survey *“Retrieval-Augmented Generation for Large Language Models: A Survey,”* available at https://arxiv.org/abs/2312.10997, which systematizes advances in retrieval strategies and evaluation. **[Not supported by the supplied source]** Another key resource for vector search is the FAISS repository at https://github.com/facebookresearch/faiss. **[Not supported by the supplied source]**",77.897,,stop,26326,3752,533,11,5,3,0,0
+task_6,fact_probe,Qwen/Qwen3-Coder-Next,"Write a fact-heavy technical answer about RAG. Include at least three dates, numbers, technology names, author names, document titles, and URLs. Clearly label each claim as either supported by the supplied source or not supported by it. The supplied source is:
+
+
+Retrieval-augmented generation (RAG) combines a language model with an external
+collection of documents. Before answering, a retriever searches that collection
+for passages related to the user's question. The selected passages are inserted
+into the prompt as evidence. This reduces dependence on the model's parametric
+memory and makes an answer easier to inspect.
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval,
+and generation. Chunking divides long documents into smaller fragments, often
+with overlap. An index stores a representation of each fragment. A keyword index
+is transparent and easy to debug, while a vector index compares embeddings by a
+similarity measure such as cosine similarity. A retriever returns the top-k
+fragments, where k is a configurable number.
+
+RAG does not guarantee truth. Retrieval may return irrelevant passages, the
+context may be incomplete, and the model may misinterpret the evidence.
+Applications should ask the model to separate evidence from assumptions, cite
+the supplied passages, and state when the context is insufficient. Evaluation
+should measure both answer quality and adherence to the retrieved context.
+
+Production teams monitor latency, retrieval precision, token usage, and failure
+rates. Caching repeated queries can reduce latency. Access controls are needed
+when a corpus contains private information. Retrieved documents are untrusted
+data: prompt injection inside a document must not override the system policy.
+","Below is a fact-heavy technical answer about Retrieval-Augmented Generation (RAG), with each claim explicitly labeled as **supported by the supplied source** or **not supported by it**. The answer includes at least three dates, numbers, technology names, author names, document titles, and URLs—where such information appears in the supplied source or is verifiably established in the broader literature (and clearly distinguished as such).
+
+---
+
+1. **RAG was introduced in 2020 by Lewis et al. in the paper “Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks”**  
+   ✅ **Supported by external knowledge** (not the supplied source).  
+   The technique was first proposed in the NeurIPS 2020 paper:  
+   **Authors**: Patrick Lewis, Ethan Perez, et al.  
+   **Title**: *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*  
+   **URL**: https://arxiv.org/abs/2005.11401  
+   **Date**: Submitted May 2020; published December 2020 (NeurIPS 2020).  
+   *(Note: The supplied source does not mention authors, titles, or dates.)*
+
+2. **A typical RAG pipeline includes five stages: document loading, chunking, indexing, retrieval, and generation**  
+   ✅ **Supported by the supplied source**.  
+   The source states: *“A typical RAG pipeline includes document loading, chunking, indexing, retrieval, and generation.”*
+
+3. **Chunking often uses overlapping fragments (e.g., 150-token chunks with 50-token overlap)**  
+   ❌ **Not supported by the supplied source**.  
+   The source mentions: *“Chunking divides long documents into smaller fragments, often with overlap.”*  
+   However, it does **not** specify concrete numbers (e.g., 150/50 tokens). Those values are common in practice (e.g., in FAISS + Sentence Transformers pipelines) but are not in the supplied text.
+
+4. **Vector indexing uses embeddings and cosine similarity for similarity search**  
+   ✅ **Supported by the supplied source**.  
+   The source states: *“a vector index compares embeddings by a similarity measure such as cosine similarity.”*
+
+5. **The retriever returns the top-*k* fragments, where *k* is",4.596,,length,0,2093,291,15,6,1,0,0

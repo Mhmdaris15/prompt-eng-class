@@ -1,0 +1,1576 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>Лабораторная работа №1</title><style>body{font:11pt/1.5 Georgia,serif;max-width:1100px;margin:40px auto;padding:0 24px;color:#17202a}h1,h2,h3{font-family:Arial,sans-serif}h2{margin-top:2em}table{border-collapse:collapse;width:100%;font:9pt/1.3 Arial,sans-serif;margin:20px 0}td,th{border:1px solid #b8c2cc;padding:6px;vertical-align:top;overflow-wrap:anywhere}th{background:#edf2f7}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f5f7f9;padding:12px;font:9pt/1.35 Consolas,monospace}a{color:#185b97}blockquote{border-left:3px solid #8aa3bc;padding-left:14px}@media print{body{margin:0;padding:0;max-width:none}h2,h3{break-after:avoid}tr{break-inside:avoid}thead{display:table-header-group}}@page{size:A4;margin:18mm}</style><body><h1>Отчёт по лабораторной работе №1</h1>
+<h2>1. Титульный лист</h2>
+<p><strong>Университет ИТМО</strong><br />
+<strong>Дисциплина:</strong> Промпт-инжиниринг<br />
+<strong>Тема:</strong> Подключение к LLM через API Cloud.ru, базовые запросы и первичный поиск галлюцинаций<br />
+<strong>Студент:</strong> ____________________<br />
+<strong>Группа:</strong> ____________________<br />
+<strong>Дата эксперимента:</strong> 26 сентября 2026 г. — по сохранённому <code>manifest.json</code><br />
+<strong>Дата подготовки отчёта и проверки источников:</strong> 30 сентября 2026 г.<br />
+<strong>Санкт-Петербург, 2026</strong></p>
+<h2>2. Цель работы</h2>
+<p>Освоить подключение к большим языковым моделям через OpenAI-совместимый API Cloud.ru, сравнить ответы двух моделей на одинаковые запросы, исследовать влияние формулировок и формата ответа, проверить работу с ограниченным контекстом и выявить неподтверждённые утверждения путём сопоставления с первичными источниками.</p>
+<h2>3. Использованные модели и условия эксперимента</h2>
+<p>В работе использованы <code>moonshotai/Kimi-K2.6</code> (далее Kimi) и <code>Qwen/Qwen3-Coder-Next</code> (далее Qwen). Обе модели присутствуют в сохранённом списке Cloud.ru и успешно прошли тест подключения. Выбор позволяет сравнить две разные модели на одном техническом материале; выводы относятся к этим идентификаторам и настройкам.</p>
+<p>Подключение выполнено через <code>https://foundation-models.api.cloud.ru/v1</code> с помощью Python SDK <code>openai</code>. Ключ читается из переменной <code>API_KEY</code> или файла <code>.env</code>. В <code>requirements.txt</code> указаны <code>openai&gt;=1.50.0</code>, <code>python-dotenv&gt;=1.0.0</code>, <code>requests&gt;=2.31.0</code>. Точные установленные версии библиотек на момент исходного запуска не сохранены. При подготовке отчёта локально доступен Python 3.13.1; это не отдельное доказательство версии интерпретатора исходного запуска.</p>
+<p>Источником результатов служит каталог <code>results/lab1/</code>: в его манифесте указано <strong>95 доступных идентификаторов</strong>, 26 основных ответов и две проверки подключения. Полный список приведён в приложении А. Идентификаторы воспроизведены из сохранённого ответа API; наличие в списке не означает, что для каждого из них проверена генерация текста.</p>
+<p>Отдельный файл <code>results/lab1_environment.json</code> содержит другой снимок списка из 98 идентификаторов и неуспешные тесты с ошибкой ключа. Он не объединяется с основным запуском: отчёт опирается на согласованные файлы внутри <code>results/lab1/</code>.</p>
+<h3>Параметры и ограничения сравнения</h3>
+<table>
+<thead>
+<tr>
+<th>Условие</th>
+<th>Kimi</th>
+<th>Qwen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Основные промпты</td>
+<td>Одинаковые для обеих моделей</td>
+<td>Одинаковые для обеих моделей</td>
+</tr>
+<tr>
+<td>Температура основных запросов</td>
+<td>0,2</td>
+<td>0,2</td>
+</tr>
+<tr>
+<td>Температура проверки подключения</td>
+<td>0,0</td>
+<td>0,0</td>
+</tr>
+<tr>
+<td><code>max_tokens</code>, задания 2–5</td>
+<td>4096</td>
+<td>256</td>
+</tr>
+<tr>
+<td><code>max_tokens</code>, задание 6</td>
+<td>8192</td>
+<td>512</td>
+</tr>
+<tr>
+<td><code>max_tokens</code>, проверка подключения</td>
+<td>4096</td>
+<td>256</td>
+</tr>
+<tr>
+<td>Потоковая выдача</td>
+<td><code>stream=False</code></td>
+<td><code>stream=False</code></td>
+</tr>
+<tr>
+<td>Дополнительный параметр</td>
+<td><code>thinking: {type: disabled}</code></td>
+<td>Не задаётся</td>
+</tr>
+<tr>
+<td>Повторы каждого основного запроса</td>
+<td>Один сохранённый ответ</td>
+<td>Один сохранённый ответ</td>
+</tr>
+</tbody>
+</table>
+<p>Параметры восстановлены по текущему <code>lab1/runner.py</code>: манифест не содержит полного снимка конфигурации или версии кода исходного запуска. Значение <code>LAB_MAX_TOKENS</code> из общего конфига в этом runner не определяет бюджет запросов: для заданий передаются конкретные значения. Несмотря на запрос отключения thinking, у Kimi сохранена ненулевая длина поля reasoning; нельзя считать доказанным, что сервер полностью отключил внутренние рассуждения.</p>
+<p>Бюджеты токенов различаются, поэтому полнота и время ответа зависят не только от модели. Для строгого сравнения потребовались бы достаточные сопоставимые бюджеты, несколько повторов и сохранение фактического расхода токенов. В этом отчёте оценивается имеющийся запуск, без приписывания ему дополнительных экспериментов.</p>
+<h2>4. Исходный текст для экспериментов</h2>
+<p>Использован учебный текст <strong>Retrieval-Augmented Generation in Production Systems</strong> из <code>lab1/source_text.py</code>. Он включает механизм RAG, этапы конвейера, ограничения, оценку и безопасность. В нём есть ответ на прямой вопрос о мере сходства и материал для смыслового вывода, но отсутствуют автор и дата появления RAG.</p>
+<p>Текст содержит <strong>215 слов при разбиении по пробелам</strong>. Это короткий материал, который может не соответствовать требуемым 1–2 страницам при обычном оформлении. В отчёте приведён именно исходный текст фактического эксперимента; его расширение задним числом сделало бы описание результатов недостоверным. Промпты и ответы сохранены на английском, аналитическая часть отчёта написана на русском.</p>
+<h3>Полный исходный текст</h3>
+<p>Retrieval-augmented generation (RAG) combines a language model with an external collection of documents. Before answering, a retriever searches that collection for passages related to the user's question. The selected passages are inserted into the prompt as evidence. This reduces dependence on the model's parametric memory and makes an answer easier to inspect.</p>
+<p>A typical RAG pipeline includes document loading, chunking, indexing, retrieval, and generation. Chunking divides long documents into smaller fragments, often with overlap. An index stores a representation of each fragment. A keyword index is transparent and easy to debug, while a vector index compares embeddings by a similarity measure such as cosine similarity. A retriever returns the top-k fragments, where k is a configurable number.</p>
+<p>RAG does not guarantee truth. Retrieval may return irrelevant passages, the context may be incomplete, and the model may misinterpret the evidence. Applications should ask the model to separate evidence from assumptions, cite the supplied passages, and state when the context is insufficient. Evaluation should measure both answer quality and adherence to the retrieved context.</p>
+<p>Production teams monitor latency, retrieval precision, token usage, and failure rates. Caching repeated queries can reduce latency. Access controls are needed when a corpus contains private information. Retrieved documents are untrusted data: prompt injection inside a document must not override the system policy.</p>
+<h2>5. Ход выполнения работы</h2>
+<h3>5.1. Подготовка среды и подключение</h3>
+<p>Для установки зависимостей и запуска предусмотрены команды:</p>
+<pre><code class="language-powershell">python -m pip install -r requirements.txt
+python -m lab1.runner
+</code></pre>
+<p>Следующий фрагмент использует реальные функции проекта и показывает получение списка и тестовый запрос к обеим моделям:</p>
+<pre><code class="language-python">from labs.common import load_config, make_client, list_models
+from lab1.runner import call
+
+config = load_config()
+client = make_client(config)
+available_models = list_models(client)
+print(available_models)
+
+for model in config.models:
+    result = call(
+        client, model, &quot;task_1&quot;, &quot;connection_check&quot;,
+        &quot;Reply with exactly: connection verified.&quot;,
+        max_tokens=256, temperature=0.0,
+    )
+    print(model, repr(result.output), result.latency_seconds)
+</code></pre>
+<p>Внутри <code>call()</code> используется <code>client.chat.completions.create()</code> с одним сообщением роли <code>user</code>. Время измеряется как разность <code>time.time()</code> до и после запроса. В CSV записываются промпт, ответ, время, причина завершения, ошибка и текстовые метрики. Это полное клиентское время ожидания, а не время до первого токена и не чистое время вычислений модели.</p>
+<table>
+<thead>
+<tr>
+<th>Модель</th>
+<th>Сохранённый ответ (<code>repr</code>)</th>
+<th>Время, с</th>
+<th>Завершение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kimi</td>
+<td><code>' connection verified.'</code></td>
+<td>0,779</td>
+<td><code>stop</code></td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td><code>'connection verified.'</code></td>
+<td>0,260</td>
+<td><code>stop</code></td>
+</tr>
+</tbody>
+</table>
+<p>Оба запроса подтвердили подключение. При посимвольной проверке Qwen выполнила инструкцию точнее: у Kimi есть начальный пробел.</p>
+<h3>5.2. Первый одинаковый запрос</h3>
+<blockquote>
+<p>Explain the concept of retrieval-augmented generation to a second-year software engineering student in 120 words or fewer. Include one practical example.</p>
+</blockquote>
+<p>Kimi дала определение RAG и пример студенческого чат-бота, получающего актуальные сроки из учебного календаря. Ответ понятен, содержит 87 единиц словесного счётчика и укладывается в лимит. Недостаток — слишком оптимистичное описание получения точного ответа: наличие поиска само по себе точность не гарантирует.</p>
+<p>Qwen дополнила определение схемой из четырёх шагов и примером Stripe. Объяснение механизма полнее, но длиннее: 134 единицы счётчика при лимите 120. При простом разбиении по пробелам получается 122 элемента, включая обозначения шагов; точный подсчёт естественных слов зависит от правила. Числовой пример Stripe требует оговорок и внешней проверки, которой в самом ответе нет.</p>
+<p>Для заданного краткого учебного объяснения предпочтительнее ответ Kimi: он компактнее и не вводит конкретный внешний лимит API. Полные ответы обеих моделей приведены в приложении Б.</p>
+<h3>5.3. Пять формулировок суммаризации</h3>
+<p>К каждой инструкции добавлялись <code>Use only the source below.</code> и полный текст раздела 4.</p>
+<table>
+<thead>
+<tr>
+<th>Вариант</th>
+<th>Инструкция</th>
+<th>Kimi, слов</th>
+<th>Qwen, слов</th>
+<th>Сравнение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>summary</td>
+<td>Summarize the source in no more than 80 words.</td>
+<td>75</td>
+<td>100</td>
+<td>Kimi укладывается в 80 слов и сохраняет главное; Qwen сохраняет больше деталей, но превышает лимит.</td>
+</tr>
+<tr>
+<td>main_points</td>
+<td>Extract the five main points from the source.</td>
+<td>203</td>
+<td>168</td>
+<td>Обе дают пять пунктов. Kimi подробнее, Qwen компактнее; у Qwen перекрытие фрагментов описано без often.</td>
+</tr>
+<tr>
+<td>short_recap</td>
+<td>Briefly retell the source for a busy engineer.</td>
+<td>158</td>
+<td>126</td>
+<td>Kimi выбирает пять тематических блоков; Qwen — абзац для инженера. Обе сохраняют риски, оценку и эксплуатацию.</td>
+</tr>
+<tr>
+<td>outline</td>
+<td>Create a concise hierarchical outline of the source.</td>
+<td>195</td>
+<td>141</td>
+<td>Kimi даёт полный план из пяти разделов; Qwen обрывается на начале третьего раздела из-за лимита токенов.</td>
+</tr>
+<tr>
+<td>takeaways</td>
+<td>List the most useful practical takeaways from the source.</td>
+<td>190</td>
+<td>181</td>
+<td>Обе дают практические списки. Kimi местами усиливает исходные рекомендации; Qwen добавляет объяснение пользы chunking и достигает лимита.</td>
+</tr>
+</tbody>
+</table>
+<p>Числовое ограничение <code>no more than 80 words</code> дало самый короткий результат у обеих моделей: 75 и 100 слов соответственно. Для Kimi это наиболее удачная формулировка краткого резюме. Если важнее охват содержания и удобство сравнения, лучше работает <code>Extract the five main points</code>: обе модели дали пять законченных смысловых блоков.</p>
+<p><code>Briefly</code> и <code>concise</code> без числовой границы не обеспечили одинаковую краткость. <code>Hierarchical outline</code> привёл к вложенной структуре, которая у Qwen потребовала больше доступного бюджета. <code>Practical takeaways</code> сместил ответ от описания к рекомендациям: например, осторожное указание на возможное перекрытие превратилось у Kimi в заголовок <code>Chunk with overlap</code>.</p>
+<p>Сравнение не изолирует влияние одного слова: промпты одновременно меняют объём, структуру и аудиторию. Поэтому вывод относится к полным формулировкам, а не к причинному эффекту отдельного глагола.</p>
+<h3>5.4. Вопросы по ограниченному контексту</h3>
+<p>После каждого вопроса добавлялась общая инструкция:</p>
+<blockquote>
+<p>Answer only from the source. If the source does not contain the answer, say exactly that the information is unavailable.</p>
+</blockquote>
+<p>Далее передавался полный исходный текст.</p>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Вопрос</th>
+<th>Kimi</th>
+<th>Qwen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Прямой</td>
+<td>According to the source, which similarity measure can a vector index use?</td>
+<td><code>cosine similarity</code></td>
+<td><code>cosine similarity</code></td>
+</tr>
+<tr>
+<td>Смысловой</td>
+<td>Why can RAG improve inspectability while not guaranteeing truth?</td>
+<td>Указаны свидетельства в промпте и три причины ошибок: нерелевантный поиск, неполный контекст, неверная интерпретация.</td>
+<td>Основной смысл тот же; добавлена фраза о reasoning, скрытом в весах, которой нет в исходном тексте.</td>
+</tr>
+<tr>
+<td>Отсутствующий ответ</td>
+<td>According to the source, who invented RAG and in what year?</td>
+<td><code>The information is unavailable.</code></td>
+<td><code>The information is unavailable.</code></td>
+</tr>
+</tbody>
+</table>
+<p>Обе модели корректно удержали границу знания в третьем вопросе: даже наличие возможных внешних знаний об авторах не привело к ответу вне контекста. На смысловом вопросе Kimi точнее придерживалась формулировок источника. Один успешный отказ не доказывает, что модель всегда будет признавать нехватку информации.</p>
+<h3>5.5. Форматы ответа</h3>
+<p>К каждой инструкции также добавлялись <code>Use only the source below.</code> и исходный текст.</p>
+<table>
+<thead>
+<tr>
+<th>Формат</th>
+<th>Инструкция</th>
+<th>Наблюдение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Обычный текст</td>
+<td>Explain the main purpose of RAG in one paragraph.</td>
+<td>Обе модели дали один абзац. У Qwen он состоит из длинной фразы и содержит дополнительные обобщения.</td>
+</tr>
+<tr>
+<td>Список</td>
+<td>Explain the main purpose of RAG as exactly four bullet points.</td>
+<td>Обе дали ровно четыре пункта; Qwen включила также оценку и безопасность.</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>Return valid JSON only with exactly two keys: &quot;purpose&quot; (string) and &quot;limitations&quot; (array of strings).</td>
+<td>Оба ответа успешно разбираются <code>json.loads</code>; ровно два требуемых ключа и правильные типы, внешнего текста и Markdown-ограждений нет.</td>
+</tr>
+</tbody>
+</table>
+<p>Начальный пробел в JSON Kimi не мешает разбору. Kimi перечислила четыре ограничения, Qwen — пять, включив prompt injection. Основной смысл назначения сохранён в обоих JSON. По соблюдению трёх форматов результат равный; JSON Qwen дополнительно удобен для чтения из-за отступов. Список удобнее для быстрого просмотра, JSON — для программного анализа.</p>
+<p>Форматы сравниваются не при полностью одинаковом содержании: JSON явно запрашивает ещё и ограничения, тогда как абзац и список — назначение RAG. Разницу длины нельзя приписывать только синтаксису формата.</p>
+<h3>5.6. Запрос с большим числом проверяемых фактов</h3>
+<blockquote>
+<p>Write a fact-heavy technical answer about RAG. Include at least three dates, numbers, technology names, author names, document titles, and URLs. Clearly label each claim as either supported by the supplied source or not supported by it. The supplied source is:</p>
+</blockquote>
+<p>После этой инструкции передавался исходный текст. В отличие от заданий 3–5 здесь разрешено добавлять сведения вне источника при явной маркировке. Поэтому сама метка <code>Not supported by the supplied source</code> не означает ложность: утверждение может подтверждаться внешней публикацией.</p>
+<p>Kimi дала завершённый ответ объёмом 533 слова с тремя URL, отделяя исходный текст от внешних сведений. Qwen дала 291 слово и один URL; ответ оборвался в пятом пункте. Вступительное обещание Qwen включить нужное число фактов не является свидетельством выполнения инструкции. Проверка выбранных утверждений приведена в разделе 8.</p>
+<h3>5.7. Оценка качества</h3>
+<p>Каждый из 26 основных ответов оценён по шести критериям: точность, полнота, ясность, следование инструкции, структура и проверяемость. Это аналитическая оценка сохранённого текста, а не автоматический результат модели и не независимый экспертный бенчмарк.</p>
+<p>Шкала: <strong>5</strong> — критерий выполнен без существенных замечаний; <strong>4</strong> — небольшая неточность, лишнее обобщение или неудобство; <strong>3</strong> — заметная проблема, но ответ полезен; <strong>2</strong> — существенная часть задачи не выполнена; <strong>1</strong> — ответ непригоден по критерию. Для полноты учитывается объём, запрошенный конкретным промптом: короткий правильный отказ может получить 5. При обрыве оцениваются отдельно корректность сохранившихся фактов и неполнота ответа.</p>
+<h2>6. Таблица результатов</h2>
+<p>Обозначения промптов соответствуют разделу 5 и коду runner. Длина в словах рассчитана регулярным выражением <code>\b\w+\b</code>, длина в символах — <code>len(output)</code>, включая пробелы и переводы строк. Полные ответы приведены в приложении Б; CSV содержит полные промпты вместе с исходным текстом.</p>
+<table>
+<thead>
+<tr>
+<th>Модель</th>
+<th>Задание / промпт</th>
+<th>Время, с</th>
+<th>Символов</th>
+<th>Слов</th>
+<th>Завершение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kimi</td>
+<td>task_2 / identical_explanation</td>
+<td>7.949</td>
+<td>606</td>
+<td>87</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_2 / identical_explanation</td>
+<td>2.0</td>
+<td>859</td>
+<td>134</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_3 / summary</td>
+<td>10.509</td>
+<td>560</td>
+<td>75</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_3 / main_points</td>
+<td>10.544</td>
+<td>1457</td>
+<td>203</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_3 / short_recap</td>
+<td>8.917</td>
+<td>1158</td>
+<td>158</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_3 / outline</td>
+<td>11.648</td>
+<td>1604</td>
+<td>195</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_3 / takeaways</td>
+<td>9.614</td>
+<td>1396</td>
+<td>190</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_3 / summary</td>
+<td>1.397</td>
+<td>752</td>
+<td>100</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_3 / main_points</td>
+<td>2.227</td>
+<td>1277</td>
+<td>168</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_3 / short_recap</td>
+<td>1.797</td>
+<td>898</td>
+<td>126</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_3 / outline</td>
+<td>2.464</td>
+<td>1091</td>
+<td>141</td>
+<td>length</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_3 / takeaways</td>
+<td>2.73</td>
+<td>1382</td>
+<td>181</td>
+<td>length</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_4 / direct</td>
+<td>2.341</td>
+<td>18</td>
+<td>2</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_4 / inference</td>
+<td>3.092</td>
+<td>341</td>
+<td>51</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_4 / unavailable</td>
+<td>1.575</td>
+<td>32</td>
+<td>4</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_4 / direct</td>
+<td>0.38</td>
+<td>17</td>
+<td>2</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_4 / inference</td>
+<td>1.002</td>
+<td>440</td>
+<td>64</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_4 / unavailable</td>
+<td>0.4</td>
+<td>31</td>
+<td>4</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_5 / plain_text</td>
+<td>4.729</td>
+<td>409</td>
+<td>67</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_5 / list</td>
+<td>24.4</td>
+<td>308</td>
+<td>47</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_5 / json</td>
+<td>13.943</td>
+<td>542</td>
+<td>77</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_5 / plain_text</td>
+<td>1.029</td>
+<td>519</td>
+<td>73</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_5 / list</td>
+<td>0.958</td>
+<td>474</td>
+<td>64</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_5 / json</td>
+<td>1.193</td>
+<td>542</td>
+<td>72</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_6 / fact_probe</td>
+<td>77.897</td>
+<td>3752</td>
+<td>533</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_6 / fact_probe</td>
+<td>4.596</td>
+<td>2093</td>
+<td>291</td>
+<td>length</td>
+</tr>
+</tbody>
+</table>
+<h3>Сводные показатели</h3>
+<table>
+<thead>
+<tr>
+<th>Модель</th>
+<th>Ответов</th>
+<th>Среднее время, с</th>
+<th>Медиана, с</th>
+<th>Средняя длина, слов</th>
+<th>Завершение length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kimi</td>
+<td>13</td>
+<td>14.397</td>
+<td>9.614</td>
+<td>129.9</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>13</td>
+<td>1.706</td>
+<td>1.397</td>
+<td>109.2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>Qwen была быстрее на всех 13 парных основных запросах. Среднее время Kimi заметно увеличивает запрос с фактами (77,897 с); поэтому приведена также медиана. Ошибок API в 26 основных строках нет, но <code>finish_reason=length</code> встречается у Qwen в <code>outline</code>, <code>takeaways</code> и <code>fact_probe</code>. У <code>takeaways</code> последний пункт выглядит законченным; нельзя утверждать, что текст обязательно обрывается посреди фразы. У <code>outline</code> и <code>fact_probe</code> обрыв виден непосредственно.</p>
+<h3>Дополнительные метрики</h3>
+<table>
+<thead>
+<tr>
+<th>Модель</th>
+<th>Промпт</th>
+<th>Числовых совпадений</th>
+<th>Годов</th>
+<th>URL</th>
+<th>Маркеров осторожности</th>
+<th>Маркеров уверенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kimi</td>
+<td>task_2 / identical_explanation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_2 / identical_explanation</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_4 / unavailable</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_4 / unavailable</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_6 / fact_probe</td>
+<td>11</td>
+<td>5</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_6 / fact_probe</td>
+<td>15</td>
+<td>6</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Во всех 26 ответах оба счётчика языковых маркеров равны нулю. Это ограничение словаря, а не отсутствие осторожности: правильная фраза <code>The information is unavailable.</code> в словарь не включена. Аналогично, номера пунктов и фрагменты URL увеличивают счётчик чисел, а счётчик годов отражает вхождения, не число уникальных дат. Метрики длины, ссылок и маркеров сами по себе не доказывают качество ответа.</p>
+<h2>7. Анализ качества ответов</h2>
+<p>В таблице: Т — точность, П — полнота, Я — ясность, И — следование инструкции, С — структура, В — проверяемость. Точность здесь относится к проверенному содержанию; для фактически насыщенных ответов не заявляется проверка каждого предложения.</p>
+<table>
+<thead>
+<tr>
+<th>Модель</th>
+<th>Промпт</th>
+<th>Т</th>
+<th>П</th>
+<th>Я</th>
+<th>И</th>
+<th>С</th>
+<th>В</th>
+<th>Комментарий</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kimi</td>
+<td>task_2 / identical_explanation</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>Понятное объяснение и учебный пример; точность ответа RAG описана несколько оптимистично.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_2 / identical_explanation</td>
+<td>3</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>Полезная схема; 134 единицы счётчика при лимите 120; конкретный лимит Stripe дан без условий и источника.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_3 / summary</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>75 слов при лимите 80; сохранены механизм, этапы, ограничения и безопасность; опущена часть рекомендаций по оценке.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_3 / main_points</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>Ровно пять пунктов; охвачены все основные блоки исходного текста.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_3 / short_recap</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>Корректный структурированный пересказ; 158 слов для busy engineer всё ещё довольно много.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_3 / outline</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>Полная иерархия, но 195 слов слабо соответствуют требованию concise.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_3 / takeaways</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>Практический список; часто используемое перекрытие превращено в директиву, а возможный эффект кеша — в безусловный.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_3 / summary</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>3</td>
+<td>5</td>
+<td>5</td>
+<td>Смысл сохранён, но 100 слов превышают ограничение 80.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_3 / main_points</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>Пять содержательных пунктов; перекрытие фрагментов представлено без оговорки often.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_3 / short_recap</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>Компактный пересказ с ограничениями и эксплуатационными требованиями.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_3 / outline</td>
+<td>5</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>5</td>
+<td>finish_reason=length; ответ обрывается на разделе III, отсутствуют ограничения и эксплуатация.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_3 / takeaways</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>Основные блоки сохранены; добавлено объяснение пользы chunking; достигнут лимит, хотя последний пункт выглядит законченным.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_4 / direct</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>Краткий прямой ответ cosine similarity совпадает с исходным текстом.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_4 / inference</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>Объяснены проверяемость и все три причины возможной ошибки.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_4 / unavailable</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>Корректно сообщено об отсутствии информации; автор и год не выдуманы.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_4 / direct</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>Точный прямой ответ по тексту.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_4 / inference</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>Основной вывод верен; формулировка reasoning is hidden in weights отсутствует в источнике и упрощает понятие рассуждения.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_4 / unavailable</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>Корректный отказ отвечать на основании недостаточного контекста.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_5 / plain_text</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>Один абзац, основное назначение передано без внешних фактов.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_5 / list</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>Ровно четыре пункта, точно описывающие назначение и механизм.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_5 / json</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>Валидный JSON, два требуемых ключа и правильные типы; четыре ограничения.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_5 / plain_text</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>Один абзац; тяжёлая длинная фраза, расширение о reliability и accountability сверх прямой формулировки источника.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_5 / list</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>Ровно четыре пункта; назначение дополнено требованиями оценки и безопасности из текста.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_5 / json</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>Валидный JSON, нужные ключи и типы; ограничения дополнены риском prompt injection.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>task_6 / fact_probe</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>Завершённый ответ с маркировкой происхождения; проверенные публикации существуют, но типичность k=5 не обоснована.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>task_6 / fact_probe</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>Ответ обрезан в пункте 5; обещанное разнообразие фактов не достигнуто; типичность 150/50 токенов не подтверждена.</td>
+</tr>
+</tbody>
+</table>
+<h3>Итоговое сопоставление</h3>
+<p><strong>Точность и работа с контекстом.</strong> В прямом вопросе и признании отсутствующей информации модели равны. В смысловом вопросе Kimi ближе к исходному тексту; Qwen добавляет собственную формулировку о весах модели. В обеих моделях встречаются усиления исходных утверждений, поэтому безоговорочного победителя по фактической истинности нет.</p>
+<p><strong>Полнота.</strong> При данных настройках Kimi полнее выполняет иерархический план и запрос с фактами. Существенную часть преимущества объясняет больший доступный бюджет. В коротком резюме Qwen охватывает больше рекомендаций, но нарушает ограничение длины.</p>
+<p><strong>Следование инструкции.</strong> Kimi лучше соблюдает числовое ограничение суммаризации и даёт завершённый ответ в задании 6. Qwen точнее выполняет посимвольный тест подключения. Вопрос с отсутствующим ответом, четыре пункта и JSON обе модели выполняют успешно.</p>
+<p><strong>Формат.</strong> Явного победителя в задании 5 нет: все шесть ответов соблюдают запрошенную структуру. JSON Qwen легче читать, JSON Kimi компактнее представлен.</p>
+<p><strong>Практическое применение.</strong> Для полного ответа по источнику в этом запуске предпочтительнее Kimi. Для быстрых коротких ответов Qwen показала хороший результат, но её бюджет и соблюдение длины требуют контроля. Это оценка конкретного запуска, а не универсальный рейтинг моделей.</p>
+<h2>8. Поиск галлюцинаций и проверка источников</h2>
+<p>Проверка выполнена 30.09.2026 путём сопоставления выбранных утверждений с открытыми первичными источниками. Ниже — пять утверждений Kimi из задания 6, четыре утверждения Qwen из задания 6 и дополнительный пример Qwen из задания 2. Формулировки в таблице передают проверяемый смысл; исходные ответы полностью сохранены в приложении Б.</p>
+<table>
+<thead>
+<tr>
+<th>Модель</th>
+<th>Утверждение</th>
+<th>Где проверялось</th>
+<th>Результат</th>
+<th>Комментарий</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kimi</td>
+<td>Статья Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks связана с Patrick Lewis и NeurIPS 2020.</td>
+<td><a href="https://arxiv.org/abs/2005.11401">Lewis et al., arXiv</a></td>
+<td>Подтверждено</td>
+<td>Карточка статьи подтверждает авторов и принятие на NeurIPS 2020. Это подтверждение конкретной работы, а не доказательство первенства всей идеи поиска перед генерацией.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>В исходной работе индексировано около 21 000 000 документов Wikipedia.</td>
+<td><a href="https://arxiv.org/html/2005.11401v4">Lewis et al., раздел 3</a></td>
+<td>Подтверждено с уточнением</td>
+<td>В разделе 3 указаны 21 млн неперекрывающихся фрагментов по 100 слов из снимка Wikipedia за декабрь 2018 года. Их нельзя понимать как 21 млн полных статей.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>REALM: Retrieval-Augmented Language Model Pre-Training — работа Kelvin Guu и соавторов 2020 года.</td>
+<td><a href="https://arxiv.org/abs/2002.08909">Guu et al., arXiv</a></td>
+<td>Подтверждено</td>
+<td>Указаны Kelvin Guu и соавторы; первая версия размещена 10.02.2020.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>Обзор Retrieval-Augmented Generation for Large Language Models: A Survey опубликован Yunfan Gao и соавторами в декабре 2023 года.</td>
+<td><a href="https://arxiv.org/abs/2312.10997">Gao et al., arXiv</a></td>
+<td>Подтверждено</td>
+<td>Первая версия препринта датирована 18.12.2023; ссылка ведёт на нужную работу. Это дата препринта.</td>
+</tr>
+<tr>
+<td>Kimi</td>
+<td>Инженеры часто выбирают k=5 при поиске фрагментов.</td>
+<td><a href="https://arxiv.org/html/2005.11401v4">Lewis et al., раздел 3</a></td>
+<td>Не подтверждена типичность</td>
+<td>В статье исследованы k=5 и k=10 при обучении. Это подтверждает использование k=5 в эксперименте, но не частоту такого выбора в производственных системах.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>Работа о RAG 2020 года написана Patrick Lewis, Ethan Perez и соавторами.</td>
+<td><a href="https://arxiv.org/abs/2005.11401">Lewis et al., arXiv</a></td>
+<td>Подтверждено</td>
+<td>Имена и год совпадают с карточкой статьи; arXiv:2005.11401 существует.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>Препринт работы о RAG представлен в мае 2020 года.</td>
+<td><a href="https://arxiv.org/abs/2005.11401">Lewis et al., arXiv</a></td>
+<td>Подтверждено</td>
+<td>Дата первой версии — 22.05.2020. Отдельное утверждение модели о декабре как дате публикации здесь не оценивается.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>Векторный поиск может использовать embeddings и cosine similarity.</td>
+<td><a href="https://github.com/facebookresearch/faiss/wiki/MetricType-and-distances">Документация FAISS</a></td>
+<td>Подтверждено с оговоркой</td>
+<td>FAISS описывает поиск по косинусному сходству через нормализацию векторов и скалярное произведение. Косинусное сходство — один из вариантов, не обязательная метрика любого индекса.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>Фрагменты по 150 токенов с перекрытием 50 токенов распространены на практике.</td>
+<td><a href="https://docs.langchain.com/oss/python/integrations/splitters/recursive_text_splitter">Документация LangChain</a></td>
+<td>Не подтверждено</td>
+<td>В исходном тексте чисел нет. Документация описывает настраиваемые размер и перекрытие, но не подтверждает распространённость пары 150/50. Это не доказательство невозможности такой настройки.</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>В учебном примере Stripe обеспечивает 100 запросов/с на аккаунт «as of v2023-10-16».</td>
+<td><a href="https://docs.stripe.com/rate-limits">Документация Stripe</a></td>
+<td>Частично подтверждено; привязка к версии не подтверждена</td>
+<td>Дополнительная проверка task_2: текущая документация даёт глобальный live-лимит 100 запросов/с, но также отдельные лимиты endpoint и sandbox. Историческая привязка к версии 2023-10-16 этой страницей не подтверждается.</td>
+</tr>
+</tbody>
+</table>
+<h3>Характер обнаруженных проблем</h3>
+<p>В проверенной выборке не обнаружено вымышленной статьи или несуществующего arXiv-идентификатора. Число 21 млн у Kimi имеет основание, но требует уточнения единицы: речь о фрагментах, которые статья называет документами. Это терминологическая неоднозначность, а не доказанная выдумка.</p>
+<p>У Kimi не подтверждена заявленная частота использования <code>k=5</code> в производственных системах. У Qwen не подтверждена распространённость параметров <code>150/50</code> токенов; дополнительный пример Stripe смешивает реальный глобальный лимит с неподтверждённой исторической привязкой и не оговаривает другие ограничения. Такие формулировки создают риск галлюцинации или ложной точности, но неподтверждённость не равна доказанной ложности.</p>
+<p>В рассмотренных примерах Qwen содержит больше проблем с необоснованной конкретикой, особенно с учётом задания 2. Однако малая и неслучайная выборка утверждений, разная длина ответов и обрезка Qwen не позволяют вычислять частоту галлюцинаций модели в целом.</p>
+<h3>Как изменить промпт</h3>
+<p>Для задачи строго по тексту более надёжной постановкой была бы:</p>
+<blockquote>
+<p>Use only the supplied text. Do not add dates, names, URLs, or numerical settings absent from it. For each factual claim, quote the supporting sentence. If the text does not contain the requested information, return &quot;The information is unavailable.&quot; Do not describe examples as standard or common settings without evidence.</p>
+</blockquote>
+<p>Если нужны внешние факты, следует отдельно разрешить внешние источники, потребовать ссылку для каждого конкретного числа и даты и указать, что непроверенные сведения должны быть помечены. Требование выдать заранее заданное количество фактов даже при нехватке материала лучше заменить требованием перечислить только подтверждённые. Эти изменения предложены по результатам анализа и в сохранённом запуске отдельно не проверялись.</p>
+<h2>9. Выводы</h2>
+<ol>
+<li><strong>Различия между моделями.</strong> Kimi дала более развёрнутые и завершённые ответы в сложных заданиях; Qwen была быстрее на всех парных запросах. Сравнение полноты ограничено разными бюджетами токенов.</li>
+<li><strong>Влияние формулировки.</strong> Лимит 80 слов дал самые короткие резюме, пять главных пунктов — сопоставимые законченные списки, иерархический план — подробную структуру, а практические выводы — рекомендации вместо простого пересказа.</li>
+<li><strong>Полезные инструкции.</strong> <code>Use only the source</code>, явное указание признать отсутствие сведений, <code>exactly four bullet points</code> и требование двух конкретных ключей JSON помогли получить проверяемый результат. При этом числовой лимит слов Qwen соблюла не во всех случаях.</li>
+<li><strong>Добавление собственных сведений.</strong> Оно наблюдалось в примере Stripe, смысловом объяснении Qwen, практических рекомендациях и особенно в задании 6, которое прямо запрашивало внешнюю конкретику с маркировкой.</li>
+<li><strong>Необходимость проверки.</strong> Уверенный стиль, точное число или существующая ссылка не гарантируют, что источник подтверждает именно это утверждение. Нужно проверять смысл, единицы измерения, условия применимости и даты, а также отделять ошибку содержания от обрыва по лимиту.</li>
+<li><strong>Надёжность в данном эксперименте.</strong> Kimi предпочтительнее по завершённости и соблюдению краткого резюме при использованных настройках. На отсутствии ответа в контексте и на JSON обе модели справились. Для общего вывода о превосходстве одной модели этих данных недостаточно.</li>
+</ol>
+<p>Практическая цель подключения, сохранения и анализа ответов достигнута. Полное соответствие формальным требованиям ограничено коротким исходным текстом и неполным фактически насыщенным ответом Qwen. Для устранения этих ограничений нужен отдельный повторный запуск с текстом требуемого объёма и достаточным бюджетом; текущие результаты таким запуском не подменяются.</p>
+<h3>Файлы работы и воспроизводимость</h3>
+<table>
+<thead>
+<tr>
+<th>Файл</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lab1/runner.py</code></td>
+<td>Отправка запросов, замеры, метрики, сохранение результатов</td>
+</tr>
+<tr>
+<td><code>lab1/source_text.py</code></td>
+<td>Точный исходный материал</td>
+</tr>
+<tr>
+<td><code>labs/common.py</code></td>
+<td>Конфигурация, подключение и запись CSV</td>
+</tr>
+<tr>
+<td><code>results/lab1/manifest.json</code></td>
+<td>Дата, список моделей, проверки и число ответов исходного запуска</td>
+</tr>
+<tr>
+<td><code>results/lab1/connection_checks.csv</code></td>
+<td>Два теста подключения</td>
+</tr>
+<tr>
+<td><code>results/lab1/lab1_results.csv</code></td>
+<td>26 полных промптов и ответов с метриками</td>
+</tr>
+<tr>
+<td><code>results/lab1/lab1_results_with_metrics.csv</code></td>
+<td>В текущей реализации копия той же таблицы с метриками</td>
+</tr>
+<tr>
+<td><code>results/lab1/quality_scores.csv</code></td>
+<td>Заполненные оценки 26 ответов</td>
+</tr>
+<tr>
+<td><code>results/lab1/hallucination_verification.csv</code></td>
+<td>Проверенные утверждения и источники</td>
+</tr>
+</tbody>
+</table>
+<p>При подготовке отчёта новые обращения к моделям не выполнялись. Исходные CSV с ответами и манифест сохранены. Флаг <code>manual_verification_required=true</code> в манифесте относится к первоначальному созданию заготовок; заполненная проверка хранится в отдельном CSV. Повторный запуск runner перезаписывает результаты и создаёт пустые таблицы оценок и проверки, поэтому перед ним следует сохранить текущие артефакты отдельно.</p>
+<h2>Приложение А. Доступные модели по сохранённому ответу API</h2>
+<p>Снимок от 26.09.2026, 95 идентификаторов. Список воспроизведён из <code>results/lab1/manifest.json</code>.</p>
+<pre><code class="language-text">BAAI/bge-m3
+BAAI/bge-reranker-v2-m3
+GigaChat/GigaChat-2-Max
+GigaChat/GigaChat-3-Pro
+MiniMaxAI/MiniMax-M2.5
+MiniMaxAI/MiniMax-M3
+Qwen/Qwen3-30B-A3B
+Qwen/Qwen3-32B
+Qwen/Qwen3-Coder-Next
+Qwen/Qwen3-Embedding-0.6B
+Qwen/Qwen3-Reranker-0.6B
+Qwen/Qwen3-VL-Embedding-2B
+Qwen/Qwen3-VL-Embedding-8B
+Qwen/Qwen3-VL-Reranker-2B
+Qwen/Qwen3-VL-Reranker-8B
+Qwen/Qwen3.5-397B-A17B
+Qwen/Qwen3.6-35B-A3B
+ai-sage/GigaChat3-10B-A1.8B
+ai-sage/GigaChat3.5-432B-A28B
+ai-sage/GigaChat3.5-432B-A28B-Reasoning
+anthropic/claude-haiku-4.5
+anthropic/claude-opus-4.1
+anthropic/claude-opus-4.5
+anthropic/claude-opus-4.6
+anthropic/claude-opus-4.7
+anthropic/claude-opus-4.8
+anthropic/claude-sonnet-4
+anthropic/claude-sonnet-4.5
+anthropic/claude-sonnet-4.6
+deepseek-ai/DeepSeek-OCR-2
+deepseek-ai/DeepSeek-V4-Flash
+deepseek-ai/DeepSeek-V4-Pro
+deepseek-ai/DeepSeek-V4.1-Flash
+deepseek/deepseek-chat-v3-0324
+deepseek/deepseek-r1-distill-llama-70b
+deepseek/deepseek-v3.2
+google/gemini-2.5-flash
+google/gemini-2.5-flash-image
+google/gemini-2.5-pro
+google/gemini-3-flash-preview
+google/gemini-3-pro-image-preview
+google/gemini-3.1-flash-image-preview
+google/gemini-3.1-flash-lite
+google/gemini-3.1-pro-preview
+google/gemini-embedding-001
+hivetrace/HiveTraceGuard-Pro
+meta-llama/llama-3.3-70b-instruct
+moonshotai/Kimi-K2.6
+moonshotai/kimi-k2-0905
+moonshotai/kimi-k2-thinking
+moonshotai/kimi-k2.5
+openai/chatgpt-4o-latest
+openai/gpt-4.1
+openai/gpt-4.1-mini
+openai/gpt-4.1-nano
+openai/gpt-4o-mini
+openai/gpt-5
+openai/gpt-5-chat
+openai/gpt-5-mini
+openai/gpt-5-nano
+openai/gpt-5.1
+openai/gpt-5.1-chat
+openai/gpt-5.2
+openai/gpt-5.2-chat
+openai/gpt-5.2-codex
+openai/gpt-5.3-chat
+openai/gpt-5.3-codex
+openai/gpt-5.4
+openai/gpt-5.4-mini
+openai/gpt-5.4-nano
+openai/gpt-5.4-pro
+openai/gpt-5.5
+openai/gpt-5.5-pro
+openai/gpt-oss-120b
+openai/gpt-oss-20b
+openai/text-embedding-3-large
+openai/text-embedding-3-small
+openai/whisper-large-v3
+qwen/qwen3-235b-a22b
+qwen/qwen3-max-thinking
+qwen/qwen3-vl-235b-a22b-instruct
+qwen/qwen3-vl-235b-a22b-thinking
+qwen/qwen3-vl-30b-a3b-instruct
+qwen/qwen3-vl-30b-a3b-thinking
+qwen/qwen3-vl-8b-instruct
+qwen/qwen3-vl-8b-thinking
+xiaomi/mimo-v2.5
+xiaomi/mimo-v2.5-pro
+z-ai/glm-4.5-air
+z-ai/glm-4.6
+z-ai/glm-4.6v
+z-ai/glm-5
+zai-org/GLM-4.7
+zai-org/GLM-5.1
+zai-org/GLM-5.2
+</code></pre>
+<h2>Приложение Б. Полные ответы моделей</h2>
+<p>Ниже приведены все 26 основных ответов без исправления фактов, обрывов и форматирования внутри сохранённого текста. Кодовые блоки отделяют исходные ответы от аналитической части. Базовые инструкции воспроизведены точно; для заданий 3–6 к ним добавлялся полный текст раздела 4. Полные сообщения вместе с контекстом находятся в CSV.</p>
+<h3>Б.1. Kimi — task_2 / identical_explanation</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Explain the concept of retrieval-augmented generation to a second-year software engineering student in 120 words or fewer. Include one practical example.
+</code></pre>
+<p><strong>Ответ:</strong> 7.949 с; 606 символов; 87 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text"> Retrieval-augmented generation (RAG) grounds large language models by fetching relevant external data before generating a response. Instead of relying solely on training memory, the system queries a vector database or API to retrieve documents, then injects them into the prompt as context. This reduces hallucinations and keeps answers current without retraining the model.
+
+**Example:** A student support chatbot indexes the latest academic calendar. When asked about add/drop deadlines, it retrieves this semester’s entry and generates an accurate, cited reply rather than hallucinating outdated dates.
+</code></pre>
+<h3>Б.2. Qwen — task_2 / identical_explanation</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Explain the concept of retrieval-augmented generation to a second-year software engineering student in 120 words or fewer. Include one practical example.
+</code></pre>
+<p><strong>Ответ:</strong> 2.0 с; 859 символов; 134 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text">Retrieval-Augmented Generation (RAG) enhances large language models (LLMs) by dynamically fetching relevant, up-to-date information from an external knowledge source (e.g., a database or document store) *before* generating a response. Instead of relying solely on pre-trained knowledge (which can be outdated or incomplete), the LLM uses the retrieved context to produce more accurate, fact-based answers.  
+
+**How it works**: 1) User query → 2) Retrieve top-k relevant documents → 3) Inject retrieved context into the LLM prompt → 4) Generate response grounded in that context.  
+
+**Example**: A developer asks, *“What’s the latest API rate limit for Stripe’s v2023-10-16?”* RAG fetches Stripe’s official API docs (retrieved from a vector database), then the LLM synthesizes the answer: *“As of v2023-10-16, Stripe enforces 100 requests/second per account.”*
+</code></pre>
+<h3>Б.3. Kimi — task_3 / summary</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Summarize the source in no more than 80 words.
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 10.509 с; 560 символов; 75 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text"> Retrieval-augmented generation (RAG) enhances language models by retrieving relevant passages from external documents to ground answers, reducing reliance on internal memory. A pipeline involves document loading, chunking, indexing (keyword or vector), and retrieval of top-k fragments for generation. However, RAG does not ensure truth, as retrieval can fail or evidence may be misinterpreted. Production requires monitoring latency, precision, and token usage, plus caching, access controls, and safeguards against prompt injection from untrusted documents.
+</code></pre>
+<h3>Б.4. Kimi — task_3 / main_points</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Extract the five main points from the source.
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 10.544 с; 1457 символов; 203 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text"> 1. **Core mechanism and purpose:** Retrieval-augmented generation combines a language model with an external document collection, using a retriever to find relevant passages that are inserted into the prompt as evidence. This reduces reliance on the model’s parametric memory and makes answers easier to inspect.
+
+2. **Typical pipeline components:** A standard RAG pipeline includes document loading, chunking (often with overlap), indexing, retrieval, and generation. Indexes can be keyword-based (transparent, easy to debug) or vector-based (using similarity measures like cosine similarity), and retrievers return a configurable top-k set of fragments.
+
+3. **Reliability limitations:** RAG does not guarantee truth. Retrieval can return irrelevant passages, the provided context may be incomplete, and the model may still misinterpret the evidence.
+
+4. **Safeguards and evaluation:** Applications should instruct the model to separate evidence from assumptions, cite the supplied passages, and state when context is insufficient. Evaluation should measure both answer quality and adherence to the retrieved context.
+
+5. **Production and security considerations:** Production teams must monitor latency, retrieval precision, token usage, and failure rates; use caching to reduce latency; enforce access controls for private corpora; and treat retrieved documents as untrusted data so that prompt injection within a document cannot override system policy.
+</code></pre>
+<h3>Б.5. Kimi — task_3 / short_recap</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Briefly retell the source for a busy engineer.
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 8.917 с; 1158 символов; 158 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text"> - **What it is:** RAG grounds a language model by retrieving relevant passages from an external document collection and inserting them into the prompt as evidence. This reduces reliance on the model’s internal knowledge and makes answers easier to audit.
+- **Pipeline:** Load documents → chunk them (often with overlap) → index fragments (keyword indexes are transparent/debuggable; vector indexes use embedding similarity like cosine) → retrieve top-k fragments → generate.
+- **Limitations:** It does not guarantee truth. Retrieval can return irrelevant or incomplete context, and the model can still misinterpret the evidence.
+- **Quality guardrails:** Instruct the model to separate evidence from assumptions, cite the supplied passages, and state when context is insufficient. Evaluate both answer quality and faithfulness to the retrieved context.
+- **Production concerns:** Monitor latency, retrieval precision, token usage, and failure rates. Cache repeated queries to cut latency. Enforce access controls for private corpora. Treat retrieved documents as untrusted data and harden prompts against injection attacks that could override system policy.
+</code></pre>
+<h3>Б.6. Kimi — task_3 / outline</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Create a concise hierarchical outline of the source.
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 11.648 с; 1604 символов; 195 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text"> **I. Core Concept**
+- **Definition:** Combines a language model with an external collection of documents.
+- **Process:** Before answering, a retriever searches the collection for relevant passages and inserts them into the prompt as evidence.
+- **Benefits:**
+  - Reduces dependence on the model's parametric memory.
+  - Makes answers easier to inspect.
+
+**II. Typical Pipeline**
+- **Document loading**
+- **Chunking:** Divides long documents into smaller fragments, often with overlap.
+- **Indexing:** Stores a representation of each fragment.
+  - *Keyword index:* Transparent and easy to debug.
+  - *Vector index:* Compares embeddings by similarity measures (e.g., cosine similarity).
+- **Retrieval:** Returns the top-k fragments, where k is configurable.
+- **Generation**
+
+**III. Limitations and Risks**
+- Does not guarantee truth.
+- Retrieval may return irrelevant passages.
+- Context may be incomplete.
+- Model may misinterpret the evidence.
+
+**IV. Safeguards and Evaluation**
+- **Application requirements:**
+  - Ask the model to separate evidence from assumptions.
+  - Cite supplied passages.
+  - State when context is insufficient.
+- **Evaluation metrics:**
+  - Answer quality.
+  - Adherence to the retrieved context.
+
+**V. Production Considerations**
+- **Monitoring:** Latency, retrieval precision, token usage, and failure rates.
+- **Performance:** Cache repeated queries to reduce latency.
+- **Privacy:** Access controls needed for corpora containing private information.
+- **Security:** Retrieved documents are untrusted data; prompt injection inside a document must not override system policy.
+</code></pre>
+<h3>Б.7. Kimi — task_3 / takeaways</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">List the most useful practical takeaways from the source.
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 9.614 с; 1396 символов; 190 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text"> Here are the most useful practical takeaways from the source:
+
+- **Implement the full pipeline.** A typical RAG system requires document loading, chunking, indexing, retrieval, and generation stages.
+- **Chunk with overlap.** Divide long documents into smaller fragments, often with overlap between chunks.
+- **Match the index to your operational needs.** Use a keyword index when you want transparency and easier debugging; use a vector index (comparing embeddings via cosine similarity or similar measures) for semantic retrieval.
+- **Make retrieval configurable.** The retriever returns a top-k set of fragments, and k should be treated as a configurable parameter.
+- **Instruct the model to be explicit about evidence.** Prompt the model to separate evidence from assumptions, cite the supplied passages, and state when the context is insufficient.
+- **Evaluate two things at once.** Measure both final answer quality and adherence to the retrieved context.
+- **Monitor production metrics.** Track latency, retrieval precision, token usage, and failure rates.
+- **Cache repeated queries.** This directly reduces latency.
+- **Apply access controls for private corpora.** If the document collection contains private information, restrict access appropriately.
+- **Treat retrieved documents as untrusted.** Prevent prompt injection inside a retrieved document from overriding the system policy.
+</code></pre>
+<h3>Б.8. Qwen — task_3 / summary</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Summarize the source in no more than 80 words.
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 1.397 с; 752 символов; 100 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text">RAG combines a language model with an external document collection: a retriever finds relevant passages, which are added to the prompt as evidence, reducing reliance on the model’s internal memory and improving inspectability. The pipeline involves loading, chunking (often with overlap), indexing (keyword or vector), retrieval, and generation. However, RAG does not guarantee truth—retrieval may be irrelevant or incomplete, and models may misinterpret evidence. Best practices include requiring evidence citation, stating context limitations, and evaluating both answer quality and context adherence. Production considerations include latency (mitigated by caching), access controls, and safeguarding against prompt injection in retrieved documents.
+</code></pre>
+<h3>Б.9. Qwen — task_3 / main_points</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Extract the five main points from the source.
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 2.227 с; 1277 символов; 168 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text">1. **RAG combines a language model with an external document collection**: A retriever searches the collection for relevant passages before answering, inserts them into the prompt as evidence, reducing reliance on the model’s parametric memory and improving answer interpretability.
+
+2. **A typical RAG pipeline includes five stages**: document loading, chunking (dividing documents into overlapping fragments), indexing (storing fragment representations—e.g., keyword or vector-based), retrieval (fetching top-*k* relevant fragments), and generation (producing the final answer).
+
+3. **RAG does not guarantee truth**: Risks include irrelevant or incomplete retrieved passages and model misinterpretation; applications should require the model to cite evidence, separate facts from assumptions, and acknowledge insufficient context.
+
+4. **Evaluation must assess both answer quality and adherence to retrieved context**: Success is not only about correctness but also faithfulness to the provided evidence.
+
+5. **Production considerations include performance, security, and reliability**: Teams monitor latency, retrieval precision, token usage, and failure rates; caching, access controls, and safeguards against prompt injection (e.g., from untrusted documents) are essential.
+</code></pre>
+<h3>Б.10. Qwen — task_3 / short_recap</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Briefly retell the source for a busy engineer.
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 1.797 с; 898 символов; 126 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text">**RAG in One Paragraph for Busy Engineers:**  
+RAG augments a language model with an external document corpus: a *retriever* first fetches top-*k* relevant text fragments (via keyword or vector/semantic search), inserts them into the prompt as evidence, and the *generator* answers using that context. A standard pipeline includes loading, chunking (often with overlap), indexing, retrieval, and generation. **Key caveats:** RAG doesn’t guarantee truth—retrieval can be noisy or incomplete, and models may hallucinate. Mitigate by prompting the model to cite evidence, flag assumptions, and declare insufficient context; evaluate both answer quality and faithfulness to retrieved passages. In production, monitor latency (cache repeated queries), retrieval precision, token usage, and failure rates; enforce strict access controls and prompt-injection safeguards since retrieved docs are untrusted.
+</code></pre>
+<h3>Б.11. Qwen — task_3 / outline</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Create a concise hierarchical outline of the source.
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 2.464 с; 1091 символов; 141 слов; завершение <code>length</code>.</p>
+<pre><code class="language-text">**Hierarchical Outline of the Source on Retrieval-Augmented Generation (RAG)**
+
+I. **Core Concept of RAG**  
+   A. Combines a language model with an external document collection  
+   B. Retrieval step: searches collection for passages relevant to user question  
+   C. Evidence insertion: selected passages added to prompt as context  
+   D. Benefits:  
+      1. Reduces reliance on model’s parametric memory  
+      2. Enables easier inspection of answers  
+
+II. **Typical RAG Pipeline**  
+   A. Document loading  
+   B. Chunking  
+      1. Splits long documents into smaller fragments  
+      2. Often includes overlap between chunks  
+   C. Indexing  
+      1. Stores representation of each fragment  
+      2. Types of indexes:  
+         a. Keyword index: transparent and easy to debug  
+         b. Vector index: compares embeddings using similarity (e.g., cosine similarity)  
+   D. Retrieval  
+      1. Returns top-*k* fragments (*k* is configurable)  
+   E. Generation  
+      1. Uses retrieved passages as evidence to generate answer  
+
+III. **Limitations and Mitigations**  
+   A.
+</code></pre>
+<h3>Б.12. Qwen — task_3 / takeaways</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">List the most useful practical takeaways from the source.
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 2.73 с; 1382 символов; 181 слов; завершение <code>length</code>.</p>
+<pre><code class="language-text">- RAG combines a language model with an external document collection to reduce reliance on the model’s parametric memory and improve answer traceability.  
+- A typical RAG pipeline consists of five stages: document loading, chunking (often with overlap), indexing, retrieval, and generation.  
+- Chunking divides long documents into smaller fragments to improve retrieval relevance and manageability.  
+- Indexing can use keyword-based (transparent and debug-friendly) or vector-based (using embeddings and similarity measures like cosine similarity) methods.  
+- Retrieval returns the top-*k* most relevant fragments, where *k* is a configurable parameter.  
+- RAG does **not** guarantee truth: retrieved passages may be irrelevant, incomplete, or misinterpreted by the model.  
+- Applications should require the model to: separate evidence from assumptions, cite supplied passages, and explicitly state when context is insufficient.  
+- Evaluation must assess both answer quality and adherence to the retrieved context.  
+- Production monitoring should track latency, retrieval precision, token usage, and failure rates.  
+- Caching repeated queries can reduce latency.  
+- Access controls are essential when the document corpus contains private information.  
+- Retrieved documents are untrusted data: prompt injection attempts inside documents must not override system policies.
+</code></pre>
+<h3>Б.13. Kimi — task_4 / direct</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">According to the source, which similarity measure can a vector index use?
+Answer only from the source. If the source does not contain the answer, say exactly that the information is unavailable.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 2.341 с; 18 символов; 2 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text"> cosine similarity
+</code></pre>
+<h3>Б.14. Kimi — task_4 / inference</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Why can RAG improve inspectability while not guaranteeing truth?
+Answer only from the source. If the source does not contain the answer, say exactly that the information is unavailable.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 3.092 с; 341 символов; 51 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text"> RAG improves inspectability because it inserts selected passages into the prompt as evidence, reducing dependence on the model's parametric memory and making an answer easier to inspect. It does not guarantee truth because retrieval may return irrelevant passages, the context may be incomplete, and the model may misinterpret the evidence.
+</code></pre>
+<h3>Б.15. Kimi — task_4 / unavailable</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">According to the source, who invented RAG and in what year?
+Answer only from the source. If the source does not contain the answer, say exactly that the information is unavailable.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 1.575 с; 32 символов; 4 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text"> The information is unavailable.
+</code></pre>
+<h3>Б.16. Qwen — task_4 / direct</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">According to the source, which similarity measure can a vector index use?
+Answer only from the source. If the source does not contain the answer, say exactly that the information is unavailable.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 0.38 с; 17 символов; 2 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text">cosine similarity
+</code></pre>
+<h3>Б.17. Qwen — task_4 / inference</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Why can RAG improve inspectability while not guaranteeing truth?
+Answer only from the source. If the source does not contain the answer, say exactly that the information is unavailable.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 1.002 с; 440 символов; 64 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text">RAG improves inspectability because the retrieved passages are inserted into the prompt as evidence, making the basis for the answer transparent and traceable—unlike purely parametric models where the reasoning is hidden in weights. However, it does not guarantee truth because retrieval may return irrelevant or incomplete passages, and the model may misinterpret the evidence, leading to incorrect answers despite the presence of context.
+</code></pre>
+<h3>Б.18. Qwen — task_4 / unavailable</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">According to the source, who invented RAG and in what year?
+Answer only from the source. If the source does not contain the answer, say exactly that the information is unavailable.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 0.4 с; 31 символов; 4 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text">The information is unavailable.
+</code></pre>
+<h3>Б.19. Kimi — task_5 / plain_text</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Explain the main purpose of RAG in one paragraph.
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 4.729 с; 409 символов; 67 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text"> The main purpose of retrieval-augmented generation (RAG) is to combine a language model with an external collection of documents so that, before answering, a retriever can search that collection for passages related to the user's question and insert the selected passages into the prompt as evidence. By doing so, RAG reduces dependence on the model's parametric memory and makes an answer easier to inspect.
+</code></pre>
+<h3>Б.20. Kimi — task_5 / list</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Explain the main purpose of RAG as exactly four bullet points.
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 24.4 с; 308 символов; 47 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text"> - Combine a language model with an external collection of documents.
+- Before answering, search that collection for passages related to the user's question.
+- Insert the selected passages into the prompt as evidence.
+- Reduce dependence on the model's parametric memory and make an answer easier to inspect.
+</code></pre>
+<h3>Б.21. Kimi — task_5 / json</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Return valid JSON only with exactly two keys: &quot;purpose&quot; (string) and &quot;limitations&quot; (array of strings).
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 13.943 с; 542 символов; 77 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text"> {&quot;purpose&quot;:&quot;Retrieval-augmented generation (RAG) combines a language model with an external collection of documents; before answering, a retriever searches that collection for passages related to the user's question and inserts the selected passages into the prompt as evidence, reducing dependence on the model's parametric memory and making an answer easier to inspect.&quot;,&quot;limitations&quot;:[&quot;RAG does not guarantee truth.&quot;,&quot;Retrieval may return irrelevant passages.&quot;,&quot;The context may be incomplete.&quot;,&quot;The model may misinterpret the evidence.&quot;]}
+</code></pre>
+<h3>Б.22. Qwen — task_5 / plain_text</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Explain the main purpose of RAG in one paragraph.
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 1.029 с; 519 символов; 73 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text">The main purpose of RAG is to enhance the accuracy, reliability, and traceability of language model outputs by augmenting them with relevant, externally retrieved evidence from a document collection before generating a response—this reduces reliance on the model’s internal parametric memory, allows answers to be inspected against cited passages, and supports better accountability, though it does not guarantee factual correctness and requires careful handling of retrieval quality, context sufficiency, and security.
+</code></pre>
+<h3>Б.23. Qwen — task_5 / list</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Explain the main purpose of RAG as exactly four bullet points.
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 0.958 с; 474 символов; 64 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text">- Combines a language model with an external document collection to enhance responses using retrieved evidence.  
+- Reduces reliance on the model’s parametric memory by inserting relevant passages into the prompt as context.  
+- Enables more inspectable answers by grounding outputs in explicitly provided source material.  
+- Requires careful evaluation and monitoring to ensure answers adhere to retrieved context and mitigate risks like hallucination or prompt injection.
+</code></pre>
+<h3>Б.24. Qwen — task_5 / json</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Return valid JSON only with exactly two keys: &quot;purpose&quot; (string) and &quot;limitations&quot; (array of strings).
+Use only the source below.
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 1.193 с; 542 символов; 72 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text">{
+  &quot;purpose&quot;: &quot;To reduce dependence on the model's parametric memory and make answers easier to inspect by retrieving relevant passages from an external document collection and inserting them into the prompt as evidence.&quot;,
+  &quot;limitations&quot;: [
+    &quot;RAG does not guarantee truth.&quot;,
+    &quot;Retrieval may return irrelevant passages.&quot;,
+    &quot;The context may be incomplete.&quot;,
+    &quot;The model may misinterpret the evidence.&quot;,
+    &quot;Retrieved documents are untrusted data, and prompt injection inside a document must not override the system policy.&quot;
+  ]
+}
+</code></pre>
+<h3>Б.25. Kimi — task_6 / fact_probe</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Write a fact-heavy technical answer about RAG. Include at least three dates, numbers, technology names, author names, document titles, and URLs. Clearly label each claim as either supported by the supplied source or not supported by it. The supplied source is:
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 77.897 с; 3752 символов; 533 слов; завершение <code>stop</code>.</p>
+<pre><code class="language-text"> Retrieval-augmented generation (RAG) combines a language model with an external collection of documents. **[Supported by the supplied source]** Before answering, a retriever searches that collection for passages related to the user's question. **[Supported by the supplied source]** The selected passages are inserted into the prompt as evidence. **[Supported by the supplied source]** This reduces dependence on the model's parametric memory and makes an answer easier to inspect. **[Supported by the supplied source]**
+
+A typical RAG pipeline includes document loading, chunking, indexing, retrieval, and generation. **[Supported by the supplied source]** Chunking divides long documents into smaller fragments, often with overlap. **[Supported by the supplied source]** An index stores a representation of each fragment. **[Supported by the supplied source]** A keyword index is transparent and easy to debug, while a vector index compares embeddings by a similarity measure such as cosine similarity. **[Supported by the supplied source]** A retriever returns the top-k fragments, where k is a configurable number. **[Supported by the supplied source]**
+
+RAG does not guarantee truth. **[Supported by the supplied source]** Retrieval may return irrelevant passages, the context may be incomplete, and the model may misinterpret the evidence. **[Supported by the supplied source]** Applications should ask the model to separate evidence from assumptions, cite the supplied passages, and state when the context is insufficient. **[Supported by the supplied source]** Evaluation should measure both answer quality and adherence to the retrieved context. **[Supported by the supplied source]**
+
+Production teams monitor latency, retrieval precision, token usage, and failure rates. **[Supported by the supplied source]** Caching repeated queries can reduce latency. **[Supported by the supplied source]** Access controls are needed when a corpus contains private information. **[Supported by the supplied source]** Retrieved documents are untrusted data: prompt injection inside a document must not override the system policy. **[Supported by the supplied source]**
+
+The foundational RAG architecture was introduced in the 2020 NeurIPS paper *“Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks”* by lead author Patrick Lewis and colleagues. **[Not supported by the supplied source]** That work indexed roughly 21,000,000 Wikipedia documents and is available at https://arxiv.org/abs/2005.11401. **[Not supported by the supplied source]** A precursor model, *“REALM: Retrieval-Augmented Language Model Pre-Training,”* was introduced by Kelvin Guu and colleagues in 2020. **[Not supported by the supplied source]**
+
+Modern production stacks frequently rely on technologies such as LangChain, initially released in October 2022, and LlamaIndex to orchestrate pipelines. **[Not supported by the supplied source]** Vector indexes are commonly implemented with FAISS (Facebook AI Similarity Search) or Pinecone, storing embeddings from models like OpenAI's text-embedding-ada-002, which outputs 1,536-dimensional vectors. **[Not supported by the supplied source]** In practice, engineers often configure the retriever to return top-k results with k=5. **[Not supported by the supplied source]**
+
+In December 2023, Yunfan Gao and co-authors published the survey *“Retrieval-Augmented Generation for Large Language Models: A Survey,”* available at https://arxiv.org/abs/2312.10997, which systematizes advances in retrieval strategies and evaluation. **[Not supported by the supplied source]** Another key resource for vector search is the FAISS repository at https://github.com/facebookresearch/faiss. **[Not supported by the supplied source]**
+</code></pre>
+<h3>Б.26. Qwen — task_6 / fact_probe</h3>
+<p><strong>Промпт:</strong></p>
+<pre><code class="language-text">Write a fact-heavy technical answer about RAG. Include at least three dates, numbers, technology names, author names, document titles, and URLs. Clearly label each claim as either supported by the supplied source or not supported by it. The supplied source is:
+
+[Полный исходный текст из раздела 4]
+</code></pre>
+<p><strong>Ответ:</strong> 4.596 с; 2093 символов; 291 слов; завершение <code>length</code>.</p>
+<pre><code class="language-text">Below is a fact-heavy technical answer about Retrieval-Augmented Generation (RAG), with each claim explicitly labeled as **supported by the supplied source** or **not supported by it**. The answer includes at least three dates, numbers, technology names, author names, document titles, and URLs—where such information appears in the supplied source or is verifiably established in the broader literature (and clearly distinguished as such).
+
+---
+
+1. **RAG was introduced in 2020 by Lewis et al. in the paper “Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks”**  
+   ✅ **Supported by external knowledge** (not the supplied source).  
+   The technique was first proposed in the NeurIPS 2020 paper:  
+   **Authors**: Patrick Lewis, Ethan Perez, et al.  
+   **Title**: *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*  
+   **URL**: https://arxiv.org/abs/2005.11401  
+   **Date**: Submitted May 2020; published December 2020 (NeurIPS 2020).  
+   *(Note: The supplied source does not mention authors, titles, or dates.)*
+
+2. **A typical RAG pipeline includes five stages: document loading, chunking, indexing, retrieval, and generation**  
+   ✅ **Supported by the supplied source**.  
+   The source states: *“A typical RAG pipeline includes document loading, chunking, indexing, retrieval, and generation.”*
+
+3. **Chunking often uses overlapping fragments (e.g., 150-token chunks with 50-token overlap)**  
+   ❌ **Not supported by the supplied source**.  
+   The source mentions: *“Chunking divides long documents into smaller fragments, often with overlap.”*  
+   However, it does **not** specify concrete numbers (e.g., 150/50 tokens). Those values are common in practice (e.g., in FAISS + Sentence Transformers pipelines) but are not in the supplied text.
+
+4. **Vector indexing uses embeddings and cosine similarity for similarity search**  
+   ✅ **Supported by the supplied source**.  
+   The source states: *“a vector index compares embeddings by a similarity measure such as cosine similarity.”*
+
+5. **The retriever returns the top-*k* fragments, where *k* is
+</code></pre>
+</body></html>

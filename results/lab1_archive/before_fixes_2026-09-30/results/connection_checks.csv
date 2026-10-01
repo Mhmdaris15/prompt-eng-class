@@ -1,0 +1,3 @@
+﻿task,variant,model,prompt,output,latency_seconds,error,finish_reason,reasoning_length_chars,length_chars,length_words,number_count,year_count,link_count,caution_marker_count,confident_marker_count
+task_1,connection_check,moonshotai/Kimi-K2.6,Reply with exactly: connection verified., connection verified.,0.779,,stop,164,21,2,0,0,0,0,0
+task_1,connection_check,Qwen/Qwen3-Coder-Next,Reply with exactly: connection verified.,connection verified.,0.26,,stop,0,20,2,0,0,0,0,0

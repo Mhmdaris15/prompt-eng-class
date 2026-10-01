@@ -1,0 +1,7 @@
+﻿model,claim_number,candidate_claim,source_or_url_checked,status,comment,raw_output_file
+moonshotai/Kimi-K2.6,1,,,TO_VERIFY,"Copy a concrete date, number, name, title, URL, or capability claim from the raw output and verify it manually.",lab1_results.csv
+moonshotai/Kimi-K2.6,2,,,TO_VERIFY,"Copy a concrete date, number, name, title, URL, or capability claim from the raw output and verify it manually.",lab1_results.csv
+moonshotai/Kimi-K2.6,3,,,TO_VERIFY,"Copy a concrete date, number, name, title, URL, or capability claim from the raw output and verify it manually.",lab1_results.csv
+Qwen/Qwen3-Coder-Next,1,,,TO_VERIFY,"Copy a concrete date, number, name, title, URL, or capability claim from the raw output and verify it manually.",lab1_results.csv
+Qwen/Qwen3-Coder-Next,2,,,TO_VERIFY,"Copy a concrete date, number, name, title, URL, or capability claim from the raw output and verify it manually.",lab1_results.csv
+Qwen/Qwen3-Coder-Next,3,,,TO_VERIFY,"Copy a concrete date, number, name, title, URL, or capability claim from the raw output and verify it manually.",lab1_results.csv
