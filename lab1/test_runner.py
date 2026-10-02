@@ -9,6 +9,7 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 from lab1 import runner
+from lab1.report import format_check
 from labs.common import LabConfig
 
 
@@ -51,10 +52,19 @@ class RunnerTests(unittest.TestCase):
         first = self.run_batch()
         first_path = Path(first.get('output_dir', self.root))
         review = first_path / 'quality_scores.csv'
-        review.write_text('completed review', encoding='utf-8')
+        with review.open(encoding='utf-8-sig') as handle:
+            reviewed = list(csv.DictReader(handle))
+        reviewed[0]['accuracy_1_5'] = '4'
+        reviewed[0]['comment'] = 'student annotation'
+        with review.open('w', encoding='utf-8-sig', newline='') as handle:
+            writer = csv.DictWriter(handle, fieldnames=list(reviewed[0]))
+            writer.writeheader(); writer.writerows(reviewed)
         raw = (first_path / 'lab1_results.csv').read_bytes()
         second = self.run_batch()
-        self.assertEqual(review.read_text(encoding='utf-8'), 'completed review')
+        with review.open(encoding='utf-8-sig') as handle:
+            after_review = list(csv.DictReader(handle))
+        self.assertEqual(after_review[0]['accuracy_1_5'], '4')
+        self.assertEqual(after_review[0]['comment'], 'student annotation')
         self.assertEqual((first_path / 'lab1_results.csv').read_bytes(), raw)
         self.assertNotEqual(first['output_dir'], second['output_dir'])
 
@@ -82,12 +92,48 @@ class RunnerTests(unittest.TestCase):
     def test_missing_context_marker_is_recognized(self):
         self.assertEqual(runner.metrics('The information is unavailable.')['caution_marker_count'], 1)
 
+    def test_three_answer_formats_are_machine_checked(self):
+        value = {'purpose': 'p', 'retrieval': 'r', 'limitations': 'l', 'security': 's'}
+        self.assertTrue(format_check({'variant': 'plain_text', 'output': 'One paragraph.'}))
+        self.assertTrue(format_check({'variant': 'list', 'output': '- a\n- b\n- c\n- d'}))
+        self.assertTrue(format_check({'variant': 'json', 'output': json.dumps(value)}))
+        self.assertFalse(format_check({'variant': 'json', 'output': '```json\n' + json.dumps(value) + '\n```'}))
+        self.assertFalse(format_check({'variant': 'list', 'output': '- a\n- b'}))
+
     def test_duplicate_models_are_rejected(self):
         with patch.object(runner, 'OUTPUT_DIR', self.root), \
              patch.object(runner, 'list_models', return_value=self.models):
             with self.assertRaises(ValueError):
                 runner.run(self.config, self.client, [self.models[0]] * 2)
         self.assertEqual(self.requests, [])
+
+    def test_resume_retries_failures_without_repeating_successes(self):
+        self.run_batch()
+        output_dir = next(self.root.glob('runs/*'))
+        rows_path = output_dir / 'lab1_results.csv'
+        with rows_path.open(encoding='utf-8-sig') as handle:
+            rows = list(csv.DictReader(handle))
+        rows[0]['error'] = 'simulated earlier failure'
+        rows[0]['output'] = ''
+        with rows_path.open('w', encoding='utf-8-sig', newline='') as handle:
+            writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+            writer.writeheader(); writer.writerows(rows)
+        manifest_path = output_dir / 'manifest.json'
+        manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+        manifest['status'] = 'failed'; manifest['error_count'] = 1
+        manifest_path.write_text(json.dumps(manifest), encoding='utf-8')
+        self.requests.clear()
+        self.run_batch_resume(output_dir)
+        self.assertEqual(len(self.requests), 1)
+        with rows_path.open(encoding='utf-8-sig') as handle:
+            repaired = list(csv.DictReader(handle))
+        self.assertTrue(all(not r['error'] for r in repaired))
+
+    def run_batch_resume(self, output_dir):
+        with patch.object(runner, 'OUTPUT_DIR', self.root), \
+             patch.object(runner, 'list_models', return_value=self.models):
+            return runner.run(self.config, self.client, self.models,
+                              output_dir=output_dir, resume=True)
 
 
 if __name__ == '__main__':

@@ -1,14 +1,11 @@
-"""Run all tasks from Prompt Engineering Laboratory 1.
-
-The runner is deliberately deterministic in its inputs and records raw model
-outputs so that qualitative judgments can be made from evidence, not memory.
-"""
+"""Run all Prompt Engineering Lab 1 tasks with resumable, timestamped outputs."""
 
 from __future__ import annotations
 
 import argparse
 import hashlib
 import importlib.metadata
+import csv
 import json
 import platform
 import re
@@ -218,7 +215,8 @@ def experiment_prompts() -> list[tuple[str, str, str]]:
 
 
 def run(config: LabConfig, client: OpenAI, selected_models: list[str], *,
-        output_dir: Path | None = None, progress: bool = False) -> dict[str, Any]:
+        output_dir: Path | None = None, progress: bool = False,
+        resume: bool = False) -> dict[str, Any]:
     if len(selected_models) != 2 or len(set(selected_models)) != 2:
         raise ValueError("Select exactly two different models.")
     if config.max_tokens <= 0 or config.timeout <= 0:
@@ -229,10 +227,39 @@ def run(config: LabConfig, client: OpenAI, selected_models: list[str], *,
     started = datetime.now(timezone.utc)
     run_id = started.strftime("%Y%m%dT%H%M%SZ") + "_" + uuid4().hex[:8]
     destination = Path(output_dir) if output_dir is not None else OUTPUT_DIR / "runs" / run_id
-    # An existing folder is never reused, even if it contains only partial results.
-    destination.mkdir(parents=True, exist_ok=False)
+    existing_manifest_path = destination / "manifest.json"
+    if resume:
+        if not existing_manifest_path.is_file():
+            raise ValueError("Resume requires an existing run folder with a manifest.")
+        old_manifest = json.loads(existing_manifest_path.read_text(encoding="utf-8"))
+        if old_manifest.get("status") == "success":
+            raise ValueError("A successful run cannot be resumed.")
+        if old_manifest.get("selected_models") != selected_models or old_manifest.get("max_tokens") != config.max_tokens or old_manifest.get("source_sha256") != hashlib.sha256(SOURCE_TEXT.encode()).hexdigest():
+            raise ValueError("Resume configuration or source does not match the saved run.")
+        run_id = old_manifest["run_id"]
+        start_text = old_manifest["started_at_utc"]
+        started = datetime.fromisoformat(start_text)
+        manifest = old_manifest
+        saved = destination / "lab1_results.csv"
+        if saved.exists():
+            with saved.open(encoding="utf-8-sig", newline="") as handle:
+                results = list(csv.DictReader(handle))
+        else:
+            results = []
+        saved_checks = destination / "connection_checks.csv"
+        if saved_checks.exists():
+            with saved_checks.open(encoding="utf-8-sig", newline="") as handle:
+                connection_checks = list(csv.DictReader(handle))
+        else:
+            connection_checks = []
+    else:
+        # An existing folder is never reused, even if it contains partial results.
+        destination.mkdir(parents=True, exist_ok=False)
+        results = []
+        connection_checks = []
+        manifest = {}
     snapshot = destination / "code_snapshot"
-    snapshot.mkdir()
+    snapshot.mkdir(exist_ok=resume)
     hashes = {}
     for relative in ("lab1/runner.py", "lab1/source_text.py", "labs/common.py", "requirements.txt"):
         content = (ROOT / relative).read_bytes()
@@ -241,7 +268,14 @@ def run(config: LabConfig, client: OpenAI, selected_models: list[str], *,
         target.write_bytes(content)
         hashes[relative] = hashlib.sha256(content).hexdigest()
     (destination / "source_text.txt").write_text(SOURCE_TEXT, encoding="utf-8")
-    manifest = {
+    if resume:
+        if manifest.get("code_sha256") != hashes:
+            raise ValueError("Resume code snapshot differs; start a new run instead.")
+        manifest["resume_count"] = manifest.get("resume_count", 0) + 1
+        manifest.setdefault("resume_started_at_utc", []).append(datetime.now(timezone.utc).isoformat())
+        manifest["status"] = "running"
+    else:
+        manifest = {
         "run_id": run_id, "run_date": started.date().isoformat(),
         "started_at_utc": started.isoformat(), "status": "running",
         "output_dir": str(destination.resolve()), "base_url": config.base_url,
@@ -259,9 +293,7 @@ def run(config: LabConfig, client: OpenAI, selected_models: list[str], *,
         "manual_verification_required": True,
         "metrics_version": 2,
         "word_count_definition": "Unicode alphanumeric groups, preserving internal hyphens and apostrophes; numbers included.",
-    }
-    results: list[dict[str, Any]] = []
-    connection_checks: list[dict[str, Any]] = []
+        }
 
     def checkpoint() -> None:
         write_csv(destination / "lab1_results.csv", results)
@@ -285,6 +317,9 @@ def run(config: LabConfig, client: OpenAI, selected_models: list[str], *,
 
     checkpoint()
     for model in selected_models:
+        if any(r["model"] == model and not r["error"] and r["output"].strip() for r in connection_checks):
+            continue
+        connection_checks[:] = [r for r in connection_checks if r["model"] != model]
         connection_checks.append(request(model, "task_1", "connection_check",
                                          "Reply with exactly: connection verified.", 0.0))
         checkpoint()
@@ -293,6 +328,10 @@ def run(config: LabConfig, client: OpenAI, selected_models: list[str], *,
         for index, (task, variant, prompt) in enumerate(experiment_prompts()):
             order = selected_models if index % 2 == 0 else selected_models[::-1]
             for model in order:
+                previous = next((r for r in results if r["model"] == model and r["task"] == task and r["variant"] == variant), None)
+                if previous is not None and not previous["error"] and previous["output"].strip() and previous["finish_reason"] == "stop":
+                    continue
+                results[:] = [r for r in results if not (r["model"] == model and r["task"] == task and r["variant"] == variant)]
                 results.append(request(model, task, variant, prompt, 0.2))
                 checkpoint()
     all_rows = connection_checks + results
@@ -307,9 +346,14 @@ def run(config: LabConfig, client: OpenAI, selected_models: list[str], *,
     else:
         manifest["status"] = "success"
     manifest["finished_at_utc"] = datetime.now(timezone.utc).isoformat()
-    write_csv(destination / "hallucination_verification.csv",
-              hallucination_template(r for r in results if r["task"] == "task_6"))
-    write_csv(destination / "quality_scores.csv", quality_template(results))
+    preserve_review(destination / "hallucination_verification.csv",
+        hallucination_template(r for r in results if r["task"] == "task_6"),
+        ("model", "claim_number"),
+        ("candidate_claim", "source_or_url_checked", "status", "comment"))
+    preserve_review(destination / "quality_scores.csv", quality_template(results),
+        ("model", "task", "variant"),
+        ("accuracy_1_5", "completeness_1_5", "clarity_1_5",
+         "instruction_following_1_5", "structure_1_5", "verifiability_1_5", "comment"))
     checkpoint()
     return manifest
 
@@ -350,11 +394,28 @@ def quality_template(results: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
     ]
 
 
+def preserve_review(path: Path, generated: list[dict[str, Any]], key_fields: tuple[str, ...],
+                    review_fields: tuple[str, ...]) -> None:
+    """Refresh a review CSV without discarding student-entered annotations."""
+    previous = {}
+    if path.exists():
+        with path.open(encoding="utf-8-sig", newline="") as handle:
+            previous = {tuple(row.get(key, "") for key in key_fields): row
+                        for row in csv.DictReader(handle)}
+    merged = []
+    for row in generated:
+        old = previous.get(tuple(str(row.get(key, "")) for key in key_fields), {})
+        merged.append({**row, **{field: old[field] for field in review_fields
+                                 if old.get(field, "") not in ("", "TO_VERIFY")}})
+    write_csv(path, merged)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--models", nargs=2, metavar=("MODEL_A", "MODEL_B"))
     parser.add_argument("--max-tokens", type=int, help="Same completion budget for both models; defaults to LAB_MAX_TOKENS.")
     parser.add_argument("--output-dir", type=Path, help="New output directory; existing directories are never overwritten.")
+    parser.add_argument("--resume", action="store_true", help="Resume failed or interrupted requests in --output-dir.")
     args = parser.parse_args()
     try:
         config = load_config()
@@ -362,7 +423,7 @@ def main() -> None:
             config = replace(config, max_tokens=args.max_tokens)
         client = make_client(config)
         selected = list(args.models or config.models)
-        manifest = run(config, client, selected, output_dir=args.output_dir, progress=True)
+        manifest = run(config, client, selected, output_dir=args.output_dir, progress=True, resume=args.resume)
         print(json.dumps({k: manifest[k] for k in ("status", "output_dir", "result_rows", "error_count", "truncated_count")}, ensure_ascii=False, indent=2))
         if manifest["status"] != "success":
             raise SystemExit(1)

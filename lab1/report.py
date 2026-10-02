@@ -52,6 +52,7 @@ def format_check(row):
 
 def build(run_dir, student='', group=''):
     manifest = json.loads((run_dir / 'manifest.json').read_text(encoding='utf-8'))
+    assert manifest.get('status') == 'success', 'Do not build the final report from a failed or incomplete run'
     rows = read_csv(run_dir / 'lab1_results.csv')
     scores = read_csv(run_dir / 'quality_scores.csv')
     facts = read_csv(run_dir / 'hallucination_verification.csv')
