@@ -1,0 +1,50 @@
+{
+  "v1": {
+    "name": "V1 Improved",
+    "description": "Role + task + audience + structure + constraints + format",
+    "components": [
+      "role",
+      "task",
+      "audience",
+      "structure",
+      "constraints",
+      "format"
+    ]
+  },
+  "examples": {
+    "bad_example": {
+      "text": "AI is useful for everyone because it makes life easier and helps with many tasks.",
+      "why_weak": "Too general, no concrete situation, no conditional phrasing, reads like a slogan"
+    },
+    "good_example": {
+      "text": "AI can help a student understand a difficult concept if used as an explanation assistant rather than a way to just get the answer. For example, asking 'Can you explain how photosynthesis works step by step?' is more useful than asking 'What is the answer to question 5?'",
+      "why_strong": "Specific situation (student learning), conditional phrasing ('if used as...'), contrasts good vs bad usage, appropriate caution"
+    }
+  },
+  "v2": {
+    "name": "V2 One-Shot",
+    "description": "V1 + one good few-shot example",
+    "components": [
+      "role",
+      "task",
+      "audience",
+      "structure",
+      "constraints",
+      "format",
+      "one_shot_example"
+    ]
+  },
+  "v3": {
+    "name": "V3 Few-Shot",
+    "description": "V1 + three few-shot examples (concrete argument, explanation, cautious conclusion)",
+    "components": [
+      "role",
+      "task",
+      "audience",
+      "structure",
+      "constraints",
+      "format",
+      "few_shot_examples"
+    ]
+  }
+}

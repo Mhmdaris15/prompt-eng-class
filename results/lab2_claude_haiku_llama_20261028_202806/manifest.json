@@ -1,0 +1,52 @@
+{
+  "experiment": "lab2_prompt_engineering",
+  "timestamp": "2026-10-28T20:32:24.058164",
+  "config": {
+    "api_profile": "cloudru",
+    "primary_model": "anthropic/claude-haiku-4.5",
+    "secondary_model": "meta-llama/llama-3.3-70b-instruct",
+    "temperature": 0.3,
+    "max_tokens": 4096,
+    "base_url": "https://foundation-models.api.cloud.ru/v1",
+    "timeout": 180.0,
+    "output_dir": "results\\lab2_claude_haiku_llama_20261028_202806"
+  },
+  "source_text_hash": "13ef01169bfade1627006d0819cfeb2c659c4e2ad65a5e61c65a3b96877836e3",
+  "runner_hash": "17f102573eea7ef847479a4431098393441ad46e8130d9f952c4a3070c119e80",
+  "summary": {
+    "total_requests": 13,
+    "successful": 12,
+    "failed": 1,
+    "avg_latency_sec": 14.883,
+    "avg_length": 1596.4,
+    "by_status": {
+      "ok": 12,
+      "error": 1
+    },
+    "by_model": {
+      "anthropic/claude-haiku-4.5": {
+        "ok": 9
+      },
+      "meta-llama/llama-3.3-70b-instruct": {
+        "ok": 3,
+        "error": 1
+      }
+    }
+  },
+  "models_tested": [
+    "anthropic/claude-haiku-4.5",
+    "meta-llama/llama-3.3-70b-instruct"
+  ],
+  "prompt_names": [
+    "v2",
+    "evaluation",
+    "simple",
+    "edge_strict_json_format",
+    "edge_conflicting_requirements",
+    "edge_too_general_topic",
+    "v3",
+    "v1",
+    "edge_hallucination_risk",
+    "edge_audience_change"
+  ]
+}

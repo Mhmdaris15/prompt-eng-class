@@ -1,0 +1,287 @@
+{
+  "1": [
+    {
+      "article_id": "0705.1308",
+      "authors": "Zongwen Yu, Su Hu, and Chunlei Zhang",
+      "title": "Quantify Entanglement for Multipartite Quantum States",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  In this paper, we consider the problem of how to quantify entanglement for\nany multipartite quantum states. For bipartite pure states partial entropy is a\ngood entanglement measure. By using partial entropy, we firstly introduce the\nCombinatorial Entropy of Fully entangled states (CEF) which can be used to\nquantify entanglement for any fully entangled pure states. In order to quantify\nentanglement for any multipartite states we also need another concept the\nEntanglement Combination (EC) which can be used to completely describe the\nentanglement between any parties of the given quantum states. Combining CEF\nwith EC, we define the Combinatorial Entropy (CE) for any multipartite pure\nstates and present some nice properties which indicate CE is a good\nentanglement measure. Finally, we point out the feasibility of extending these\nthree concepts to mixed quantum states.\n",
+      "year": "2007",
+      "similarity": 0.6906005144119263
+    },
+    {
+      "article_id": "0704.0251",
+      "authors": "Gilad Gour, Nolan R. Wallach",
+      "title": "Entanglement of Subspaces and Error Correcting Codes",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  We introduce the notion of entanglement of subspaces as a measure that\nquantify the entanglement of bipartite states in a randomly selected subspace.\nWe discuss its properties and in particular we show that for maximally\nentangled subspaces it is additive. Furthermore, we show that maximally\nentangled subspaces can play an important role in the study of quantum error\ncorrection codes. We discuss both degenerate and non-degenerate codes and show\nthat the subspace spanned by the logical codewords of a non-degenerate code is\na 2k-totally (maximally) entangled subspace. As for non-degenerate codes, we\nprovide a mathematical definition in terms of subspaces and, as an example, we\nanalyze Shor's nine qubits code in terms of 22 mutually orthogonal subspaces.\n",
+      "year": "2011",
+      "similarity": 0.641682505607605
+    },
+    {
+      "article_id": "0704.1506",
+      "authors": "G. F. Calvo, A. Pic\\'on, and A. Bramon",
+      "title": "Measuring two-photon orbital angular momentum entanglement",
+      "categories": "quant-ph physics.optics",
+      "main_category": "Quantum Physics",
+      "other_categories": "Optics",
+      "abstract": "  We put forward an approach to estimate the amount of bipartite spatial\nentanglement of down-converted photon states correlated in orbital angular\nmomentum and the magnitude of the transverse (radial) wave vectors. Both\ndegrees of freedom are properly considered in our framework, which only\nrequires azimuthal local linear optical transformations and mode selection\nanalysis with two fiber detectors. The coincidence distributions predicted by\nour approach give an excellent fit to the distributions measured in a recent\nexperiment aimed to show the very high-dimensional transverse entanglement of\ntwin photons from a down-conversion source. Our estimate for the Schmidt number\nis substantially lower but still confirms the presence of high-dimensional\nentanglement.\n",
+      "year": "2011",
+      "similarity": 0.6339108943939209
+    },
+    {
+      "article_id": "0704.0757",
+      "authors": "Yong-Cheng Ou and Heng Fan",
+      "title": "Bounds on Negativity of Superpositions",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  The entanglement quantified by negativity of pure bipartite superposed states\nis studied. We show that if the entanglement is quantified by the concurrence\ntwo pure states of high fidelity to one another still have nearly the same\nentanglement. Furthermore this conclusion can be guaranteed by our obtained\ninequality, and the concurrence is shown to be a continuous function even in\ninfinite dimensions. The bounds on the negativity of superposed states in terms\nof those of the states being superposed are obtained. These bounds can find\nuseful applications in estimating the amount of the entanglement of a given\npure state.\n",
+      "year": "2007",
+      "similarity": 0.6269010305404663
+    },
+    {
+      "article_id": "0705.0184",
+      "authors": "Li-Ming Si and Ji-Xuan Hou",
+      "title": "Quantum phase transition and entanglement in Li atom system",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  In this paper we study the quantum phase transition and entanglement in\ns1=1/2 and s2=1 spin pair system by the exact diagonalization method. We show\nthat, for this exactly solvable quantum bi-spin system, entanglement appears\nbefore quantum phase transition and disappears after it. Moreover, we show that\nthe von Neumann entropy, as a measure of entanglement, can reveal quantum phase\ntransition in this system.\n",
+      "year": "2009",
+      "similarity": 0.6174463033676147
+    }
+  ],
+  "2": [
+    {
+      "article_id": "0704.0251",
+      "authors": "Gilad Gour, Nolan R. Wallach",
+      "title": "Entanglement of Subspaces and Error Correcting Codes",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  We introduce the notion of entanglement of subspaces as a measure that\nquantify the entanglement of bipartite states in a randomly selected subspace.\nWe discuss its properties and in particular we show that for maximally\nentangled subspaces it is additive. Furthermore, we show that maximally\nentangled subspaces can play an important role in the study of quantum error\ncorrection codes. We discuss both degenerate and non-degenerate codes and show\nthat the subspace spanned by the logical codewords of a non-degenerate code is\na 2k-totally (maximally) entangled subspace. As for non-degenerate codes, we\nprovide a mathematical definition in terms of subspaces and, as an example, we\nanalyze Shor's nine qubits code in terms of 22 mutually orthogonal subspaces.\n",
+      "year": "2011",
+      "similarity": 0.6403198838233948
+    },
+    {
+      "article_id": "0704.2246",
+      "authors": "J. Laurat, C.W. Chou, H. Deng, K.S. Choi, D. Felinto, H. de\n  Riedmatten, H.J. Kimble",
+      "title": "Towards experimental entanglement connection with atomic ensembles in\n  the single excitation regime",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  We present a protocol for performing entanglement connection between pairs of\natomic ensembles in the single excitation regime. Two pairs are prepared in an\nasynchronous fashion and then connected via a Bell measurement. The resulting\nstate of the two remaining ensembles is mapped to photonic modes and a reduced\ndensity matrix is then reconstructed. Our observations confirm for the first\ntime the creation of coherence between atomic systems that never interacted, a\nfirst step towards entanglement connection, a critical requirement for quantum\nnetworking and long distance quantum communications.\n",
+      "year": "2009",
+      "similarity": 0.6227051615715027
+    },
+    {
+      "article_id": "0704.0758",
+      "authors": "Matthaeus Halder, Alexios Beveratos, Nicolas Gisin, Valerio Scarani,\n  Christoph Simon and Hugo Zbinden",
+      "title": "Entangling Independent Photons by Time Measurement",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  A quantum system composed of two or more subsystems can be in an entangled\nstate, i.e. a state in which the properties of the global system are well\ndefined but the properties of each subsystem are not. Entanglement is at the\nheart of quantum physics, both for its conceptual foundations and for\napplications in information processing and quantum communication. Remarkably,\nentanglement can be \"swapped\": if one prepares two independent entangled pairs\nA1-A2 and B1-B2, a joint measurement on A1 and B1 (called a \"Bell-State\nMeasurement\", BSM) has the effect of projecting A2 and B2 onto an entangled\nstate, although these two particles have never interacted or shared any common\npast[1,2]. Experiments using twin photons produced by spontaneous parametric\ndown-conversion (SPDC) have already demonstrated entanglement swapping[3-6],\nbut here we present its first realization using continuous wave (CW) sources,\nas originally proposed[2]. The challenge was to achieve sufficiently sharp\nsynchronization of the photons in the BSM. Using narrow-band filters, the\ncoherence time of the photons that undergo the BSM is significantly increased,\nexceeding the temporal resolution of the detectors. Hence pulsed sources can be\nreplaced by CW sources, which do not require any synchronization[6,7], allowing\nfor the first time the use of completely autonomous sources. Our experiment\nexploits recent progress in the time precision of photon detectors, in the\nefficiency of photon pair production by SPDC with waveguides in nonlinear\ncrystals[8], and in the stability of narrow-band filters. This approach is\nindependent of the form of entanglement; we employed time-bin entangled\nphotons[9] at telecom wavelengths. Our setup is robust against thermal or\nmechanical fluctuations in optical fibres thanks to cm-long coherence lengths.\n",
+      "year": "2008",
+      "similarity": 0.6172729730606079
+    },
+    {
+      "article_id": "0704.2973",
+      "authors": "Yang Xiang and Shi-Jie Xiong",
+      "title": "Entanglement fidelity and measurement of entanglement preserving in\n  quantum processes",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  The entanglement fidelity provides a measure of how well the entanglement\nbetween two subsystems is preserved in a quantum process. By using a simple\nmodel we show that in some cases this quantity in its original definition fails\nin the measurement of the entanglement preserving. On the contrary, the\nmodified entanglement fidelity, obtained by using a proper local unitary\ntransformation on a subsystem, is shown to exhibit the behavior similar to that\nof the concurrence in the quantum evolution.\n",
+      "year": "2009",
+      "similarity": 0.6066607236862183
+    },
+    {
+      "article_id": "0704.2269",
+      "authors": "S. Natali and Z. Ficek",
+      "title": "Temporal and diffraction effects in entanglement creation in an optical\n  cavity",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  A practical scheme for entanglement creation between distant atoms located\ninside a single-mode optical cavity is discussed. We show that the degree of\nentanglement and the time it takes for the entanglement to reach its optimum\nvalue is a sensitive function the initial conditions and the position of the\natoms inside the cavity mode. It is found that the entangled properties of the\ntwo atoms can readily be extracted from dynamics of a simple two-level system.\nEffectively, we engineer two coupled qubits whose the dynamics are analogous to\nthat of a driven single two-level system. It is found that spatial variations\nof the coupling constants actually help to create transient entanglement which\nmay appear on the time scale much longer than that predicted for the case of\nequal coupling constants. When the atoms are initially prepared in an entangled\nstate, they may remain entangled for all times. We also find that the\nentanglement exhibits an interesting phenomenon of diffraction when the the\natoms are located between the nodes and antinodes of the cavity mode. The\ndiffraction pattern of the entanglement varies with time and we explain this\neffect in terms of the quantum property of complementarity, which is manifested\nas a tradeoff between the knowledge of energy of the exchanged photon versus\nthe evolution time of the system.\n",
+      "year": "2015",
+      "similarity": 0.6001856923103333
+    }
+  ],
+  "3": [
+    {
+      "article_id": "0705.1832",
+      "authors": "Cheng-Jie Zhang, Yong-Sheng Zhang, Shun Zhang, Guang-Can Guo",
+      "title": "Optimal entanglement witnesses based on local orthogonal observables",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  We show that the entanglement witnesses based on local orthogonal observables\nwhich are introduced in [S. Yu and N.-L. Liu, Phys. Rev. Lett. 95, 150504\n(2005)] and [O. G\\\"uhne, M. Mechler, G. T\\'oth and P. Adam, Phys. Rev. A 74,\n010301 (2006)] in linear and nonlinear forms can be optimized, respectively. As\napplications, we calculate the optimal nonlinear witnesses of pure bipartite\nstates and show a lower bound on the I-concurrence of bipartite higher\ndimensional systems with our method.\n",
+      "year": "2009",
+      "similarity": 0.550318717956543
+    },
+    {
+      "article_id": "0704.0418",
+      "authors": "Yu-Cheng Lin, Ferenc Igloi and Heiko Rieger",
+      "title": "Entanglement entropy at infinite randomness fixed points in higher\n  dimensions",
+      "categories": "cond-mat.dis-nn quant-ph",
+      "main_category": "Disordered Systems and Neural Networks",
+      "other_categories": "Quantum Physics",
+      "abstract": "  The entanglement entropy of the two-dimensional random transverse Ising model\nis studied with a numerical implementation of the strong disorder\nrenormalization group. The asymptotic behavior of the entropy per surface area\ndiverges at, and only at, the quantum phase transition that is governed by an\ninfinite randomness fixed point. Here we identify a double-logarithmic\nmultiplicative correction to the area law for the entanglement entropy. This\ncontrasts with the pure area law valid at the infinite randomness fixed point\nin the diluted transverse Ising model in higher dimensions.\n",
+      "year": "2009",
+      "similarity": 0.5263198614120483
+    },
+    {
+      "article_id": "0704.2973",
+      "authors": "Yang Xiang and Shi-Jie Xiong",
+      "title": "Entanglement fidelity and measurement of entanglement preserving in\n  quantum processes",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  The entanglement fidelity provides a measure of how well the entanglement\nbetween two subsystems is preserved in a quantum process. By using a simple\nmodel we show that in some cases this quantity in its original definition fails\nin the measurement of the entanglement preserving. On the contrary, the\nmodified entanglement fidelity, obtained by using a proper local unitary\ntransformation on a subsystem, is shown to exhibit the behavior similar to that\nof the concurrence in the quantum evolution.\n",
+      "year": "2009",
+      "similarity": 0.5196516513824463
+    },
+    {
+      "article_id": "0704.2269",
+      "authors": "S. Natali and Z. Ficek",
+      "title": "Temporal and diffraction effects in entanglement creation in an optical\n  cavity",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  A practical scheme for entanglement creation between distant atoms located\ninside a single-mode optical cavity is discussed. We show that the degree of\nentanglement and the time it takes for the entanglement to reach its optimum\nvalue is a sensitive function the initial conditions and the position of the\natoms inside the cavity mode. It is found that the entangled properties of the\ntwo atoms can readily be extracted from dynamics of a simple two-level system.\nEffectively, we engineer two coupled qubits whose the dynamics are analogous to\nthat of a driven single two-level system. It is found that spatial variations\nof the coupling constants actually help to create transient entanglement which\nmay appear on the time scale much longer than that predicted for the case of\nequal coupling constants. When the atoms are initially prepared in an entangled\nstate, they may remain entangled for all times. We also find that the\nentanglement exhibits an interesting phenomenon of diffraction when the the\natoms are located between the nodes and antinodes of the cavity mode. The\ndiffraction pattern of the entanglement varies with time and we explain this\neffect in terms of the quantum property of complementarity, which is manifested\nas a tradeoff between the knowledge of energy of the exchanged photon versus\nthe evolution time of the system.\n",
+      "year": "2015",
+      "similarity": 0.518756628036499
+    },
+    {
+      "article_id": "0704.2945",
+      "authors": "Huan-Qiang Zhou",
+      "title": "Renormalization group flows and quantum phase transitions: fidelity\n  versus entanglement",
+      "categories": "cond-mat.stat-mech cond-mat.str-el",
+      "main_category": "Statistical Mechanics",
+      "other_categories": "Strongly Correlated Electrons",
+      "abstract": "  We compare the roles of fidelity and entanglement in characterizing\nrenormalization group flows and quantum phase transitions. It turns out that\nthe scaling parameter extracted from fidelity for different ground states\nsucceeds to capture nontrivial information including stable and unstable fixed\npoints, whereas the von Neumann entropy as a bipartite entanglement measure (or\nequivalently, majorization relations satisfied by the spectra of the reduced\ndensity matrix along renormalization group flows) often fails, as far as the\nintrinsic irreversibility-information loss along renormalization group flows-is\nconcerned. We also clarify an intimate connection between the von Neumman\nentropy, majorization relations, and fidelity. The relevance to Zamolodchikov's\nc theorem is indicated.\n",
+      "year": "2007",
+      "similarity": 0.5129268765449524
+    }
+  ],
+  "4": [
+    {
+      "article_id": "0705.0419",
+      "authors": "Walid Belkhir (LIF), Luigi Santocanale (LIF)",
+      "title": "Undirected Graphs of Entanglement Two",
+      "categories": "cs.LO cs.GT",
+      "main_category": "Logic in Computer Science",
+      "other_categories": "Computer Science and Game Theory",
+      "abstract": "  Entanglement is a complexity measure of directed graphs that origins in fixed\npoint theory. This measure has shown its use in designing efficient algorithms\nto verify logical properties of transition systems. We are interested in the\nproblem of deciding whether a graph has entanglement at most k. As this measure\nis defined by means of games, game theoretic ideas naturally lead to design\npolynomial algorithms that, for fixed k, decide the problem. Known\ncharacterizations of directed graphs of entanglement at most 1 lead, for k = 1,\nto design even faster algorithms. In this paper we present an explicit\ncharacterization of undirected graphs of entanglement at most 2. With such a\ncharacterization at hand, we devise a linear time algorithm to decide whether\nan undirected graph has this property.\n",
+      "year": "2009",
+      "similarity": 0.5720440745353699
+    },
+    {
+      "article_id": "0704.2269",
+      "authors": "S. Natali and Z. Ficek",
+      "title": "Temporal and diffraction effects in entanglement creation in an optical\n  cavity",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  A practical scheme for entanglement creation between distant atoms located\ninside a single-mode optical cavity is discussed. We show that the degree of\nentanglement and the time it takes for the entanglement to reach its optimum\nvalue is a sensitive function the initial conditions and the position of the\natoms inside the cavity mode. It is found that the entangled properties of the\ntwo atoms can readily be extracted from dynamics of a simple two-level system.\nEffectively, we engineer two coupled qubits whose the dynamics are analogous to\nthat of a driven single two-level system. It is found that spatial variations\nof the coupling constants actually help to create transient entanglement which\nmay appear on the time scale much longer than that predicted for the case of\nequal coupling constants. When the atoms are initially prepared in an entangled\nstate, they may remain entangled for all times. We also find that the\nentanglement exhibits an interesting phenomenon of diffraction when the the\natoms are located between the nodes and antinodes of the cavity mode. The\ndiffraction pattern of the entanglement varies with time and we explain this\neffect in terms of the quantum property of complementarity, which is manifested\nas a tradeoff between the knowledge of energy of the exchanged photon versus\nthe evolution time of the system.\n",
+      "year": "2015",
+      "similarity": 0.5601025819778442
+    },
+    {
+      "article_id": "0705.0943",
+      "authors": "Joachim Brand, Sergej Flach, Victor Fleurov, L. S. Schulmann, Denis\n  Tolkunov",
+      "title": "Localization by entanglement",
+      "categories": "cond-mat.other nlin.PS quant-ph",
+      "main_category": "Other Condensed Matter",
+      "other_categories": "Pattern Formation and Solitons, Quantum Physics",
+      "abstract": "  We study the localization of bosonic atoms in an optical lattice, which\ninteract in a spatially confined region. The classical theory predicts that\nthere is no localization below a threshold value for the strength of\ninteraction that is inversely proportional to the number of participating\natoms. In a full quantum treatment, however, we find that localized states\nexist for arbitrarily weak attractive or repulsive interactions for any number\n($>1$) of atoms. We further show, using an explicit solution of the\ntwo-particle bound state and an appropriate measure of entanglement, that the\nentanglement tends to a finite value in the limit of weak interactions. Coupled\nwith the non-existence of localization in an optimized quantum product state,\nwe conclude that the localization exists by virtue of entanglement.\n",
+      "year": "2008",
+      "similarity": 0.5523650646209717
+    },
+    {
+      "article_id": "0704.3907",
+      "authors": "Lucas Lamata",
+      "title": "Developments in entanglement theory and applications to relevant\n  physical systems",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  This Thesis is devoted to the analysis of entanglement in relevant physical\nsystems. Entanglement is the conducting theme of this research, though I do not\ndedicate to a single topic, but consider a wide scope of physical situations. I\nhave followed mainly three lines of research for this Thesis, with a series of\ndifferent works each, which are, Entanglement and Relativistic Quantum Theory,\nContinuous-variable entanglement, and Multipartite entanglement.\n",
+      "year": "2007",
+      "similarity": 0.5422704815864563
+    },
+    {
+      "article_id": "0704.2903",
+      "authors": "Julia Kempe, Hirotada Kobayashi, Keiji Matsumoto, Ben Toner, Thomas\n  Vidick",
+      "title": "Entangled games are hard to approximate",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  We establish the first hardness results for the problem of computing the\nvalue of one-round games played by a verifier and a team of provers who can\nshare quantum entanglement. In particular, we show that it is NP-hard to\napproximate within an inverse polynomial the value of a one-round game with (i)\nquantum verifier and two entangled provers or (ii) classical verifier and three\nentangled provers. Previously it was not even known if computing the value\nexactly is NP-hard. We also describe a mathematical conjecture, which, if true,\nwould imply hardness of approximation to within a constant.\n  We start our proof by describing two ways to modify classical multi-prover\ngames to make them resistant to entangled provers. We then show that a strategy\nfor the modified game that uses entanglement can be ``rounded'' to one that\ndoes not. The results then follow from classical inapproximability bounds. Our\nwork implies that, unless P=NP, the values of entangled-prover games cannot be\ncomputed by semidefinite programs that are polynomial in the size of the\nverifier's system, a method that has been successful for more restricted\nquantum games.\n",
+      "year": "2007",
+      "similarity": 0.5413382649421692
+    }
+  ],
+  "5": [
+    {
+      "article_id": "0705.0279",
+      "authors": "Fu-Guo Deng, Xi-Han Li, and Hong-Yu Zhou",
+      "title": "Opaque Attack on Three-Party Quantum Secret Sharing Based on\n  Entanglement",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  Security of the three-party quantum secret sharing (QSS) schemes based on\nentanglement and a collective eavesdropping check is analyzed in the case of\nconsiderable quantum channel losses. An opaque attack scheme is presented for\nthe dishonest agent to eavesdrop the message obtained by the other agent\nfreely, which reveals that these QSS schemes are insecure for transmission\nefficiencies lower than 50%, especially when they are used to share an unknown\nquantum state. Finally, we present a general way to improve the security of QSS\nschemes for sharing not only a private key but also an unknown quantum state.\n",
+      "year": "2007",
+      "similarity": 0.4614095687866211
+    },
+    {
+      "article_id": "0705.1748",
+      "authors": "Chun-Yan Li, Xi-Han Li, Fu-Guo Deng, Ping Zhou, Yu-Jie Liang, Hong-Yu\n  Zhou",
+      "title": "Efficient quantum cryptography network without entanglement and quantum\n  memory",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  An efficient quantum cryptography network protocol is proposed with\nd-dimension polarized photons, without resorting to entanglement and quantum\nmemory. A server on the network, say Alice, provides the service for preparing\nand measuring single photons whose initial state are |0>. The users code the\ninformation on the single photons with some unitary operations. For preventing\nthe untrustworthy server Alice from eavesdropping the quantum lines, a\nnonorthogonal-coding technique (decoy-photon technique) is used in the process\nthat the quantum signal is transmitted between the users. This protocol does\nnot require the servers and the users to store the quantum state and almost all\nof the single photons can be used for carrying the information, which makes it\nmore convenient for application than others with present technology. We also\ndiscuss the case with a faint laser pulse.\n",
+      "year": "2015",
+      "similarity": 0.45661309361457825
+    },
+    {
+      "article_id": "0704.1957",
+      "authors": "Garry Bowen and Nilanjana Datta",
+      "title": "Entanglement Cost for Sequences of Arbitrary Quantum States",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  The entanglement cost of arbitrary sequences of bipartite states is shown to\nbe expressible as the minimization of a conditional spectral entropy rate over\nsequences of separable extensions of the states in the sequence. The expression\nis shown to reduce to the regularized entanglement of formation when the n-th\nstate in the sequence consists of n copies of a single bipartite state.\n",
+      "year": "2011",
+      "similarity": 0.4240869879722595
+    },
+    {
+      "article_id": "0704.1172",
+      "authors": "Zhe Sun, Xiaoguang Wang and C. P. Sun",
+      "title": "Disentanglement in a quantum critical environment",
+      "categories": "quant-ph",
+      "main_category": "Quantum Physics",
+      "other_categories": "",
+      "abstract": "  We study the dynamical process of disentanglement of two qubits and two\nqutrits coupled to an Ising spin chain in a transverse field, which exhibits a\nquantum phase transition. We use the concurrence and negativity to quantify\nentanglement of two qubits and two qutrits, respectively. Explicit connections\nbetween the concurrence (negativity) and the decoherence factors are given for\ntwo initial states, the pure maximally entangled state and the mixed Werner\nstate. We find that the concurrence and negativity decay exponentially with\nfourth power of time in the vicinity of critical point of the environmental\nsystem.\n",
+      "year": "2009",
+      "similarity": 0.4230991005897522
+    },
+    {
+      "article_id": "0704.2247",
+      "authors": "Tomaz Prosen",
+      "title": "Chaos and Complexity of quantum motion",
+      "categories": "quant-ph cond-mat.stat-mech nlin.CD",
+      "main_category": "Quantum Physics",
+      "other_categories": "Statistical Mechanics, Chaotic Dynamics",
+      "abstract": "  The problem of characterizing complexity of quantum dynamics - in particular\nof locally interacting chains of quantum particles - will be reviewed and\ndiscussed from several different perspectives: (i) stability of motion against\nexternal perturbations and decoherence, (ii) efficiency of quantum simulation\nin terms of classical computation and entanglement production in operator\nspaces, (iii) quantum transport, relaxation to equilibrium and quantum mixing,\nand (iv) computation of quantum dynamical entropies. Discussions of all these\ncriteria will be confronted with the established criteria of integrability or\nquantum chaos, and sometimes quite surprising conclusions are found. Some\nconjectures and interesting open problems in ergodic theory of the quantum many\nproblem are suggested.\n",
+      "year": "2009",
+      "similarity": 0.41770607233047485
+    }
+  ]
+}

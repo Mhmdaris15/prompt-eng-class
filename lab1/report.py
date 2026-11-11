@@ -32,7 +32,13 @@ def table(headers, records):
 
 
 def short(model):
-    return 'Kimi' if model.startswith('moonshot') else 'Qwen'
+    if model.startswith('moonshotai/Kimi'):
+        return 'Kimi'
+    if model.startswith('Qwen/'):
+        return 'Qwen'
+    if model.startswith('google/gemini'):
+        return 'Gemini'
+    return model.rsplit('/', 1)[-1]
 
 
 def format_check(row):
@@ -51,6 +57,8 @@ def format_check(row):
 
 
 def build(run_dir, student='', group=''):
+    run_dir = Path(run_dir)
+    run_display = str(run_dir.resolve().relative_to(ROOT))
     manifest = json.loads((run_dir / 'manifest.json').read_text(encoding='utf-8'))
     assert manifest.get('status') == 'success', 'Do not build the final report from a failed or incomplete run'
     rows = read_csv(run_dir / 'lab1_results.csv')
@@ -86,9 +94,9 @@ def build(run_dir, student='', group=''):
 
 ## 3. Использованные модели и условия
 
-Выбраны `moonshotai/Kimi-K2.6` и `Qwen/Qwen3-Coder-Next`: обе доступны через один API и позволяют сравнить две разные модели на одном техническом материале. Выбор основан на доступности и пригодности для текстовых запросов, а не на предположении о превосходстве одной модели.
+Выбраны модели `{manifest['selected_models'][0]}` и `{manifest['selected_models'][1]}`: обе доступны через один API и позволяют сравнить разные модели на одном техническом материале. Выбор основан на доступности и пригодности для текстовых запросов, а не на предположении о превосходстве одной модели.
 
-Адрес подключения: `{manifest['base_url']}`. Ключ поступает из `API_KEY` в окружении или `.env`; значение ключа в результаты не записывается. Получено **{manifest['available_models_count']} идентификаторов**; полный список сохранён в приложении А. Наличие идентификатора в списке не означает, что каждый из них проверен на генерацию текста.
+Адрес подключения: `{manifest['base_url']}`. Выбран профиль `{manifest.get('api_profile', 'cloudru')}`; имя переменной ключа — `{('COURSE_API_KEY' if manifest.get('api_profile') == 'course' else 'API_KEY')}`. Значение ключа в результаты не записывается. Получено **{manifest['available_models_count']} идентификаторов**; полный список сохранён в приложении А. Наличие идентификатора в списке не означает, что каждый из них проверен на генерацию текста.
 
 | Параметр | Значение |
 | --- | --- |
@@ -104,7 +112,7 @@ def build(run_dir, student='', group=''):
 | Порядок | Запросы попарно; первая модель чередуется между промптами |
 | Основных ответов | {len(rows)}: 13 промптов × 2 модели |
 
-Kimi дополнительно получает запрос `thinking: {{type: disabled}}`. Это пожелание API; наличие или отсутствие поля reasoning фиксируется отдельно. Одинаковый верхний предел токенов не гарантирует одинаковые токенизаторы, внутренние вычисления или стоимость. Поэтому сравнивается наблюдаемое поведение сервисов при указанных условиях.
+Модельные параметры запроса: `{json.dumps(manifest.get('model_request_options', {}), ensure_ascii=False)}`. Одинаковый верхний предел токенов не гарантирует одинаковые токенизаторы, внутренние вычисления или стоимость. Поэтому сравнивается наблюдаемое поведение сервисов при указанных условиях.
 
 Исходный текст, параметры, версии пакетов, расход токенов и SHA-256 кода сохранены вместе с результатами. Каждый новый запуск получает отдельную папку; существующую папку нельзя перезаписать. Результаты старого эксперимента сохранены отдельно и в расчёты этого отчёта не включены.
 
@@ -122,10 +130,10 @@ Kimi дополнительно получает запрос `thinking: {{type:
 ```powershell
 python -m pip install -r requirements.txt
 python -m unittest lab1.test_runner -v
-python -m lab1.runner --max-tokens 8192
+python -m lab1.runner --models {manifest['selected_models'][0]} {manifest['selected_models'][1]} --max-tokens {manifest['max_tokens']} --output-dir {run_display}
 ```
 
-Последняя команда создаёт новую папку в `results/lab1/runs/`; показанный в отчёте запуск находится в `results/lab1_corrected/`. Повтор с тем же `--output-dir` отклоняется, чтобы сохранить уже заполненные оценки.
+Каждый запуск сохраняется в отдельной папке; runner не перезаписывает существующую папку. Для этого отчёта использована папка `results/lab1_gemini_20261002/`.
 
 Ключевой фрагмент подключения и отправки запроса:
 
@@ -157,9 +165,9 @@ for model in config.models:
 ''')
     summary_table = []
     for variant in ('summary', 'main_points', 'short_recap', 'outline', 'takeaways'):
-        pair = sorted((r for r in rows if r['task'] == 'task_3' and r['variant'] == variant), key=lambda r: short(r['model']))
+        pair = sorted((r for r in rows if r['task'] == 'task_3' and r['variant'] == variant), key=lambda r: manifest['selected_models'].index(r['model']))
         summary_table.append([variant, pair[0]['prompt'].splitlines()[0], pair[0]['word_count'], pair[1]['word_count'], notes['summaries'][variant]])
-    add(table(['Вариант', 'Инструкция', 'Kimi, слов', 'Qwen, слов', 'Сравнение'], summary_table))
+    add(table(['Вариант', 'Инструкция', short(manifest['selected_models'][0]) + ', слов', short(manifest['selected_models'][1]) + ', слов', 'Сравнение'], summary_table))
     add(notes['summary_conclusion'])
     add('''### 5.4. Вопросы по тексту
 
@@ -237,16 +245,16 @@ for model in config.models:
 
 Статус сбора данных: `{manifest['status']}`. Этот статус означает техническую завершённость запросов, а не фактическую правильность всех ответов. Программные регрессионные проверки выполнены отдельно от обращений к API.
 
-Материалы текущего запуска: `results/lab1_corrected/`. В папке находятся CSV с промптами и ответами, `source_text.txt`, `manifest.json`, снимок исходного кода, заполненные `quality_scores.csv`, `hallucination_verification.csv` и аналитические заметки `review_notes.json`. Поле `manual_verification_required` отражает состояние при сборе данных; завершённая проверка оформлена отдельными файлами.
+Материалы текущего запуска: `{run_display}/`. В папке находятся CSV с промптами и ответами, `source_text.txt`, `manifest.json`, снимок исходного кода, заполненные `quality_scores.csv`, `hallucination_verification.csv` и аналитические заметки `review_notes.json`. Поле `manual_verification_required` отражает состояние при сборе данных; завершённая проверка оформлена отдельными файлами.
 
 Для повторного построения документа без новых API-запросов:
 
 ```powershell
 python -m pip install -r requirements-report.txt
-python -m lab1.report --run-dir results/lab1_corrected
+python -m lab1.report --run-dir {run_display}
 ```
 
-Предыдущая версия сохранена в `results/lab1_archive/before_fixes_2026-09-30/`. Старые численные результаты и оценки не переносились в новую таблицу.
+Предыдущие эксперименты сохранены отдельно; их численные результаты и оценки не переносились в таблицы этого отчёта.
 
 ## Приложение А. Список доступных идентификаторов
 ''')
@@ -258,7 +266,8 @@ python -m lab1.report --run-dir results/lab1_corrected
     for number, row in enumerate(rows, 1):
         prompt = row['prompt'].replace(source, '[Полный исходный текст раздела 4]')
         add(f"### Б.{number}. {short(row['model'])} — {row['task']}/{row['variant']}\n\n**Промпт:**\n\n```text\n{prompt}\n```\n\n**Ответ:** {row['latency_seconds']} с; {row['word_count']} слов; `{row['finish_reason']}`.\n\n```text\n{row['output']}\n```")
-    target = ROOT / 'LAB1_REPORT.md'
+    target = ROOT / 'reports/lab1/LAB1_REPORT.md'
+    target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text('\n\n'.join(pieces) + '\n', encoding='utf-8')
     export_document(target)
     print(f'Wrote {target.name}, HTML and DOCX from {manifest["run_id"]}.')

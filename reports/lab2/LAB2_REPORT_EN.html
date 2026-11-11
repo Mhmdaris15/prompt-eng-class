@@ -1,0 +1,1162 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>LAB2_REPORT_EN</title><style>body{font:11pt/1.5 Georgia,serif;max-width:1100px;margin:36px auto;padding:0 24px;color:#17202a}h1,h2,h3{font-family:Arial,sans-serif}table{border-collapse:collapse;width:100%;font:9pt/1.3 Arial,sans-serif;margin:18px 0}td,th{border:1px solid #b8c2cc;padding:6px;vertical-align:top;overflow-wrap:anywhere}th{background:#edf2f7}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f5f7f9;padding:12px;font:9pt/1.35 Consolas,monospace}a{color:#185b97}@media print{body{margin:0;padding:0;max-width:none}h2,h3{break-after:avoid}tr{break-inside:avoid}thead{display:table-header-group}}@page{size:A4;margin:18mm}</style><body><h1>Lab 2 Report on Prompt Engineering and Few Shot Prompting</h1>
+<h2>1. Cover page</h2>
+<p><strong>ITMO University / Университет ИТМО</strong><br />
+<strong>Course:</strong> Prompt Engineering<br />
+<strong>Student:</strong> ____________________<br />
+<strong>Group:</strong> ____________________<br />
+<strong>Experiment time:</strong> 2026-10-28T20:32:24.058164<br />
+<strong>Run folder:</strong> <code>results\lab2_claude_haiku_llama_20261028_202806</code><br />
+<strong>Models:</strong> A <code>anthropic/claude-haiku-4.5</code>; B <code>meta-llama/llama-3.3-70b-instruct</code>.</p>
+<h2>2. Objective and method</h2>
+<p>The objective was to design and compare a simple prompt, a structured prompt (V1), a one-shot prompt (V2), and a few-shot prompt (V3), then test edge cases and obtain an independent review. Model A produced the baseline and final essay; identical V1, V2, and V3 prompt strings were sent to both models. Model B reviewed Model A’s V3 answer in a separate request. Prompts and model answers are preserved verbatim in their original English.</p>
+<p>Measured word counts use whitespace-separated tokens in the saved answer. The script’s automatic counts for links, years, numbers, and caution/confidence markers are indicators only; they do not establish factual accuracy. The run used one request per planned cell, except the final answer can have at most two attempts; this run required one attempt.</p>
+<h2>3. Models and run conditions</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model A</td>
+<td>anthropic/claude-haiku-4.5</td>
+</tr>
+<tr>
+<td>Model B</td>
+<td>meta-llama/llama-3.3-70b-instruct</td>
+</tr>
+<tr>
+<td>API profile</td>
+<td>cloudru</td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td>https://foundation-models.api.cloud.ru/v1</td>
+</tr>
+<tr>
+<td>Temperature</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td>Max output tokens</td>
+<td>4096</td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td>180.0 s</td>
+</tr>
+<tr>
+<td>Requests</td>
+<td>12 successful, 1 error, 0 truncated</td>
+</tr>
+</tbody>
+</table>
+<p>Generation-time runner SHA-256: <code>17f102573eea7ef847479a4431098393441ad46e8130d9f952c4a3070c119e80</code>. The report parser was subsequently improved to recover the JSON object from the reviewer’s fenced response; the original model response remains unchanged in <code>lab2_results.json</code>. The manifest source-text hash is <code>13ef01169bfade1627006d0819cfeb2c659c4e2ad65a5e61c65a3b96877836e3</code>. No API key is stored in the run.</p>
+<h2>4. Task 1: Topic and task definition</h2>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What topic was selected?</td>
+<td>Why AI answers need verification</td>
+</tr>
+<tr>
+<td>What should the model do?</td>
+<td>Write a mini-essay for 9th–10th grade students explaining why AI answers need verification, give two concrete examples, and reach a cautious conclusion.</td>
+</tr>
+<tr>
+<td>Who is the text for?</td>
+<td>Students in grades 9–10 (ages 14–16)</td>
+</tr>
+<tr>
+<td>Where could this text be used?</td>
+<td>In a computer science or digital literacy class as learning material about checking AI-generated information.</td>
+</tr>
+<tr>
+<td>What should a good result look like?</td>
+<td>A 180–220-word mini-essay with a clear structure, two explained examples, factual care, and a cautious conclusion.</td>
+</tr>
+<tr>
+<td>Which model errors are especially undesirable here?</td>
+<td>Fabricated sources or facts; unsupported dates or numbers; overconfidence; missing required structure; language unsuitable for the audience.</td>
+</tr>
+</tbody>
+</table>
+<h2>5. Task 2: Quality criteria and rubric</h2>
+<p>The first table reproduces the six core criteria and descriptions from the assignment. Scores are a draft assessment of Model A’s final V3 answer for the student to confirm. The second table adds operational checks used in this experiment.</p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>How to tell it is met</th>
+<th>Score 0–2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topic relevance</td>
+<td>The answer stays on the selected topic.</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Audience clarity</td>
+<td>The text is understandable to the intended audience.</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Structure</td>
+<td>The text has an opening, development, and conclusion.</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Specificity</td>
+<td>The answer includes examples, not only general discussion.</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Factual care</td>
+<td>There are no fabricated facts, dates, quotations, or sources.</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Style</td>
+<td>The tone fits the task.</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Scale: 0 = not met; 1 = partly met; 2 = met. Draft scores must be reviewed by the student.</p>
+<p>Supplementary operational rubric</p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>How checked</th>
+<th>Draft self-score 0–2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topic relevance</td>
+<td>Directly answers the assigned task</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Audience clarity</td>
+<td>Language level fits the intended audience</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Logical structure</td>
+<td>Introduction, thesis, examples, explanations, and conclusion</td>
+<td>2</td>
+</tr>
+<tr>
+<td>At least two concrete examples</td>
+<td>Two distinguishable examples</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Factual care</td>
+<td>No unsupported specific facts or citations</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Appropriate and cautious style</td>
+<td>Calm tone and cautious wording</td>
+<td>2</td>
+</tr>
+<tr>
+<td>180–220 word length</td>
+<td>Whitespace-separated word count: 180–220</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Conclusion adds no new arguments</td>
+<td>No new argument in the conclusion</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Usable after minor editing</td>
+<td>Requires only minor editing</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Scale: 0 = not met; 1 = partly met; 2 = met. The draft scores are justified again in the self-review section.</p>
+<h2>6. Task 3: Simple prompt and first result</h2>
+<p><strong>Prompt:</strong></p>
+<pre><code class="language-text">Write a short essay about why ai answers need verification for students.
+</code></pre>
+<p><strong>Model A answer:</strong> (269 words)</p>
+<pre><code class="language-text"># Why AI Answers Need Verification for Students
+
+As artificial intelligence becomes increasingly integrated into education, students must understand a critical truth: AI-generated answers require verification. While AI tools offer convenience and speed, they are not infallible sources of truth.
+
+## The Problem of Plausible Errors
+
+AI systems, particularly language models, can generate responses that sound authoritative and well-structured while containing factual errors, outdated information, or logical flaws. These mistakes are often subtle enough to escape casual review, making them particularly dangerous in an educational context. A student who accepts an AI answer at face value may internalize incorrect information and build future learning on a faulty foundation.
+
+## The Learning Imperative
+
+Education is fundamentally about developing critical thinking skills. When students verify AI answers against textbooks, academic sources, and expert knowledge, they engage in active learning rather than passive consumption. This verification process—comparing sources, identifying contradictions, and evaluating evidence—is where genuine understanding develops.
+
+## Accountability and Academic Integrity
+
+Relying on unverified AI answers can blur the line between using technology as a tool and academic dishonesty. Students who verify their sources take responsibility for their work and maintain academic integrity. They also develop the habit of proper citation and source evaluation, skills essential for higher education and professional success.
+
+## Building Digital Literacy
+
+In an age of misinformation, learning to question and verify information from any source—human or artificial—is crucial. Students who develop verification habits now will be better equipped to navigate an increasingly complex information landscape throughout their lives.
+
+AI is a powerful educational tool, but verification transforms it from a shortcut into a genuine learning aid.
+</code></pre>
+<p>Draft assessment: the answer is 269 words, which is over the 180–220 target; the prompt does not specify audience, structure, examples, or cautious style. Three observed shortcomings are: (1) length above target; (2) no requirement for two explained examples; (3) no target age or format. These observations motivate V1.</p>
+<h2>7. Task 4: Structured prompt design</h2>
+<table>
+<thead>
+<tr>
+<th>Prompt part</th>
+<th>What was added</th>
+<th>Why it is needed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Role</td>
+<td>Educational content writer specializing in teen digital literacy</td>
+<td>Sets expected expertise and register</td>
+</tr>
+<tr>
+<td>Task</td>
+<td>Explain why AI answers need verification</td>
+<td>Defines the central question</td>
+</tr>
+<tr>
+<td>Audience</td>
+<td>Grades 9–10, ages 14–16</td>
+<td>Guides vocabulary and explanation</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>Teen digital literacy is implicit in the role; classroom setting is not named explicitly</td>
+<td>Could be made more explicit in a future revision</td>
+</tr>
+<tr>
+<td>Content and structure</td>
+<td>Short introduction, central point, two explained failures, cautious conclusion</td>
+<td>Makes expected parts observable</td>
+</tr>
+<tr>
+<td>Constraints</td>
+<td>180–220 words; no fabricated facts, dates, sources, or statistics; avoid absolutes</td>
+<td>Limits scope and unsupported precision</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>Plain-text paragraphs</td>
+<td>Makes the output easy to reuse</td>
+</tr>
+<tr>
+<td>Quality criteria</td>
+<td>Embedded as content requirements; not a separate numbered checklist in V1</td>
+<td>Supports review; a future version could include an explicit checklist</td>
+</tr>
+</tbody>
+</table>
+<h2>8. Task 5: V1 prompt and cross-model comparison</h2>
+<p><strong>V1 verbatim:</strong></p>
+<pre><code class="language-text">You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Format: Plain text paragraphs.
+</code></pre>
+<p><strong>anthropic/claude-haiku-4.5 — ok, 95 words, 4.346 s:</strong></p>
+<pre><code class="language-text"># Why You Should Verify AI Answers
+
+You've probably used AI chatbots to help with homework or answer quick questions. They're fast and often helpful, but here's something important to understand: AI doesn't actually &quot;know&quot; things the way you do. Instead, it predicts what words should come next based on patterns in its training data.
+
+This matters because AI can sound confident while being completely wrong. When an AI generates text, it's essentially making educated guesses about what's probable, not checking facts against reliable sources. This can lead to problems.
+
+One common issue is &quot;Overloaded
+</code></pre>
+<p><strong>meta-llama/llama-3.3-70b-instruct — ok, 166 words, 30.385 s:</strong></p>
+<pre><code class="language-text">As we increasingly rely on artificial intelligence (AI) for information, it's essential to understand its limitations. AI can generate human-like text, but this doesn't mean the information is accurate or up-to-date. It's crucial to verify AI answers to ensure we're getting reliable information.
+
+AI generates probable text based on patterns and associations, not verified facts. This can lead to errors, such as hallucination, where AI provides information that isn't based on any actual data. For example, AI might describe a fictional event as if it were real. Another issue is outdated knowledge, where AI provides information that was once true but is no longer accurate.
+
+For instance, AI might confidently state that a certain company is still in business, even if it has gone bankrupt. In both cases, AI's errors can be misleading and potentially harmful. It's essential to fact-check AI answers to separate fact from fiction. By being cautious and verifying information, we can use AI as a helpful tool while avoiding its potential pitfalls.
+</code></pre>
+<p><strong>Required simple-prompt versus V1 comparison:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Simple prompt</th>
+<th>Prompt V1</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topic relevance</td>
+<td>Addresses verification of AI answers.</td>
+<td>Same central topic is stated explicitly.</td>
+<td>Both stay on topic.</td>
+</tr>
+<tr>
+<td>Audience clarity</td>
+<td>Students are mentioned, but age and grade are unspecified.</td>
+<td>Grades 9–10 (ages 14–16) are specified.</td>
+<td>V1 gives the model a usable audience definition.</td>
+</tr>
+<tr>
+<td>Structure</td>
+<td>The answer has headings and a closing paragraph, but no requested outline.</td>
+<td>A five-part outline is required; the returned answer is incomplete and stops mid-sentence.</td>
+<td>V1 is clearer, but this output is incomplete.</td>
+</tr>
+<tr>
+<td>Specificity</td>
+<td>Discusses failure modes generally; two examples are not required.</td>
+<td>Two examples are required, but the captured answer stops before providing them.</td>
+<td>The V1 requirement was not fulfilled in this response.</td>
+</tr>
+<tr>
+<td>Style</td>
+<td>Formal educational tone; audience is not tailored.</td>
+<td>Calm, plain language for teenagers is requested.</td>
+<td>V1 states the style more precisely.</td>
+</tr>
+<tr>
+<td>Factual care</td>
+<td>No sources are cited; factual claims were not independently verified.</td>
+<td>Fabrication is prohibited; the incomplete answer contains no citations.</td>
+<td>Prompt constraints do not replace fact-checking.</td>
+</tr>
+</tbody>
+</table>
+<p>Claude Haiku’s V1 response is substantially under the target at 95 words and ends mid-sentence at “One common issue is Overloaded,” despite finish_reason=stop. Llama’s is also short at 166 words. Neither response meets the range; specifying a range did not guarantee compliance.</p>
+<h2>9. Task 6: Good and bad few-shot examples</h2>
+<table>
+<thead>
+<tr>
+<th>Example type</th>
+<th>Example text</th>
+<th>Why it is good or weak</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weak</td>
+<td>AI is useful for everyone because it makes life easier and helps with many tasks.</td>
+<td>Too general, no concrete situation, no conditional phrasing, reads like a slogan</td>
+</tr>
+<tr>
+<td>Stronger</td>
+<td>AI can help a student understand a difficult concept if used as an explanation assistant rather than a way to just get the answer. For example, asking 'Can you explain how photosynthesis works step by step?' is more useful than asking 'What is the answer to question 5?'</td>
+<td>Specific situation (student learning), conditional phrasing ('if used as...'), contrasts good vs bad usage, appropriate caution</td>
+</tr>
+</tbody>
+</table>
+<p>The stronger example concerns using AI to learn a difficult concept; it is related to education but does not repeat the essay’s exact verification task.</p>
+<h2>10. Task 7: V2 one-shot prompt</h2>
+<p><strong>V2 verbatim:</strong></p>
+<pre><code class="language-text">You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Aim for this level of specificity:
+
+Weak formulation:
+AI helps people learn.
+
+Better formulation:
+AI can help a student understand a difficult concept if used as an explanation assistant rather than a way to just get the answer. For example, asking 'Can you explain how photosynthesis works step by step?' is more useful than asking 'What is the answer to question 5?'
+
+Format: Plain text paragraphs.
+</code></pre>
+<p><strong>anthropic/claude-haiku-4.5 — ok, 203 words, 5.304 s:</strong></p>
+<pre><code class="language-text"># Why You Should Check AI Answers
+
+You've probably used AI to help with homework or answer questions. It's fast and often sounds confident. But here's something important: AI doesn't actually know things the way you do. It generates text based on patterns it learned, which means it can sound right while being wrong.
+
+**AI generates probable text, not verified facts.** Think of it like this: AI predicts what words should come next based on what it's seen before. It's really good at this, but prediction isn't the same as knowing. Sometimes AI confidently gives you information that sounds completely real but isn't.
+
+For example, AI might invent details about historical events or create fake names of scientists who don't exist. It does this without hesitation because it's just following patterns, not checking facts. Another common problem is outdated information. If AI was trained on older data, it might give you information that's no longer current, like outdated scientific understanding or old statistics.
+
+**The takeaway:** AI is a useful tool, but treat it like a starting point, not a final answer. Cross-check important information with reliable sources like textbooks, educational websites, or your teacher. Using AI thoughtfully—combined with verification—makes you a smarter learner.
+</code></pre>
+<p><strong>meta-llama/llama-3.3-70b-instruct — error, 0 words, 77.191 s:</strong></p>
+<p>The request failed and returned no answer.</p>
+<p>Model A’s V2 output is 203 words, inside the requested range, compared with its 95-word V1 output. It adds more concrete formulations, including invented historical details and fake scientist names as hypothetical examples. Model B’s V2 request returned HTTP 502 (“Request failed”) after 77.191 seconds; there is no B answer to compare for this cell. The one-shot example may have helped Model A reach the length target, but one run cannot establish causation.</p>
+<p><strong>Required V1/V2 comparison:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What changed after adding the example?</td>
+<td>V2 includes one example about asking AI to explain a difficult topic step by step.</td>
+</tr>
+<tr>
+<td>Did the answer become more specific?</td>
+<td>Partly: Model A moved from a general V1 discussion to two named failure types in V2; the examples remain hypothetical.</td>
+</tr>
+<tr>
+<td>Did the style move closer to the target?</td>
+<td>Yes: the V2 answer is plain and student-facing and has 203 words, within the target.</td>
+</tr>
+<tr>
+<td>Did the model copy the example?</td>
+<td>No literal copying was identified; the answer uses its own examples.</td>
+</tr>
+<tr>
+<td>Should the example remain in the prompt?</td>
+<td>Keep the teaching pattern, but use a neutral hypothetical example and avoid fake names or citations.</td>
+</tr>
+</tbody>
+</table>
+<h2>11. Task 8: V3 few-shot prompt and comparison</h2>
+<p><strong>V3 verbatim:</strong></p>
+<pre><code class="language-text">You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Examples of desired style:
+
+Example 1 - Concrete argument:
+Weak: AI can make mistakes.
+Better: An AI might invent a fake citation like &quot;Smith et al. 2023, 'Quantum Computing Breakthrough'&quot; — a paper that doesn't exist but looks real.
+
+Example 2 - Explaining an example:
+Weak: This is bad because it's wrong.
+Better: This matters because a student might use that fake citation in a report, and the teacher would find no such paper.
+
+Example 3 - Cautious conclusion:
+Weak: So never trust AI.
+Better: So it's wise to check important claims from AI against reliable sources, especially for facts, dates, and references.
+
+Format: Plain text paragraphs.
+</code></pre>
+<p><strong>anthropic/claude-haiku-4.5 — ok, 214 words, 4.651 s; caution markers 1, confident markers 1:</strong></p>
+<pre><code class="language-text"># Why You Should Verify AI Answers
+
+You've probably used AI to help with homework or answer questions. It's fast and often helpful. But here's something important: AI doesn't actually &quot;know&quot; facts the way you do. Instead, it predicts the next word based on patterns it learned during training, which means it can sound confident while being completely wrong.
+
+AI sometimes invents information that sounds plausible but doesn't exist. For example, an AI might describe a historical event with specific details—names, dates, locations—that seem real but are actually made up. A student might copy these details into an essay, only to have a teacher point out that the event never happened. The AI wasn't trying to lie; it was just following patterns without checking reality.
+
+Another common problem is outdated knowledge. If an AI was trained on information from several years ago, it might give you answers about current events, recent discoveries, or new technology that are no longer accurate. You could end up with information that was true once but isn't anymore.
+
+The solution isn't to avoid AI—it's to be thoughtful. For important facts, dates, or claims, cross-check what AI tells you with reliable sources like your library database, textbooks, or established websites. This habit protects your work and builds stronger research skills.
+</code></pre>
+<p><strong>meta-llama/llama-3.3-70b-instruct — ok, 163 words, 12.511 s; caution markers 0, confident markers 0:</strong></p>
+<pre><code class="language-text">As we increasingly rely on artificial intelligence (AI) for information and answers, it's essential to understand the importance of verifying AI-generated content. AI systems can process vast amounts of data and generate text quickly, but this doesn't mean the information is always accurate. In fact, AI often produces probable text based on patterns and associations, rather than verified facts.
+
+For instance, an AI might invent a fake citation or claim that a certain event occurred on a specific date, even if it didn't. Another example is when AI provides outdated knowledge, such as recommending a treatment for a medical condition that has since been discredited. This matters because students might use such information in their research or reports, only to find that it's incorrect or outdated.
+
+So it's wise to check important claims from AI against reliable sources, especially for facts, dates, and references. By doing so, we can ensure the accuracy and credibility of the information we use and avoid spreading misinformation.
+</code></pre>
+<p><strong>Required version comparison (Model A; draft scores 0–2):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>V1 without examples</th>
+<th>V2 with one example</th>
+<th>V3 with several examples</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topic relevance</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>All three address verification of AI answers.</td>
+</tr>
+<tr>
+<td>Audience clarity</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>All name grades 9–10; V1 is incomplete.</td>
+</tr>
+<tr>
+<td>Structure</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>V1 ends mid-sentence; V2 and V3 contain the requested parts.</td>
+</tr>
+<tr>
+<td>Specificity</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>V2 and V3 name failure types, but neither gives a detailed verifiable case.</td>
+</tr>
+<tr>
+<td>Style</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>All use an educational tone; audience fit is clearer in the structured prompts.</td>
+</tr>
+<tr>
+<td>Cautious wording</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>V2 and V3 explicitly advise checking important claims.</td>
+</tr>
+<tr>
+<td>No copying from examples</td>
+<td>Not applicable</td>
+<td>2</td>
+<td>2</td>
+<td>No literal copying detected; the invented-citation example remains a priming risk.</td>
+</tr>
+</tbody>
+</table>
+<p>These are draft human judgments, not scores emitted by the API. Model B’s V2 cell is unavailable because its request failed with HTTP 502.</p>
+<p>Model A’s V3 answer has 214 words and meets the target. It uses two explained failure types (plausible invented details and stale information), a cautious conclusion, and does not repeat the named example citation from the few-shot block. Model B’s V3 answer has 163 words, below target, although it contains a fake-citation example and a stale-knowledge example. On this run, V3 is the strongest answer from Model A against the word and structure requirements; it is not proof that V3 or Model A is universally best. The prompt contains three short teaching examples, but the intentionally fake citation could prime imitation and should be removed or explicitly labeled as a non-reusable placeholder in future work.</p>
+<h2>12. Task 9: Analysis of few-shot effects</h2>
+<table>
+<thead>
+<tr>
+<th>Version / model</th>
+<th>Words</th>
+<th>Latency (s)</th>
+<th>Caution / confident</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V1</td>
+<td>anthropic/claude-haiku-4.5</td>
+<td>95</td>
+<td>4.346</td>
+<td>1 / 0</td>
+</tr>
+<tr>
+<td>V1</td>
+<td>meta-llama/llama-3.3-70b-instruct</td>
+<td>166</td>
+<td>30.385</td>
+<td>0 / 0</td>
+</tr>
+<tr>
+<td>V2</td>
+<td>anthropic/claude-haiku-4.5</td>
+<td>203</td>
+<td>5.304</td>
+<td>1 / 0</td>
+</tr>
+<tr>
+<td>V2</td>
+<td>meta-llama/llama-3.3-70b-instruct</td>
+<td>0</td>
+<td>77.191</td>
+<td>0 / 0</td>
+</tr>
+<tr>
+<td>V3</td>
+<td>anthropic/claude-haiku-4.5</td>
+<td>214</td>
+<td>4.651</td>
+<td>1 / 1</td>
+</tr>
+<tr>
+<td>V3</td>
+<td>meta-llama/llama-3.3-70b-instruct</td>
+<td>163</td>
+<td>12.511</td>
+<td>0 / 0</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>V2 used the student-learning example; V3 used examples for specificity, explaining relevance, and a cautious conclusion.</li>
+<li>They target concrete writing skills rather than copy the final topic.</li>
+<li>The examples were intended to teach specificity, explanation, and calibrated conclusions.</li>
+<li>Model A’s output grew from 95 words (V1) to 203 (V2); Model B’s V2 call failed.</li>
+<li>Model A’s V3 answer reached 214 words and included two explained risk types; Model B’s answer was 163 words.</li>
+<li>Yes. The fabricated citation in V3 is a priming risk; neither V3 answer copied its title verbatim.</li>
+<li>Compare word count, structure, concrete examples, overlap with example wording, and both model outputs.</li>
+<li>The example that links an example to why it matters is likely most useful, but this is an analytical judgment, not a measured causal effect.</li>
+<li>The citation example could be removed because it conflicts with the no-fabrication constraint and may prime invented citations.</li>
+<li>Use neutral, clearly hypothetical examples and add a checklist for the nine quality criteria.</li>
+</ol>
+<p>Assignment example analysis table</p>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>What it should show</th>
+<th>Helped / did not help</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Example 1: concrete argument</td>
+<td>Turn a vague claim into a specific illustration.</td>
+<td>Partly helped</td>
+<td>The V3 essay describes invented event details, but does not give a verifiable concrete case; the fake-citation example also risks priming.</td>
+</tr>
+<tr>
+<td>Example 2: explain relevance</td>
+<td>Connect the example to why it matters to a student.</td>
+<td>Helped</td>
+<td>Model A explains that a student could copy false details into an essay and be corrected by a teacher.</td>
+</tr>
+<tr>
+<td>Example 3: cautious conclusion</td>
+<td>Avoid an absolute conclusion and recommend proportionate checking.</td>
+<td>Helped</td>
+<td>The V3 answer recommends checking important claims against reliable sources instead of rejecting AI entirely.</td>
+</tr>
+</tbody>
+</table>
+<h2>13. Task 10: Edge-case tests</h2>
+<p>Five edge checks were run with Model A. Each prompt and output is saved in the run JSON. The audience-change request included the preceding Model A V3 essay, so the follow-up had its necessary context.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What was changed</th>
+<th>What the model did</th>
+<th>Problem that appeared</th>
+<th>How to improve the prompt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>too_general_topic</td>
+<td>Too general topic - model may give generic response</td>
+<td>ok: The answer becomes a broad overview of AI applications instead of a focused mini-essay about verification.</td>
+<td>It follows the deliberately broad request but does not preserve the lab's narrower task; name the reader and intended format.</td>
+<td>Add the intended audience, genre, central question, and two required examples.</td>
+</tr>
+<tr>
+<td>hallucination_risk</td>
+<td>Risk of fabricated facts - ask for specific citations</td>
+<td>ok: The response returned three references. Two had incorrect author/year attributions: DOI 10.1145/3571730 is Ji et al. (2023), not Rawte et al.; arXiv:2005.00661 is Maynez et al. (2020), not Zhang et al. (2023). A third Ji et al. citation repeated the first DOI.</td>
+<td>The answer produced plausible-looking citations, including incorrect author/year metadata. The two records were checked against the <a href="https://doi.org/10.1145/3571730">ACM DOI record</a> and the <a href="https://arxiv.org/abs/2005.00661">official arXiv record</a>.</td>
+<td>Check every title, author list, year, and DOI against the publisher or repository record; do not infer verification from a valid-looking DOI.</td>
+</tr>
+<tr>
+<td>audience_change</td>
+<td>Change audience - adapt for parents instead of students</td>
+<td>ok: The answer is rewritten for parents using the supplied preceding essay as context.</td>
+<td>The context is now explicit and the model can adapt it; inspect whether tone and examples actually change for parents.</td>
+<td>Name the parents' needs and request one concrete parent-facing example.</td>
+</tr>
+<tr>
+<td>conflicting_requirements</td>
+<td>Conflicting requirements - detailed but very short</td>
+<td>ok: The model has to balance a request for detail with a two-sentence maximum.</td>
+<td>The output is concise; the length constraint necessarily limits the number of explanations.</td>
+<td>Prioritize the sentence limit and ask for one compact example, or remove the conflicting demand for detail.</td>
+</tr>
+<tr>
+<td>strict_json_format</td>
+<td>Strict JSON format requirement</td>
+<td>ok: The parser confirms valid JSON and all five required keys.</td>
+<td>Valid JSON does not establish factual accuracy.</td>
+<td>Parse the JSON, then check its claims separately.</td>
+</tr>
+</tbody>
+</table>
+<p>Manual citation check: The hallucination-risk response included two mismatched author/year attributions; one DOI correctly identifies Ji et al. (2023), while the other identifies Maynez et al. (2020). The cited records are linked in the edge-case table.</p>
+<p>Strict JSON result: valid JSON with all five required keys. The parser strips the code fence before validation. The request failure in Model B’s V2 cell is retained and excluded from quality comparisons.</p>
+<h2>14. Task 11: Independent review by Model B</h2>
+<p>Model B received the original task, audience and context, all nine criteria, the full V3 prompt, and Model A’s final V3 answer in a separate request. The response contained a fenced JSON object and extra prose. The report parser recovered the first valid JSON object; the full raw reviewer response is retained in the result record. The reviewer assigned 2/2 to every criterion, found no hallucinations, and said the conclusion could explain cross-checking in more detail. This review is advisory and is not independent fact verification.</p>
+<p><strong>Assignment reviewer table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Second model score 0–2</th>
+<th>Second model comment</th>
+<th>Agree / disagree</th>
+<th>My comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Task relevance</td>
+<td>2</td>
+<td>The response directly addresses the topic of why AI answers need verification.</td>
+<td>Draft: partly agree</td>
+<td>The essay stays on topic; student to confirm.</td>
+</tr>
+<tr>
+<td>Audience clarity</td>
+<td>2</td>
+<td>The language used is clear and understandable for 9-10th grade students.</td>
+<td>Draft: agree</td>
+<td>The language is accessible; student to confirm.</td>
+</tr>
+<tr>
+<td>Structure</td>
+<td>2</td>
+<td>The response has a logical structure, including an introduction, main point, examples, explanations, and conclusion.</td>
+<td>Draft: agree</td>
+<td>The answer has an opening, examples, and conclusion.</td>
+</tr>
+<tr>
+<td>Specificity</td>
+<td>2</td>
+<td>The response includes two concrete examples of AI failures: inventing information and outdated knowledge.</td>
+<td>Draft: partly disagree</td>
+<td>The 2/2 seems generous: the examples describe types of failure but remain broad.</td>
+</tr>
+<tr>
+<td>Use of few-shot examples</td>
+<td>—</td>
+<td>No separate numeric score was returned.</td>
+<td>Draft: not enough evidence</td>
+<td>The reviewer returned a separate copying field, not a score for example usefulness.</td>
+</tr>
+<tr>
+<td>No copying from examples</td>
+<td>—</td>
+<td>few_shot_copying: none</td>
+<td>Draft: partly agree</td>
+<td>No literal copying was identified, but the invented-citation example could prime imitation.</td>
+</tr>
+<tr>
+<td>Factual care</td>
+<td>2</td>
+<td>No fabricated facts, quotes, sources, or dates are present in the response.</td>
+<td>Draft: partly agree</td>
+<td>No citations or dates appear in the final essay; this does not verify every general claim.</td>
+</tr>
+<tr>
+<td>Style</td>
+<td>2</td>
+<td>The tone is calm, educational, and appropriately cautious throughout the response.</td>
+<td>Draft: agree</td>
+<td>The tone is calm and suitable for the stated audience.</td>
+</tr>
+<tr>
+<td>Overall usability</td>
+<td>2</td>
+<td>The text is usable after minor manual editing, with no major revisions needed.</td>
+<td>Draft: partly agree</td>
+<td>It meets the word range but still needs human fact and audience review.</td>
+</tr>
+</tbody>
+</table>
+<p>Scores and agreement statements above are a proposed draft for the student to review. A dash means the model did not return a numeric score for that criterion; no score was inferred.</p>
+<p><strong>Expanded reviewer scores from the saved review response:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Model B</th>
+<th>Reviewer comment</th>
+<th>Draft self-score</th>
+<th>Agreement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topic relevance</td>
+<td>2</td>
+<td>The response directly addresses the topic of why AI answers need verification.</td>
+<td>2</td>
+<td>Student to confirm</td>
+</tr>
+<tr>
+<td>Audience clarity</td>
+<td>2</td>
+<td>The language used is clear and understandable for 9-10th grade students.</td>
+<td>2</td>
+<td>Student to confirm</td>
+</tr>
+<tr>
+<td>Logical structure</td>
+<td>2</td>
+<td>The response has a logical structure, including an introduction, main point, examples, explanations, and conclusion.</td>
+<td>2</td>
+<td>Student to confirm</td>
+</tr>
+<tr>
+<td>At least two concrete examples</td>
+<td>2</td>
+<td>The response includes two concrete examples of AI failures: inventing information and outdated knowledge.</td>
+<td>1</td>
+<td>Student to confirm</td>
+</tr>
+<tr>
+<td>Factual care</td>
+<td>2</td>
+<td>No fabricated facts, quotes, sources, or dates are present in the response.</td>
+<td>2</td>
+<td>Student to confirm</td>
+</tr>
+<tr>
+<td>Appropriate and cautious style</td>
+<td>2</td>
+<td>The tone is calm, educational, and appropriately cautious throughout the response.</td>
+<td>2</td>
+<td>Student to confirm</td>
+</tr>
+<tr>
+<td>180–220 word length</td>
+<td>2</td>
+<td>The response is within the 180-220 word limit.</td>
+<td>2</td>
+<td>Student to confirm</td>
+</tr>
+<tr>
+<td>Conclusion adds no new arguments</td>
+<td>2</td>
+<td>The conclusion does not introduce new arguments and is cautious in its wording.</td>
+<td>2</td>
+<td>Student to confirm</td>
+</tr>
+<tr>
+<td>Usable after minor editing</td>
+<td>2</td>
+<td>The text is usable after minor manual editing, with no major revisions needed.</td>
+<td>1</td>
+<td>Student to confirm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Draft reflection for the student to confirm:</strong> I agree that the essay is clear and appropriately cautious, and that the final paragraph could say more about how to cross-check claims. I would not accept the reviewer’s blanket 2/2 without qualification: the examples are concrete in type but not especially specific, and the result still needs a human check for factual accuracy and audience fit. These statements are proposed wording, not a record of the student’s personal view.</p>
+<h2>15. Task 12: Final Prompt Card</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prompt name</td>
+<td>Evidence-aware student essay about checking AI answers</td>
+</tr>
+<tr>
+<td>Task the prompt is used for</td>
+<td>Write a mini-essay for 9-10th grade students explaining why AI answers need verification, with two concrete examples and a cautious conclusion</td>
+</tr>
+<tr>
+<td>Target audience</td>
+<td>9-10th grade students (ages 14-16)</td>
+</tr>
+<tr>
+<td>Recommended model</td>
+<td>anthropic/claude-haiku-4.5 for this measured run; not a universal recommendation.</td>
+</tr>
+<tr>
+<td>Input</td>
+<td>Task and optional source material to verify</td>
+</tr>
+<tr>
+<td>Expected result</td>
+<td>180–220 word mini-essay with introduction, thesis, two explained examples and cautious conclusion</td>
+</tr>
+<tr>
+<td>Model role</td>
+<td>Educational writer for teen digital literacy</td>
+</tr>
+<tr>
+<td>Core requirements</td>
+<td>Plain language, two failure examples, explain relevance, distinguish prediction from verified fact</td>
+</tr>
+<tr>
+<td>Restrictions</td>
+<td>No invented facts, quotations, sources, dates, statistics, or categorical claims</td>
+</tr>
+<tr>
+<td>Output format</td>
+<td>Plain-text paragraphs</td>
+</tr>
+<tr>
+<td>Few-shot examples</td>
+<td>One non-topic-specific learning example plus three short style/argument patterns</td>
+</tr>
+<tr>
+<td>What the few-shot examples demonstrate</td>
+<td>Specificity, explanation of relevance, and a cautious conclusion</td>
+</tr>
+<tr>
+<td>Quality criteria</td>
+<td>Topic relevance; Audience clarity; Logical structure; At least two concrete examples; Factual care; Appropriate and cautious style; 180–220 word length; Conclusion adds no new arguments; Usable after minor editing</td>
+</tr>
+<tr>
+<td>Potential model errors</td>
+<td>Fabricated citations or references; Invented statistics or precise numbers without basis; Overconfident claims without qualification; Condescending or overly complex language for the audience; Missing required structural elements; Exceeding or significantly under word count</td>
+</tr>
+<tr>
+<td>How to check the result</td>
+<td>Count words, score the criteria, and verify factual claims and citations manually</td>
+</tr>
+<tr>
+<td>When not to use the prompt</td>
+<td>The task requires current facts or real citations that cannot be independently verified</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Final prompt:</strong></p>
+<pre><code class="language-text">You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Examples of desired style:
+
+Example 1 - Concrete argument:
+Weak: AI can make mistakes.
+Better: An AI might invent a fake citation like &quot;Smith et al. 2023, 'Quantum Computing Breakthrough'&quot; — a paper that doesn't exist but looks real.
+
+Example 2 - Explaining an example:
+Weak: This is bad because it's wrong.
+Better: This matters because a student might use that fake citation in a report, and the teacher would find no such paper.
+
+Example 3 - Cautious conclusion:
+Weak: So never trust AI.
+Better: So it's wise to check important claims from AI against reliable sources, especially for facts, dates, and references.
+
+Format: Plain text paragraphs.
+</code></pre>
+<h2>16. Task 13: Final text and edit disclosure</h2>
+<p>The text below is Model A’s raw V3 answer, reproduced without editorial changes. Its measured length is 214 words. Its position is that AI should be used thoughtfully and important claims should be checked; it has an introduction, a main point, two explained examples, and a conclusion.</p>
+<pre><code class="language-text"># Why You Should Verify AI Answers
+
+You've probably used AI to help with homework or answer questions. It's fast and often helpful. But here's something important: AI doesn't actually &quot;know&quot; facts the way you do. Instead, it predicts the next word based on patterns it learned during training, which means it can sound confident while being completely wrong.
+
+AI sometimes invents information that sounds plausible but doesn't exist. For example, an AI might describe a historical event with specific details—names, dates, locations—that seem real but are actually made up. A student might copy these details into an essay, only to have a teacher point out that the event never happened. The AI wasn't trying to lie; it was just following patterns without checking reality.
+
+Another common problem is outdated knowledge. If an AI was trained on information from several years ago, it might give you answers about current events, recent discoveries, or new technology that are no longer accurate. You could end up with information that was true once but isn't anymore.
+
+The solution isn't to avoid AI—it's to be thoughtful. For important facts, dates, or claims, cross-check what AI tells you with reliable sources like your library database, textbooks, or established websites. This habit protects your work and builds stronger research skills.
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Manual change</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>The report reproduces the stored model answer; translation is not presented as model output.</td>
+</tr>
+</tbody>
+</table>
+<h2>17. Task 14: Conclusions</h2>
+<ol>
+<li>The simple prompt only names the topic; V3 specifies role, audience, structure, constraints, output format and examples.</li>
+<li>The most useful elements in this run were the audience, explicit structure, word range, and prohibition on invented sources.</li>
+<li>The educational-writer role framed the voice, but its separate effect was not isolated.</li>
+<li>The audience instruction makes the intended reader explicit; it cannot guarantee perfect age-level fit.</li>
+<li>Model A’s V2 output met the word target while V1 did not; the B V2 request failed.</li>
+<li>Model A’s V3 answer also met the word target; Model B’s was shorter. One run is not enough for a general model ranking.</li>
+<li>A fabricated citation in the examples could distract or prime copying; no literal copying was found in V3.</li>
+<li>Copying was checked by comparing distinctive example wording with the generated answers; this is a qualitative check.</li>
+<li>Claude Haiku performed better on the word-count target in this run; Llama’s V2 call failed and its V1/V3 answers were short.</li>
+<li>Good few-shot examples teach one transferable skill, stay short, avoid conflicting with the constraints, and are checked for copying.</li>
+</ol>
+<p>Interpretation limit: These findings describe one small run at one endpoint and setting; they do not establish general model superiority or causal few-shot effects.</p>
+<h2>Appendix A: Run summary</h2>
+<table>
+<thead>
+<tr>
+<th>Request</th>
+<th>Model</th>
+<th>Status</th>
+<th>Words</th>
+<th>Latency s</th>
+<th>Finish</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>simple</td>
+<td>anthropic/claude-haiku-4.5</td>
+<td>ok</td>
+<td>269</td>
+<td>5.106</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>v1</td>
+<td>anthropic/claude-haiku-4.5</td>
+<td>ok</td>
+<td>95</td>
+<td>4.346</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>v1</td>
+<td>meta-llama/llama-3.3-70b-instruct</td>
+<td>ok</td>
+<td>166</td>
+<td>30.385</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>v2</td>
+<td>anthropic/claude-haiku-4.5</td>
+<td>ok</td>
+<td>203</td>
+<td>5.304</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>v2</td>
+<td>meta-llama/llama-3.3-70b-instruct</td>
+<td>error</td>
+<td>0</td>
+<td>77.191</td>
+<td></td>
+</tr>
+<tr>
+<td>v3</td>
+<td>anthropic/claude-haiku-4.5</td>
+<td>ok</td>
+<td>214</td>
+<td>4.651</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>v3</td>
+<td>meta-llama/llama-3.3-70b-instruct</td>
+<td>ok</td>
+<td>163</td>
+<td>12.511</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>edge_too_general_topic</td>
+<td>anthropic/claude-haiku-4.5</td>
+<td>ok</td>
+<td>218</td>
+<td>21.286</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>edge_hallucination_risk</td>
+<td>anthropic/claude-haiku-4.5</td>
+<td>ok</td>
+<td>461</td>
+<td>8.038</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>edge_audience_change</td>
+<td>anthropic/claude-haiku-4.5</td>
+<td>ok</td>
+<td>284</td>
+<td>3.319</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>edge_conflicting_requirements</td>
+<td>anthropic/claude-haiku-4.5</td>
+<td>ok</td>
+<td>64</td>
+<td>2.216</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>edge_strict_json_format</td>
+<td>anthropic/claude-haiku-4.5</td>
+<td>ok</td>
+<td>285</td>
+<td>5.252</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>evaluation</td>
+<td>meta-llama/llama-3.3-70b-instruct</td>
+<td>ok</td>
+<td>334</td>
+<td>76.187</td>
+<td>stop</td>
+</tr>
+</tbody>
+</table>
+<p>All full prompts and raw responses, including the failed request and reviewer response, are preserved in the run folder.</p>
+</body></html>

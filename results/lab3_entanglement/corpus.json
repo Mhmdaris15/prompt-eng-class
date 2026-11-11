@@ -1,0 +1,1002 @@
+[
+  {
+    "article_id": "0704.0140",
+    "authors": "Mariano Cadoni",
+    "title": "Entanglement entropy of two-dimensional Anti-de Sitter black holes",
+    "categories": "hep-th",
+    "main_category": "High Energy Physics - Theory",
+    "other_categories": "",
+    "abstract": "  Using the AdS/CFT correspondence we derive a formula for the entanglement\nentropy of the anti-de Sitter black hole in two spacetime dimensions. The\nleading term in the large black hole mass expansion of our formula reproduces\nexactly the Bekenstein-Hawking entropy S_{BH}, whereas the subleading term\nbehaves as ln S_{BH}. This subleading term has the universal form typical for\nthe entanglement entropy of physical systems described by effective conformal\nfields theories (e.g. one-dimensional statistical models at the critical\npoint). The well-known form of the entanglement entropy for a two-dimensional\nconformal field theory is obtained as analytic continuation of our result and\nis related with the entanglement entropy of a black hole with negative mass.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0704.0172",
+    "authors": "S. El Shawish, A. Ramsak, and J. Bonca",
+    "title": "Thermal entanglement of qubit pairs on the Shastry-Sutherland lattice",
+    "categories": "cond-mat.mes-hall cond-mat.str-el",
+    "main_category": "Mesoscale and Nanoscale Physics",
+    "other_categories": "Strongly Correlated Electrons",
+    "abstract": "  We show that temperature and magnetic field properties of the entanglement\nbetween spins on the two-dimensional Shastry-Sutherland lattice can be\nqualitatively described by analytical results for a qubit tetramer. Exact\ndiagonalization of clusters with up to 20 sites reveals that the regime of\nfully entangled neighboring pairs coincides with the regime of finite spin gap\nin the spectrum. Additionally, the results for the regime of vanishing spin gap\nare discussed and related to the Heisenberg limit of the model.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.0179",
+    "authors": "Alessandro Zavatta, Valentina Parigi, and Marco Bellini",
+    "title": "Experimental nonclassicality of single-photon-added thermal light states",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We report the experimental realization and tomographic analysis of novel\nquantum light states obtained by exciting a classical thermal field by a single\nphoton. Such states, although completely incoherent, possess a tunable degree\nof quantumness which is here exploited to put to a stringent experimental test\nsome of the criteria proposed for the proof and the measurement of state\nnon-classicality. The quantum character of the states is also given in quantum\ninformation terms by evaluating the amount of entanglement that they can\nproduce.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.0251",
+    "authors": "Gilad Gour, Nolan R. Wallach",
+    "title": "Entanglement of Subspaces and Error Correcting Codes",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We introduce the notion of entanglement of subspaces as a measure that\nquantify the entanglement of bipartite states in a randomly selected subspace.\nWe discuss its properties and in particular we show that for maximally\nentangled subspaces it is additive. Furthermore, we show that maximally\nentangled subspaces can play an important role in the study of quantum error\ncorrection codes. We discuss both degenerate and non-degenerate codes and show\nthat the subspace spanned by the logical codewords of a non-degenerate code is\na 2k-totally (maximally) entangled subspace. As for non-degenerate codes, we\nprovide a mathematical definition in terms of subspaces and, as an example, we\nanalyze Shor's nine qubits code in terms of 22 mutually orthogonal subspaces.\n",
+    "year": "2011"
+  },
+  {
+    "article_id": "0704.0418",
+    "authors": "Yu-Cheng Lin, Ferenc Igloi and Heiko Rieger",
+    "title": "Entanglement entropy at infinite randomness fixed points in higher\n  dimensions",
+    "categories": "cond-mat.dis-nn quant-ph",
+    "main_category": "Disordered Systems and Neural Networks",
+    "other_categories": "Quantum Physics",
+    "abstract": "  The entanglement entropy of the two-dimensional random transverse Ising model\nis studied with a numerical implementation of the strong disorder\nrenormalization group. The asymptotic behavior of the entropy per surface area\ndiverges at, and only at, the quantum phase transition that is governed by an\ninfinite randomness fixed point. Here we identify a double-logarithmic\nmultiplicative correction to the area law for the entanglement entropy. This\ncontrasts with the pure area law valid at the infinite randomness fixed point\nin the diluted transverse Ising model in higher dimensions.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.0461",
+    "authors": "Thomas F. Jordan, Anil Shaji and E. C. G. Sudarshan",
+    "title": "Entanglement increase from local interactions with\n  not-completely-positive maps",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  Simple examples are constructed that show the entanglement of two qubits\nbeing both increased and decreased by interactions on just one of them. One of\nthe two qubits interacts with a third qubit, a control, that is never entangled\nor correlated with either of the two entangled qubits and is never entangled,\nbut becomes correlated, with the system of those two qubits. The two entangled\nqubits do not interact, but their state can change from maximally entangled to\nseparable or from separable to maximally entangled. Similar changes for the two\nqubits are made with a swap operation between one of the qubits and a control;\nthen there are compensating changes of entanglement that involve the control.\nWhen the entanglement increases, the map that describes the change of the state\nof the two entangled qubits is not completely positive. Combination of two\nindependent interactions that individually give exponential decay of the\nentanglement can cause the entanglement to not decay exponentially but,\ninstead, go to zero at a finite time.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.0507",
+    "authors": "M. J. Duff and S. Ferrara",
+    "title": "E_6 and the bipartite entanglement of three qutrits",
+    "categories": "hep-th quant-ph",
+    "main_category": "High Energy Physics - Theory",
+    "other_categories": "Quantum Physics",
+    "abstract": "  Recent investigations have established an analogy between the entropy of\nfour-dimensional supersymmetric black holes in string theory and entanglement\nin quantum information theory. Examples include: (1) N=2 STU black holes and\nthe tripartite entanglement of three qubits (2-state systems), where the common\nsymmetry is [SL(2)]^3 and (2) N=8 black holes and the tripartite entanglement\nof seven qubits where the common symmetry is E_7 which contains [SL(2)]^7. Here\nwe present another example: N=8 black holes (or black strings) in five\ndimensions and the bipartite entanglement of three qutrits (3-state systems),\nwhere the common symmetry is E_6 which contains [SL(3)]^3. Both the black hole\n(or black string) entropy and the entanglement measure are provided by the\nCartan cubic E_6 invariant. Similar analogies exist for ``magic'' N=2\nsupergravity black holes in both four and five dimensions.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0704.0520",
+    "authors": "Tina A.C. Maiolo, Luigi Martina, Giulio Soliani",
+    "title": "A critical theory of quantum entanglement for the Hydrogen molecule",
+    "categories": "quant-ph cond-mat.other physics.atom-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "Other Condensed Matter, Atomic Physics",
+    "abstract": "  In this paper we investigate some entanglement properties for the Hydrogen\nmolecule considered as a two interacting spin 1/2 (qubit) model. The\nentanglement related to the $H_{2}$ molecule is evaluated both using the von\nNeumann entropy and the Concurrence and it is compared with the corresponding\nquantities for the two interacting spin system. Many aspects of these functions\nare examinated employing in part analytical and, essentially, numerical\ntechniques. We have compared analogous results obtained by Huang and Kais a few\nyears ago. In this respect, some possible controversial situations are\npresented and discussed.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.0523",
+    "authors": "Hyunseok Jeong and Timothy C. Ralph",
+    "title": "Quantum superpositions and entanglement of thermal states at high\n  temperatures and their applications to quantum information processing",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We study characteristics of superpositions and entanglement of thermal states\nat high temperatures and discuss their applications to quantum information\nprocessing. We introduce thermal-state qubits and thermal-Bell states, which\nare a generalization of pure-state qubits and Bell states to thermal mixtures.\nA scheme is then presented to discriminate between the four thermal-Bell states\nwithout photon number resolving detection but with Kerr nonlinear interactions\nand two single-photon detectors. This enables one to perform quantum\nteleportation and gate operations for quantum computation with thermal-state\nqubits.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.0641",
+    "authors": "D. Porras, J.I. Cirac",
+    "title": "Quantum engineering of photon states with entangled atomic ensembles",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We propose and analyze a new method to produce single and entangled photons\nwhich does not require cavities. It relies on the collective enhancement of\nlight emission as a consequence of the presence of entanglement in atomic\nensembles. Light emission is triggered by a laser pulse, and therefore our\nscheme is deterministic. Furthermore, it allows one to produce a variety of\nphotonic entangled states by first preparing certain atomic states using simple\nsequences of quantum gates. We analyze the feasibility of our scheme, and\nparticularize it to: ions in linear traps, atoms in optical lattices, and in\ncells at room temperature.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.0678",
+    "authors": "Hugo Cable and Jonathan P. Dowling",
+    "title": "Generation of Large Number-Path Entanglement Using Linear Optics and\n  Feed-Forward",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We show how an idealised measurement procedure can condense photons from two\nmodes into one, and how, by feeding forward the results of the measurement, it\nis possible to generate efficiently superpositions of components for which only\none mode is populated, commonly called ``N00N states''. For the basic\nprocedure, sources of number states leak onto a beam splitter, and the output\nports are monitored by photodetectors. We find that detecting a fixed fraction\nof the input at one output port suffices to direct the remainder to the same\nport with high probability, however large the initial state. When instead\nphotons are detected at both ports, Schr\\\"{o}dinger cat states are produced. We\ndescribe a circuit for making the components of such a state orthogonal, and\nanother for subsequent conversion to a N00N state. Our approach scales\nexponentially better than existing proposals. Important applications include\nquantum imaging and metrology.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.0709",
+    "authors": "Jing-Ling Chen, Kang Xue, and Mo-Lin Ge",
+    "title": "Braiding transformation, entanglement swapping and Berry phase in\n  entanglement space",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We show that braiding transformation is a natural approach to describe\nquantum entanglement, by using the unitary braiding operators to realize\nentanglement swapping and generate the GHZ states as well as the linear cluster\nstates. A Hamiltonian is constructed from the unitary\n$\\check{R}_{i,i+1}(\\theta,\\phi)$-matrix, where $\\phi=\\omega t$ is\ntime-dependent while $\\theta$ is time-independent. This in turn allows us to\ninvestigate the Berry phase in the entanglement space.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.0743",
+    "authors": "Adam Rycerz",
+    "title": "Diatomic molecule as a quantum entanglement switch",
+    "categories": "cond-mat.str-el",
+    "main_category": "Strongly Correlated Electrons",
+    "other_categories": "",
+    "abstract": "  We investigate a pair entanglement of electrons in diatomic molecule, modeled\nas a correlated double quantum dot attached to the leads. The low-temperature\nproperties are derived from the ground state obtained by utilizing the\nRejec-Ramsak variational technique within the framework of EDABI method, which\ncombines exact diagonalization with ab initio calculations. The results show,\nthat single-particle basis renormalization modifies the entanglement-switch\neffectiveness significantly. We also found the entanglement signature of a\ncompetition between an extended Kondo and singlet phases.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0704.0757",
+    "authors": "Yong-Cheng Ou and Heng Fan",
+    "title": "Bounds on Negativity of Superpositions",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  The entanglement quantified by negativity of pure bipartite superposed states\nis studied. We show that if the entanglement is quantified by the concurrence\ntwo pure states of high fidelity to one another still have nearly the same\nentanglement. Furthermore this conclusion can be guaranteed by our obtained\ninequality, and the concurrence is shown to be a continuous function even in\ninfinite dimensions. The bounds on the negativity of superposed states in terms\nof those of the states being superposed are obtained. These bounds can find\nuseful applications in estimating the amount of the entanglement of a given\npure state.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.0758",
+    "authors": "Matthaeus Halder, Alexios Beveratos, Nicolas Gisin, Valerio Scarani,\n  Christoph Simon and Hugo Zbinden",
+    "title": "Entangling Independent Photons by Time Measurement",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  A quantum system composed of two or more subsystems can be in an entangled\nstate, i.e. a state in which the properties of the global system are well\ndefined but the properties of each subsystem are not. Entanglement is at the\nheart of quantum physics, both for its conceptual foundations and for\napplications in information processing and quantum communication. Remarkably,\nentanglement can be \"swapped\": if one prepares two independent entangled pairs\nA1-A2 and B1-B2, a joint measurement on A1 and B1 (called a \"Bell-State\nMeasurement\", BSM) has the effect of projecting A2 and B2 onto an entangled\nstate, although these two particles have never interacted or shared any common\npast[1,2]. Experiments using twin photons produced by spontaneous parametric\ndown-conversion (SPDC) have already demonstrated entanglement swapping[3-6],\nbut here we present its first realization using continuous wave (CW) sources,\nas originally proposed[2]. The challenge was to achieve sufficiently sharp\nsynchronization of the photons in the BSM. Using narrow-band filters, the\ncoherence time of the photons that undergo the BSM is significantly increased,\nexceeding the temporal resolution of the detectors. Hence pulsed sources can be\nreplaced by CW sources, which do not require any synchronization[6,7], allowing\nfor the first time the use of completely autonomous sources. Our experiment\nexploits recent progress in the time precision of photon detectors, in the\nefficiency of photon pair production by SPDC with waveguides in nonlinear\ncrystals[8], and in the stability of narrow-band filters. This approach is\nindependent of the form of entanglement; we employed time-bin entangled\nphotons[9] at telecom wavelengths. Our setup is robust against thermal or\nmechanical fluctuations in optical fibres thanks to cm-long coherence lengths.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0704.0800",
+    "authors": "Tad Hogg, Pavithra Harsha and Kay-Yut Chen",
+    "title": "Quantum Auctions",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We present a quantum auction protocol using superpositions to represent bids\nand distributed search to identify the winner(s). Measuring the final quantum\nstate gives the auction outcome while simultaneously destroying the\nsuperposition. Thus non-winning bids are never revealed. Participants can use\nentanglement to arrange for correlations among their bids, with the assurance\nthat this entanglement is not observable by others. The protocol is useful for\ninformation hiding applications, such as partnership bidding with allocative\nexternality or concerns about revealing bidding preferences. The protocol\napplies to a variety of auction types, e.g., first or second price, and to\nauctions involving either a single item or arbitrary bundles of items (i.e.,\ncombinatorial auctions). We analyze the game-theoretical behavior of the\nquantum protocol for the simple case of a sealed-bid quantum, and show how a\nsuitably designed adiabatic search reduces the possibilities for bidders to\ngame the auction. This design illustrates how incentive rather that\ncomputational constraints affect quantum algorithm choices.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.0850",
+    "authors": "Jun Sato, Masahiro Shiroishi",
+    "title": "Density matrix elements and entanglement entropy for the spin-1/2 XXZ\n  chain at $\\Delta$=1/2",
+    "categories": "cond-mat.stat-mech",
+    "main_category": "Statistical Mechanics",
+    "other_categories": "",
+    "abstract": "  We have analytically obtained all the density matrix elements up to six\nlattice sites for the spin-1/2 Heisenberg XXZ chain at $\\Delta=1/2$. We use the\nmultiple integral formula of the correlation function for the massless XXZ\nchain derived by Jimbo and Miwa. As for the spin-spin correlation functions, we\nhave newly obtained the fourth- and fifth-neighbour transverse correlation\nfunctions. We have calculated all the eigenvalues of the density matrix and\nanalyze the eigenvalue-distribution. Using these results the exact values of\nthe entanglement entropy for the reduced density matrix up six lattice sites\nhave been obtained. We observe that our exact results agree quite well with the\nasymptotic formula predicted by the conformal field theory.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.0951",
+    "authors": "J. A. Hoyos, Andr\\'e P. Vieira, Nicolas Laflorencie, E. Miranda",
+    "title": "Correlation amplitude and entanglement entropy in random spin chains",
+    "categories": "cond-mat.dis-nn cond-mat.str-el quant-ph",
+    "main_category": "Disordered Systems and Neural Networks",
+    "other_categories": "Strongly Correlated Electrons, Quantum Physics",
+    "abstract": "  Using strong-disorder renormalization group, numerical exact diagonalization,\nand quantum Monte Carlo methods, we revisit the random antiferromagnetic XXZ\nspin-1/2 chain focusing on the long-length and ground-state behavior of the\naverage time-independent spin-spin correlation function C(l)=\\upsilon\nl^{-\\eta}. In addition to the well-known universal (disorder-independent)\npower-law exponent \\eta=2, we find interesting universal features displayed by\nthe prefactor \\upsilon=\\upsilon_o/3, if l is odd, and \\upsilon=\\upsilon_e/3,\notherwise. Although \\upsilon_o and \\upsilon_e are nonuniversal (disorder\ndependent) and distinct in magnitude, the combination \\upsilon_o + \\upsilon_e =\n-1/4 is universal if C is computed along the symmetric (longitudinal) axis. The\norigin of the nonuniversalities of the prefactors is discussed in the\nrenormalization-group framework where a solvable toy model is considered.\nMoreover, we relate the average correlation function with the average\nentanglement entropy, whose amplitude has been recently shown to be universal.\nThe nonuniversalities of the prefactors are shown to contribute only to surface\nterms of the entropy. Finally, we discuss the experimental relevance of our\nresults by computing the structure factor whose scaling properties,\ninterestingly, depend on the correlation prefactors.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.0964",
+    "authors": "Sergey Bravyi",
+    "title": "Upper bounds on entangling rates of bipartite Hamiltonians",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We discuss upper bounds on the rate at which unitary evolution governed by a\nnon-local Hamiltonian can generate entanglement in a bipartite system. Given a\nbipartite Hamiltonian H coupling two finite dimensional particles A and B, the\nentangling rate is shown to be upper bounded by c*log(d)*norm(H), where d is\nthe smallest dimension of the interacting particles, norm(H) is the operator\nnorm of H, and c is a constant close to 1. Under certain restrictions on the\ninitial state we prove analogous upper bound for the ancilla-assisted\nentangling rate with a constant c that does not depend upon dimensions of local\nancillas. The restriction is that the initial state has at most two distinct\nSchmidt coefficients (each coefficient may have arbitrarily large\nmultiplicity). Our proof is based on analysis of a mixing rate -- a functional\nmeasuring how fast entropy can be produced if one mixes a time-independent\nstate with a state evolving unitarily.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.1084",
+    "authors": "M. Asorey, D. Garcia-Alvarez and J. M. Munoz-Castaneda",
+    "title": "Vacuum Energy and Renormalization on the Edge",
+    "categories": "hep-th",
+    "main_category": "High Energy Physics - Theory",
+    "other_categories": "",
+    "abstract": "  The vacuum dependence on boundary conditions in quantum field theories is\nanalysed from a very general viewpoint. From this perspective the\nrenormalization prescriptions not only imply the renormalization of the\ncouplings of the theory in the bulk but also the appearance of a flow in the\nspace of boundary conditions. For regular boundaries this flow has a large\nvariety of fixed points and no cyclic orbit. The family of fixed points\nincludes Neumann and Dirichlet boundary conditions. In one-dimensional field\ntheories pseudoperiodic and quasiperiodic boundary conditions are also RG fixed\npoints. Under these conditions massless bosonic free field theories are\nconformally invariant. Among all fixed points only Neumann boundary conditions\nare infrared stable fixed points. All other conformal invariant boundary\nconditions become unstable under some relevant perturbations. In finite volumes\nwe analyse the dependence of the vacuum energy along the trajectories of the\nrenormalization group flow providing an interesting framework for dark energy\nevolution. On the contrary, the renormalization group flow on the boundary does\nnot affect the leading behaviour of the entanglement entropy of the vacuum in\none-dimensional conformally invariant bosonic theories.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0704.1092",
+    "authors": "Motohisa Fukuda, Michael M. Wolf",
+    "title": "Simplifying additivity problems using direct sum constructions",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We study the additivity problems for the classical capacity of quantum\nchannels, the minimal output entropy and its convex closure. We show for each\nof them that additivity for arbitrary pairs of channels holds iff it holds for\narbitrary equal pairs, which in turn can be taken to be unital. In a similar\nsense, weak additivity is shown to imply strong additivity for any convex\nentanglement monotone. The implications are obtained by considering direct sums\nof channels (or states) for which we show how to obtain several information\ntheoretic quantities from their values on the summands. This provides a simple\nand general tool for lifting additivity results.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.1172",
+    "authors": "Zhe Sun, Xiaoguang Wang and C. P. Sun",
+    "title": "Disentanglement in a quantum critical environment",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We study the dynamical process of disentanglement of two qubits and two\nqutrits coupled to an Ising spin chain in a transverse field, which exhibits a\nquantum phase transition. We use the concurrence and negativity to quantify\nentanglement of two qubits and two qutrits, respectively. Explicit connections\nbetween the concurrence (negativity) and the decoherence factors are given for\ntwo initial states, the pure maximally entangled state and the mixed Werner\nstate. We find that the concurrence and negativity decay exponentially with\nfourth power of time in the vicinity of critical point of the environmental\nsystem.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.1177",
+    "authors": "S. Baghbanzadeh and A. T. Rezakhani",
+    "title": "Temperature effects on quantum cloning of states and entanglement",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  Performances of the symmetric universal and phase-covariant cloning\ntransformations and entanglement cloners -- qubit case -- are investigated when\nthe initial state of the hardware or the original state to be cloned is weakly\ncoupled to a thermal environment. Different behaviors of each of these\ntransformations are analyzed and contrasted with the ideal cases.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.1180",
+    "authors": "Gerardo A. Paz-Silva, John H. Reina",
+    "title": "Full Additivity of the Entanglement of Formation",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We present a general strategy that allows a more flexible method for the\nconstruction of fully additive multipartite entanglement monotones than the\nones so far reported in the literature of axiomatic entanglement measures.\nWithin this framework we give a proof of a conjecture of outstanding\nimplications in information theory: the full additivity of the Entanglement of\nFormation.\n",
+    "year": "2010"
+  },
+  {
+    "article_id": "0704.1194",
+    "authors": "Ferenc Igl\\'oi, Yu-Cheng Lin, Heiko Rieger, C\\'ecile Monthus",
+    "title": "Finite-size scaling of pseudo-critical point distributions in the random\n  transverse-field Ising chain",
+    "categories": "cond-mat.dis-nn cond-mat.stat-mech",
+    "main_category": "Disordered Systems and Neural Networks",
+    "other_categories": "Statistical Mechanics",
+    "abstract": "  We study the distribution of finite size pseudo-critical points in a\none-dimensional random quantum magnet with a quantum phase transition described\nby an infinite randomness fixed point. Pseudo-critical points are defined in\nthree different ways: the position of the maximum of the average entanglement\nentropy, the scaling behavior of the surface magnetization, and the energy of a\nsoft mode. All three lead to a log-normal distribution of the pseudo-critical\ntransverse fields, where the width scales as $L^{-1/\\nu}$ with $\\nu=2$ and the\nshift of the average value scales as $L^{-1/\\nu_{typ}}$ with $\\nu_{typ}=1$,\nwhich we related to the scaling of average and typical quantities in the\ncritical region.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0704.1263",
+    "authors": "Vincent Danos, Elham Kashefi, Prakash Panangaden",
+    "title": "The Measurement Calculus",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  Measurement-based quantum computation has emerged from the physics community\nas a new approach to quantum computation where the notion of measurement is the\nmain driving force of computation. This is in contrast with the more\ntraditional circuit model which is based on unitary operations. Among\nmeasurement-based quantum computation methods, the recently introduced one-way\nquantum computer stands out as fundamental.\n  We develop a rigorous mathematical model underlying the one-way quantum\ncomputer and present a concrete syntax and operational semantics for programs,\nwhich we call patterns, and an algebra of these patterns derived from a\ndenotational semantics. More importantly, we present a calculus for reasoning\nlocally and compositionally about these patterns.\n  We present a rewrite theory and prove a general standardization theorem which\nallows all patterns to be put in a semantically equivalent standard form.\nStandardization has far-reaching consequences: a new physical architecture\nbased on performing all the entanglement in the beginning, parallelization by\nexposing the dependency structure of measurements and expressiveness theorems.\n  Furthermore we formalize several other measurement-based models:\nTeleportation, Phase and Pauli models and present compositional embeddings of\nthem into and from the one-way model. This allows us to transfer all the theory\nwe develop for the one-way model to these models. This shows that the framework\nwe have developed has a general impact on measurement-based computation and is\nnot just particular to the one-way quantum computer.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.1368",
+    "authors": "Chang Chi Kwong and Ye Yeo",
+    "title": "Anisotropy and Magnetic Field Effects on the Genuine Multipartite\n  Entanglement of Multi-Qubit Heisenberg {\\it XY} Chains",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  It has been shown that, for the two-qubit Heisenberg XY model, anisotropy and\nmagnetic field may together be used to produce entanglement for any finite\ntemperature by adjusting the external magnetic field beyond some finite\ncritical strength. This interesting result arises from an analysis employing\nthe Wootters concurrence, a computable measure of entanglement for two-qubit\nstates. Recently, Mintert {\\em et al.} proposed generalizations of Wootters\nconcurrence for multipartite states. These MKB concurrences possess a\nmathematical property that enables one to understand the origin of this\ncharacteristic behavior. Here, we first study the effect of anisotropy and\nmagnetic field on the multipartite thermal entanglement of a four-qubit\nHeisenberg XY chain using the MKB concurrences. We show that this model\nexhibits characteristic behavior similar to that of the two-qubit model. In\naddition, we show that this can again be understood using the same mathematical\nproperty. Next, we show that the six-qubit Heisenberg XY chain possesses\nproperties necessary for it to have the characteristic behavior too. Most\nimportantly, it is possible to directly measure the multipartite MKB\nconcurrences of pure states. This may provide an experimental verification of\nour conjecture that for a Heisenberg XY chain of any even number of qubits, it\nis always possible to obtain non-zero genuine multipartite entanglement at any\nfinite temperature by applying a sufficiently large magnetic field.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.1375",
+    "authors": "Yukihiro Ota, Motoyuki Yoshida, Ichiro Ohba",
+    "title": "Decrease of entanglement by local operations in the D\\\"ur-Cirac method",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  One cannot always obtain information about entanglement by the D\\\"ur-Cirac\n(DC) method. The impracticality is attributed to the decrease of entanglement\nby local operations in the DC method. We show that, even in 2--qubit systems,\nthere exist states whose entangled property the DC method never evaluates. The\nclass of such states in 2--qubit systems is completely characterized by the\nvalue of the fully entangled fraction. Actually, a state whose fully entangled\nfraction is less than or equal to 1/2 is always transformed into a separable\nstate by local operations in the DC method, even if it has negative partial\ntransposition.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.1464",
+    "authors": "Earl T. Campbell",
+    "title": "Distributed quantum information processing with minimal local resources",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We present a protocol for growing graph states, the resource for one-way\nquantum computing, when the available entanglement mechanism is highly\nimperfect. The distillation protocol is frugal in its use of ancilla qubits,\nrequiring only a single ancilla qubit when the noise is dominated by one Pauli\nerror, and two for a general noise model. The protocol works with such scarce\nlocal resources by never post-selecting on the measurement outcomes of\npurification rounds. We find that such a strategy causes fidelity to follow a\nbiased random walk, and that a target fidelity is likely to be reached more\nrapidly than for a comparable post-selecting protocol. An analysis is presented\nof how imperfect local operations limit the attainable fidelity. For example, a\nsingle Pauli error rate of 20% can be distilled down to $\\sim 10$ times the\nimperfection in local operations.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.1468",
+    "authors": "J.D. Franson",
+    "title": "Generation of Entanglement Outside of the Light Cone",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  The Feynman propagator has nonzero values outside of the forward light cone.\nThat does not allow messages to be transmitted faster than the speed of light,\nbut it is shown here that it does allow entanglement and mutual information to\nbe generated at space-like separated points. These effects can be interpreted\nas being due to the propagation of virtual photons outside of the light cone or\nas a transfer of pre-existing entanglement from the quantum vacuum. The\ndifferences between these two interpretations are discussed.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.1473",
+    "authors": "Jianxin Chen, Runyao Duan, Zhengfeng Ji, Mingsheng Ying and Jun Yu",
+    "title": "Existence of Universal Entangler",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  A gate is called entangler if it transforms some (pure) product states to\nentangled states. A universal entangler is a gate which transforms all product\nstates to entangled states. In practice, a universal entangler is a very\npowerful device for generating entanglements, and thus provides important\nphysical resources for accomplishing many tasks in quantum computing and\nquantum information. This Letter demonstrates that a universal entangler always\nexists except for a degenerated case. Nevertheless, the problem how to find a\nuniversal entangler remains open.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.1506",
+    "authors": "G. F. Calvo, A. Pic\\'on, and A. Bramon",
+    "title": "Measuring two-photon orbital angular momentum entanglement",
+    "categories": "quant-ph physics.optics",
+    "main_category": "Quantum Physics",
+    "other_categories": "Optics",
+    "abstract": "  We put forward an approach to estimate the amount of bipartite spatial\nentanglement of down-converted photon states correlated in orbital angular\nmomentum and the magnitude of the transverse (radial) wave vectors. Both\ndegrees of freedom are properly considered in our framework, which only\nrequires azimuthal local linear optical transformations and mode selection\nanalysis with two fiber detectors. The coincidence distributions predicted by\nour approach give an excellent fit to the distributions measured in a recent\nexperiment aimed to show the very high-dimensional transverse entanglement of\ntwin photons from a down-conversion source. Our estimate for the Schmidt number\nis substantially lower but still confirms the presence of high-dimensional\nentanglement.\n",
+    "year": "2011"
+  },
+  {
+    "article_id": "0704.1560",
+    "authors": "Zhi-Ming Zhang, Jian Yang, and Yafei Yu",
+    "title": "Generating entanglement of photon-number states with coherent light via\n  cross-Kerr nonlinearity",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We propose a scheme for generating entangled states of light fields. This\nscheme only requires the cross-Kerr nonlinear interaction between coherent\nlight-beams, followed by a homodyne detection. Therefore, this scheme is within\nthe reach of current technology. We study in detail the generation of the\nentangled states between two modes, and that among three modes. In addition to\nthe Bell states between two modes and the W states among three modes, we find\nplentiful new kinds of entangled states. Finally, the scheme can be extend to\ngenerate the entangled states among more than three modes.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.1580",
+    "authors": "Gerardo Adesso and Marie Ericsson",
+    "title": "Optical implementation and entanglement distribution in Gaussian valence\n  bond states",
+    "categories": "quant-ph cond-mat.other physics.optics",
+    "main_category": "Quantum Physics",
+    "other_categories": "Other Condensed Matter, Optics",
+    "abstract": "  We study Gaussian valence bond states of continuous variable systems,\nobtained as the outputs of projection operations from an ancillary space of M\ninfinitely entangled bonds connecting neighboring sites, applied at each of $N$\nsites of an harmonic chain. The entanglement distribution in Gaussian valence\nbond states can be controlled by varying the input amount of entanglement\nengineered in a (2M+1)-mode Gaussian state known as the building block, which\nis isomorphic to the projector applied at a given site. We show how this\nmechanism can be interpreted in terms of multiple entanglement swapping from\nthe chain of ancillary bonds, through the building blocks. We provide optical\nschemes to produce bisymmetric three-mode Gaussian building blocks (which\ncorrespond to a single bond, M=1), and study the entanglement structure in the\noutput Gaussian valence bond states. The usefulness of such states for quantum\ncommunication protocols with continuous variables, like telecloning and\nteleportation networks, is finally discussed.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.1712",
+    "authors": "Ayumu Sugita",
+    "title": "Borromean Entanglement Revisited",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  An interesting analogy between quantum entangled states and topological links\nwas suggested by Aravind. In particular, he emphasized a connection between the\nGreenberger-Horne-Zeilinger (GHZ) state and the Borromean rings. However, he\nmade the connection in a way that depends on the choice of measurement basis.\nWe reconsider it in a basis-independent way by using the reduced density\nmatrix.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.1792",
+    "authors": "C.E. Creffield",
+    "title": "Quantum control and entanglement using periodic driving fields",
+    "categories": "cond-mat.other",
+    "main_category": "Other Condensed Matter",
+    "other_categories": "",
+    "abstract": "  We propose a scheme for producing directed motion in a lattice system by\napplying a periodic driving potential. By controlling the dynamics by means of\nthe effect known as coherent destruction of tunneling, we demonstrate a novel\nratchet-like effect that enables particles to be coherently manipulated and\nsteered without requiring local control. Entanglement between particles can\nalso be controllably generated, which points to the attractive possibility of\nusing these technique for quantum information processing.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.1939",
+    "authors": "Hyunchul Nha",
+    "title": "Entanglement condition via su(2) and su(1,1) algebra using\n  Schr{\\\"o}dinger-Robertson uncertainty relation",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  The Schr{\\\"o}dinger-Robertson inequality generally provides a stronger bound\non the product of uncertainties for two noncommuting observables than the\nHeisenberg uncertainty relation, and as such, it can yield a stricter\nseparability condition in conjunction with partial transposition. In this\npaper, using the Schr{\\\"o}dinger-Robertson uncertainty relation, the\nseparability condition previously derived from the su(2) and the su(1,1)\nalgebra is made stricter and refined to a form invariant with respect to local\nphase shifts. Furthermore, a linear optical scheme is proposed to test this\ninvariant separability condition.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.1957",
+    "authors": "Garry Bowen and Nilanjana Datta",
+    "title": "Entanglement Cost for Sequences of Arbitrary Quantum States",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  The entanglement cost of arbitrary sequences of bipartite states is shown to\nbe expressible as the minimization of a conditional spectral entropy rate over\nsequences of separable extensions of the states in the sequence. The expression\nis shown to reduce to the regularized entanglement of formation when the n-th\nstate in the sequence consists of n copies of a single bipartite state.\n",
+    "year": "2011"
+  },
+  {
+    "article_id": "0704.1965",
+    "authors": "Phoenix S. Y. Poon and C. K. Law",
+    "title": "Quantum entanglement of decohered two-mode squeezed states in absorbing\n  and amplifying environment",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We investigate the properties of quantum entanglement of two-mode squeezed\nstates interacting with linear baths with general gain and loss parameters. By\nexplicitly solving for \\rho from the master equation, we determine analytical\nexpressions of eigenvalues and eigenvectors of \\rho^{T_A} (the partial\ntransposition of density matrix \\rho). In Fock space, \\rho^{T_A} is shown to\nmaintain a block diagonal structure as the system evolves. In addition, we\ndiscover that the decoherence induced by the baths would break the degeneracy\nof \\rho^{T_A}, and leads to a novel set of eigenvectors for the construction of\nentanglement witness operators. Such eigenvectors are shown to be\ntime-independent, which is a signature of robust entanglement of two-mode\nsqueezed states in the presence of noise.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.2035",
+    "authors": "Petr Marek, Jinhyoung Lee, M. S. Kim",
+    "title": "Vacuum as a less hostile environment to entanglement",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We derive sufficient conditions for infinite-dimensional systems whose\nentanglement is not completely lost in a finite time during its decoherence by\na passive interaction with local vacuum environments. The sufficient conditions\nallow us to clarify a class of bipartite entangled states which preserve their\nentanglement or, in other words, are tolerant against decoherence in a vacuum.\nWe also discuss such a class for entangled qubits.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.2066",
+    "authors": "Dominic W. Berry",
+    "title": "Lower bounds for communication capacities of two-qudit unitary\n  operations",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We show that entangling capacities based on the Jamiolkowski isomorphism may\nbe used to place lower bounds on the communication capacities of arbitrary\nbipartite unitaries. Therefore, for these definitions, the relations which have\nbeen previously shown for two-qubit unitaries also hold for arbitrary\ndimensions. These results are closely related to the theory of the\nentanglement-assisted capacity of channels. We also present more general\nmethods for producing ensembles for communication from initial states for\nentanglement creation.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.2087",
+    "authors": "D. Li, X. Li, H. Huang, X. Li",
+    "title": "The SLOCC invariant and the residual entanglement for n-qubits",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  In this paper, we find the invariant for $n$-qubits and propose the residual\nentanglement for $n$-qubits by means of the invariant. Thus, we establish a\nrelation between SLOCC entanglement and the residual entanglement. The\ninvariant and the residual entanglement can be used for SLOCC entanglement\nclassification for $n$-qubits.\n",
+    "year": "2012"
+  },
+  {
+    "article_id": "0704.2105",
+    "authors": "F. W. Sun, B. H. Liu, Y. F. Huang, Y. S. Zhang, Z. Y. Ou, and G. C.\n  Guo",
+    "title": "Entanglement and interference between different degrees of freedom of\n  photons states",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  In this paper, photonic entanglement and interference are described and\nanalyzed with the language of quantum information process. Correspondingly, a\nphoton state involving several degrees of freedom is represented in a new\nexpression based on the permutation symmetry of bosons. In this expression,\neach degree of freedom of a single photon is regarded as a qubit and operations\non photons as qubit gates. The two-photon Hong-Ou-Mandel interference is well\ninterpreted with it. Moreover, the analysis reveals the entanglement between\ndifferent degrees of freedom in a four-photon state from parametric down\nconversion, even if there is no entanglement between them in the two-photon\nstate. The entanglement will decrease the state purity and photon interference\nvisibility in the experiments on a four-photon polarization state.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0704.2236",
+    "authors": "Dong Yang, Karol Horodecki, Michal Horodecki, Pawel Horodecki,\n  Jonathan Oppenheim, Wei Song",
+    "title": "Squashed entanglement for multipartite states and entanglement measures\n  based on the mixed convex roof",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  New measures of multipartite entanglement are constructed based on two\ndefinitions of multipartite information and different methods of optimizing\nover extensions of the states. One is a generalization of the squashed\nentanglement where one takes the mutual information of parties conditioned on\nthe state's extension and takes the infimum over such extensions. Additivity of\nthe multipartite squashed entanglement is proved for both versions of the\nmultipartite information which turn out to be related. The second one is based\non taking classical extensions. This scheme is generalized, which enables to\nconstruct measures of entanglement based on the {\\it mixed convex roof} of a\nquantity, which in contrast to the standard convex roof method involves\noptimization over all decompositions of a density matrix rather than just the\ndecompositions into pure states. As one of the possible applications of these\nresults we prove that any multipartite monotone is an upper bound on the amount\nof multipartite distillable key. The findings are finally related to analogous\nresults in classical key agreement.\n",
+    "year": "2016"
+  },
+  {
+    "article_id": "0704.2246",
+    "authors": "J. Laurat, C.W. Chou, H. Deng, K.S. Choi, D. Felinto, H. de\n  Riedmatten, H.J. Kimble",
+    "title": "Towards experimental entanglement connection with atomic ensembles in\n  the single excitation regime",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We present a protocol for performing entanglement connection between pairs of\natomic ensembles in the single excitation regime. Two pairs are prepared in an\nasynchronous fashion and then connected via a Bell measurement. The resulting\nstate of the two remaining ensembles is mapped to photonic modes and a reduced\ndensity matrix is then reconstructed. Our observations confirm for the first\ntime the creation of coherence between atomic systems that never interacted, a\nfirst step towards entanglement connection, a critical requirement for quantum\nnetworking and long distance quantum communications.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.2247",
+    "authors": "Tomaz Prosen",
+    "title": "Chaos and Complexity of quantum motion",
+    "categories": "quant-ph cond-mat.stat-mech nlin.CD",
+    "main_category": "Quantum Physics",
+    "other_categories": "Statistical Mechanics, Chaotic Dynamics",
+    "abstract": "  The problem of characterizing complexity of quantum dynamics - in particular\nof locally interacting chains of quantum particles - will be reviewed and\ndiscussed from several different perspectives: (i) stability of motion against\nexternal perturbations and decoherence, (ii) efficiency of quantum simulation\nin terms of classical computation and entanglement production in operator\nspaces, (iii) quantum transport, relaxation to equilibrium and quantum mixing,\nand (iv) computation of quantum dynamical entropies. Discussions of all these\ncriteria will be confronted with the established criteria of integrability or\nquantum chaos, and sometimes quite surprising conclusions are found. Some\nconjectures and interesting open problems in ergodic theory of the quantum many\nproblem are suggested.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.2269",
+    "authors": "S. Natali and Z. Ficek",
+    "title": "Temporal and diffraction effects in entanglement creation in an optical\n  cavity",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  A practical scheme for entanglement creation between distant atoms located\ninside a single-mode optical cavity is discussed. We show that the degree of\nentanglement and the time it takes for the entanglement to reach its optimum\nvalue is a sensitive function the initial conditions and the position of the\natoms inside the cavity mode. It is found that the entangled properties of the\ntwo atoms can readily be extracted from dynamics of a simple two-level system.\nEffectively, we engineer two coupled qubits whose the dynamics are analogous to\nthat of a driven single two-level system. It is found that spatial variations\nof the coupling constants actually help to create transient entanglement which\nmay appear on the time scale much longer than that predicted for the case of\nequal coupling constants. When the atoms are initially prepared in an entangled\nstate, they may remain entangled for all times. We also find that the\nentanglement exhibits an interesting phenomenon of diffraction when the the\natoms are located between the nodes and antinodes of the cavity mode. The\ndiffraction pattern of the entanglement varies with time and we explain this\neffect in terms of the quantum property of complementarity, which is manifested\nas a tradeoff between the knowledge of energy of the exchanged photon versus\nthe evolution time of the system.\n",
+    "year": "2015"
+  },
+  {
+    "article_id": "0704.2414",
+    "authors": "M. A. Jafarizadeh, G. Najarbashi, Y. Akbari, H. Habibian",
+    "title": "Multi-qubit stabilizer and cluster entanglement witnesses",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  One of the problems concerning entanglement witnesses (EWs) is the\nconstruction of them by a given set of operators. Here several multi-qubit EWs\ncalled stabilizer EWs are constructed by using the stabilizer operators of some\ngiven multi-qubit states such as GHZ, cluster and exceptional states. The\ngeneral approach to manipulate the multi-qubit stabilizer EWs by\nexact(approximate) linear programming (LP) method is described and it is shown\nthat the Clifford group play a crucial role in finding the hyper-planes\nencircling the feasible region. The optimality, decomposability and\nnon-decomposability of constructed stabilizer EWs are discussed.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.2597",
+    "authors": "Jan Samsonowicz, Marek Kus, Maciej Lewenstein",
+    "title": "Separability, entanglement and full families of commuting normal\n  matrices",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We reduce the question whether a given quantum mixed state is separable or\nentangled to the problem of existence of a certain full family of commuting\nnormal matrices whose matrix elements are partially determined by components of\nthe pure states constituting a decomposition of the considered mixture. The\nmethod reproduces many known entanglement and/or separability criteria, and\nprovides yet another geometrical characterization of mixed separable states.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.2677",
+    "authors": "Jitesh R. Bhatt, Prasanta K. Panigrahi and Manan Vyas",
+    "title": "Entanglement induced Sub-Planck structures",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We study Wigner function of a system describing entanglement of two\ncat-states. Quantum interferece arising due to entanglement is shown to produce\nsub-Planck structures in the phase-space plots of the Wigner function. Origin\nof these structures in our case depends on entanglement unlike those in Zurek\n\\cite{Zurek}. It is argued that the entangled cat-states are better suited for\ncarrying out precision measurements.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.2765",
+    "authors": "O. Giraud, J. Martin and B. Georgeot",
+    "title": "Entanglement of localized states",
+    "categories": "quant-ph cond-mat.mes-hall nlin.CD",
+    "main_category": "Quantum Physics",
+    "other_categories": "Mesoscale and Nanoscale Physics, Chaotic Dynamics",
+    "abstract": "  We derive exact expressions for the mean value of Meyer-Wallach entanglement\nQ for localized random vectors drawn from various ensembles corresponding to\ndifferent physical situations. For vectors localized on a randomly chosen\nsubset of the basis, <Q> tends for large system sizes to a constant which\ndepends on the participation ratio, whereas for vectors localized on adjacent\nbasis states it goes to zero as a constant over the number of qubits.\nApplications to many-body systems and Anderson localization are discussed.\n",
+    "year": "2011"
+  },
+  {
+    "article_id": "0704.2859",
+    "authors": "Barak Dayan",
+    "title": "Theory of Two-Photon Interactions with Broadband Down-Converted Light\n  and Entangled Photons",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  When two-photon interactions are induced by down-converted light with a\nbandwidth that exceeds the pump bandwidth, they can obtain a behavior that is\npulse-like temporally, yet spectrally narrow. At low photon fluxes this\nbehavior reflects the time and energy entanglement between the down-converted\nphotons. However, two-photon interactions such as two-photon absorption (TPA)\nand sum-frequency generation (SFG) can exhibit such a behavior even at high\npower levels, as long as the final state (i.e. the atomic level in TPA, or the\ngenerated light in SFG) is narrowband enough. This behavior does not depend on\nthe squeezing properties of the light, is insensitive to linear losses, and has\npotential applications. In this paper we describe analytically this behavior\nfor travelling-wave down-conversion with continuous or pulsed pumping, both for\nhigh- and low-power regimes. For this we derive a quantum-mechanical expression\nfor the down-converted amplitude generated by an arbitrary pump, and formulate\noperators that represent various two-photon interactions induced by broadband\nlight. This model is in excellent agreement with experimental results of TPA\nand SFG with high power down-converted light and with entangled photons [Dayan\net al., Phys. Rev. Lett. 93, 023005 (2004), Dayan et al., Phys. Rev. Lett. 94,\n043602, (2005), Pe'er et al., Phys. Rev. Lett. 94, 073601 (2005)].\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.2903",
+    "authors": "Julia Kempe, Hirotada Kobayashi, Keiji Matsumoto, Ben Toner, Thomas\n  Vidick",
+    "title": "Entangled games are hard to approximate",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We establish the first hardness results for the problem of computing the\nvalue of one-round games played by a verifier and a team of provers who can\nshare quantum entanglement. In particular, we show that it is NP-hard to\napproximate within an inverse polynomial the value of a one-round game with (i)\nquantum verifier and two entangled provers or (ii) classical verifier and three\nentangled provers. Previously it was not even known if computing the value\nexactly is NP-hard. We also describe a mathematical conjecture, which, if true,\nwould imply hardness of approximation to within a constant.\n  We start our proof by describing two ways to modify classical multi-prover\ngames to make them resistant to entangled provers. We then show that a strategy\nfor the modified game that uses entanglement can be ``rounded'' to one that\ndoes not. The results then follow from classical inapproximability bounds. Our\nwork implies that, unless P=NP, the values of entangled-prover games cannot be\ncomputed by semidefinite programs that are polynomial in the size of the\nverifier's system, a method that has been successful for more restricted\nquantum games.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.2945",
+    "authors": "Huan-Qiang Zhou",
+    "title": "Renormalization group flows and quantum phase transitions: fidelity\n  versus entanglement",
+    "categories": "cond-mat.stat-mech cond-mat.str-el",
+    "main_category": "Statistical Mechanics",
+    "other_categories": "Strongly Correlated Electrons",
+    "abstract": "  We compare the roles of fidelity and entanglement in characterizing\nrenormalization group flows and quantum phase transitions. It turns out that\nthe scaling parameter extracted from fidelity for different ground states\nsucceeds to capture nontrivial information including stable and unstable fixed\npoints, whereas the von Neumann entropy as a bipartite entanglement measure (or\nequivalently, majorization relations satisfied by the spectra of the reduced\ndensity matrix along renormalization group flows) often fails, as far as the\nintrinsic irreversibility-information loss along renormalization group flows-is\nconcerned. We also clarify an intimate connection between the von Neumman\nentropy, majorization relations, and fidelity. The relevance to Zamolodchikov's\nc theorem is indicated.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.2961",
+    "authors": "Stephen Brierley, Atsushi Higuchi",
+    "title": "On maximal entanglement between two pairs in four-qubit pure states",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We show that the state with the highest known average two-particle von\nNeumann entanglement entropy proposed by Sudbery and one of the authors gives a\nlocal maximum of this entropy. We also show that this is not the case for an\nalternative highly entangled state proposed by Brown et al.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.2973",
+    "authors": "Yang Xiang and Shi-Jie Xiong",
+    "title": "Entanglement fidelity and measurement of entanglement preserving in\n  quantum processes",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  The entanglement fidelity provides a measure of how well the entanglement\nbetween two subsystems is preserved in a quantum process. By using a simple\nmodel we show that in some cases this quantity in its original definition fails\nin the measurement of the entanglement preserving. On the contrary, the\nmodified entanglement fidelity, obtained by using a proper local unitary\ntransformation on a subsystem, is shown to exhibit the behavior similar to that\nof the concurrence in the quantum evolution.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.2981",
+    "authors": "Geoffrey Grimmett, Tobias Osborne, Petra Scudo",
+    "title": "Entanglement in the quantum Ising model",
+    "categories": "quant-ph math.PR",
+    "main_category": "Quantum Physics",
+    "other_categories": "Probability",
+    "abstract": "  We study the asymptotic scaling of the entanglement of a block of spins for\nthe ground state of the one-dimensional quantum Ising model with transverse\nfield. When the field is sufficiently strong, the entanglement grows at most\nlogarithmically in the number of spins. The proof utilises a transformation to\na model of classical probability called the continuum random-cluster model, and\nis based on a property of the latter model termed ratio weak-mixing. Our proof\napplies equally to a large class of disordered interactions.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0704.3130",
+    "authors": "Luigi Martina, Giulio Soliani",
+    "title": "Hartree-Fock Approximation and Entanglement",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  The relation between the correlation energy and the entanglement is\nanalytically constructed for the Moshinsky's model of two coupled harmonic\noscillators. It turns out that the two quantities are far to be proportional,\neven at very small couplings. A comparison is made also with the 2-point Ising\nmodel.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.3322",
+    "authors": "B. Basu and P. Bandyopadhyay",
+    "title": "A Geometrical Approach towards Entanglement",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We have studied the concurrence of two-site entanglement and have shown that\nit is related to the geometric phase accumulated due to a complete rotation of\nthe entangled state. The geometric phase and hence the concurrence is evaluated\nfor transverse Ising model and antiferromagnetic chain which is found to be in\ngood agreement with that obtained by other methods.\n",
+    "year": "2015"
+  },
+  {
+    "article_id": "0704.3357",
+    "authors": "J. K. Korbicz, F. Hulpke, A. Osterloh, and M. Lewenstein",
+    "title": "Statistical-mechanical description of quantum entanglement",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We present a description of finite dimensional quantum entanglement, based on\na study of the space of all convex decompositions of a given density matrix. On\nthis space we construct a system of real polynomial equations describing\nseparable states. We further study this system using statistical mechanical\nmethods. Finally, we apply our techniques to Werner states of two qubits and\nobtain a sufficient criterion for separability.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0704.3616",
+    "authors": "C. Castelnovo (1), and C. Chamon (2) ((1) Oxford University, (2)\n  Boston University)",
+    "title": "Entanglement and topological entropy of the toric code at finite\n  temperature",
+    "categories": "cond-mat.str-el quant-ph",
+    "main_category": "Strongly Correlated Electrons",
+    "other_categories": "Quantum Physics",
+    "abstract": "  We calculate exactly the von Neumann and topological entropies of the toric\ncode as a function of system size and temperature. We do so for systems with\ninfinite energy scale separation between magnetic and electric excitations, so\nthat the magnetic closed loop structure is fully preserved while the electric\nloop structure is tampered with by thermally excited electric charges. We find\nthat the entanglement entropy is a singular function of temperature and system\nsize, and that the limit of zero temperature and the limit of infinite system\nsize do not commute. From the entanglement entropy we obtain the topological\nentropy, which is shown to drop to half its zero-temperature value for any\ninfinitesimal temperature in the thermodynamic limit, and remains constant as\nthe temperature is further increased. Such discontinuous behavior is replaced\nby a smooth decreasing function in finite-size systems. If the separation of\nenergy scales in the system is large but finite, we argue that our results hold\nat small enough temperature and finite system size, and a second drop in the\ntopological entropy should occur as the temperature is raised so as to disrupt\nthe magnetic loop structure by allowing the appearance of free magnetic\ncharges. We interpret our results as an indication that the underlying magnetic\nand electric closed loop structures contribute equally to the topological\nentropy (and therefore to the topological order) in the system. Since each loop\nstructure \\emph{per se} is a classical object, we interpret the quantum\ntopological order in our system as arising from the ability of the two\nstructures to be superimposed and appear simultaneously.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.3661",
+    "authors": "Masato Koashi",
+    "title": "Complementarity, distillable secret key, and distillable entanglement",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We consider controllability of two conjugate observables Z and X by two\nparties with classical communication. The ability is specified by two\nalternative tasks, (i) agreement on Z and (ii) preparation of an eigenstate of\nX with use of an extra communication channel. We prove that their feasibility\nis equivalent to that of key distillation if the extra channel is quantum, and\nto that of entanglement distillation if it is classical. This clarifies the\ndistinction between two entanglement measures, distillable key and distillable\nentanglement.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.3719",
+    "authors": "Matthew Headrick and Tadashi Takayanagi",
+    "title": "A holographic proof of the strong subadditivity of entanglement entropy",
+    "categories": "hep-th cond-mat.stat-mech quant-ph",
+    "main_category": "High Energy Physics - Theory",
+    "other_categories": "Statistical Mechanics, Quantum Physics",
+    "abstract": "  When a quantum system is divided into subsystems, their entanglement\nentropies are subject to an inequality known as \"strong subadditivity\". For a\nfield theory this inequality can be stated as follows: given any two regions of\nspace $A$ and $B$, $S(A) + S(B) \\ge S(A \\cup B) + S(A \\cap B)$. Recently, a\nmethod has been found for computing entanglement entropies in any field theory\nfor which there is a holographically dual gravity theory. In this note we give\na simple geometrical proof of strong subadditivity employing this holographic\nprescription.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0704.3907",
+    "authors": "Lucas Lamata",
+    "title": "Developments in entanglement theory and applications to relevant\n  physical systems",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  This Thesis is devoted to the analysis of entanglement in relevant physical\nsystems. Entanglement is the conducting theme of this research, though I do not\ndedicate to a single topic, but consider a wide scope of physical situations. I\nhave followed mainly three lines of research for this Thesis, with a series of\ndifferent works each, which are, Entanglement and Relativistic Quantum Theory,\nContinuous-variable entanglement, and Multipartite entanglement.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0704.3942",
+    "authors": "Ali Saif M. Hassan and Pramod S. Joag",
+    "title": "Separability Criterion for multipartite quantum states based on the\n  Bloch representation of density matrices",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We give a new separability criterion, a necessary condition for separability\nof $N$-partite quantum states. The criterion is based on the Bloch\nrepresentation of a $N$-partite quantum state and makes use of multilinear\nalgebra, in particular, the matrization of tensors. Our criterion applies to\n{\\it arbitrary} $N$-partite quantum states in\n$\\mathcal{H}=\\mathcal{H}^{d_1}\\otimes \\mathcal{H}^{d_2} \\otimes ... \\otimes\n\\mathcal{H}^{d_N}.$ The criterion can test whether a $N$-partite state is\nentangled and can be applied to different partitions of the $N$-partite system.\nWe provide examples that show the ability of this criterion to detect\nentanglement. We show that this criterion can detect bound entangled states. We\nprove a sufficiency condition for separability of a 3-partite state,\nstraightforwardly generalizable to the case $N > 3,$ under certain condition.\nWe also give a necessary and sufficient condition for separability of a class\nof $N$-qubit states which includes $N$-qubit PPT states.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0704.3957",
+    "authors": "Vasily Ogryzko",
+    "title": "Erwin Schroedinger, Francis Crick and epigenetic stability",
+    "categories": "physics.gen-ph q-bio.MN",
+    "main_category": "General Physics",
+    "other_categories": "Molecular Networks",
+    "abstract": "  Schroedinger's book 'What is Life?' is widely credited for having played a\ncrucial role in development of molecular and cellular biology. My essay\nrevisits the issues raised by this book from the modern perspective of\nepigenetics and systems biology. I contrast two classes of potential mechanisms\nof epigenetic stability: 'epigenetic templating' and 'systems biology'\napproaches, and consider them from the point of view expressed by Schroedinger.\nI also discuss how quantum entanglement, a nonclassical feature of quantum\nmechanics, can help to address the 'problem of small numbers' that lead\nSchroedinger to promote the idea of molecular code-script for explanation of\nstability of biological order.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0705.0016",
+    "authors": "Veronika E. Hubeny, Mukund Rangamani, Tadashi Takayanagi",
+    "title": "A Covariant Holographic Entanglement Entropy Proposal",
+    "categories": "hep-th cond-mat.stat-mech gr-qc",
+    "main_category": "High Energy Physics - Theory",
+    "other_categories": "Statistical Mechanics, General Relativity and Quantum Cosmology",
+    "abstract": "  With an aim towards understanding the time-dependence of entanglement entropy\nin generic quantum field theories, we propose a covariant generalization of the\nholographic entanglement entropy proposal of hep-th/0603001. Apart from\nproviding several examples of possible covariant generalizations, we study a\nparticular construction based on light-sheets, motivated in similar spirit to\nthe covariant entropy bound underlying the holographic principle. In\nparticular, we argue that the entanglement entropy associated with a specified\nregion on the boundary in the context of the AdS/CFT correspondence is given by\nthe area of a co-dimension two bulk surface with vanishing expansions of null\ngeodesics. We demonstrate our construction with several examples to illustrate\nits reduction to the holographic entanglement entropy proposal in static\nspacetimes. We further show how this proposal may be used to understand the\ntime evolution of entanglement entropy in a time varying QFT state dual to a\ncollapsing black hole background. Finally, we use our proposal to argue that\nthe Euclidean wormhole geometries with multiple boundaries should be regarded\nas states in a non-interacting but entangled set of QFTs, one associated to\neach boundary.\n",
+    "year": "2012"
+  },
+  {
+    "article_id": "0705.0026",
+    "authors": "A. Hamma, W. Zhang, S. Haas, and D.A. Lidar (USC)",
+    "title": "Entanglement, fidelity and topological entropy in a quantum phase\n  transition to topological order",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We present a numerical study of a quantum phase transition from a\nspin-polarized to a topologically ordered phase in a system of spin-1/2\nparticles on a torus. We demonstrate that this non-symmetry-breaking\ntopological quantum phase transition (TOQPT) is of second order. The transition\nis analyzed via the ground state energy and fidelity, block entanglement,\nWilson loops, and the recently proposed topological entropy. Only the\ntopological entropy distinguishes the TOQPT from a standard QPT, and\nremarkably, does so already for small system sizes. Thus the topological\nentropy serves as a proper order parameter. We demonstrate that our conclusions\nare robust under the addition of random perturbations, not only in the\ntopological phase, but also in the spin polarized phase and even at the\ncritical point.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0705.0047",
+    "authors": "Holger F. Hofmann and Takafumi Ono",
+    "title": "High photon number path entanglement in the interference of\n  spontaneously downconverted photon pairs with coherent laser light",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We show that the quantum interference between downconverted photon pairs and\nphotons from coherent laser light can produce a maximally path entangled\nN-photon output component with a fidelity greater than 90% for arbitrarily high\nphoton numbers. A simple beam splitter operation can thus transform the\n2-photon coherence of down-converted light into an almost optimal N-photon\ncoherence.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0705.0159",
+    "authors": "John Hammersley",
+    "title": "Numerical metric extraction in AdS/CFT",
+    "categories": "hep-th gr-qc",
+    "main_category": "High Energy Physics - Theory",
+    "other_categories": "General Relativity and Quantum Cosmology",
+    "abstract": "  An iterative method for recovering the bulk information in asymptotically AdS\nspacetimes is presented. We consider zero energy spacelike geodesics and their\nrelation to the entanglement entropy in three dimensions to determine the\nmetric in certain symmetric cases. A number of comparisons are made with an\nalternative extraction method presented in arXiv:hep-th/0609202, and the two\nmethods are then combined to allow metric recovery in the most general type of\nstatic, spherically symmetric setups. We conclude by extracting the mass and\ndensity profiles for a toy model example of a gas of radiation in\n(2+1)-dimensional AdS.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0705.0173",
+    "authors": "I. Neder, N. Ofek, Y. Chung, M. Heiblum, D. Mahalu, and V. Umansky",
+    "title": "Interference between two independent electrons: observation of\n  two-particle Aharonov-Bohm interference",
+    "categories": "cond-mat.mes-hall quant-ph",
+    "main_category": "Mesoscale and Nanoscale Physics",
+    "other_categories": "Quantum Physics",
+    "abstract": "  Very much like the ubiquitous quantum interference of a single particle with\nitself, quantum interference of two independent, but indistinguishable,\nparticles is also possible. This interference is a direct result of quantum\nexchange statistics, however, it is observed only in the joint probability to\nfind the particles in two separated detectors. Here we report the first\nobservation of such interference fringes between two independent and\nnon-interacting electrons in an interferometer proposed by Yurke et al. and\nSamuelsson et al. Our experiment resembles the \"Hanbury Brown and Twiss\" (HBT)\nexperiment, which was performed with classical waves. In the experiment, two\nindependent and mutually incoherent electron beams were each partitioned into\ntwo trajectories. The combined four trajectories enclosed an Aharonov-Bohm (AB)\nflux (but not the two trajectories of a single electron). While individual\ncurrents were found to be independent of the AB flux, as expected, the\ncross-correlation between current fluctuations in two opposite points across\nthe device exhibited strong AB oscillations. This is a direct signature of\norbital entanglement between two electrons even though they never interact with\neach other.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0705.0184",
+    "authors": "Li-Ming Si and Ji-Xuan Hou",
+    "title": "Quantum phase transition and entanglement in Li atom system",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  In this paper we study the quantum phase transition and entanglement in\ns1=1/2 and s2=1 spin pair system by the exact diagonalization method. We show\nthat, for this exactly solvable quantum bi-spin system, entanglement appears\nbefore quantum phase transition and disappears after it. Moreover, we show that\nthe von Neumann entropy, as a measure of entanglement, can reveal quantum phase\ntransition in this system.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0705.0279",
+    "authors": "Fu-Guo Deng, Xi-Han Li, and Hong-Yu Zhou",
+    "title": "Opaque Attack on Three-Party Quantum Secret Sharing Based on\n  Entanglement",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  Security of the three-party quantum secret sharing (QSS) schemes based on\nentanglement and a collective eavesdropping check is analyzed in the case of\nconsiderable quantum channel losses. An opaque attack scheme is presented for\nthe dishonest agent to eavesdrop the message obtained by the other agent\nfreely, which reveals that these QSS schemes are insecure for transmission\nefficiencies lower than 50%, especially when they are used to share an unknown\nquantum state. Finally, we present a general way to improve the security of QSS\nschemes for sharing not only a private key but also an unknown quantum state.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0705.0369",
+    "authors": "Vlad Gheorghiu, and Robert B. Griffiths",
+    "title": "Entanglement transformations using separable operations",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We study conditions for the deterministic transformation\n$\\ket{\\psi}\\longrightarrow\\ket{\\phi}$ of a bipartite entangled state by a\nseparable operation. If the separable operation is a local operation with\nclassical communication (LOCC), Nielsen's majorization theorem provides\nnecessary and sufficient conditions. For the general case we derive a necessary\ncondition in terms of products of Schmidt coefficients, which is equivalent to\nthe Nielsen condition when either of the two factor spaces is of dimension 2,\nbut is otherwise weaker. One implication is that no separable operation can\nreverse a deterministic map produced by another separable operation, if one\nexcludes the case where the Schmidt coefficients of $\\ket{\\psi}$ and are the\nsame as those of $\\ket{\\phi}$. The question of sufficient conditions in the\ngeneral separable case remains open. When the Schmidt coefficients of\n$\\ket{\\psi}$ are the same as those of $\\ket{\\phi}$, we show that the Kraus\noperators of the separable transformation restricted to the supports of\n$\\ket{\\psi}$ on the factor spaces are proportional to unitaries. When that\nproportionality holds and the factor spaces have equal dimension, we find\nconditions for the deterministic transformation of a collection of several full\nSchmidt rank pure states $\\ket{\\psi_j}$ to pure states $\\ket{\\phi_j}$.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0705.0386",
+    "authors": "D. Patan\\'e, R. Fazio, L. Amico",
+    "title": "Bound entanglement in the XY model",
+    "categories": "quant-ph cond-mat.stat-mech",
+    "main_category": "Quantum Physics",
+    "other_categories": "Statistical Mechanics",
+    "abstract": "  We study the multi-spin entanglement for the 1D anisotropic XY model\nconcentrating on the simplest case of three-spin entanglement. As compared to\nthe pairwise entanglement, three-party quantum correlations have a longer range\nand they are more robust on increasing the temperature.\n  We find regions of the phase diagram of the system where bound entanglement\noccurs, both at zero and finite temperature. Bound entanglement in the ground\nstate can be obtained by tuning the magnetic field. Thermal bound entanglement\nemerges naturally due to the effect of temperature on the free ground state\nentanglement.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0705.0419",
+    "authors": "Walid Belkhir (LIF), Luigi Santocanale (LIF)",
+    "title": "Undirected Graphs of Entanglement Two",
+    "categories": "cs.LO cs.GT",
+    "main_category": "Logic in Computer Science",
+    "other_categories": "Computer Science and Game Theory",
+    "abstract": "  Entanglement is a complexity measure of directed graphs that origins in fixed\npoint theory. This measure has shown its use in designing efficient algorithms\nto verify logical properties of transition systems. We are interested in the\nproblem of deciding whether a graph has entanglement at most k. As this measure\nis defined by means of games, game theoretic ideas naturally lead to design\npolynomial algorithms that, for fixed k, decide the problem. Known\ncharacterizations of directed graphs of entanglement at most 1 lead, for k = 1,\nto design even faster algorithms. In this paper we present an explicit\ncharacterization of undirected graphs of entanglement at most 2. With such a\ncharacterization at hand, we devise a linear time algorithm to decide whether\nan undirected graph has this property.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0705.0506",
+    "authors": "Geoffrey Grimmett",
+    "title": "Space-time percolation",
+    "categories": "math.PR",
+    "main_category": "Probability",
+    "other_categories": "",
+    "abstract": "  The contact model for the spread of disease may be viewed as a directed\npercolation model on $\\ZZ \\times \\RR$ in which the continuum axis is oriented\nin the direction of increasing time. Techniques from percolation have enabled a\nfairly complete analysis of the contact model at and near its critical point.\nThe corresponding process when the time-axis is unoriented is an undirected\npercolation model to which now standard techniques may be applied. One may\nconstruct in similar vein a random-cluster model on $\\ZZ \\times \\RR$, with\nassociated continuum Ising and Potts models. These models are of independent\ninterest, in addition to providing a path-integral representation of the\nquantum Ising model with transverse field. This representation may be used to\nobtain a bound on the entanglement of a finite set of spins in the quantum\nIsing model on $\\ZZ$, where this entanglement is measured via the entropy of\nthe reduced density matrix. The mean-field version of the quantum Ising model\ngives rise to a random-cluster model on $K_n \\times \\RR$, thereby extending the\nErdos-Renyi random graph on the complete graph $K_n$.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0705.0523",
+    "authors": "M. B. Stone, W. Tian, M. D. Lumsden, G. E. Granroth, D. Mandrus, J.-H.\n  Chung, N. Harrison and S. E. Nagler",
+    "title": "Quantum spin correlations in an organometallic alternating sign chain",
+    "categories": "cond-mat.str-el",
+    "main_category": "Strongly Correlated Electrons",
+    "other_categories": "",
+    "abstract": "  High resolution inelastic neutron scattering is used to study excitations in\nthe organometallic magnet DMACuCl$_3$. The correct magnetic Hamiltonian\ndescribing this material has been debated for many years. Combined with high\nfield bulk magnetization and susceptibility studies, the new results imply that\nDMACuCl$_3$ is a realization of the $S=1/2$ alternating\nantiferromagnetic-ferromagnetic (AFM-FM) chain. Coupled-cluster calculations\nare used to derive exchange parameters, showing that the AFM and FM\ninteractions have nearly the same strength. Analysis of the scattering\nintensities shows clear evidence for inter-dimer spin correlations, in contrast\nto existing results for conventional alternating chains. The results are\ndiscussed in the context of recent ideas concerning quantum entanglement.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0705.0619",
+    "authors": "Sergey Emelyanov",
+    "title": "Optical detection of anyons in an integer quantum Hall system",
+    "categories": "cond-mat.mes-hall cond-mat.other",
+    "main_category": "Mesoscale and Nanoscale Physics",
+    "other_categories": "Other Condensed Matter",
+    "abstract": "  Further experiments showed the incorrectness of proposed interpretation. We\nhave studied an in-plane resonant photo-response of an integer quantum Hall\nsystem in which time-reversal and parity symmetries are broken. The response of\ninitially homogeneous system exhibits a complicate spatial structure sensitive\nto the system macroscopic sizes. Conceptually, the effect is explained by the\nlarge-scale quantum entanglement originated from an indistinguishable particle\nstatistics. The concept is supported by the demonstration of\nentanglement-related transfer of information in the system interior.\n",
+    "year": "2013"
+  },
+  {
+    "article_id": "0705.0679",
+    "authors": "Zeynep Nilhan Gurkan and Oktay K. Pashaev",
+    "title": "Two Qubit Entanglement in $XYZ$ Magnetic Chain with DM Antisymmetric\n  Anisotropic Exchange Interaction",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  In the present paper we study two qubit entanglement in the most general\n$XYZ$ Heisenberg magnetic chain with (non)homogeneous magnetic fields and the\nDM anisotropic antisymmetric exchange interaction, arising from the spin-orbit\ncoupling . The model includes all known results as particular cases, for both\nantiferromagnetic and ferromagnetic $XX, XY, XXX, XXZ, XYZ$ chains. The\nconcurrence of two qubit thermal entanglement and its dependence on anisotropic\nparameters, external magnetic field and temperature are studied in details. We\nfound that in all cases, inclusion of the DM interaction, which is responsible\nfor weak ferromagnetism in mainly antiferromagnetic crystals and spin\narrangement in low symmetry magnets, creates (when it does not exist) or\nstrengthens (when it exists) entanglement in $XYZ$ spin chain. This implies\nexistence of a relation between arrangement of spins and entanglement, in which\nthe DM coupling plays an essential role. It suggests also that anisotropic\nantisymmetric exchange interaction could be an efficient control parameter of\nentanglement in the general $XYZ$ case.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0705.0681",
+    "authors": "Samina S. Masood and Allen Miller",
+    "title": "Entanglement in a Jaynes-Cummings Model with Two Atoms and Two Photon\n  Modes",
+    "categories": "quant-ph hep-th",
+    "main_category": "Quantum Physics",
+    "other_categories": "High Energy Physics - Theory",
+    "abstract": "  We investigate the conditions of entanglement for a system of two atoms and\ntwo photon modes in vacuum, using the Jaynes-Cummings model in the\nrotating-wave approximation. It is found, by generalizing the existing results,\nthat the strength of entanglement is a periodic function of time. We explicitly\nshow that our results are in agreement with the existing results of\nentanglement conditions under appropriate limits. Results for the two-atom and\ntwo-photon system are generalized to the case of arbitrary values for the\natomic energies, corresponding to photon modes frequencies. Though it is\napparently a generalization of the existing work, we have considered for the\nfirst time both the resonant and nonresonant conditions and found a general\nequation which could be true for both cases. Moreover, we show that periodicity\nof the entanglement is a distinct feature of resonant system. Considering the\ntwo atoms and two photons system, in detail, we setup an approach which could\nbe generalized for many particle systems and the resulting master equation can\nalso be analyzed.\n",
+    "year": "2016"
+  },
+  {
+    "article_id": "0705.0943",
+    "authors": "Joachim Brand, Sergej Flach, Victor Fleurov, L. S. Schulmann, Denis\n  Tolkunov",
+    "title": "Localization by entanglement",
+    "categories": "cond-mat.other nlin.PS quant-ph",
+    "main_category": "Other Condensed Matter",
+    "other_categories": "Pattern Formation and Solitons, Quantum Physics",
+    "abstract": "  We study the localization of bosonic atoms in an optical lattice, which\ninteract in a spatially confined region. The classical theory predicts that\nthere is no localization below a threshold value for the strength of\ninteraction that is inversely proportional to the number of participating\natoms. In a full quantum treatment, however, we find that localized states\nexist for arbitrarily weak attractive or repulsive interactions for any number\n($>1$) of atoms. We further show, using an explicit solution of the\ntwo-particle bound state and an appropriate measure of entanglement, that the\nentanglement tends to a finite value in the limit of weak interactions. Coupled\nwith the non-existence of localization in an optimized quantum product state,\nwe conclude that the localization exists by virtue of entanglement.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0705.0957",
+    "authors": "Karyn Le Hur, Philippe Doucet-Beaupre, Walter Hofstetter",
+    "title": "Entanglement and Criticality in Quantum Impurity Systems",
+    "categories": "cond-mat.str-el cond-mat.mes-hall",
+    "main_category": "Strongly Correlated Electrons",
+    "other_categories": "Mesoscale and Nanoscale Physics",
+    "abstract": "  We investigate the entanglement between a spin and its environment in\nimpurity systems which exhibit a second-order quantum phase transition. As an\napplication, we employ the spin-boson model, describing a two-level system\n(spin) coupled to a subohmic bosonic bath with power-law spectral density,\n${\\cal J}(\\omega)\\propto \\omega^s$ and $0<s<1$. Combining Wilson's Numerical\nRenormalization Group method and hyperscaling relations, we demonstrate that\nthe entanglement between the spin and its environment is always enhanced at the\nquantum phase transition resulting in a visible cusp (maximum) in the entropy\nof entanglement. We formulate a correspondence between criticality and impurity\nentanglement entropy, and the relevance of these ideas to Nano-systems is\noutlined.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0705.1002",
+    "authors": "Anil Shaji and Carlton M. Caves",
+    "title": "Qubit metrology and decoherence",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  Quantum properties of the probes used to estimate a classical parameter can\nbe used to attain accuracies that beat the standard quantum limit. When qubits\nare used to construct a quantum probe, it is known that initializing $n$ qubits\nin an entangled \"cat state,\" rather than in a separable state, can improve the\nmeasurement uncertainty by a factor of $1/\\sqrt{n}$. We investigate how the\nmeasurement uncertainty is affected when the individual qubits in a probe are\nsubjected to decoherence. In the face of such decoherence, we regard the rate\n$R$ at which qubits can be generated and the total duration $\\tau$ of a\nmeasurement as fixed resources, and we determine the optimal use of\nentanglement among the qubits and the resulting optimal measurement uncertainty\nas functions of $R$ and $\\tau$.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0705.1092",
+    "authors": "Jialin Zhang, Hongwei Yu",
+    "title": "The Unruh effect and entanglement generation for accelerated atoms near\n  a reflecting boundary",
+    "categories": "gr-qc quant-ph",
+    "main_category": "General Relativity and Quantum Cosmology",
+    "other_categories": "Quantum Physics",
+    "abstract": "  We study, in the framework of open systems, the entanglement generation of\ntwo independent uniformly accelerated atoms in interaction with the vacuum\nfluctuations of massless scalar fields subjected to a reflecting plane\nboundary. We demonstrate that, with the presence of the boundary, the\naccelerated atoms exhibit distinct features from static ones in a thermal bath\nat the corresponding Unruh temperature in terms of the entanglement creation at\nthe neighborhood of the initial time. In this sense, accelerated atoms in\nvacuum do not necessarily have to behave as if they were static in a thermal\nbath at the Unruh temperature.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0705.1103",
+    "authors": "Mari-Carmen Ba\\~nuls, J. Ignacio Cirac, Michael M. Wolf",
+    "title": "Entanglement in fermionic systems",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  The anticommuting properties of fermionic operators, together with the\npresence of parity conservation, affect the concept of entanglement in a\ncomposite fermionic system. Hence different points of view can give rise to\ndifferent reasonable definitions of separable and entangled states. Here we\nanalyze these possibilities and the relationship between the different classes\nof separable states. We illustrate the differences by providing a complete\ncharacterization of all the sets defined for systems of two fermionic modes.\nThe results are applied to Gibbs states of infinite chains of fermions whose\ninteraction corresponds to a XY-Hamiltonian with transverse magnetic field.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0705.1136",
+    "authors": "Alessio Serafini and Gerardo Adesso",
+    "title": "Standard forms and entanglement engineering of multimode Gaussian states\n  under local operations",
+    "categories": "quant-ph math.SG physics.optics",
+    "main_category": "Quantum Physics",
+    "other_categories": "Symplectic Geometry, Optics",
+    "abstract": "  We investigate the action of local unitary operations on multimode (pure or\nmixed) Gaussian states and single out the minimal number of locally invariant\nparametres which completely characterise the covariance matrix of such states.\nFor pure Gaussian states, central resources for continuous-variable quantum\ninformation, we investigate separately the parametre reduction due to the\nadditional constraint of global purity, and the one following by the\nlocal-unitary freedom. Counting arguments and insights from the phase-space\nSchmidt decomposition and in general from the framework of symplectic analysis,\naccompany our description of the standard form of pure n-mode Gaussian states.\nIn particular we clarify why only in pure states with n<=3 modes all the direct\ncorrelations between position and momentum operators can be set to zero by\nlocal unitary operations. For any n, the emerging minimal set of parametres\ncontains complete information about all forms of entanglement in the\ncorresponding states. An efficient state engineering scheme (able to encode\ndirect correlations between position and momentum operators as well) is\nproposed to produce entangled multimode Gaussian resources, its number of\noptical elements matching the minimal number of locally invariant degrees of\nfreedom of general pure n-mode Gaussian states. We demonstrate that so-called\n\"block-diagonal\" Gaussian states, without direct correlations between position\nand momentum, are systematically less entangled, on average, than arbitrary\npure Gaussian states.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0705.1138",
+    "authors": "Paulina Marian and Tudor A. Marian",
+    "title": "Bures distance as a measure of entanglement for symmetric two-mode\n  Gaussian states",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We evaluate a Gaussian entanglement measure for a symmetric two-mode Gaussian\nstate of the quantum electromagnetic field in terms of its Bures distance to\nthe set of all separable Gaussian states. The required minimization procedure\nwas considerably simplified by using the remarkable properties of the Uhlmann\nfidelity as well as the standard form II of the covariance matrix of a\nsymmetric state. Our result for the Gaussian degree of entanglement measured by\nthe Bures distance depends only on the smallest symplectic eigenvalue of the\ncovariance matrix of the partially transposed density operator. It is thus\nconsistent to the exact expression of the entanglement of formation for\nsymmetric two-mode Gaussian states. This non-trivial agreement is specific to\nthe Bures metric.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0705.1308",
+    "authors": "Zongwen Yu, Su Hu, and Chunlei Zhang",
+    "title": "Quantify Entanglement for Multipartite Quantum States",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  In this paper, we consider the problem of how to quantify entanglement for\nany multipartite quantum states. For bipartite pure states partial entropy is a\ngood entanglement measure. By using partial entropy, we firstly introduce the\nCombinatorial Entropy of Fully entangled states (CEF) which can be used to\nquantify entanglement for any fully entangled pure states. In order to quantify\nentanglement for any multipartite states we also need another concept the\nEntanglement Combination (EC) which can be used to completely describe the\nentanglement between any parties of the given quantum states. Combining CEF\nwith EC, we define the Combinatorial Entropy (CE) for any multipartite pure\nstates and present some nice properties which indicate CE is a good\nentanglement measure. Finally, we point out the feasibility of extending these\nthree concepts to mixed quantum states.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0705.1398",
+    "authors": "B. P. Lanyon, T. J. Weinhold, N. K. Langford, M. Barbieri, D. F. V.\n  James*, A. Gilchrist, and A. G. White (University of Queensland, *University\n  of Toronto)",
+    "title": "Experimental demonstration of Shor's algorithm with quantum entanglement",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  Shor's powerful quantum algorithm for factoring represents a major challenge\nin quantum computation and its full realization will have a large impact on\nmodern cryptography. Here we implement a compiled version of Shor's algorithm\nin a photonic system using single photons and employing the non-linearity\ninduced by measurement. For the first time we demonstrate the core processes,\ncoherent control, and resultant entangled states that are required in a\nfull-scale implementation of Shor's algorithm. Demonstration of these processes\nis a necessary step on the path towards a full implementation of Shor's\nalgorithm and scalable quantum computing. Our results highlight that the\nperformance of a quantum algorithm is not the same as performance of the\nunderlying quantum circuit, and stress the importance of developing techniques\nfor characterising quantum algorithms.\n",
+    "year": "2007"
+  },
+  {
+    "article_id": "0705.1403",
+    "authors": "B. Baumgartner, B.C. Hiesmayr and H. Narnhofer",
+    "title": "The geometry of bipartite qutrits including bound entanglement",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We investigate the state space of bipartite qutrits. We construct an analog\nto the \"magic\" tetrahedron for bipartite qubits--a magic simplex W. It is\nformed by all convex combination of nine Bell states which are constructed\nusing the Weyl operators. Due to the high symmetry it is enough to consider\ncertain typical slices through W. Via optimal entanglement witnesses we find\nregions of bound entangled states inside W.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0705.1405",
+    "authors": "H. Nakano, K. Kakuyanagi, M. Ueda, and K. Semba",
+    "title": "Long-range and selective coupler for superconducting flux qubits",
+    "categories": "cond-mat.supr-con",
+    "main_category": "Superconductivity",
+    "other_categories": "",
+    "abstract": "  We propose a qubit-qubit coupling scheme for superconducting flux quantum\nbits (qubits), where a quantized Josephson junction resonator and microwave\nirradiation are utilized. The junction is used as a tunable inductance\ncontrolled by changing the bias current flowing through the junction, and thus\nthe circuit works as a tunable resonator. This enables us to make any qubits\ninteract with the resonator. Entanglement between two of many qubits whose\nlevel splittings satisfy some conditions, is formed by microwave irradiation\ncausing a two-photon Rabi oscillation. Since the size of the resonator can be\nas large as sub-millimeters and qubits interact with it via mutual inductance,\nour scheme makes it possible to construct a quantum gate involving remote\nqubits\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0705.1424",
+    "authors": "Runyao Duan, Yuan Feng, Mingsheng Ying",
+    "title": "Local Distinguishability of Multipartite Unitary Operations",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We show that any two different unitary operations acting on an arbitrary\nmultipartite quantum system can be perfectly distinguishable by local\noperations and classical communication when a finite number of runs is allowed.\nWe then directly extend this result into the case when the number of unitary\noperations to be discriminated is more than two. Intuitively, our result means\nthat the lost identity of a nonlocal (entangled) unitary operation can be\nrecovered locally, without any use of entanglement or joint quantum operations.\n",
+    "year": "2011"
+  },
+  {
+    "article_id": "0705.1465",
+    "authors": "Nilanjana Datta, Yurii Suhov and Tony C. Dorlas",
+    "title": "Entanglement Assisted Classical Capacity of a Class of Quantum Channels\n  with Long-Term Memory",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  In this paper we evaluate the entanglement assisted classical capacity of a\nclass of quantum channels with long-term memory, which are convex combinations\nof memoryless channels. The memory of such channels can be considered to be\ngiven by a Markov chain which is aperiodic but not irreducible.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0705.1477",
+    "authors": "Guillaume Adenier",
+    "title": "Quantum entanglement, fair sampling, and reality: Is the moon there when\n  nobody looks?",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  In 1981, David Mermin described a cleverly simplified version of Bell's\ntheorem. It pointed out in a straightforward way that interpreting entanglement\nfrom a local realist point of view can be problematic. I propose here an\nextended version of Mermin's device that can actually be given a simple local\nrealist interpretation through a sample selection bias, and I argue that we\nstill have no scientific reason to believe that the moon could possibly not be\nthere when nobody looks.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0705.1684",
+    "authors": "Chao-Yang Lu, Daniel E. Browne, Tao Yang, Jian-Wei Pan",
+    "title": "Demonstration of Shor's quantum factoring algorithm using photonic\n  qubits",
+    "categories": "quant-ph physics.optics",
+    "main_category": "Quantum Physics",
+    "other_categories": "Optics",
+    "abstract": "  We report an experimental demonstration of a complied version of Shor's\nalgorithm using four photonic qubits. We choose the simplest instance of this\nalgorithm, that is, factorization of N=15 in the case that the period $r=2$ and\nexploit a simplified linear optical network to coherently implement the quantum\ncircuits of the modular exponential execution and semi-classical quantum\nFourier transformation. During this computation, genuine multiparticle\nentanglement is observed which well supports its quantum nature. This\nexperiment represents a step toward full realization of Shor's algorithm and\nscalable linear optics quantum computation.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0705.1710",
+    "authors": "Beat R\\\"othlisberger, J\\\"org Lehmann, D. S. Saraga, Philipp Traber,\n  and Daniel Loss",
+    "title": "Highly Entangled Ground States in Tripartite Qubit Systems",
+    "categories": "quant-ph cond-mat.mes-hall",
+    "main_category": "Quantum Physics",
+    "other_categories": "Mesoscale and Nanoscale Physics",
+    "abstract": "  We investigate the creation of highly entangled ground states in a system of\nthree exchange-coupled qubits arranged in a ring geometry. Suitable magnetic\nfield configurations yielding approximate GHZ and exact W ground states are\nidentified. The entanglement in the system is studied at finite temperature in\nterms of the mixed-state tangle tau. By adapting a steepest-descent\noptimization algorithm we demonstrate that tau can be evaluated efficiently and\nwith high precision. We identify the parameter regime for which the equilibrium\nentanglement of the tripartite system reaches its maximum.\n",
+    "year": "2008"
+  },
+  {
+    "article_id": "0705.1748",
+    "authors": "Chun-Yan Li, Xi-Han Li, Fu-Guo Deng, Ping Zhou, Yu-Jie Liang, Hong-Yu\n  Zhou",
+    "title": "Efficient quantum cryptography network without entanglement and quantum\n  memory",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  An efficient quantum cryptography network protocol is proposed with\nd-dimension polarized photons, without resorting to entanglement and quantum\nmemory. A server on the network, say Alice, provides the service for preparing\nand measuring single photons whose initial state are |0>. The users code the\ninformation on the single photons with some unitary operations. For preventing\nthe untrustworthy server Alice from eavesdropping the quantum lines, a\nnonorthogonal-coding technique (decoy-photon technique) is used in the process\nthat the quantum signal is transmitted between the users. This protocol does\nnot require the servers and the users to store the quantum state and almost all\nof the single photons can be used for carrying the information, which makes it\nmore convenient for application than others with present technology. We also\ndiscuss the case with a faint laser pulse.\n",
+    "year": "2015"
+  },
+  {
+    "article_id": "0705.1832",
+    "authors": "Cheng-Jie Zhang, Yong-Sheng Zhang, Shun Zhang, Guang-Can Guo",
+    "title": "Optimal entanglement witnesses based on local orthogonal observables",
+    "categories": "quant-ph",
+    "main_category": "Quantum Physics",
+    "other_categories": "",
+    "abstract": "  We show that the entanglement witnesses based on local orthogonal observables\nwhich are introduced in [S. Yu and N.-L. Liu, Phys. Rev. Lett. 95, 150504\n(2005)] and [O. G\\\"uhne, M. Mechler, G. T\\'oth and P. Adam, Phys. Rev. A 74,\n010301 (2006)] in linear and nonlinear forms can be optimized, respectively. As\napplications, we calculate the optimal nonlinear witnesses of pure bipartite\nstates and show a lower bound on the I-concurrence of bipartite higher\ndimensional systems with our method.\n",
+    "year": "2009"
+  },
+  {
+    "article_id": "0705.2024",
+    "authors": "M. B. Hastings",
+    "title": "An Area Law for One Dimensional Quantum Systems",
+    "categories": "quant-ph cond-mat.str-el math-ph math.MP",
+    "main_category": "Quantum Physics",
+    "other_categories": "Strongly Correlated Electrons, Mathematical Physics, Mathematical Physics",
+    "abstract": "  We prove an area law for the entanglement entropy in gapped one dimensional\nquantum systems. The bound on the entropy grows surprisingly rapidly with the\ncorrelation length; we discuss this in terms of properties of quantum expanders\nand present a conjecture on completely positive maps which may provide an\nalternate way of arriving at an area law. We also show that, for gapped, local\nsystems, the bound on Von Neumann entropy implies a bound on R\\'{e}nyi entropy\nfor sufficiently large $\\alpha<1$ and implies the ability to approximate the\nground state by a matrix product state.\n",
+    "year": "2018"
+  }
+]

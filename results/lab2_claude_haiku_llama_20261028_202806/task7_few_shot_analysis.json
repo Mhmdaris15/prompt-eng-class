@@ -1,0 +1,92 @@
+{
+  "examples_used": [
+    {
+      "example": "Concrete argument (fake citation)",
+      "purpose": "Show how to write specific, verifiable examples instead of vague statements",
+      "version": "v3"
+    },
+    {
+      "example": "Explaining the example",
+      "purpose": "Show how to explain WHY an example matters, not just state it",
+      "version": "v3"
+    },
+    {
+      "example": "Cautious conclusion",
+      "purpose": "Show how to conclude without overstatement",
+      "version": "v3"
+    },
+    {
+      "example": "One-shot good example (student learning)",
+      "purpose": "Show conditional phrasing and specific situation",
+      "version": "v2"
+    }
+  ],
+  "comparison": {
+    "v1": {
+      "anthropic/claude-haiku-4.5": {
+        "length": 605,
+        "latency_sec": 4.346,
+        "caution_markers": 1,
+        "confident_markers": 0,
+        "links": 0,
+        "years": 0,
+        "numbers": 0,
+        "finish_reason": "stop"
+      },
+      "meta-llama/llama-3.3-70b-instruct": {
+        "length": 1051,
+        "latency_sec": 30.385,
+        "caution_markers": 0,
+        "confident_markers": 0,
+        "links": 0,
+        "years": 0,
+        "numbers": 0,
+        "finish_reason": "stop"
+      }
+    },
+    "v2": {
+      "anthropic/claude-haiku-4.5": {
+        "length": 1303,
+        "latency_sec": 5.304,
+        "caution_markers": 1,
+        "confident_markers": 0,
+        "links": 0,
+        "years": 0,
+        "numbers": 0,
+        "finish_reason": "stop"
+      },
+      "meta-llama/llama-3.3-70b-instruct": {
+        "length": 0,
+        "latency_sec": 77.191,
+        "caution_markers": 0,
+        "confident_markers": 0,
+        "links": 0,
+        "years": 0,
+        "numbers": 0,
+        "finish_reason": ""
+      }
+    },
+    "v3": {
+      "anthropic/claude-haiku-4.5": {
+        "length": 1344,
+        "latency_sec": 4.651,
+        "caution_markers": 1,
+        "confident_markers": 1,
+        "links": 0,
+        "years": 0,
+        "numbers": 0,
+        "finish_reason": "stop"
+      },
+      "meta-llama/llama-3.3-70b-instruct": {
+        "length": 1041,
+        "latency_sec": 12.511,
+        "caution_markers": 0,
+        "confident_markers": 0,
+        "links": 0,
+        "years": 0,
+        "numbers": 0,
+        "finish_reason": "stop"
+      }
+    }
+  }
+}

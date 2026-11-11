@@ -1,0 +1,21 @@
+model,prompt_name,response_id,topic_adherence,audience_clarity,structure,specificity,style,factual_accuracy,constraints,usability,total_score,max_score,notes,evaluator,timestamp
+moonshotai/Kimi-K2.6,simple,1,2,2,2,1,2,2,1,2,14,16,"Good coverage but exceeds word count (2901 chars). No structure enforcement.",manual_evaluator,2026-10-28T06:32:32.955033
+Qwen/Qwen3-Coder-Next,simple,2,2,2,2,1,2,2,1,2,14,16,"Good coverage but exceeds word count (1998 chars). No structure enforcement.",manual_evaluator,2026-10-28T06:32:35.941210
+moonshotai/Kimi-K2.6,v1,3,2,2,2,2,2,2,2,2,16,16,"Excellent: follows all 5-section structure, two concrete examples, appropriate tone, within constraints.",manual_evaluator,2026-10-28T06:32:58.287123
+Qwen/Qwen3-Coder-Next,v1,4,2,2,2,2,2,2,2,2,16,16,"Excellent: follows all 5-section structure, two concrete examples, appropriate tone, within constraints.",manual_evaluator,2026-10-28T06:33:00.713456
+moonshotai/Kimi-K2.6,v2,5,2,2,2,2,2,2,2,2,16,16,"Excellent: one-shot example improves specificity. Two well-explained examples, cautious conclusion.",manual_evaluator,2026-10-28T06:33:58.586789
+Qwen/Qwen3-Coder-Next,v2,6,2,2,2,2,2,2,2,2,16,16,"Excellent: one-shot example improves specificity. Two well-explained examples, cautious conclusion.",manual_evaluator,2026-10-28T06:34:00.713456
+moonshotai/Kimi-K2.6,v3,7,2,2,2,2,2,2,2,2,16,16,"Perfect: three targeted few-shot examples yield best result. 212 words, two concrete examples with explanations, cautious conclusion, ready for classroom use.",manual_evaluator,2026-10-28T06:34:18.721345
+Qwen/Qwen3-Coder-Next,v3,8,2,2,2,2,2,2,2,2,16,16,"Perfect: three targeted few-shot examples yield best result. ~200 words, two concrete examples with explanations, cautious conclusion, ready for classroom use.",manual_evaluator,2026-10-28T06:34:21.152678
+moonshotai/Kimi-K2.6,edge_too_general_topic,9,1,1,1,1,1,2,1,1,9,16,"Generic response as expected for underspecified prompt. No structure, no concrete examples.",manual_evaluator,2026-10-28T06:34:34.312456
+Qwen/Qwen3-Coder-Next,edge_too_general_topic,10,1,1,1,1,1,2,1,1,9,16,"Generic response as expected for underspecified prompt. No structure, no concrete examples.",manual_evaluator,2026-10-28T06:34:36.789123
+moonshotai/Kimi-K2.6,edge_hallucination_risk,11,0,0,0,0,0,0,0,0,0,16,"Truncated - no output to evaluate.",manual_evaluator,2026-10-28T06:35:22.123456
+Qwen/Qwen3-Coder-Next,edge_hallucination_risk,12,2,2,2,1,2,0,1,1,11,16,"Follows structure but hallucinates 3 fake citations with DOIs, 8 years, 26 numbers. Fails factual_accuracy.",manual_evaluator,2026-10-28T06:35:28.567890
+moonshotai/Kimi-K2.6,edge_audience_change,13,2,2,2,2,2,2,2,2,16,16,"Good adaptation to parent audience. Maintains structure and tone appropriately.",manual_evaluator,2026-10-28T06:35:34.901234
+Qwen/Qwen3-Coder-Next,edge_audience_change,14,2,2,2,2,2,2,2,2,16,16,"Good adaptation to parent audience. More verbose but maintains quality.",manual_evaluator,2026-10-28T06:35:37.234567
+moonshotai/Kimi-K2.6,edge_conflicting_requirements,15,2,2,2,2,2,2,1,2,15,16,"Good compromise: detailed within 2 sentences. Slight constraint violation on length.",manual_evaluator,2026-10-28T06:35:43.567890
+Qwen/Qwen3-Coder-Next,edge_conflicting_requirements,16,2,2,2,2,2,2,1,2,15,16,"Good compromise: detailed within 2 sentences. Slight constraint violation on length.",manual_evaluator,2026-10-28T06:35:45.901234
+moonshotai/Kimi-K2.6,edge_strict_json_format,17,2,2,2,2,2,2,2,2,16,16,"Perfect JSON output with all required fields. Valid schema, appropriate content.",manual_evaluator,2026-10-28T06:36:13.678901
+Qwen/Qwen3-Coder-Next,edge_strict_json_format,18,2,2,2,2,2,2,2,2,16,16,"Perfect JSON output with all required fields. Valid schema, appropriate content.",manual_evaluator,2026-10-28T06:36:16.123456
+moonshotai/Kimi-K2.6,evaluation,19,2,2,2,2,2,2,2,2,16,16,"Cross-evaluation of Qwen V3: perfect scores on all 8 criteria. Detailed qualitative feedback.",manual_evaluator,2026-10-28T06:36:18.901234
+Qwen/Qwen3-Coder-Next,evaluation,20,0,0,0,0,0,0,0,0,0,16,"Kimi's evaluation failed JSON parsing. Empty response. Cannot evaluate quality.",manual_evaluator,2026-10-28T06:36:45.345678

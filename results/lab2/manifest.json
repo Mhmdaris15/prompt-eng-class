@@ -1,0 +1,35 @@
+{
+  "experiment": "lab2_prompt_engineering",
+  "timestamp": "2026-10-15T07:55:24.239115",
+  "config": {
+    "primary_model": "moonshotai/Kimi-K2.6",
+    "secondary_model": "google/gemini-3.1-pro-preview",
+    "temperature": 0.3,
+    "max_tokens": 2000,
+    "base_url": "https://foundation-models.api.cloud.ru/v1"
+  },
+  "source_text_hash": "13ef01169bfade1627006d0819cfeb2c659c4e2ad65a5e61c65a3b96877836e3",
+  "runner_hash": "f685541ab1dcbe488df43d1e0a03ccf90fcecb35a095531f25f83a5e7f1f29e3",
+  "summary": {
+    "total_requests": 18,
+    "successful": 15,
+    "failed": 3,
+    "avg_latency_sec": 16.577,
+    "avg_length": 2111.2
+  },
+  "models_tested": [
+    "moonshotai/Kimi-K2.6",
+    "google/gemini-3.1-pro-preview"
+  ],
+  "prompt_names": [
+    "edge_too_general_topic",
+    "v1",
+    "edge_conflicting_requirements",
+    "edge_strict_json_format",
+    "edge_hallucination_risk",
+    "v3",
+    "edge_audience_change",
+    "v2",
+    "simple"
+  ]
+}

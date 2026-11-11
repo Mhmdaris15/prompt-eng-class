@@ -1,0 +1,92 @@
+{
+  "examples_used": [
+    {
+      "example": "Concrete argument (fake citation)",
+      "purpose": "Show how to write specific, verifiable examples instead of vague statements",
+      "version": "v3"
+    },
+    {
+      "example": "Explaining the example",
+      "purpose": "Show how to explain WHY an example matters, not just state it",
+      "version": "v3"
+    },
+    {
+      "example": "Cautious conclusion",
+      "purpose": "Show how to conclude without overstatement",
+      "version": "v3"
+    },
+    {
+      "example": "One-shot good example (student learning)",
+      "purpose": "Show conditional phrasing and specific situation",
+      "version": "v2"
+    }
+  ],
+  "comparison": {
+    "v1": {
+      "moonshotai/Kimi-K2.6": {
+        "length": 1333,
+        "latency_sec": 42.941,
+        "caution_markers": 0,
+        "confident_markers": 0,
+        "links": 0,
+        "years": 0,
+        "numbers": 0,
+        "finish_reason": "stop"
+      },
+      "google/gemini-3.1-pro-preview": {
+        "length": 1377,
+        "latency_sec": 8.322,
+        "caution_markers": 0,
+        "confident_markers": 0,
+        "links": 0,
+        "years": 0,
+        "numbers": 0,
+        "finish_reason": "stop"
+      }
+    },
+    "v2": {
+      "moonshotai/Kimi-K2.6": {
+        "length": 153,
+        "latency_sec": 46.444,
+        "caution_markers": 0,
+        "confident_markers": 0,
+        "links": 0,
+        "years": 0,
+        "numbers": 0,
+        "finish_reason": "length"
+      },
+      "google/gemini-3.1-pro-preview": {
+        "length": 1543,
+        "latency_sec": 6.883,
+        "caution_markers": 0,
+        "confident_markers": 1,
+        "links": 0,
+        "years": 0,
+        "numbers": 0,
+        "finish_reason": "stop"
+      }
+    },
+    "v3": {
+      "moonshotai/Kimi-K2.6": {
+        "length": 971,
+        "latency_sec": 47.843,
+        "caution_markers": 0,
+        "confident_markers": 0,
+        "links": 0,
+        "years": 0,
+        "numbers": 0,
+        "finish_reason": "length"
+      },
+      "google/gemini-3.1-pro-preview": {
+        "length": 1401,
+        "latency_sec": 7.042,
+        "caution_markers": 0,
+        "confident_markers": 0,
+        "links": 0,
+        "years": 0,
+        "numbers": 0,
+        "finish_reason": "stop"
+      }
+    }
+  }
+}

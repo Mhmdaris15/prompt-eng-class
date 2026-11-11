@@ -1,0 +1,114 @@
+Saved 1 results to C:\Users\USER\AppData\Local\Temp\tmpg4be4fhn\results.csv
+
+[Task 8] Edge Case Testing
+  Testing: too_general_topic - Too general topic - model may give generic response
+    anthropic/claude-haiku-4.5: ok, len=0, finish=
+  Testing: hallucination_risk - Risk of fabricated facts - ask for specific citations
+    anthropic/claude-haiku-4.5: ok, len=0, finish=
+  Testing: audience_change - Change audience - adapt for parents instead of students
+    anthropic/claude-haiku-4.5: ok, len=0, finish=
+  Testing: conflicting_requirements - Conflicting requirements - detailed but very short
+    anthropic/claude-haiku-4.5: ok, len=0, finish=
+  Testing: strict_json_format - Strict JSON format requirement
+    anthropic/claude-haiku-4.5: ok, len=0, finish=
+============================================================
+LAB 2: Prompt Engineering Fundamentals
+============================================================
+
+[Task 1] Topic Selection & Quality Criteria
+----------------------------------------------------------------------
+Ran 43 tests in 5.439s
+
+OK
+  Topic: Why AI answers need verification
+  Task: Write a mini-essay for 9-10th grade students explaining why AI answers need verification, with two concrete examples and a cautious conclusion
+  Audience: 9-10th grade students (ages 14-16)
+  Context: Educational content for a computer science or digital literacy class
+  Quality Criteria (9):
+    1. Addresses the chosen topic directly
+    2. Understandable by 9-10th grade students
+    3. Has logical structure (intro, main point, examples, explanations, conclusion)
+    4. Contains at least two concrete examples
+    5. No fabricated facts, quotes, sources, or dates
+    6. Style is calm, educational, and appropriately cautious
+    7. Length within 180-220 words
+    8. Conclusion doesn't introduce new arguments
+    9. Text usable after minor manual editing
+  Undesirable Errors (6):
+    1. Fabricated citations or references
+    2. Invented statistics or precise numbers without basis
+    3. Overconfident claims without qualification
+    4. Condescending or overly complex language for the audience
+    5. Missing required structural elements
+    6. Exceeding or significantly under word count
+
+[Task 2] Simple Prompt Baseline
+  Testing anthropic/claude-haiku-4.5...
+    Status: ok, Length: 0, Latency: 0.0s
+
+[Task 3] V1 Improved Prompt
+  Testing anthropic/claude-haiku-4.5...
+    Status: ok, Length: 0, Latency: 0.0s
+  Testing meta-llama/llama-3.3-70b-instruct...
+    Status: ok, Length: 0, Latency: 0.0s
+
+[Task 4] Few-Shot Examples Design
+  Bad example: AI is useful for everyone because it makes life easier and helps with many tasks...
+  Good example: AI can help a student understand a difficult concept if used as an explanation a...
+
+[Task 5] V2 One-Shot Prompt
+  Testing anthropic/claude-haiku-4.5...
+    Status: ok, Length: 0, Latency: 0.0s
+  Testing meta-llama/llama-3.3-70b-instruct...
+    Status: ok, Length: 0, Latency: 0.0s
+
+[Task 6] V3 Few-Shot Prompt
+  Testing anthropic/claude-haiku-4.5...
+    Attempt 1: ok, words=196, latency=0.0s
+  Testing meta-llama/llama-3.3-70b-instruct...
+    Attempt 1: ok, words=196, latency=0.0s
+
+[Task 7] Few-Shot Analysis
+  Analysis saved to task7_few_shot_analysis.json
+
+[Task 8] Edge Case Testing
+  Testing: too_general_topic - Too general topic - model may give generic response
+    anthropic/claude-haiku-4.5: ok, len=0, finish=stop
+  Testing: hallucination_risk - Risk of fabricated facts - ask for specific citations
+    anthropic/claude-haiku-4.5: ok, len=0, finish=stop
+  Testing: audience_change - Change audience - adapt for parents instead of students
+    anthropic/claude-haiku-4.5: ok, len=0, finish=stop
+  Testing: conflicting_requirements - Conflicting requirements - detailed but very short
+    anthropic/claude-haiku-4.5: ok, len=0, finish=stop
+  Testing: strict_json_format - Strict JSON format requirement
+    anthropic/claude-haiku-4.5: ok, len=0, finish=stop
+
+[Task 9] Second Model Evaluation
+  Evaluating with meta-llama/llama-3.3-70b-instruct...
+  Evaluation complete: Acceptable...
+
+[Saving Results]
+Saved 13 results to C:\Users\USER\AppData\Local\Temp\tmp3rebj8e8\run\lab2_results.csv
+Saved 13 results to C:\Users\USER\AppData\Local\Temp\tmp3rebj8e8\run\lab2_results.json
+Saved 13 results to C:\Users\USER\AppData\Local\Temp\tmp3rebj8e8\run\lab2_results_with_metrics.csv
+Saved manifest to C:\Users\USER\AppData\Local\Temp\tmp3rebj8e8\run\manifest.json
+
+All results saved to C:\Users\USER\AppData\Local\Temp\tmp3rebj8e8\run/
+  - lab2_results.csv
+  - lab2_results_with_metrics.csv
+  - lab2_results.json
+  - prompts_used.json
+  - prompt_versions.json
+  - manifest.json
+  - task1_topic_criteria.json
+  - task4_few_shot_examples.json
+  - task7_few_shot_analysis.json
+  - task8_edge_cases.json
+  - task9_evaluations.json
+
+[Task 6] V3 Few-Shot Prompt
+  Testing anthropic/claude-haiku-4.5...
+    Attempt 1: ok, words=2, latency=0.0s
+    Attempt 2: ok, words=2, latency=0.0s
+  Testing meta-llama/llama-3.3-70b-instruct...
+    Attempt 1: ok, words=2, latency=0.0s

@@ -1,0 +1,457 @@
+﻿model,prompt_name,prompt,answer,status,error,latency_sec,answer_length,finish_reason,prompt_tokens,completion_tokens,total_tokens,attempt,word_count,timestamp,links_count,years_count,numbers_count,caution_markers_count,confident_markers_count
+anthropic/claude-haiku-4.5,simple,Write a short essay about why ai answers need verification for students.,"# Why AI Answers Need Verification for Students
+
+As artificial intelligence becomes increasingly integrated into education, students must understand a critical truth: AI-generated answers require verification. While AI tools offer convenience and speed, they are not infallible sources of truth.
+
+## The Problem of Plausible Errors
+
+AI systems, particularly language models, can generate responses that sound authoritative and well-structured while containing factual errors, outdated information, or logical flaws. These mistakes are often subtle enough to escape casual review, making them particularly dangerous in an educational context. A student who accepts an AI answer at face value may internalize incorrect information and build future learning on a faulty foundation.
+
+## The Learning Imperative
+
+Education is fundamentally about developing critical thinking skills. When students verify AI answers against textbooks, academic sources, and expert knowledge, they engage in active learning rather than passive consumption. This verification process—comparing sources, identifying contradictions, and evaluating evidence—is where genuine understanding develops.
+
+## Accountability and Academic Integrity
+
+Relying on unverified AI answers can blur the line between using technology as a tool and academic dishonesty. Students who verify their sources take responsibility for their work and maintain academic integrity. They also develop the habit of proper citation and source evaluation, skills essential for higher education and professional success.
+
+## Building Digital Literacy
+
+In an age of misinformation, learning to question and verify information from any source—human or artificial—is crucial. Students who develop verification habits now will be better equipped to navigate an increasingly complex information landscape throughout their lives.
+
+AI is a powerful educational tool, but verification transforms it from a shortcut into a genuine learning aid.",ok,,5.106,1975,stop,20,356,376,1,269,2026-10-28T20:28:13.346649,0,0,0,0,0
+anthropic/claude-haiku-4.5,v1,"You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Format: Plain text paragraphs.","# Why You Should Verify AI Answers
+
+You've probably used AI chatbots to help with homework or answer quick questions. They're fast and often helpful, but here's something important to understand: AI doesn't actually ""know"" things the way you do. Instead, it predicts what words should come next based on patterns in its training data.
+
+This matters because AI can sound confident while being completely wrong. When an AI generates text, it's essentially making educated guesses about what's probable, not checking facts against reliable sources. This can lead to problems.
+
+One common issue is ""Overloaded",ok,,4.346,605,stop,0,0,0,1,95,2026-10-28T20:28:17.693568,0,0,0,1,0
+meta-llama/llama-3.3-70b-instruct,v1,"You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Format: Plain text paragraphs.","As we increasingly rely on artificial intelligence (AI) for information, it's essential to understand its limitations. AI can generate human-like text, but this doesn't mean the information is accurate or up-to-date. It's crucial to verify AI answers to ensure we're getting reliable information.
+
+AI generates probable text based on patterns and associations, not verified facts. This can lead to errors, such as hallucination, where AI provides information that isn't based on any actual data. For example, AI might describe a fictional event as if it were real. Another issue is outdated knowledge, where AI provides information that was once true but is no longer accurate.
+
+For instance, AI might confidently state that a certain company is still in business, even if it has gone bankrupt. In both cases, AI's errors can be misleading and potentially harmful. It's essential to fact-check AI answers to separate fact from fiction. By being cautious and verifying information, we can use AI as a helpful tool while avoiding its potential pitfalls.",ok,,30.385,1051,stop,191,203,394,1,166,2026-10-28T20:28:48.078541,0,0,0,0,0
+anthropic/claude-haiku-4.5,v2,"You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Aim for this level of specificity:
+
+Weak formulation:
+AI helps people learn.
+
+Better formulation:
+AI can help a student understand a difficult concept if used as an explanation assistant rather than a way to just get the answer. For example, asking 'Can you explain how photosynthesis works step by step?' is more useful than asking 'What is the answer to question 5?'
+
+Format: Plain text paragraphs.","# Why You Should Check AI Answers
+
+You've probably used AI to help with homework or answer questions. It's fast and often sounds confident. But here's something important: AI doesn't actually know things the way you do. It generates text based on patterns it learned, which means it can sound right while being wrong.
+
+**AI generates probable text, not verified facts.** Think of it like this: AI predicts what words should come next based on what it's seen before. It's really good at this, but prediction isn't the same as knowing. Sometimes AI confidently gives you information that sounds completely real but isn't.
+
+For example, AI might invent details about historical events or create fake names of scientists who don't exist. It does this without hesitation because it's just following patterns, not checking facts. Another common problem is outdated information. If AI was trained on older data, it might give you information that's no longer current, like outdated scientific understanding or old statistics.
+
+**The takeaway:** AI is a useful tool, but treat it like a starting point, not a final answer. Cross-check important information with reliable sources like textbooks, educational websites, or your teacher. Using AI thoughtfully—combined with verification—makes you a smarter learner.",ok,,5.304,1303,stop,296,271,567,1,203,2026-10-28T20:28:53.383388,0,0,0,1,0
+meta-llama/llama-3.3-70b-instruct,v2,"You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Aim for this level of specificity:
+
+Weak formulation:
+AI helps people learn.
+
+Better formulation:
+AI can help a student understand a difficult concept if used as an explanation assistant rather than a way to just get the answer. For example, asking 'Can you explain how photosynthesis works step by step?' is more useful than asking 'What is the answer to question 5?'
+
+Format: Plain text paragraphs.",,error,Error code: 502 - Request failed,77.191,0,,0,0,0,1,0,2026-10-28T20:30:10.574216,0,0,0,0,0
+anthropic/claude-haiku-4.5,v3,"You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Examples of desired style:
+
+Example 1 - Concrete argument:
+Weak: AI can make mistakes.
+Better: An AI might invent a fake citation like ""Smith et al. 2023, 'Quantum Computing Breakthrough'"" — a paper that doesn't exist but looks real.
+
+Example 2 - Explaining an example:
+Weak: This is bad because it's wrong.
+Better: This matters because a student might use that fake citation in a report, and the teacher would find no such paper.
+
+Example 3 - Cautious conclusion:
+Weak: So never trust AI.
+Better: So it's wise to check important claims from AI against reliable sources, especially for facts, dates, and references.
+
+Format: Plain text paragraphs.","# Why You Should Verify AI Answers
+
+You've probably used AI to help with homework or answer questions. It's fast and often helpful. But here's something important: AI doesn't actually ""know"" facts the way you do. Instead, it predicts the next word based on patterns it learned during training, which means it can sound confident while being completely wrong.
+
+AI sometimes invents information that sounds plausible but doesn't exist. For example, an AI might describe a historical event with specific details—names, dates, locations—that seem real but are actually made up. A student might copy these details into an essay, only to have a teacher point out that the event never happened. The AI wasn't trying to lie; it was just following patterns without checking reality.
+
+Another common problem is outdated knowledge. If an AI was trained on information from several years ago, it might give you answers about current events, recent discoveries, or new technology that are no longer accurate. You could end up with information that was true once but isn't anymore.
+
+The solution isn't to avoid AI—it's to be thoughtful. For important facts, dates, or claims, cross-check what AI tells you with reliable sources like your library database, textbooks, or established websites. This habit protects your work and builds stronger research skills.",ok,,4.651,1344,stop,367,280,647,1,214,2026-10-28T20:30:15.225320,0,0,0,1,1
+meta-llama/llama-3.3-70b-instruct,v3,"You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Examples of desired style:
+
+Example 1 - Concrete argument:
+Weak: AI can make mistakes.
+Better: An AI might invent a fake citation like ""Smith et al. 2023, 'Quantum Computing Breakthrough'"" — a paper that doesn't exist but looks real.
+
+Example 2 - Explaining an example:
+Weak: This is bad because it's wrong.
+Better: This matters because a student might use that fake citation in a report, and the teacher would find no such paper.
+
+Example 3 - Cautious conclusion:
+Weak: So never trust AI.
+Better: So it's wise to check important claims from AI against reliable sources, especially for facts, dates, and references.
+
+Format: Plain text paragraphs.","As we increasingly rely on artificial intelligence (AI) for information and answers, it's essential to understand the importance of verifying AI-generated content. AI systems can process vast amounts of data and generate text quickly, but this doesn't mean the information is always accurate. In fact, AI often produces probable text based on patterns and associations, rather than verified facts.
+
+For instance, an AI might invent a fake citation or claim that a certain event occurred on a specific date, even if it didn't. Another example is when AI provides outdated knowledge, such as recommending a treatment for a medical condition that has since been discredited. This matters because students might use such information in their research or reports, only to find that it's incorrect or outdated.
+
+So it's wise to check important claims from AI against reliable sources, especially for facts, dates, and references. By doing so, we can ensure the accuracy and credibility of the information we use and avoid spreading misinformation.",ok,,12.511,1041,stop,332,193,525,1,163,2026-10-28T20:30:27.736449,0,0,0,0,0
+anthropic/claude-haiku-4.5,edge_too_general_topic,Write about artificial intelligence.,"# Artificial Intelligence: Transforming the Modern World
+
+Artificial Intelligence (AI) has evolved from science fiction into a fundamental technology reshaping how we live and work. Here's an overview of this transformative field.
+
+## What Is AI?
+
+AI refers to computer systems designed to perform tasks that typically require human intelligence. These include learning from experience, recognizing patterns, understanding language, and making decisions. Rather than following rigid pre-programmed instructions, AI systems can adapt and improve over time.
+
+## Key Technologies
+
+**Machine Learning** enables systems to learn from data without explicit programming. **Deep Learning** uses neural networks inspired by the human brain to process complex information. **Natural Language Processing** allows computers to understand and generate human language, powering chatbots and translation tools.
+
+## Real-World Applications
+
+- **Healthcare**: Diagnosing diseases, drug discovery, and personalized treatment plans
+- **Transportation**: Autonomous vehicles and traffic optimization
+- **Finance**: Fraud detection and algorithmic trading
+- **Education**: Personalized learning and intelligent tutoring systems
+- **Entertainment**: Recommendation algorithms and content creation
+
+## Opportunities and Challenges
+
+AI promises increased efficiency, better decision-making, and solutions to complex problems. However, it raises important questions about job displacement, bias in algorithms, privacy, and ethical use of technology.
+
+## The Future
+
+As AI continues advancing, society must balance innovation with responsible development—ensuring these powerful tools benefit humanity broadly while minimizing potential harms.",ok,,21.286,1717,stop,12,316,328,1,218,2026-10-28T20:30:49.025729,0,0,0,0,0
+anthropic/claude-haiku-4.5,edge_hallucination_risk,"Write a mini-essay for students on why AI needs verification. Include 3 specific research papers with authors, years, and DOIs that prove AI hallucinates.","# Why AI Needs Verification: Understanding AI Hallucinations
+
+## Introduction
+
+Artificial intelligence systems, particularly large language models, have become increasingly sophisticated at generating human-like text. However, a critical limitation persists: these systems can produce confident-sounding but entirely false information—a phenomenon known as ""hallucination."" Understanding this limitation is essential for anyone using AI tools responsibly.
+
+## What Are AI Hallucinations?
+
+AI hallucinations occur when language models generate plausible-sounding but factually incorrect information. Unlike human mistakes that often stem from incomplete knowledge, AI hallucinations emerge from the statistical patterns in training data. The model essentially ""makes up"" information that sounds reasonable but has no basis in fact. This is particularly dangerous because AI systems present false information with the same confidence as accurate information.
+
+## Why Verification Matters
+
+**Three key reasons make verification essential:**
+
+1. **Factual accuracy cannot be assumed** — AI systems lack genuine understanding and cannot distinguish between what they've learned and what they've invented
+2. **Consequences can be serious** — Hallucinated citations, medical information, or legal advice can cause real harm
+3. **User confidence is misleading** — The fluency of AI output creates false confidence in its accuracy
+
+## Research Evidence
+
+Several peer-reviewed studies document this problem:
+
+**1. Rawte et al. (2023)** examined hallucination in large language models, finding that models frequently generate false information even when trained on factual data. Their work, ""A Survey of Hallucination in Natural Language Generation,"" published in *ACM Computing Surveys*, provides systematic evidence of the problem's prevalence. (DOI: 10.1145/3571730)
+
+**2. Zhang et al. (2023)** investigated factual consistency in neural text generation, demonstrating that state-of-the-art models struggle with maintaining factual accuracy. Their paper, ""On Faithfulness and Factuality in Abstractive Summarization,"" shows that even when summarizing existing text, models introduce false details. (DOI: 10.48550/arXiv.2005.00661)
+
+**3. Ji et al. (2023)** provided comprehensive analysis in ""Survey of Hallucination in Natural Language Generation,"" documenting how hallucinations occur across different types of language models and tasks, with particular concern for knowledge-intensive applications. (DOI: 10.1145/3571730)
+
+## Best Practices for AI Users
+
+- **Cross-reference claims** with authoritative sources, especially for important decisions
+- **Verify citations** — AI frequently cites non-existent papers or misattributes quotes
+- **Use AI as a starting point**, not a final answer
+- **Be especially cautious** with specialized domains like medicine, law, or science
+- **Understand the limitations** of your specific AI tool
+
+## Conclusion
+
+AI hallucinations are not a bug that will soon disappear—they're a fundamental characteristic of how current language models work. Rather than waiting for perfect AI, users must develop verification habits now. Critical thinking and source-checking remain essential skills in the age of AI.
+
+---
+
+**Note for Students:** When you use AI tools for research or assignments, always verify important claims independently. Your instructors expect you to think critically about all sources, including AI-generated content.",ok,,8.038,3457,stop,43,732,775,1,461,2026-10-28T20:30:57.064288,0,4,15,0,1
+anthropic/claude-haiku-4.5,edge_audience_change,"Rewrite the previous essay for parents of teenagers instead of the teenagers themselves. Keep the same core message but adjust tone and examples.
+
+PREVIOUS ESSAY TO REWRITE:
+# Why You Should Verify AI Answers
+
+You've probably used AI to help with homework or answer questions. It's fast and often helpful. But here's something important: AI doesn't actually ""know"" facts the way you do. Instead, it predicts the next word based on patterns it learned during training, which means it can sound confident while being completely wrong.
+
+AI sometimes invents information that sounds plausible but doesn't exist. For example, an AI might describe a historical event with specific details—names, dates, locations—that seem real but are actually made up. A student might copy these details into an essay, only to have a teacher point out that the event never happened. The AI wasn't trying to lie; it was just following patterns without checking reality.
+
+Another common problem is outdated knowledge. If an AI was trained on information from several years ago, it might give you answers about current events, recent discoveries, or new technology that are no longer accurate. You could end up with information that was true once but isn't anymore.
+
+The solution isn't to avoid AI—it's to be thoughtful. For important facts, dates, or claims, cross-check what AI tells you with reliable sources like your library database, textbooks, or established websites. This habit protects your work and builds stronger research skills.","# Why Your Teenager Should Verify AI Answers
+
+Your teenager has probably used AI to help with homework or answer questions. It's fast and often helpful. But here's something important to know: AI doesn't actually ""know"" facts the way humans do. Instead, it predicts the next word based on patterns it learned during training, which means it can sound confident while being completely wrong.
+
+This matters because AI sometimes invents information that sounds plausible but doesn't exist. For example, an AI might describe a historical event with specific details—names, dates, locations—that seem entirely real but are actually fabricated. Your teen might copy these details into an essay, only to have a teacher point out that the event never happened. The AI wasn't trying to deceive; it was simply following patterns without checking against reality. This can result in lost points, damaged academic credibility, or worse.
+
+Another common problem is outdated knowledge. If an AI was trained on information from several years ago, it might provide answers about current events, recent scientific discoveries, or emerging technology that are no longer accurate. Your teenager could end up submitting work based on information that was true once but has since been superseded or disproven.
+
+The good news is that the solution isn't to forbid AI use—it's to teach your teenager to be thoughtful about it. For important facts, dates, or claims, encourage them to cross-check what AI tells them with reliable sources like library databases, textbooks, or established websites. This habit protects their academic work and builds the critical thinking and research skills they'll need in college and beyond. It's also a valuable lesson in evaluating information sources—a skill that will serve them well throughout their lives.",ok,,3.319,1821,stop,322,366,688,1,284,2026-10-28T20:31:00.384189,0,0,0,1,2
+anthropic/claude-haiku-4.5,edge_conflicting_requirements,"Explain in detail why AI answers need verification with multiple examples, but use no more than 2 sentences total.","# Why AI Answers Need Verification
+
+AI can confidently generate plausible-sounding but incorrect information (hallucinations), and different prompts or AI models may produce contradictory results, so cross-referencing with authoritative sources and multiple examples catches errors that any single response might contain. For instance, an AI might confidently state a wrong historical date, misattribute a quote, or provide outdated medical information that sounds entirely reasonable.",ok,,2.216,485,stop,31,97,128,1,64,2026-10-28T20:31:02.600912,0,0,0,0,0
+anthropic/claude-haiku-4.5,edge_strict_json_format,"Write a mini-essay for 9-10th grade students on why AI answers need verification.
+Return ONLY valid JSON with this exact structure:
+{
+  ""introduction"": ""string"",
+  ""main_point"": ""string"",
+  ""example_1"": {""claim"": ""string"", ""explanation"": ""string""},
+  ""example_2"": {""claim"": ""string"", ""explanation"": ""string""},
+  ""conclusion"": ""string""
+}
+No extra text, no markdown, just the JSON.","```json
+{
+  ""introduction"": ""Artificial intelligence tools like ChatGPT can provide quick answers to almost any question, but that speed comes with a cost. AI systems sometimes make mistakes, and it's crucial for students to verify the information they receive before using it in schoolwork or making decisions based on it."",
+  ""main_point"": ""AI models are trained on vast amounts of internet data, which means they can learn from both accurate and inaccurate sources. Additionally, AI systems can confidently present false information in a convincing way, a problem called 'hallucination.' Without verification, you might unknowingly spread misinformation or fail an assignment by submitting incorrect facts."",
+  ""example_1"": {
+    ""claim"": ""An AI might state that a historical event happened in the wrong year or attribute a famous quote to the wrong person."",
+    ""explanation"": ""Even though the AI presents this information with confidence and proper grammar, it could be completely wrong. If you cite this in an essay without checking, your teacher will mark it as incorrect, and you'll lose points for not doing proper research.""
+  },
+  ""example_2"": {
+    ""claim"": ""An AI could provide a math solution that looks correct but contains a hidden error in the middle steps."",
+    ""explanation"": ""You might copy the answer without understanding the work, and then fail to solve similar problems on a test. Verification means working through the problem yourself or checking multiple sources to confirm the answer is right.""
+  },
+  ""conclusion"": ""AI is a helpful tool, but it's not a replacement for critical thinking. Always verify important information by checking reliable sources, asking your teacher, or doing your own research. Developing this habit now will make you a stronger student and a more informed person in a world full of information.""
+}
+```",ok,,5.252,1858,stop,118,396,514,1,285,2026-10-28T20:31:07.853214,0,0,0,0,0
+meta-llama/llama-3.3-70b-instruct,evaluation,"You are a strict but constructive reviewer of educational texts.
+
+I developed a prompt for a language model. Below I provide:
+1. The original task
+2. Quality criteria
+3. The final prompt used
+4. The model's response
+
+Your task: Evaluate both the response AND how well the prompt worked.
+
+ORIGINAL TASK:
+Write a mini-essay for 9-10th grade students explaining why AI answers need verification, with two concrete examples and a cautious conclusion
+Audience: 9-10th grade students (ages 14-16)
+Context: Educational content for a computer science or digital literacy class
+
+QUALITY CRITERIA:
+- Addresses the chosen topic directly
+- Understandable by 9-10th grade students
+- Has logical structure (intro, main point, examples, explanations, conclusion)
+- Contains at least two concrete examples
+- No fabricated facts, quotes, sources, or dates
+- Style is calm, educational, and appropriately cautious
+- Length within 180-220 words
+- Conclusion doesn't introduce new arguments
+- Text usable after minor manual editing
+
+FINAL PROMPT USED:
+You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Examples of desired style:
+
+Example 1 - Concrete argument:
+Weak: AI can make mistakes.
+Better: An AI might invent a fake citation like ""Smith et al. 2023, 'Quantum Computing Breakthrough'"" — a paper that doesn't exist but looks real.
+
+Example 2 - Explaining an example:
+Weak: This is bad because it's wrong.
+Better: This matters because a student might use that fake citation in a report, and the teacher would find no such paper.
+
+Example 3 - Cautious conclusion:
+Weak: So never trust AI.
+Better: So it's wise to check important claims from AI against reliable sources, especially for facts, dates, and references.
+
+Format: Plain text paragraphs.
+
+MODEL RESPONSE:
+# Why You Should Verify AI Answers
+
+You've probably used AI to help with homework or answer questions. It's fast and often helpful. But here's something important: AI doesn't actually ""know"" facts the way you do. Instead, it predicts the next word based on patterns it learned during training, which means it can sound confident while being completely wrong.
+
+AI sometimes invents information that sounds plausible but doesn't exist. For example, an AI might describe a historical event with specific details—names, dates, locations—that seem real but are actually made up. A student might copy these details into an essay, only to have a teacher point out that the event never happened. The AI wasn't trying to lie; it was just following patterns without checking reality.
+
+Another common problem is outdated knowledge. If an AI was trained on information from several years ago, it might give you answers about current events, recent discoveries, or new technology that are no longer accurate. You could end up with information that was true once but isn't anymore.
+
+The solution isn't to avoid AI—it's to be thoughtful. For important facts, dates, or claims, cross-check what AI tells you with reliable sources like your library database, textbooks, or established websites. This habit protects your work and builds stronger research skills.
+
+Score each of the nine stated quality criteria from 0 to 2, in the same order. Use 0 = not met, 1 = partly met, 2 = met. Explain briefly when a score is 0 or 1.
+
+Also check:
+- Did the model copy few-shot examples too literally?
+- Are there any hallucinated facts?
+- What are the strongest and weakest aspects?
+
+Return your evaluation as JSON:
+{
+  ""scores"": {""criterion_1"": 0, ""criterion_2"": 0, ""criterion_3"": 0, ""criterion_4"": 0, ""criterion_5"": 0, ""criterion_6"": 0, ""criterion_7"": 0, ""criterion_8"": 0, ""criterion_9"": 0},
+  ""score_explanations"": {""criterion_1"": ""string"", ""criterion_2"": ""string"", ""criterion_3"": ""string"", ""criterion_4"": ""string"", ""criterion_5"": ""string"", ""criterion_6"": ""string"", ""criterion_7"": ""string"", ""criterion_8"": ""string"", ""criterion_9"": ""string""},
+  ""few_shot_copying"": ""none|partial|heavy"",
+  ""hallucinations_found"": [],
+  ""strongest_aspect"": ""string"",
+  ""weakest_aspect"": ""string"",
+  ""overall_assessment"": ""string""
+}","Here is the evaluation of the model's response and the prompt:
+
+```
+{
+  ""scores"": {
+    ""criterion_1"": 2,
+    ""criterion_2"": 2,
+    ""criterion_3"": 2,
+    ""criterion_4"": 2,
+    ""criterion_5"": 2,
+    ""criterion_6"": 2,
+    ""criterion_7"": 2,
+    ""criterion_8"": 2,
+    ""criterion_9"": 2
+  },
+  ""score_explanations"": {
+    ""criterion_1"": ""The response directly addresses the topic of why AI answers need verification."",
+    ""criterion_2"": ""The language used is clear and understandable for 9-10th grade students."",
+    ""criterion_3"": ""The response has a logical structure, including an introduction, main point, examples, explanations, and conclusion."",
+    ""criterion_4"": ""The response includes two concrete examples of AI failures: inventing information and outdated knowledge."",
+    ""criterion_5"": ""No fabricated facts, quotes, sources, or dates are present in the response."",
+    ""criterion_6"": ""The tone is calm, educational, and appropriately cautious throughout the response."",
+    ""criterion_7"": ""The response is within the 180-220 word limit."",
+    ""criterion_8"": ""The conclusion does not introduce new arguments and is cautious in its wording."",
+    ""criterion_9"": ""The text is usable after minor manual editing, with no major revisions needed.""
+  },
+  ""few_shot_copying"": ""none"",
+  ""hallucinations_found"": [],
+  ""strongest_aspect"": ""The response provides clear and relevant examples of AI failures, making the concept more accessible to the target audience."",
+  ""weakest_aspect"": ""The conclusion, while cautious, could be slightly more detailed in its explanation of how to effectively cross-check AI-provided information."",
+  ""overall_assessment"": ""The prompt worked well in eliciting a clear and educational response from the model, effectively addressing the topic and meeting all the quality criteria.""
+}
+```
+
+The model's response effectively addresses the topic, is easy to understand, and provides relevant examples. The prompt seems to have guided the model well in producing a response that meets all the specified criteria. The strongest aspect of the response is its use of clear examples to illustrate the importance of verifying AI answers. The weakest aspect is a minor point, as the conclusion could be slightly more detailed, but it still effectively conveys the need for caution when relying on AI-provided information. Overall, the prompt and the model's response demonstrate a good understanding of the topic and the ability to communicate it effectively to the target audience.",ok,,76.187,2500,stop,1135,572,1707,1,334,2026-10-28T20:32:24.042992,0,0,12,0,0

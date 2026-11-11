@@ -1,0 +1,25 @@
+{
+  "topic": "Why AI answers need verification",
+  "task": "Write a mini-essay for 9-10th grade students explaining why AI answers need verification, with two concrete examples and a cautious conclusion",
+  "audience": "9-10th grade students (ages 14-16)",
+  "context": "Educational content for a computer science or digital literacy class",
+  "quality_criteria": [
+    "Addresses the chosen topic directly",
+    "Understandable by 9-10th grade students",
+    "Has logical structure (intro, main point, examples, explanations, conclusion)",
+    "Contains at least two concrete examples",
+    "No fabricated facts, quotes, sources, or dates",
+    "Style is calm, educational, and appropriately cautious",
+    "Length within 180-220 words",
+    "Conclusion doesn't introduce new arguments",
+    "Text usable after minor manual editing"
+  ],
+  "undesirable_errors": [
+    "Fabricated citations or references",
+    "Invented statistics or precise numbers without basis",
+    "Overconfident claims without qualification",
+    "Condescending or overly complex language for the audience",
+    "Missing required structural elements",
+    "Exceeding or significantly under word count"
+  ]
+}

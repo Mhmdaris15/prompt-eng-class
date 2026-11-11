@@ -1,0 +1,184 @@
+﻿question_id,question,article_id,title,similarity,abstract,relevance_0_1_2,reason,reason_ru
+1,How do the selected papers detect or quantify bipartite quantum entanglement?,0705.1308,Quantify Entanglement for Multipartite Quantum States,0.6906005144119263,"  In this paper, we consider the problem of how to quantify entanglement for
+any multipartite quantum states. For bipartite pure states partial entropy is a
+good entanglement measure. By using partial entropy, we firstly introduce the
+Combinatorial Entropy of Fully entangled states (CEF) which can be used to
+quantify entanglement for any fully entangled pure states. In order to quantify
+entanglement for any multipartite states we also need another concept the
+Entanglement Combination (EC) which can be used to completely describe the
+entanglement between any parties of the given quantum states. Combining CEF
+with EC, we define the Combinatorial Entropy (CE) for any multipartite pure
+states and present some nice properties which indicate CE is a good
+entanglement measure. Finally, we point out the feasibility of extending these
+three concepts to mixed quantum states.
+",2,Explicitly identifies partial entropy as an entanglement measure for bipartite pure states before extending to multipartite concepts.,Прямо названа partial entropy как мера запутанности для bipartite pure states; далее предлагается multipartite-обобщение.
+1,How do the selected papers detect or quantify bipartite quantum entanglement?,0704.0251,Entanglement of Subspaces and Error Correcting Codes,0.641682505607605,"  We introduce the notion of entanglement of subspaces as a measure that
+quantify the entanglement of bipartite states in a randomly selected subspace.
+We discuss its properties and in particular we show that for maximally
+entangled subspaces it is additive. Furthermore, we show that maximally
+entangled subspaces can play an important role in the study of quantum error
+correction codes. We discuss both degenerate and non-degenerate codes and show
+that the subspace spanned by the logical codewords of a non-degenerate code is
+a 2k-totally (maximally) entangled subspace. As for non-degenerate codes, we
+provide a mathematical definition in terms of subspaces and, as an example, we
+analyze Shor's nine qubits code in terms of 22 mutually orthogonal subspaces.
+",2,Introduces a measure quantifying bipartite entanglement in a randomly selected subspace.,Предложена мера запутанности двудольных состояний в случайно выбранном подпространстве.
+1,How do the selected papers detect or quantify bipartite quantum entanglement?,0704.1506,Measuring two-photon orbital angular momentum entanglement,0.6339108943939209,"  We put forward an approach to estimate the amount of bipartite spatial
+entanglement of down-converted photon states correlated in orbital angular
+momentum and the magnitude of the transverse (radial) wave vectors. Both
+degrees of freedom are properly considered in our framework, which only
+requires azimuthal local linear optical transformations and mode selection
+analysis with two fiber detectors. The coincidence distributions predicted by
+our approach give an excellent fit to the distributions measured in a recent
+experiment aimed to show the very high-dimensional transverse entanglement of
+twin photons from a down-conversion source. Our estimate for the Schmidt number
+is substantially lower but still confirms the presence of high-dimensional
+entanglement.
+",2,"Estimates bipartite photon spatial entanglement using optical transformations, detectors, and Schmidt number.","Оценивается пространственная запутанность фотонов с помощью оптических преобразований, двух детекторов и Schmidt number."
+2,What applications of entanglement to quantum communication or error correction are described?,0704.0251,Entanglement of Subspaces and Error Correcting Codes,0.6403198838233948,"  We introduce the notion of entanglement of subspaces as a measure that
+quantify the entanglement of bipartite states in a randomly selected subspace.
+We discuss its properties and in particular we show that for maximally
+entangled subspaces it is additive. Furthermore, we show that maximally
+entangled subspaces can play an important role in the study of quantum error
+correction codes. We discuss both degenerate and non-degenerate codes and show
+that the subspace spanned by the logical codewords of a non-degenerate code is
+a 2k-totally (maximally) entangled subspace. As for non-degenerate codes, we
+provide a mathematical definition in terms of subspaces and, as an example, we
+analyze Shor's nine qubits code in terms of 22 mutually orthogonal subspaces.
+",2,Directly links maximally entangled subspaces with quantum error-correcting codes.,Максимально запутанные подпространства прямо связаны с кодами квантовой коррекции ошибок.
+2,What applications of entanglement to quantum communication or error correction are described?,0704.2246,"Towards experimental entanglement connection with atomic ensembles in
+  the single excitation regime",0.6227051615715027,"  We present a protocol for performing entanglement connection between pairs of
+atomic ensembles in the single excitation regime. Two pairs are prepared in an
+asynchronous fashion and then connected via a Bell measurement. The resulting
+state of the two remaining ensembles is mapped to photonic modes and a reduced
+density matrix is then reconstructed. Our observations confirm for the first
+time the creation of coherence between atomic systems that never interacted, a
+first step towards entanglement connection, a critical requirement for quantum
+networking and long distance quantum communications.
+",2,Describes entanglement connection between atomic ensembles as a step toward long-distance quantum communication.,Соединение запутанности атомных ансамблей описано как шаг к дальней квантовой связи.
+2,What applications of entanglement to quantum communication or error correction are described?,0704.0758,Entangling Independent Photons by Time Measurement,0.6172729730606079,"  A quantum system composed of two or more subsystems can be in an entangled
+state, i.e. a state in which the properties of the global system are well
+defined but the properties of each subsystem are not. Entanglement is at the
+heart of quantum physics, both for its conceptual foundations and for
+applications in information processing and quantum communication. Remarkably,
+entanglement can be ""swapped"": if one prepares two independent entangled pairs
+A1-A2 and B1-B2, a joint measurement on A1 and B1 (called a ""Bell-State
+Measurement"", BSM) has the effect of projecting A2 and B2 onto an entangled
+state, although these two particles have never interacted or shared any common
+past[1,2]. Experiments using twin photons produced by spontaneous parametric
+down-conversion (SPDC) have already demonstrated entanglement swapping[3-6],
+but here we present its first realization using continuous wave (CW) sources,
+as originally proposed[2]. The challenge was to achieve sufficiently sharp
+synchronization of the photons in the BSM. Using narrow-band filters, the
+coherence time of the photons that undergo the BSM is significantly increased,
+exceeding the temporal resolution of the detectors. Hence pulsed sources can be
+replaced by CW sources, which do not require any synchronization[6,7], allowing
+for the first time the use of completely autonomous sources. Our experiment
+exploits recent progress in the time precision of photon detectors, in the
+efficiency of photon pair production by SPDC with waveguides in nonlinear
+crystals[8], and in the stability of narrow-band filters. This approach is
+independent of the form of entanglement; we employed time-bin entangled
+photons[9] at telecom wavelengths. Our setup is robust against thermal or
+mechanical fluctuations in optical fibres thanks to cm-long coherence lengths.
+",2,Reports entanglement swapping with continuous-wave sources for quantum communication.,Описан swapping запутанности с непрерывными источниками для квантовой коммуникации.
+3,How do entanglement entropy and entanglement witnesses differ in their purpose and limitations?,0705.1832,Optimal entanglement witnesses based on local orthogonal observables,0.550318717956543,"  We show that the entanglement witnesses based on local orthogonal observables
+which are introduced in [S. Yu and N.-L. Liu, Phys. Rev. Lett. 95, 150504
+(2005)] and [O. G\""uhne, M. Mechler, G. T\'oth and P. Adam, Phys. Rev. A 74,
+010301 (2006)] in linear and nonlinear forms can be optimized, respectively. As
+applications, we calculate the optimal nonlinear witnesses of pure bipartite
+states and show a lower bound on the I-concurrence of bipartite higher
+dimensional systems with our method.
+",2,Explains optimization of entanglement witnesses and an I-concurrence lower bound; directly supports the witness side.,Оптимизация witnesses и нижняя граница I-concurrence прямо поддерживают одну сторону сравнения.
+3,How do entanglement entropy and entanglement witnesses differ in their purpose and limitations?,0704.0418,"Entanglement entropy at infinite randomness fixed points in higher
+  dimensions",0.5263198614120483,"  The entanglement entropy of the two-dimensional random transverse Ising model
+is studied with a numerical implementation of the strong disorder
+renormalization group. The asymptotic behavior of the entropy per surface area
+diverges at, and only at, the quantum phase transition that is governed by an
+infinite randomness fixed point. Here we identify a double-logarithmic
+multiplicative correction to the area law for the entanglement entropy. This
+contrasts with the pure area law valid at the infinite randomness fixed point
+in the diluted transverse Ising model in higher dimensions.
+",1,Studies entropy scaling in an Ising model; useful for entropy application but not a general comparison with witnesses.,"Изучается entropy scaling в Ising-модели; это пример применения, но не общее сравнение с witnesses."
+3,How do entanglement entropy and entanglement witnesses differ in their purpose and limitations?,0704.2973,"Entanglement fidelity and measurement of entanglement preserving in
+  quantum processes",0.5196516513824463,"  The entanglement fidelity provides a measure of how well the entanglement
+between two subsystems is preserved in a quantum process. By using a simple
+model we show that in some cases this quantity in its original definition fails
+in the measurement of the entanglement preserving. On the contrary, the
+modified entanglement fidelity, obtained by using a proper local unitary
+transformation on a subsystem, is shown to exhibit the behavior similar to that
+of the concurrence in the quantum evolution.
+",1,"Discusses failure of an entanglement fidelity measure and comparison to concurrence, not directly entropy versus witnesses.","Рассмотрены ограничения fidelity и сравнение с concurrence, а не непосредственно entropy и witnesses."
+4,What limitations of entanglement characterization emerge across several of these studies?,0705.0419,Undirected Graphs of Entanglement Two,0.5720440745353699,"  Entanglement is a complexity measure of directed graphs that origins in fixed
+point theory. This measure has shown its use in designing efficient algorithms
+to verify logical properties of transition systems. We are interested in the
+problem of deciding whether a graph has entanglement at most k. As this measure
+is defined by means of games, game theoretic ideas naturally lead to design
+polynomial algorithms that, for fixed k, decide the problem. Known
+characterizations of directed graphs of entanglement at most 1 lead, for k = 1,
+to design even faster algorithms. In this paper we present an explicit
+characterization of undirected graphs of entanglement at most 2. With such a
+characterization at hand, we devise a linear time algorithm to decide whether
+an undirected graph has this property.
+",0,"Entanglement denotes a graph complexity measure, not quantum entanglement characterization.","Entanglement здесь означает меру сложности графа, а не характеристику квантовой запутанности."
+4,What limitations of entanglement characterization emerge across several of these studies?,0704.2269,"Temporal and diffraction effects in entanglement creation in an optical
+  cavity",0.5601025819778442,"  A practical scheme for entanglement creation between distant atoms located
+inside a single-mode optical cavity is discussed. We show that the degree of
+entanglement and the time it takes for the entanglement to reach its optimum
+value is a sensitive function the initial conditions and the position of the
+atoms inside the cavity mode. It is found that the entangled properties of the
+two atoms can readily be extracted from dynamics of a simple two-level system.
+Effectively, we engineer two coupled qubits whose the dynamics are analogous to
+that of a driven single two-level system. It is found that spatial variations
+of the coupling constants actually help to create transient entanglement which
+may appear on the time scale much longer than that predicted for the case of
+equal coupling constants. When the atoms are initially prepared in an entangled
+state, they may remain entangled for all times. We also find that the
+entanglement exhibits an interesting phenomenon of diffraction when the the
+atoms are located between the nodes and antinodes of the cavity mode. The
+diffraction pattern of the entanglement varies with time and we explain this
+effect in terms of the quantum property of complementarity, which is manifested
+as a tradeoff between the knowledge of energy of the exchanged photon versus
+the evolution time of the system.
+",1,Shows sensitivity of cavity entanglement creation to initial conditions and atom position; only partial evidence on characterization limitations.,Показана чувствительность создания cavity entanglement к начальным условиям и позиции атомов; вопрос о характеристиках покрыт лишь частично.
+4,What limitations of entanglement characterization emerge across several of these studies?,0705.0943,Localization by entanglement,0.5523650646209717,"  We study the localization of bosonic atoms in an optical lattice, which
+interact in a spatially confined region. The classical theory predicts that
+there is no localization below a threshold value for the strength of
+interaction that is inversely proportional to the number of participating
+atoms. In a full quantum treatment, however, we find that localized states
+exist for arbitrarily weak attractive or repulsive interactions for any number
+($>1$) of atoms. We further show, using an explicit solution of the
+two-particle bound state and an appropriate measure of entanglement, that the
+entanglement tends to a finite value in the limit of weak interactions. Coupled
+with the non-existence of localization in an optimized quantum product state,
+we conclude that the localization exists by virtue of entanglement.
+",1,Links localization to entanglement in an atomic lattice; does not directly discuss general characterization limitations.,Связь локализации с запутанностью в решётке атомов не даёт общих ограничений методов характеризации.
+5,What are the measured 2026 commercial deployment costs and failure rates of quantum networks?,0705.0279,"Opaque Attack on Three-Party Quantum Secret Sharing Based on
+  Entanglement",0.4614095687866211,"  Security of the three-party quantum secret sharing (QSS) schemes based on
+entanglement and a collective eavesdropping check is analyzed in the case of
+considerable quantum channel losses. An opaque attack scheme is presented for
+the dishonest agent to eavesdrop the message obtained by the other agent
+freely, which reveals that these QSS schemes are insecure for transmission
+efficiencies lower than 50%, especially when they are used to share an unknown
+quantum state. Finally, we present a general way to improve the security of QSS
+schemes for sharing not only a private key but also an unknown quantum state.
+",0,"Discusses theoretical attack under channel losses, not measured 2026 commercial costs or deployment failure rates.","Обсуждается теоретическая атака при потерях канала, а не измеренные коммерческие расходы или отказы в 2026 году."
+5,What are the measured 2026 commercial deployment costs and failure rates of quantum networks?,0705.1748,"Efficient quantum cryptography network without entanglement and quantum
+  memory",0.45661309361457825,"  An efficient quantum cryptography network protocol is proposed with
+d-dimension polarized photons, without resorting to entanglement and quantum
+memory. A server on the network, say Alice, provides the service for preparing
+and measuring single photons whose initial state are |0>. The users code the
+information on the single photons with some unitary operations. For preventing
+the untrustworthy server Alice from eavesdropping the quantum lines, a
+nonorthogonal-coding technique (decoy-photon technique) is used in the process
+that the quantum signal is transmitted between the users. This protocol does
+not require the servers and the users to store the quantum state and almost all
+of the single photons can be used for carrying the information, which makes it
+more convenient for application than others with present technology. We also
+discuss the case with a faint laser pulse.
+",0,Proposes a cryptography network protocol but gives no 2026 commercial cost or failure-rate evidence.,Предложен протокол криптографической сети без коммерческих данных 2026 года.
+5,What are the measured 2026 commercial deployment costs and failure rates of quantum networks?,0704.1957,Entanglement Cost for Sequences of Arbitrary Quantum States,0.4240869879722595,"  The entanglement cost of arbitrary sequences of bipartite states is shown to
+be expressible as the minimization of a conditional spectral entropy rate over
+sequences of separable extensions of the states in the sequence. The expression
+is shown to reduce to the regularized entanglement of formation when the n-th
+state in the sequence consists of n copies of a single bipartite state.
+",0,"Entanglement cost is a mathematical resource quantity, not monetary deployment cost; no 2026 operational evidence.","Entanglement cost — математическая ресурсная величина, а не денежная стоимость внедрения; измерений 2026 года нет."

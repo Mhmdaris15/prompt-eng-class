@@ -1,0 +1,21 @@
+{
+  "record_type": "Transcribed metadata from successful routing diagnostics, separate from experiment calls",
+  "probes": [
+    {
+      "requested_model": "cloud/anthropic/claude-haiku-4.5",
+      "http_status": 200,
+      "prompt": "Reply with OK.",
+      "max_tokens": 40,
+      "answer": "OK.",
+      "total_tokens": 16
+    },
+    {
+      "requested_model": "cloud/Qwen/Qwen3-30B-A3B",
+      "http_status": 200,
+      "prompt": "Reply with OK.",
+      "max_tokens": 40,
+      "answer": "OK.",
+      "total_tokens": 19
+    }
+  ]
+}

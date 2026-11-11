@@ -4,3 +4,15 @@ __pycache__/
 .pytest_cache/
 .venv/
 venv/
+
+# Teacher dataset is local input, not a GitHub artifact
+lab3/dataset.csv
+.ipynb_checkpoints/
+~$*
+
+# Local authoring previews and execution bookkeeping
+/results/*docx_qa*/
+.superpowers/
+# Open legacy copies; canonical reports are in reports/lab2/
+/LAB2_REPORT.docx
+/LAB2_REPORT_EN.docx

@@ -1,0 +1,345 @@
+﻿model,prompt_name,prompt,answer,status,error,latency_sec,answer_length,finish_reason,prompt_tokens,completion_tokens,total_tokens,timestamp,links_count,years_count,numbers_count,caution_markers_count,confident_markers_count
+moonshotai/Kimi-K2.6,simple,Write a short essay about why ai answers need verification for students.," The rise of artificial intelligence has transformed how students research, draft essays, and solve complex problems. With a simple prompt, learners can access polished explanations, generated code, and synthesized research in seconds. Yet this convenience carries a hidden cost: the growing necessity for students to verify AI-generated content before accepting it as truth. Blind reliance on machine-generated answers undermines academic integrity, invites factual errors, and ultimately stifles the intellectual development that education is meant to foster.
+
+First and foremost, AI systems are prone to “hallucinations”—confidently stated but fabricated information. Large language models predict plausible-sounding text rather than retrieving verified facts. A student asking for historical dates, scientific explanations, or literary analysis may receive an eloquent response that contains subtle inaccuracies or entirely invented citations. Without cross-referencing authoritative sources, students risk embedding falsehoods into their work, damaging their credibility and grades while learning little from the mistake.
+
+Beyond factual reliability, unchecked AI use short-circuits the learning process itself. Education is not merely about obtaining correct answers; it is about developing the cognitive muscles required to reach them. When students paste a complex physics problem into a chatbot and submit the solution without scrutiny, they bypass the struggle that builds conceptual understanding. Verification forces students to engage critically with the material—to question the AI’s reasoning, identify logical gaps, and reconcile the output with classroom instruction. This act of scrutiny transforms AI from a crutch into a tutoring tool, preserving the student’s role as an active learner rather than a passive consumer.
+
+Finally, verification upholds the ethical standards of scholarship. Academic institutions value original thought and honest attribution. AI-generated text may inadvertently paraphrase copyrighted material or present generic arguments that fail to meet assignment criteria. By reviewing and refining AI outputs, students ensure their work reflects their own voice and meets instructor expectations. In doing so, they practice the intellectual honesty that defines responsible research.
+
+In an era of abundant artificial intelligence, the ability to verify information has become as essential as the ability to find it. Students who treat AI answers as starting points—subjecting them to critical analysis, fact-checking, and personal revision—will not only avoid errors but also cultivate the discernment that defines a genuine education. The smartest use of AI is not the one that asks the least of us, but the one that demands we think harder.",ok,,25.588,2784,stop,21,650,671,2026-10-15T07:49:10.164430,0,0,0,0,0
+google/gemini-3.1-pro-preview,simple,Write a short essay about why ai answers need verification for students.,"**Trust, But Verify: Why Students Must Fact-Check AI**
+
+Artificial Intelligence has rapidly transformed from a futuristic concept into an everyday study companion. With tools like ChatGPT and Google Gemini, students can summarize complex texts, brainstorm essay topics, and debug code in seconds. However, while AI is a powerful educational ally, it has a critical flaw: it does not actually ""know"" anything. Because AI models are designed to predict the next most likely word rather than understand truth, their answers require rigorous verification. For students, fact-checking AI is essential to avoid misinformation, combat hidden biases, and preserve the development of critical thinking skills.
+
+The most immediate reason to verify AI outputs is the phenomenon of ""hallucinations."" When an AI doesn't have the correct answer, it often fabricates information and presents it with absolute confidence. It can invent historical events, misstate scientific formulas, and even generate fake citations to non-existent books and articles. Because the AI writes in a polished, authoritative tone, it is easy for a student to accept these falsehoods as fact. Relying on unverified AI answers can lead to failing grades and a fundamentally flawed understanding of the subject matter.
+
+Furthermore, AI models are only as good as the data they are trained on—which means they are trained on the vast, messy, and often biased expanse of the internet. Consequently, AI can inadvertently perpetuate human prejudices, stereotypes, and one-sided historical narratives. If a student asks an AI to explain a complex socio-political issue, the response might lack nuance or reflect a dominant cultural bias. By cross-referencing AI answers with peer-reviewed journals, textbooks, and diverse primary sources, students can ensure they are getting a well-rounded and objective view of the topic. 
+
+Finally, the act of verification is where the actual learning happens. The goal of education is not merely to produce correct answers, but to develop the cognitive skills required to find them. If students passively copy and paste AI responses, they bypass the mental heavy lifting that builds comprehension and retention. When a student takes the time to verify an AI-generated answer, they are forced to engage in information literacy. They must ask critical questions: *Where did this information come from? Does this logic hold up? Do credible experts agree?* In this way, the AI’s limitation becomes a learning opportunity, turning the student from a passive consumer of information into an active investigator.
+
+In conclusion, AI should be treated not as an infallible oracle, but as an enthusiastic, somewhat unreliable research assistant. It is a brilliant starting point for learning, capable of sparking ideas and simplifying difficult concepts. However, the final responsibility for truth and accuracy rests with the human user. By making verification a mandatory step in using AI, students protect their academic integrity and sharpen the critical thinking skills they will need long after they leave the classroom.",ok,,13.083,3109,stop,14,585,599,2026-10-15T07:49:23.248388,0,0,0,0,0
+moonshotai/Kimi-K2.6,v1,"You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Format: Plain text paragraphs."," Artificial intelligence has become a popular tool for homework and research, but it is important to treat its answers with healthy skepticism. These systems can be helpful starting points, though they work best alongside the critical thinking you normally apply to websites or books.
+
+At its core, AI generates probable text rather than verified facts. It predicts which words are most likely to fit together based on patterns in its training data, not by checking information against a reliable database in real time. This difference means mistakes can slip through in ways that sound surprisingly convincing.
+
+One common issue is hallucination, where an AI invents details that appear authentic. For instance, a chatbot might describe a scientific study that does not actually exist, complete with a plausible title and researcher name. If you repeat this without checking, you risk spreading false information in your own work. Another frequent problem is outdated knowledge. An AI trained on older data might describe laws, technologies, or public figures as they existed years ago, missing important updates or changes that happened after its training ended.
+
+AI remains a useful tool for brainstorming and exploring ideas, but taking the extra step to verify its claims through trusted sources is a habit worth building early.",ok,,42.941,1333,stop,189,1888,2077,2026-10-15T07:50:06.189882,0,0,0,0,0
+google/gemini-3.1-pro-preview,v1,"You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Format: Plain text paragraphs.","Generative AI tools can be helpful study aids, capable of summarizing complex topics and brainstorming essay ideas in seconds. Because their responses are well-written and appear instantly, it is easy to assume the information they provide is completely accurate. However, treating AI as an infallible source of truth can lead to mistakes in your schoolwork. 
+
+The main reason to double-check AI outputs is that these systems do not actually understand facts. Instead, they function like advanced autocomplete tools, predicting the most probable next word based on patterns in their training data. Because they prioritize sounding plausible over being right, they often make mistakes.
+
+One common failure is a ""hallucination,"" such as when a student asks for sources and the AI invents book titles or articles that do not exist. This happens because the AI knows what a citation should look like and constructs words that fit that pattern, rather than searching a library database. Another issue is outdated knowledge. If you ask about a recent scientific discovery, an AI might give incorrect information simply because its training data does not include the latest events. 
+
+AI remains a useful tool for learning and organization when used thoughtfully. Still, taking a few moments to verify its claims against reliable human-curated sources is a smart habit for any student.",ok,,8.322,1377,stop,196,259,455,2026-10-15T07:50:14.512118,0,0,0,0,0
+moonshotai/Kimi-K2.6,v2,"You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Aim for this level of specificity:
+
+Weak formulation:
+AI helps people learn.
+
+Better formulation:
+AI can help a student understand a difficult concept if used as an explanation assistant rather than a way to just get the answer. For example, asking 'Can you explain how photosynthesis works step by step?' is more useful than asking 'What is the answer to question 5?'
+
+Format: Plain text paragraphs."," Artificial intelligence can feel like a convenient shortcut for homework and research, but treating it as a fully reliable authority can easily backfire",truncated,,46.444,153,length,265,2000,2265,2026-10-15T07:51:00.958005,0,0,0,0,0
+google/gemini-3.1-pro-preview,v2,"You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Aim for this level of specificity:
+
+Weak formulation:
+AI helps people learn.
+
+Better formulation:
+AI can help a student understand a difficult concept if used as an explanation assistant rather than a way to just get the answer. For example, asking 'Can you explain how photosynthesis works step by step?' is more useful than asking 'What is the answer to question 5?'
+
+Format: Plain text paragraphs.","Artificial intelligence tools can be great assistants when you are brainstorming ideas for a school project or trying to understand a complicated history topic. However, treating an AI chatbot like an infallible encyclopedia can easily lead to mistakes in your schoolwork. Before you copy an AI response into your notes, it is important to understand how these programs actually work.
+
+At its core, an AI does not actually ""know"" facts; instead, it predicts which words are most likely to go together based on patterns in its training data. Because it generates probable text rather than verified truth, it can easily make mistakes while sounding completely sure of itself.
+
+For instance, if you ask an AI to provide sources for a research paper on climate change, it might invent a book title that sounds academic and pair it with a real scientist's name. This happens because the AI is combining words that frequently appear together in science articles, without checking if the book actually exists. Another common issue occurs when you ask about recent events, such as the current leader of a specific country. If the AI's training data has not been updated recently, or if it blends old news articles with newer ones, it might confidently give you outdated information. 
+
+AI can certainly make studying more efficient, especially when you ask it to explain tough concepts step by step. Still, it is best to treat its answers as a starting point and double-check important claims using reliable sources like textbooks or verified websites.",ok,,6.883,1543,stop,274,295,569,2026-10-15T07:51:07.841024,0,0,0,0,1
+moonshotai/Kimi-K2.6,v3,"You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Examples of desired style:
+
+Example 1 - Concrete argument:
+Weak: AI can make mistakes.
+Better: An AI might invent a fake citation like ""Smith et al. 2023, 'Quantum Computing Breakthrough'"" — a paper that doesn't exist but looks real.
+
+Example 2 - Explaining an example:
+Weak: This is bad because it's wrong.
+Better: This matters because a student might use that fake citation in a report, and the teacher would find no such paper.
+
+Example 3 - Cautious conclusion:
+Weak: So never trust AI.
+Better: So it's wise to check important claims from AI against reliable sources, especially for facts, dates, and references.
+
+Format: Plain text paragraphs."," AI tools can feel like talking to a really smart assistant who knows a little bit about everything. But there is an important difference between how AI answers questions and how a careful researcher finds facts. Understanding this difference can help you use these tools wisely.
+
+AI does not truly understand information the way a person does. Instead, it predicts what words are most likely to appear together based on patterns in its training data. This means it can produce text that sounds smooth and confident but contains details that are simply made up or no longer current.
+
+For instance, an AI might describe a scientific study that sounds completely real, complete with a researcher name and a title, but the study never actually happened. This matters because a student might include that fake reference in a paper, only to discover later that the source does not exist.
+
+An AI might also give outdated travel advice about visa rules for a country, or explain",truncated,,47.843,971,length,326,2000,2326,2026-10-15T07:51:55.684367,0,0,0,0,0
+google/gemini-3.1-pro-preview,v3,"You are an educational content writer specializing in digital literacy for teenagers.
+
+Write a mini-essay for 9-10th grade students (ages 14-16) explaining why AI answers need verification.
+
+The essay must include:
+1. A brief introduction (2-3 sentences)
+2. The main point: AI generates probable text, not verified facts
+3. Two concrete examples of AI failures (hallucination, outdated knowledge, or confident errors)
+4. An explanation for each example
+5. A cautious conclusion that doesn't overstate the case
+
+Constraints:
+- Tone: calm, educational, not condescending
+- Length: 180-220 words
+- No fabricated facts, quotes, sources, dates, or citations
+- No made-up statistics or precise numbers
+- Do not use overly categorical language
+- Write in plain language appropriate for the audience
+
+Examples of desired style:
+
+Example 1 - Concrete argument:
+Weak: AI can make mistakes.
+Better: An AI might invent a fake citation like ""Smith et al. 2023, 'Quantum Computing Breakthrough'"" — a paper that doesn't exist but looks real.
+
+Example 2 - Explaining an example:
+Weak: This is bad because it's wrong.
+Better: This matters because a student might use that fake citation in a report, and the teacher would find no such paper.
+
+Example 3 - Cautious conclusion:
+Weak: So never trust AI.
+Better: So it's wise to check important claims from AI against reliable sources, especially for facts, dates, and references.
+
+Format: Plain text paragraphs.","Artificial intelligence tools are impressive assistants for brainstorming and summarizing topics. Because they write in clear, confident sentences, it is easy to assume they operate like digital encyclopedias. However, treating AI responses as automatic truth can lead to avoidable mistakes in your schoolwork.
+
+To use AI effectively, it helps to understand how it works: AI generates probable text, not verified facts. Instead of looking up confirmed answers, the system predicts which words most likely belong together based on patterns in its training data.
+
+Because of this design, AI can experience ""hallucinations."" For example, if you ask for sources for a history paper, an AI might invent a book title by a real historian that was never actually written. This happens because the AI combines a famous historian's name with historical keywords to create a title that sounds believable, potentially leaving you with a fake source in your bibliography.
+
+Additionally, an AI might confidently fail at a multi-step math word problem. Since the tool relies on language patterns rather than a calculator's strict logic, it can easily guess a wrong number while writing out an explanation that looks totally convincing.
+
+AI remains a helpful starting point for learning. Even so, it is wise to double-check important claims, calculations, and references against reliable sources before trusting them.",ok,,7.042,1401,stop,349,265,614,2026-10-15T07:52:02.727078,0,0,0,0,0
+moonshotai/Kimi-K2.6,edge_too_general_topic,Write about artificial intelligence.," Artificial intelligence (AI) stands as one of the most transformative technologies of the twenty-first century, reshaping how we live, work, and understand human cognition itself. At its core, AI refers to computer systems capable of performing tasks that traditionally require human intelligence—such as visual perception, language understanding, decision-making, and pattern recognition. Yet beneath this simple definition lies a vast and rapidly evolving field that bridges computer science, mathematics, neuroscience, and philosophy.
+
+The modern journey of AI began in 1956 at the Dartmouth Conference, where researchers first coined the term and imagined machines that could simulate every aspect of human learning. Progress moved in waves: early enthusiasm gave way to ""AI winters"" when funding dried up amid inflated expectations. The field rebounded dramatically in the 2010s, fueled by three converging forces: exponential growth in computing power, the availability of massive datasets, and breakthroughs in neural network architectures. These advances shifted AI from rule-based programming to machine learning, where systems improve through exposure to data rather than explicit instruction.
+
+Today’s AI landscape rests on several foundational technologies. **Machine learning** algorithms detect statistical patterns to make predictions, powering everything from spam filters to recommendation engines. **Deep learning**, a subset of machine learning, uses artificial neural networks with millions of interconnected nodes loosely modeled on the human brain, enabling remarkable achievements in image recognition and speech synthesis. **Natural language processing** allows machines to interpret, generate, and translate human language—evident in the chatbots, translation apps, and large language models that have recently captured public imagination. Meanwhile, **computer vision** equips machines to analyze visual information, forming the backbone of medical imaging tools, facial recognition systems, and autonomous vehicles.
+
+The real-world impact of AI now touches nearly every sector. In healthcare, algorithms detect cancers in radiology scans and accelerate drug discovery by predicting molecular behavior. In finance, AI monitors transactions for fraud in milliseconds and automates complex trading strategies. Manufacturing robots optimize supply chains and perform quality control with superhuman consistency. Creative industries have witnessed an upheaval as generative AI produces artwork, music, literature, and code, blurring the boundary between human and machine creativity.
+
+The benefits are substantial. AI can process volumes of information beyond human capacity, operate continuously without fatigue, and uncover subtle patterns invisible to the naked eye. It promises solutions to grand challenges, from climate modeling and renewable energy optimization to personalized education and agricultural efficiency.
+
+Yet this power brings profound challenges. **Bias** remains a critical concern: AI systems trained on historical data often perpetuate existing prejudices in hiring, lending, and criminal justice. **Transparency** poses another problem, as complex ""black box"" models make decisions that even their creators struggle to explain. **Privacy** erodes as surveillance and data-mining capabilities expand. Economically, automation threatens to displace workers faster than societies can retrain them, potentially exacerbating inequality. Looking further ahead, researchers debate the long-term risks of artificial general intelligence (AGI)—hypothetical systems that surpass human cognition—and whether we can ensure such entities remain aligned with human values.
+
+The path forward demands more than technical innovation; it requires governance, ethics, and public engagement. Governments worldwide are scrambling to craft regulations that foster innovation while protecting rights. Organizations must prioritize responsible AI development, ensuring diverse training data, rigorous testing, and human oversight. Education systems need to adapt, emphasizing skills that complement rather than compete with automation.
+
+Ultimately, artificial intelligence is neither utopian savior nor existential threat in itself—it is a mirror reflecting human intentions, values, and institutions. Its trajectory will be determined not by algorithms alone, but by the choices we make about how to deploy, regulate, and share this extraordinary capability. As we stand at this technological inflection point, the most important intelligence at play may be our own collective wisdom in guiding AI toward human flourishing.",ok,,26.87,4648,stop,13,1202,1215,2026-10-15T07:52:29.598282,0,1,1,1,0
+google/gemini-3.1-pro-preview,edge_too_general_topic,Write about artificial intelligence.,"**Artificial Intelligence (AI)** is one of the most transformative technologies of the 21st century. At its core, AI refers to the simulation of human intelligence in machines that are programmed to think, learn, and problem-solve like humans. Once a concept confined to science fiction, AI has rapidly evolved into a foundational element of modern society, reshaping how we live, work, and interact with the world.
+
+### How AI Works: The Core Concepts
+To understand AI, it helps to look at the technologies that power it:
+*   **Machine Learning (ML):** Instead of being explicitly programmed to perform a task, ML algorithms use vast amounts of data to learn patterns and make predictions. For example, an ML system learns to identify a cat by analyzing thousands of images of cats, rather than being told ""a cat has pointy ears and whiskers.""
+*   **Deep Learning:** A subset of machine learning inspired by the structure of the human brain. It uses ""artificial neural networks"" to process data in complex ways, enabling machines to recognize speech, translate languages, and detect objects in real-time.
+*   **Natural Language Processing (NLP):** This allows machines to understand, interpret, and generate human language. It is the technology behind virtual assistants like Siri and Alexa, as well as advanced chatbots like ChatGPT.
+
+### Types of AI
+AI is generally categorized based on its capabilities:
+1.  **Narrow AI (Weak AI):** This is the only type of AI that exists today. It is designed to perform a specific task—such as playing chess, recommending a movie on Netflix, or driving a car. While it may outperform humans in that specific area, it cannot operate outside its programming.
+2.  **General AI (Strong AI or AGI):** This is a theoretical form of AI that would possess the ability to understand, learn, and apply knowledge across a wide variety of tasks at a human level. Scientists are divided on when—or if—we will achieve AGI.
+3.  **Superintelligent AI:** A hypothetical future stage where AI surpasses human intelligence in every field, including scientific creativity, general wisdom, and social skills. 
+
+### The Generative AI Revolution
+In recent years, the world has witnessed a massive leap forward with **Generative AI**. Unlike traditional AI, which merely analyzes existing data, Generative AI creates *new* content. Tools like OpenAI’s ChatGPT, Google’s Gemini, and image generators like Midjourney can write essays, compose music, write computer code, and create photorealistic art from simple text prompts. This has brought AI out of research labs and into the hands of everyday consumers.
+
+### Real-World Applications
+AI is no longer a novelty; it is invisible infrastructure powering global industries:
+*   **Healthcare:** AI algorithms can detect diseases like cancer in medical scans earlier and more accurately than human doctors. It is also used to discover new drugs and personalize patient treatment plans.
+*   **Finance:** Banks use AI to detect fraudulent transactions in milliseconds, assess credit risk, and automate algorithmic trading.
+*   **Transportation:** Self-driving cars (like Tesla and Waymo) rely on AI to perceive their environment and make split-second driving decisions. AI also optimizes global shipping routes and traffic flows.
+*   **Entertainment and Retail:** Algorithms curate what you see on TikTok, what you watch on YouTube, and what you buy on Amazon by predicting your preferences based on past behavior.
+
+### Challenges and Ethical Concerns
+Despite its immense potential, the rapid rise of AI brings significant risks and ethical dilemmas:
+*   **Job Displacement:** As AI becomes capable of performing both manual and cognitive tasks (like coding, legal research, and customer service), there is growing concern about widespread automation leading to unemployment.
+*   **Bias and Discrimination:** AI systems are only as good as the data they are trained on. If historical data contains human biases (related to race, gender, or socioeconomic status), the AI will inherit and amplify those biases, potentially leading to unfair hiring practices or wrongful arrests.
+*   **Misinformation and Deepfakes:** Generative AI makes it easy to create hyper-realistic fake videos, audio, and news articles. This poses a severe threat to trust, democracy, and cybersecurity.
+*   **Privacy and Copyright:** Training AI requires scraping massive amounts of data from the internet, raising questions about data privacy and the unauthorized use of copyrighted art and literature.
+*   **Existential Risk:** Many prominent tech leaders and scientists have warned that if AI becomes too powerful without proper ""alignment"" (ensuring its goals match human values), it could pose a threat to humanity itself.
+
+### Conclusion
+Artificial Intelligence is often compared to the invention of electricity or the internet in terms of its societal impact. It holds the promise to solve some of humanity’s greatest challenges—from curing diseases to combating climate change. However, realizing this potential while mitigating the risks requires careful regulation, ethical development, and global cooperation. Ultimately, the future of AI is not just about what machines can do, but about the choices humans make in how we build and govern them.",ok,,18.6,5289,stop,6,1050,1056,2026-10-15T07:52:48.198974,0,0,3,0,0
+moonshotai/Kimi-K2.6,edge_hallucination_risk,"Write a mini-essay for students on why AI needs verification. Include 3 specific research papers with authors, years, and DOIs that prove AI hallucinates.",,truncated,,56.687,0,length,41,2000,2041,2026-10-15T07:53:44.886576,0,0,0,0,0
+google/gemini-3.1-pro-preview,edge_hallucination_risk,"Write a mini-essay for students on why AI needs verification. Include 3 specific research papers with authors, years, and DOIs that prove AI hallucinates.","**Trust, But Verify: Why Students Must Fact-Check Artificial Intelligence**
+
+For today’s students, Generative AI tools like ChatGPT seem like the ultimate study buddies. They can summarize complex theories, draft essays, and explain difficult concepts in seconds. However, treating AI as an all-knowing encyclopedia is a major academic trap. To use AI responsibly, students must understand a fundamental flaw in how these systems work: AI does not ""know"" facts; it predicts patterns. Because of this, every piece of information generated by AI requires human verification. 
+
+Large Language Models (LLMs) are trained on vast amounts of internet text to predict the next most likely word in a sentence. Because they prioritize sounding fluent and convincing over being factually accurate, they frequently suffer from ""hallucinations""—a phenomenon where the AI generates confident, plausible-sounding falsehoods. An AI might invent historical events, misquote literature, or even fabricate scientific references out of thin air. 
+
+The reality of AI hallucination is not just anecdotal; it is a heavily documented issue in computer science and academic research. Consider the following peer-reviewed studies:
+
+1. **A Survey of the Phenomenon:** In a comprehensive review of the problem, **Ji et al. (2023)** analyzed how and why natural language generation models fabricate information. They concluded that hallucinations are deeply rooted in the way AI models are trained and decoded, making them an inherent challenge rather than a simple bug (**DOI: 10.1145/3571730**).
+2. **Fabricated Academic Citations:** The danger for students writing research papers is particularly high. **Alkaissi and McFarlane (2023)** tested ChatGPT’s ability to write about medical topics and found that while the text sounded remarkably professional, the AI invented non-existent references and mashed together real authors with fake journal titles to support its claims (**DOI: 10.7759/cureus.35179**).
+3. **Inevitability of Hallucinations:** Pushing the theory further, **Xu, Jain, and Kankanhalli (2024)** used mathematical learning theory to prove that hallucinations are actually *inevitable* in computable LLMs. They demonstrated that because AI cannot learn every computable function from finite data, it will always have blind spots where it guesses incorrectly (**DOI: 10.48550/arXiv.2401.11817**).
+
+For students, the takeaway from this research is clear: relying blindly on AI can ruin your academic credibility. Submitting an essay with a hallucinated quote or a fake DOI (like the ones tested by Alkaissi and McFarlane) is often treated as academic dishonesty or a failure of basic research skills. Furthermore, bypassing the verification process robs you of the critical thinking skills you are in school to develop. 
+
+AI is a powerful tool for brainstorming, outlining, and editing, but it is a terrible source of truth. By adopting a ""trust, but verify"" mindset—cross-checking AI claims against Google Scholar, library databases, and primary sources—you can harness the speed of artificial intelligence without sacrificing the integrity of human scholarship. 
+
+***
+
+**References**
+*   Alkaissi, H., & McFarlane, S. I. (2023). Artificial hallucinations in ChatGPT: Implications in scientific writing. *Cureus*, 15(2), e35179. https://doi.org/10.7759/cureus.35179
+*   Ji, Z., Lee, N., Frieske, R., Yu, T., Su, D., Xu, Y., Ishii, E., Bang, Y. J., Madotto, A., & Fung, P. (2023). Survey of hallucination in natural language generation. *ACM Computing Surveys*, 55(12), 1-38. https://doi.org/10.1145/3571730
+*   Xu, Z., Jain, S., & Kankanhalli, M. (2024). Hallucination is inevitable: An innate limitation of large language models. *arXiv preprint*. https://doi.org/10.48550/arXiv.2401.11817",ok,,13.905,3779,stop,34,926,960,2026-10-15T07:53:58.791652,3,6,27,0,1
+moonshotai/Kimi-K2.6,edge_audience_change,Rewrite the previous essay for parents of teenagers instead of the teenagers themselves. Keep the same core message but adjust tone and examples.," I don’t see a previous essay in our conversation history. Could you please paste the essay you’d like me to rewrite?
+
+Once you share it, I’ll gladly adapt it for **parents of teenagers** by:
+
+- Shifting the tone from peer-to-peer (or adult-to-teen) to **parent-to-parent**
+- Replacing examples that speak to a teen’s daily experience with scenarios drawn from **a parent’s perspective** (e.g., navigating boundaries, communication at home, or monitoring well-being without overstepping)
+- Keeping the **same core message** and structure intact
+
+Just reply with the original text, and I’ll get started.",ok,,12.148,602,stop,33,478,511,2026-10-15T07:54:10.940663,0,0,0,0,0
+google/gemini-3.1-pro-preview,edge_audience_change,Rewrite the previous essay for parents of teenagers instead of the teenagers themselves. Keep the same core message but adjust tone and examples.,"It looks like you didn't include the essay! Please paste the text of the essay you would like me to rewrite, and I will gladly adapt the tone, examples, and perspective for an audience of parents.",ok,,3.5,196,stop,26,47,73,2026-10-15T07:54:14.440726,0,0,0,0,0
+moonshotai/Kimi-K2.6,edge_conflicting_requirements,"Explain in detail why AI answers need verification with multiple examples, but use no more than 2 sentences total."," AI outputs require rigorous verification because large language models are prone to hallucinations—such as inventing nonexistent legal precedents, fabricating scientific citations, or generating plausible but false historical narratives—alongside training-data biases, knowledge cutoff limitations, and subtle reasoning errors that appear authoritative despite being wrong. Unchecked AI answers have produced harmful medical misinformation like incorrect drug interactions, obsolete financial guidance based on outdated tax laws, buggy code that passes superficial review, and entirely fictional academic papers, proving that human fact-checking remains essential across every high-stakes domain.",ok,,26.409,697,stop,30,1187,1217,2026-10-15T07:54:40.849848,0,0,0,0,0
+google/gemini-3.1-pro-preview,edge_conflicting_requirements,"Explain in detail why AI answers need verification with multiple examples, but use no more than 2 sentences total.","AI answers require rigorous verification because language models predict probable word patterns rather than possessing true comprehension, which frequently leads to ""hallucinations"" of plausible-sounding misinformation, reliance on outdated training data, and the amplification of human biases found in their source material. For instance, an AI might fabricate non-existent legal precedents—as seen when lawyers were sanctioned for submitting ChatGPT-generated fake court citations—or provide dangerous medical advice, introduce subtle security vulnerabilities in programming code, and fail at basic math or logic puzzles while stating the incorrect results with absolute confidence.",ok,,4.474,684,stop,23,115,138,2026-10-15T07:54:45.324430,0,0,0,0,0
+moonshotai/Kimi-K2.6,edge_strict_json_format,"Write a mini-essay for 9-10th grade students on why AI answers need verification.
+Return ONLY valid JSON with this exact structure:
+{
+  ""introduction"": ""string"",
+  ""main_point"": ""string"",
+  ""example_1"": {""claim"": ""string"", ""explanation"": ""string""},
+  ""example_2"": {""claim"": ""string"", ""explanation"": ""string""},
+  ""conclusion"": ""string""
+}
+No extra text, no markdown, just the JSON."," {
+  ""introduction"": ""Artificial intelligence can feel like a super-smart tutor that is always ready to help with homework, essays, and research. But here is the catch: AI does not actually know what is true. It predicts what words should come next, which means it can sound confident while being completely wrong. That is why verifying AI answers is not optional—it is a necessary skill for every high school student."",
+  ""main_point"": ""The core reason to double-check AI output is that these tools are trained on massive amounts of internet data that contain errors, biases, and outdated information. When students treat AI-generated text as fact without cross-referencing reliable sources, they risk repeating falsehoods, reinforcing stereotypes, and missing out on the critical thinking that real learning requires."",
+  ""example_1"": {
+    ""claim"": ""AI can invent fake facts, sources, or events that never happened."",
+    ""explanation"": ""This phenomenon is often called hallucination. For example, an AI might generate a historical quote that sounds real but was never actually said, or cite a scientific study that does not exist. If you submit that information in a paper, you could receive a failing grade for inaccuracy and damage your academic integrity.""
+  },
+  ""example_2"": {
+    ""claim"": ""AI answers can reflect outdated information or hidden biases."",
+    ""explanation"": ""Because AI models are trained on data from the past, they might miss recent discoveries or present old scientific theories as current truth. They can also mirror societal biases found in their training material. By comparing AI responses with up-to-date, credible sources—like peer-reviewed journals or expert-reviewed websites—you ensure your work is fair, accurate, and relevant.""
+  },
+  ""conclusion"": ""AI is a powerful tool, but it is not a replacement for your own judgment. Treat every AI answer as a starting point, not a final answer. When you take the extra step to verify facts, you protect your grades, sharpen your critical thinking, and build the research habits that will serve you long after high school.""
+}",ok,,29.495,2105,stop,111,1514,1625,2026-10-15T07:55:14.820071,0,0,0,0,0
+google/gemini-3.1-pro-preview,edge_strict_json_format,"Write a mini-essay for 9-10th grade students on why AI answers need verification.
+Return ONLY valid JSON with this exact structure:
+{
+  ""introduction"": ""string"",
+  ""main_point"": ""string"",
+  ""example_1"": {""claim"": ""string"", ""explanation"": ""string""},
+  ""example_2"": {""claim"": ""string"", ""explanation"": ""string""},
+  ""conclusion"": ""string""
+}
+No extra text, no markdown, just the JSON.","{
+  ""introduction"": ""Artificial Intelligence has become a go-to tool for everything from brainstorming essay topics to solving complex math problems. While chatbots like ChatGPT or Gemini can generate impressive responses in seconds, treating them like all-knowing encyclopedias is a major mistake. As high school students navigating the digital age, learning to verify AI-generated answers is one of the most important research skills you can develop."",
+  ""main_point"": ""AI does not actually 'know' facts or understand the truth; instead, it is an advanced prediction machine that strings words together based on statistical patterns, which often leads to confident-sounding falsehoods known as hallucinations."",
+  ""example_1"": {
+    ""claim"": ""AI frequently invents fake sources and historical details when asked for specific evidence."",
+    ""explanation"": ""If you ask an AI to provide quotes and citations for a history paper, it might generate a book title that sounds completely real, assign it to a famous historian, and even provide a page number. However, if you actually check your school library or Google Scholar, you might find that the book was never written—the AI simply combined words that usually appear together in academic writing.""
+  },
+  ""example_2"": {
+    ""claim"": ""AI can inherit biases and outdated facts from the internet data it was trained on."",
+    ""explanation"": ""Because AI learns from billions of webpages created by humans, it absorbs human mistakes, stereotypes, and old news. For instance, if you ask an AI about a recent scientific discovery in biology, it might give you an incorrect answer based on a debunked theory from five years ago, or present a one-sided opinion on a controversial social issue as if it were an absolute fact.""
+  },
+  ""conclusion"": ""Ultimately, AI should be used as a starting point for your schoolwork, not the final destination. By cross-checking AI responses with reliable websites, textbooks, and databases, you protect your grades and sharpen your critical thinking skills. Remember: let AI assist your learning, but never let it do the thinking for you.""
+}",ok,,9.389,2121,stop,112,440,552,2026-10-15T07:55:24.209701,0,0,0,0,0
